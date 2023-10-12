@@ -1,5 +1,5 @@
 ---
-title: "github.io 첫 포스팅"
+title: "github.io first post"
 excerpt: "Github Blog글을 처음 써보며."
 
 categorise:
