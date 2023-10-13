@@ -106,9 +106,9 @@ analytics:
 author:
   name             : "Hyunsoon Im"
   avatar           : "/assets/images/hyunsoon_drum-modified.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Student of 42Seoul who is interested in **Graphics** and **Game Engine**."
+  location         : "Seoul, South Korea 🇰🇷"
+  email            : "s7514036@naver.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
