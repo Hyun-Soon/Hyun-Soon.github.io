@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" #"default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -107,7 +107,7 @@ author:
   name             : "Hyunsoon Im"
   avatar           : "/assets/images/hyunsoon_drum-modified.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "42Seoul Student who is interested in **Graphics** and **Game Engine**."
-  location         : "Seoul, South Korea 🇰🇷"
+  location         : "Seoul, South Korea"
   email            : "s7514036@naver.com"
   links:
     - label: "Email"
@@ -282,15 +282,19 @@ defaults:
   # _posts
   - scope:
       path: ""
+    values:
+      sidebar:
+        nav: "sidebar1"
+
+  - scope:
+      path: ""
       type: posts
     values:
       show_date: true
       date_format: "%Y-%m-%d"
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       comments: true
       share: true
       related: true
-      sidebar:
-        nav: "sidebar"

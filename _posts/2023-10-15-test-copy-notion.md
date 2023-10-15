@@ -1,36 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-15T19:49:33+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Makefile</title><link href="http://localhost:4000/42seoul/test-copy-notion/" rel="alternate" type="text/html" title="Makefile" /><published>2023-10-15T00:00:00+09:00</published><updated>2023-10-15T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/test-copy-notion</id><content type="html" xml:base="http://localhost:4000/42seoul/test-copy-notion/"><![CDATA[<h2 id="make란">Make란?</h2>
-<p>“의존성 관리” 기능을 갖춘 빌드 도구.</p>
+---
+title: "Makefile"
+excerpt: "의존성 관리 및 빌드 과정을 편하게 해주는 Makefile에 대해 알아보자."
+categories: [42Seoul]
+tags: [42Seoul, Makefile]
+---
+    
+## Make란?
+"의존성 관리" 기능을 갖춘 빌드 도구.  
 
-<h2 id="의존성-관리"><strong>의존성 관리</strong></h2>
+**의존성 관리**
+---
 
-<p>빌드 과정에서 의존성에 따른 빌드 순서는 무척 중요하다.
+빌드 과정에서 의존성에 따른 빌드 순서는 무척 중요하다.
 a.c로 a.o를 만들고, a.o로 a.out을 만드는 상황을 가정하자.
-여기서 a.out은 a.o에, a.o는 a.c에 의존성이 있다고 할 수 있다.</p>
+여기서 a.out은 a.o에, a.o는 a.c에 의존성이 있다고 할 수 있다.
 
-<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f306945-3f5d-41a7-8e01-2ad3953ed329/Untitled.png" alt="a" /></p>
+![a](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f306945-3f5d-41a7-8e01-2ad3953ed329/Untitled.png)
 
-<p>만약 의존성 그래프가 아래와 같이 복잡해지면 어떨까?</p>
+만약 의존성 그래프가 아래와 같이 복잡해지면 어떨까?
 
-<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc0d1c94-9a0a-47d7-b363-a89b3d0f00b6/Untitled.png" alt="Untitled" /></p>
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc0d1c94-9a0a-47d7-b363-a89b3d0f00b6/Untitled.png)
 
-<p>test를 수행하기 위해 순서를 잘 지키면서 과정을 따라가야 한다.
+test를 수행하기 위해 순서를 잘 지키면서 과정을 따라가야 한다.
 make는 규칙을 정의하면 그 규칙에서 적절한 작업 순서를 찾아서, 그 순서대로 작업을 수행한다.
-이것을 “의존성 관리”라고 한다.</p>
+이것을 “의존성 관리”라고 한다.
 
-<p><strong>증분 빌드</strong></p>
+**증분 빌드**
 
-<p>이전 그림에서 ft_a.c와 testee_sub2.c가 바뀌면 그 변경사항을 test에 어떻게 반영해야 할까?</p>
+이전 그림에서 ft_a.c와 testee_sub2.c가 바뀌면 그 변경사항을 test에 어떻게 반영해야 할까?
 
-<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24b595e8-a2b1-4e60-94c4-4bc7b6341778/Untitled.png" alt="Untitled" /></p>
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24b595e8-a2b1-4e60-94c4-4bc7b6341778/Untitled.png)
 
-<p>의존성 그래프에서 변경사항을 추적해서 변경이 필요한 것들만 다시 만들면 된다.
+의존성 그래프에서 변경사항을 추적해서 변경이 필요한 것들만 다시 만들면 된다.
 하지만 이 과정은 두통을 유발할 수 있다.
 make는 규칙을 잘 정의하면 무언가가 변경되었을 때, 변경이 필요한 것들만 다시 만들어준다.
-이것을 “증분 빌드”라고 한다.</p>
+이것을 “증분 빌드”라고 한다.
 
-<p>&lt;/aside&gt;</p>
+</aside>
 
-<h2 id="makefile">Makefile</h2>
+## Makefile
 
 <aside>
 💡 **makefile이란?**
@@ -109,14 +117,14 @@ $(TARGET): $(A_O)
 ex.
 
 - $@ : 만들려는 파일 이름
-- $&lt; : 의존성 중 첫번째
+- $< : 의존성 중 첫번째
 - $^ : 모든 의존성
 - $? : 현재의 목표 파일보다 최근에 갱신된 의존성의 이름들
 - …
 
 ```makefile
 a.o: a.c
-	cc -c $&lt;
+	cc -c $<
 a.out: a.o
 	cc $^ -o $@
 ```
@@ -130,7 +138,7 @@ a.out: a.o
 EXECUTABLE_TARGETS = a.out
 
 %.o: %.c            //%.o가 foo.o라면 %.c도 foo.c가 된다.
-	cc -c $&lt;
+	cc -c $<
 $(EXECUTABLE_TARGETS):
 	cc $^ -o $@
 a.out: a.o
@@ -156,9 +164,9 @@ make -p 명령어로 내장 변수와 내장 규칙을 확인할 수 있다.
     
     ```makefile
     %.o: %.c
-    	$(CC) $(TARGET_ARCH) $(CPPFLAGS) $(CFLAGS) -o $@ -c $&lt;
+    	$(CC) $(TARGET_ARCH) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
     %.o: %.cpp
-    	$(CXX) $(TARGET_ARCH) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $&lt;
+    	$(CXX) $(TARGET_ARCH) $(CPPFLAGS) $(CXXFLAGS) -o $@ -c $<
     %: %.o
     	$(CC) $(TARGET_ARCH) $(LOADLIBES) $(LDLIBS) $(LDFLAGS) -o $@ $^
     ```
@@ -216,70 +224,5 @@ make -p 명령어로 내장 변수와 내장 규칙을 확인할 수 있다.
     
 </aside>
 
-<h2 id="reference"><strong>📬 Reference</strong></h2>
-<p><a href="http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make.html#toc3">GNU Make 강좌</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Makefile" /><summary type="html"><![CDATA[의존성 관리 및 빌드 과정을 편하게 해주는 Makefile에 대해 알아보자.]]></summary></entry><entry><title type="html">test post</title><link href="http://localhost:4000/test/test-post/" rel="alternate" type="text/html" title="test post" /><published>2023-10-15T00:00:00+09:00</published><updated>2023-10-15T00:00:00+09:00</updated><id>http://localhost:4000/test/test-post</id><content type="html" xml:base="http://localhost:4000/test/test-post/"><![CDATA[]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Test" /><category term="Test" /><summary type="html"><![CDATA[testing issue]]></summary></entry><entry><title type="html">github first post</title><link href="http://localhost:4000/test/first-post/" rel="alternate" type="text/html" title="github first post" /><published>2023-10-11T00:00:00+09:00</published><updated>2023-10-11T00:00:00+09:00</updated><id>http://localhost:4000/test/first-post</id><content type="html" xml:base="http://localhost:4000/test/first-post/"><![CDATA[<h1 id="블로그-첫-포스팅제목">블로그 첫 포스팅(제목)</h1>
-
-<h2 id="부제목">부제목</h2>
-
-<h1 id="글머리1">글머리1</h1>
-
-<h2 id="글머리2">글머리2</h2>
-
-<blockquote>
-  <p>blockquote
-	&gt; blockquote2
-	&gt;	&gt; blockquote3</p>
-</blockquote>
-
-<ol>
-  <li>첫번째</li>
-  <li>두번째</li>
-</ol>
-
-<ul>
-  <li>a</li>
-  <li>b</li>
-  <li>c</li>
-</ul>
-
-<p>this is a normal paragraph:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this is a code block.
-</code></pre></div></div>
-
-<p>end code block.</p>
-
-<p>second code block method</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"hello world!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>링크
-<!-- 주석 내용-->
-// code
-Link: <a href="https://google.com" title="Go google">Google</a></p>
-
-<p>// code2
-<a href="https://google.com," title="google link">Google</a></p>
-
-<p>//code3</p>
-<ul>
-  <li>외부링크: <a href="http://example.com/">http://example.com/</a></li>
-  <li>이메일링크: <a href="mailto:address@example.com">address@example.com</a></li>
-</ul>
-
-<!-- 강조 -->
-<p><em>single asterisks</em>
-<em>single asterisks second</em>
-<strong>double asterisks</strong>
-<strong>double asterisks second</strong>
-<u>single underscores</u>
-<del>cancel line</del></p>
-
-<ul>
-  <li>줄 바꿈을 하기 위해서는 문장 마지막에서 3칸 이상을 띄어쓰기 해야 한다. <br />
-이렇게</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Test" /><category term="Test" /><summary type="html"><![CDATA[Github Blog글을 처음 써보며.]]></summary></entry></feed>
+## **📬 Reference**
+[GNU Make 강좌](http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make.html#toc3)

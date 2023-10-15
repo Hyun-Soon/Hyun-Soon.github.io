@@ -7,3 +7,11 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+.page__content {
+    padding-top: 30px; /* 원하는 padding 값으로 조절 */
+}
+
+hr {
+    margin: 0.3em 0; /* 조절할 간격 설정 */
+}

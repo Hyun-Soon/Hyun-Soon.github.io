@@ -13,10 +13,10 @@ main:
   # - title: "Sitemap"
   #   url: /sitemap/
 
-sidebar:
-  - title: "Title"
-    image: http://placehold.it/350x250
-    image_alt: "image"
-    text: "Some text here."
-  - title: "Another Title"
-    text: "More text here."
+sidebar1:
+  - title: "Categories"
+    children:
+    - title: "42Seoul"
+      url: "/Test"
+    - title: "Algorithm"
+      text: "More text here."
