@@ -55,7 +55,9 @@ body {
     width: 100%;
     clear: both;
 
-    .page__content,
+    .page__content {
+      font-size: 18px;
+    }
     .page__meta,
     .page__share {
       position: relative;
