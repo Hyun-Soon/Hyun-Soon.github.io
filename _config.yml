@@ -23,16 +23,16 @@ name                     : "Hyunsoon Im"
 description              : "Hyuim's personal blog."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "Hyun-Soon/Hyun-Soon.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs             : true # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "hyun-soon-github-io.disqus.com" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -299,9 +299,27 @@ defaults:
       comments: true
       share: true
       related: true
+      comments: true
 
   - scope:
       path: ""
       type: archive
     values:
       author_profile: true
+
+
+# <script src="https://giscus.app/client.js"
+#         data-repo="Hyun-Soon/Hyun-Soon.github.io"
+#         data-repo-id="R_kgDOKeOOEA"
+#         data-category="Announcements"
+#         data-category-id="DIC_kwDOKeOOEM4CaKH6"
+#         data-mapping="pathname"
+#         data-strict="0"
+#         data-reactions-enabled="1"
+#         data-emit-metadata="0"
+#         data-input-position="bottom"
+#         data-theme="dark_dimmed"
+#         data-lang="ko"
+#         crossorigin="anonymous"
+#         async>
+# </script>
