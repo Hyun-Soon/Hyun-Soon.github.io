@@ -17,6 +17,6 @@ sidebar1:
   - title: "Categories"
     children:
     - title: "42Seoul"
-      url: "/Test"
+      url: "42Seoul"
     - title: "Algorithm"
       text: "More text here."

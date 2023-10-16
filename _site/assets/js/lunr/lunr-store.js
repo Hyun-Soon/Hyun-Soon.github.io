@@ -1,8 +1,8 @@
 var store = [{
         "title": "github first post",
-        "excerpt":"블로그 첫 포스팅(제목) 부제목 글머리1 글머리2 blockquote &gt; blockquote2 &gt; &gt; blockquote3 첫번째 두번째 a b c this is a normal paragraph: this is a code block. end code block. second code block method int main() { printf(\"hello world!\\n\"); } 링크 // code Link: Google // code2 Google //code3 외부링크:...","categories": ["Test"],
-        "tags": ["Test"],
-        "url": "/test/first-post/",
+        "excerpt":"블로그 첫 포스팅(제목) 부제목 글머리1 글머리2 blockquote &gt; blockquote2 &gt; &gt; blockquote3 첫번째 두번째 a b c this is a normal paragraph: this is a code block. end code block. second code block method int main() { printf(\"hello world!\\n\"); } 링크 // code Link: Google // code2 Google //code3 외부링크:...","categories": ["Algorithm"],
+        "tags": ["Algorithm"],
+        "url": "/algorithm/first-post/",
         "teaser": null
       },{
         "title": "Makefile",
@@ -11,7 +11,7 @@ var store = [{
         "url": "/42seoul/test-copy-notion/",
         "teaser": null
       },{
-        "title": "test post",
+        "title": "Test post",
         "excerpt":" ","categories": ["Test"],
         "tags": ["Test"],
         "url": "/test/test-post/",

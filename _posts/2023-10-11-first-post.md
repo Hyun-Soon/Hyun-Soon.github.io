@@ -1,8 +1,8 @@
 ---
 title: "github first post"
 excerpt: "Github Blog글을 처음 써보며."
-categories: [Test]
-tags: [Test]
+categories: [Algorithm]
+tags: [Algorithm]
 ---
 
 블로그 첫 포스팅(제목)
