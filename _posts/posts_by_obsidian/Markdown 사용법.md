@@ -3,12 +3,8 @@ title: "Markdown 사용법"
 excerpt: "Markdown 사용법을 알아보자."
 categories: [Etc]
 tags: [Etc]
-toc: true
-toc_sticky: true
 ---
-Github를 구경하다 보면 .md 파일을 자주 만나게 된다.  
-이런 파일들은 Markdown 문법으로 작성된 파일이다.  
-본 게시글도 Markdown으로 작성되었다.
+Github를 구경하다 보면 .md 파일을 자주 만나게 된다. 이런 파일들은 Markdown 문법으로 작성된 파일이다.
 
 # 1. Markdown이란?
 ---
@@ -18,8 +14,7 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 	일반 마크업 언어에 비해 문법이 쉽고 간단한 것이 특징이다.
 
 
-<br>
-<br>
+
 
 # 2. Markdown 문법
 ---
@@ -35,8 +30,8 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 	##### 제목 5
 	###### 제목 6
 ```
-<br>
 
+**결과**
 # 제목 1
 ## 제목 2
 ### 제목 3
@@ -45,9 +40,10 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 ###### 제목 6
 
 
-<br>
+
 ## 2-2. 강조(Emphasis)
 ---
+
 ```markdown
 이텔릭체는 *별표(asterisks)* 또는 _언더바(underscore)_를 사용한다.
 볼드체는 **별표(asterisks)** 또는 __언더바(underscore)__를 사용한다.
@@ -55,18 +51,20 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 취소선은 ~~물결표시(tilde)~~를 사용한다.
 밑줄은 <u>abc</u>를 사용한다.
 ```
-<br>
 
-이텔릭체는 *별표(asterisks)* 또는 _언더바(underscore)_를 사용한다.  
-볼드체는 **별표(asterisks)** 또는 __언더바(underscore)__를 사용한다.  
-이텔릭체와 볼드체는 혼용 가능하다. **_예를 들면_** 또는 __*이렇게*__  
-취소선은 ~~물결표시(tilde)~~를 사용한다.  
-밑줄은 <u>abc</u>를 사용한다.  
+**결과**
+
+이텔릭체는 *별표(asterisks)* 또는 _언더바(underscore)_를 사용한다.
+볼드체는 **별표(asterisks)** 또는 __언더바(underscore)__를 사용한다.
+이텔릭체와 볼드체는 혼용 가능하다. **_예를 들면_** 또는 __*이렇게*__
+취소선은 ~~물결표시(tilde)~~를 사용한다.
+밑줄은 <u>abc</u>를 사용한다.
 
 
-<br>
+
 ## 2-3. 목록(Lists)
 ---
+
 ```markdown
 	1. first
 	2. second
@@ -84,7 +82,8 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 	+ plus
 ```
 
-<br>
+
+**결과**
 
 1. first
 2. second
@@ -101,31 +100,12 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 * asterisks
 + plus
 
-<br>
+
 ## 2-4. 링크(Links)
 ---
+
 ```markdown
 [GOOGLE](https://google.com)
-
-[Naver](https://naver.com "링크 설명")  
-
-[상대적 참조](../users/hyuim)
-
-[Hyuim's Blog][My Blog Link]
-
-문서 안에서 [참조 링크]를 사용할 수도 있다.
-
-아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.
-구글 홈페이지 : https://google.com
-네이버 홈페이지 : <https://naver.com>
-
-[참조 링크]: https://google.com "구글로 이동하기"
-[Hyuim's Blog]: https://hyun-soon.github.io/
-```
-<br>
-
-[GOOGLE](https://google.com)
-
 [Naver](https://naver.com "링크 설명")
 
 [상대적 참조](../users/hyuim)
@@ -135,29 +115,49 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 문서 안에서 [참조 링크]를 사용할 수도 있다.
 
 아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.
-
 구글 홈페이지 : https://google.com
+네이버 홈페이지 : <https://naver.com>
 
+[참조 링크]: https://google.com "구글로 이동하기"
+[Hyuim's Blog]: https://hyun-soon.github.io/
+```
+
+**결과**
+
+[GOOGLE](https://google.com)
+[Naver](https://naver.com "링크 설명")
+
+[상대적 참조](../users/hyuim)
+
+[Hyuim's Blog][My Blog Link]
+
+문서 안에서 [참조 링크]를 사용할 수도 있다.
+
+아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.
+구글 홈페이지 : https://google.com
 네이버 홈페이지 : <https://naver.com>
 
 [참조 링크]: https://google.com "구글로 이동하기"
 [Hyuim's Blog]: https://hyun-soon.github.io/
 
-<br>
+
 ## 2-5. 이미지(Images)
 ---
+
 링크와 비슷하지만 <u>앞에 ! 가 붙는다</u>.
 
 ```text
 ![image name](https://cdn.pixabay.com/photo/2019/12/22/17/13/french-bulldog-4713013_1280.jpg)
 ```
-<br>
+
+**결과**
 
 ![image name](https://cdn.pixabay.com/photo/2019/12/22/17/13/french-bulldog-4713013_1280.jpg)
 
-<br>
+
 ## 2-6. 코드블록(Code block)
 ---
+
 코드를 \`\`\`로 감싼다.
 \`\`\`옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.
 
@@ -174,7 +174,8 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 		}
 	```
 ```
-<br>
+
+**결과**
 
 ```c++
 	#include <iostream>
@@ -188,9 +189,10 @@ Github를 구경하다 보면 .md 파일을 자주 만나게 된다.
 	}
 ```
 
-<br>
+
 ## 2-7. 표(Table)
 ---
+
 헤더 셀을 구분할 때 3개 이상의 '-' 가 필요하다.
 헤더 셀을 구분하면서 ':' 으로 열을 나눌 수 있다.
 가장 좌측과 우측에 있는 '|' 는 생략 가능하다.
@@ -208,7 +210,8 @@ a | b | c
 d | e | f
 g | h | i
 ```
-<br>
+
+**결과**
 
 | Col1 | Col2 | Col3 |
 | --- |: --- |: --- |
@@ -222,9 +225,10 @@ a | b | c
 d | e | f
 g | h | i
 
-<br>
+
 ## 2-8. 인용문(Block Quote)
 ---
+
 ```
 인용문 예시
 > 이렇게 인용문을 사용할 수 있습니다.
@@ -238,7 +242,8 @@ g | h | i
 >>> example2
 >>> example3
 ```
-<br>
+
+**결과**
 
 인용문 예시
 
@@ -254,9 +259,10 @@ g | h | i
 >>> example2
 >>> example3
 
-<br>
+
 ## 2-9. 수평선(Horizontal Rule)
 ---
+
 다음의 기호들을 3개씩 사용하면 수평선을 만들 수 있다.
 
 ```text
@@ -269,7 +275,8 @@ g | h | i
 ___
 (Underscores)
 ```
-<br>
+
+**결과**
 
 ---
 (Hyphens)
@@ -280,16 +287,16 @@ ___
 ___
 (Underscores)
 
-<br>
+
 ## 2-10. 줄바꿈(Line Breaks)
 ---
+
 일반 줄바꿈이 동작하지 않는다면, 2번의 띄어쓰기를 줄바꿈으로 사용할 수 있다.
 
 ```text
-가나다라  <!--2칸의 공백-->
-마바사
+가나다라  마바사
 ```
-<br>
 
-가나다라  <!--2칸의 공백-->  
-마바사
+**결과**
+
+가나다라  마바사
