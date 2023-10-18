@@ -16,7 +16,7 @@ $link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#ff9966, $link
 $link-color-visited: $primary-color !default; //mix(#000, $link-color, 25%) !default;
 $masthead-link-color: $primary-color !default; //$text-color !default;
 $masthead-link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#000, $text-color, 20%) !default;
-$navicon-link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#000, $background-color, 30%) !default;
+$navicon-link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#000, $background-color, 30%) !default; //
 
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,
