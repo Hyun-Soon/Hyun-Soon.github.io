@@ -387,14 +387,20 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-markdown이란">1. Markdown이란?</a></li><li><a href="#2-markdown-문법">2. Markdown 문법</a><ul><li><a href="#2-1-제목header">2-1. 제목(Header)</a></li></ul></li><li><a href="#제목-1">제목 1</a><ul><li><a href="#제목-2">제목 2</a><ul><li><a href="#제목-3">제목 3</a><ul><li><a href="#제목-4">제목 4</a><ul><li><a href="#제목-5">제목 5</a><ul><li><a href="#제목-6">제목 6</a></li></ul></li></ul></li></ul></li></ul></li><li><a href="#2-2-강조emphasis">2-2. 강조(Emphasis)</a></li><li><a href="#2-3-목록lists">2-3. 목록(Lists)</a></li><li><a href="#2-4-링크links">2-4. 링크(Links)</a></li><li><a href="#2-5-이미지images">2-5. 이미지(Images)</a></li><li><a href="#2-6-코드블록code-block">2-6. 코드블록(Code block)</a></li><li><a href="#2-7-표table">2-7. 표(Table)</a></li><li><a href="#2-8-인용문block-quote">2-8. 인용문(Block Quote)</a></li><li><a href="#2-9-수평선horizontal-rule">2-9. 수평선(Horizontal Rule)</a></li><li><a href="#2-10-줄바꿈line-breaks">2-10. 줄바꿈(Line Breaks)</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#0-들어가며">0. 들어가며</a></li><li><a href="#1-markdown이란">1. Markdown이란?</a></li><li><a href="#2-markdown-문법">2. Markdown 문법</a><ul><li><a href="#2-1-제목header">2-1. 제목(Header)</a></li></ul></li><li><a href="#제목-1">제목 1</a><ul><li><a href="#제목-2">제목 2</a><ul><li><a href="#제목-3">제목 3</a><ul><li><a href="#제목-4">제목 4</a><ul><li><a href="#제목-5">제목 5</a><ul><li><a href="#제목-6">제목 6</a></li></ul></li></ul></li></ul></li></ul></li><li><a href="#2-2-강조emphasis">2-2. 강조(Emphasis)</a></li><li><a href="#2-3-목록lists">2-3. 목록(Lists)</a></li><li><a href="#2-4-링크links">2-4. 링크(Links)</a></li><li><a href="#2-5-이미지images">2-5. 이미지(Images)</a></li><li><a href="#2-6-코드블록code-block">2-6. 코드블록(Code block)</a></li><li><a href="#2-7-표table">2-7. 표(Table)</a></li><li><a href="#2-8-인용문block-quote">2-8. 인용문(Block Quote)</a></li><li><a href="#2-9-수평선horizontal-rule">2-9. 수평선(Horizontal Rule)</a></li><li><a href="#2-10-줄바꿈line-breaks">2-10. 줄바꿈(Line Breaks)</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.<br />
-이런 파일들은 Markdown 문법으로 작성된 파일이다.<br />
-본 게시글도 Markdown으로 작성되었다.</p>
+        <h1 id="0-들어가며">0. 들어가며</h1>
+<hr />
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.  
+이런 파일들은 Markdown 문법으로 작성된 파일이다.  
+본 게시글도 Markdown으로 작성되었다.
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
 
 <h1 id="1-markdown이란">1. Markdown이란?</h1>
 <hr />
@@ -545,8 +551,8 @@ Markdown은 일반 텍스트로 서식이 있는 문서를 작성하는 데 사�
 <p><br /></p>
 <h2 id="2-6-코드블록code-block">2-6. 코드블록(Code block)</h2>
 <hr />
-<p>코드를 ```로 감싼다.
-```옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.</p>
+<p>코드를 <strong>```</strong>로 감싼다.<br />
+<strong>```</strong> 옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	```c++
 		#include &lt;iostream&gt;
@@ -576,9 +582,9 @@ Markdown은 일반 텍스트로 서식이 있는 문서를 작성하는 데 사�
 <p><br /></p>
 <h2 id="2-7-표table">2-7. 표(Table)</h2>
 <hr />
-<p>헤더 셀을 구분할 때 3개 이상의 ‘-‘ 가 필요하다.
-헤더 셀을 구분하면서 ‘:’ 으로 열을 나눌 수 있다.
-가장 좌측과 우측에 있는 ‘|’ 는 생략 가능하다.</p>
+<p>헤더 셀을 구분할 때 3개 이상의 <code class="language-plaintext highlighter-rouge">-</code> 가 필요하다.<br />
+헤더 셀을 구분하면서 <code class="language-plaintext highlighter-rouge">:</code> 으로 열을 나눌 수 있다.<br />
+가장 좌측과 우측에 있는 <code class="language-plaintext highlighter-rouge">|</code> 는 생략 가능하다.</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Col1 | Col2 | Col3 |
 | --- |: --- |: --- |
@@ -679,9 +685,9 @@ g | h | i
     <p>이렇게 하면
 사용할 수</p>
     <blockquote>
-      <p>있습니다.
-example1
-example2
+      <p>있습니다.<br />
+example1<br />
+example2<br />
 example3</p>
     </blockquote>
   </blockquote>

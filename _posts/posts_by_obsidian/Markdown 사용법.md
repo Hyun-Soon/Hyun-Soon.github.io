@@ -1,8 +1,10 @@
 ---
-title: "Markdown 사용법"
-excerpt: "Markdown 사용법을 알아보자."
-categories: [Etc]
-tags: [Etc]
+title: Markdown 사용법
+excerpt: Markdown 사용법을 알아보자.
+categories:
+  - Etc
+tags:
+  - Etc
 ---
 Github를 구경하다 보면 .md 파일을 자주 만나게 된다. 이런 파일들은 Markdown 문법으로 작성된 파일이다.
 

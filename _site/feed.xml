@@ -1,6 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-18T21:52:22+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/etc/Markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2023-10-18T00:00:00+09:00</published><updated>2023-10-18T00:00:00+09:00</updated><id>http://localhost:4000/etc/Markdown</id><content type="html" xml:base="http://localhost:4000/etc/Markdown/"><![CDATA[<p>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.<br />
-이런 파일들은 Markdown 문법으로 작성된 파일이다.<br />
-본 게시글도 Markdown으로 작성되었다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-19T11:10:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/etc/Markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2023-10-18T00:00:00+09:00</published><updated>2023-10-18T00:00:00+09:00</updated><id>http://localhost:4000/etc/Markdown</id><content type="html" xml:base="http://localhost:4000/etc/Markdown/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
+<hr />
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.  
+이런 파일들은 Markdown 문법으로 작성된 파일이다.  
+본 게시글도 Markdown으로 작성되었다.
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
 
 <h1 id="1-markdown이란">1. Markdown이란?</h1>
 <hr />
@@ -151,8 +157,8 @@ Markdown은 일반 텍스트로 서식이 있는 문서를 작성하는 데 사�
 <p><br /></p>
 <h2 id="2-6-코드블록code-block">2-6. 코드블록(Code block)</h2>
 <hr />
-<p>코드를 ```로 감싼다.
-```옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.</p>
+<p>코드를 <strong>```</strong>로 감싼다.<br />
+<strong>```</strong> 옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	```c++
 		#include &lt;iostream&gt;
@@ -182,9 +188,9 @@ Markdown은 일반 텍스트로 서식이 있는 문서를 작성하는 데 사�
 <p><br /></p>
 <h2 id="2-7-표table">2-7. 표(Table)</h2>
 <hr />
-<p>헤더 셀을 구분할 때 3개 이상의 ‘-‘ 가 필요하다.
-헤더 셀을 구분하면서 ‘:’ 으로 열을 나눌 수 있다.
-가장 좌측과 우측에 있는 ‘|’ 는 생략 가능하다.</p>
+<p>헤더 셀을 구분할 때 3개 이상의 <code class="language-plaintext highlighter-rouge">-</code> 가 필요하다.<br />
+헤더 셀을 구분하면서 <code class="language-plaintext highlighter-rouge">:</code> 으로 열을 나눌 수 있다.<br />
+가장 좌측과 우측에 있는 <code class="language-plaintext highlighter-rouge">|</code> 는 생략 가능하다.</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Col1 | Col2 | Col3 |
 | --- |: --- |: --- |
@@ -285,9 +291,9 @@ g | h | i
     <p>이렇게 하면
 사용할 수</p>
     <blockquote>
-      <p>있습니다.
-example1
-example2
+      <p>있습니다.<br />
+example1<br />
+example2<br />
 example3</p>
     </blockquote>
   </blockquote>
