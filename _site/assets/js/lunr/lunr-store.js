@@ -4,4 +4,10 @@ var store = [{
         "tags": ["Etc","Markdown"],
         "url": "/etc/Markdown/",
         "teaser": null
+      },{
+        "title": "Makefile",
+        "excerpt":"0. 들어가며 빌드를 쉽게 해주는 make와 Makefile에 대해 알아보자. 1. make란? \"의존성 관리”와 “증분 빌드” 기능을 갖춘 빌드 도구. 1-1. 의존성 관리 빌드 과정에서 의존성에 따른 빌드 순서는 무척 중요하다. 컴파일, 즉 a.c로 a.o를 만들고, a.o로 a.out을 만드는 상황을 가정하자. 여기서 a.out은 a.o에, a.o는 a.c에 의존성이 있다고 할 수 있다....","categories": ["42Seoul"],
+        "tags": ["42Seoul","Linux","Make","Makefile"],
+        "url": "/42seoul/Makefile/",
+        "teaser": null
       }]

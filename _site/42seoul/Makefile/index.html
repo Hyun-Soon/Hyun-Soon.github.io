@@ -1,4 +1,413 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-19T19:07:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Makefile</title><link href="http://localhost:4000/42seoul/Makefile/" rel="alternate" type="text/html" title="Makefile" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Makefile</id><content type="html" xml:base="http://localhost:4000/42seoul/Makefile/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Makefile - Hyuim’s blog</title>
+<meta name="description" content="리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.">
+
+
+  <meta name="author" content="Hyunsoon Im">
+  
+  <meta property="article:author" content="Hyunsoon Im">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Hyuim's blog">
+<meta property="og:title" content="Makefile">
+<meta property="og:url" content="http://localhost:4000/42seoul/Makefile/">
+
+
+  <meta property="og:description" content="리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-10-19T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/42seoul/Makefile/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Hyunsoon Im",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Hyuim's blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon_io/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Hyuim's blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#42seoul" itemprop="item"><span itemprop="name">42seoul</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Makefile</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/hyunsoon_drum-modified.png" alt="Hyunsoon Im" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Hyunsoon Im</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>42Seoul Student interested in <strong>Graphics</strong> and <strong>Game Engine</strong>.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Hyun-Soon" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:s7514036@naver.com" rel="me" class="u-email">
+            <meta itemprop="email" content="s7514036@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span style="font-family:sans-serif;font-size: 16px;">Posts</style> <span style="font-family:sans-serif;">(2)</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span style="font-size: 17px"; class="nav__sub-title">Categories</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/42Seoul" class="">42Seoul (1)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a style="font-size: 16px"; href="/Etc" class="">Etc (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Makefile">
+    <meta itemprop="description" content="리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.">
+    <meta itemprop="datePublished" content="2023-10-19T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/42seoul/Makefile/" class="u-url" itemprop="url">Makefile
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#0-들어가며">0. 들어가며</a></li><li><a href="#1-make란">1. make란?</a><ul><li><a href="#1-1-의존성-관리">1-1. 의존성 관리</a></li><li><a href="#1-2-증분-빌드">1-2. 증분 빌드</a></li></ul></li><li><a href="#2-makefile이란">2. Makefile이란?</a><ul><li><a href="#2-1-변수">2-1. 변수</a></li><li><a href="#2-2-자동-변수-패턴-규칙">2-2. 자동 변수, 패턴 규칙</a></li><li><a href="#2-3-내장-변수-내장-규칙">2-3. 내장 변수, 내장 규칙</a></li><li><a href="#2-4-phony-규칙">2-4. .PHONY 규칙</a></li><li><a href="#2-5-매크로-치환macro-substitution">2-5. 매크로 치환(Macro substitution)</a><ul><li><a href="#reference">📬 Reference</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="0-들어가며">0. 들어가며</h1>
 <hr />
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>빌드를 쉽게 해주는 make와 Makefile에 대해 알아보자.
 </code></pre></div></div>
@@ -274,341 +683,232 @@ make가 규칙을 정의하면 변경이 필요한 것만 만들어 주는 프�
 <ul>
   <li><a href="http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make.html#toc3">GNU Make 강좌</a></li>
   <li><a href="https://80000coding.oopy.io/6172b586-8056-4cb1-8c4f-2179009aef3f#6172b586-8056-4cb1-8c4f-2179009aef3f">Makefile, make 기초</a></li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Linux" /><category term="Make" /><category term="Makefile" /><summary type="html"><![CDATA[리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.]]></summary></entry><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/etc/Markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2023-10-18T00:00:00+09:00</published><updated>2023-10-18T00:00:00+09:00</updated><id>http://localhost:4000/etc/Markdown</id><content type="html" xml:base="http://localhost:4000/etc/Markdown/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
-<hr />
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.  
-이런 파일들은 Markdown 문법으로 작성된 파일이다.  
-본 게시글도 Markdown으로 작성되었다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-markdown이란">1. Markdown이란?</h1>
-<hr />
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Markdown은 일반 텍스트 기반의 경량 마크업 언어이다.
-마크업 언어란 태그 등을 이용해 문서나 데이터의 구조 등을 명시하는 언어를 말한다.
-Markdown은 일반 텍스트로 서식이 있는 문서를 작성하는 데 사용되며,
-일반 마크업 언어에 비해 문법이 쉽고 간단한 것이 특징이다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="2-markdown-문법">2. Markdown 문법</h1>
-<hr />
-
-<h2 id="2-1-제목header">2-1. 제목(Header)</h2>
-<hr />
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	# 제목 1
-	## 제목 2
-	### 제목 3
-	#### 제목 4
-	##### 제목 5
-	###### 제목 6
-</code></pre></div></div>
-<p><br /></p>
-
-<h1 id="제목-1">제목 1</h1>
-<h2 id="제목-2">제목 2</h2>
-<h3 id="제목-3">제목 3</h3>
-<h4 id="제목-4">제목 4</h4>
-<h5 id="제목-5">제목 5</h5>
-<h6 id="제목-6">제목 6</h6>
-
-<p><br /></p>
-<h2 id="2-2-강조emphasis">2-2. 강조(Emphasis)</h2>
-<hr />
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>이텔릭체는 <span class="ge">*별표(asterisks)*</span> 또는 _언더바(underscore)_를 사용한다.
-볼드체는 <span class="gs">**별표(asterisks)**</span> 또는 __언더바(underscore)__를 사용한다.
-이텔릭체와 볼드체는 혼용 가능하다. <span class="gs">**_예를 들면_**</span> 또는 __<span class="ge">*이렇게*__</span>
-취소선은 ~~물결표시(tilde)~~를 사용한다.
-밑줄은 <span class="nt">&lt;u&gt;</span>abc<span class="nt">&lt;/u&gt;</span>를 사용한다.
-</code></pre></div></div>
-<p><br /></p>
-
-<p>이텔릭체는 <em>별표(asterisks)</em> 또는 _언더바(underscore)_를 사용한다.<br />
-볼드체는 <strong>별표(asterisks)</strong> 또는 <strong>언더바(underscore)__를 사용한다.<br />
-이텔릭체와 볼드체는 혼용 가능하다. **<em>예를 들면</em>** 또는 __<em>이렇게</em></strong><br />
-취소선은 <del>물결표시(tilde)</del>를 사용한다.<br />
-밑줄은 <u>abc</u>를 사용한다.</p>
-
-<p><br /></p>
-<h2 id="2-3-목록lists">2-3. 목록(Lists)</h2>
-<hr />
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">	1.</span> first
-<span class="p">	2.</span> second
-<span class="p">		-</span> second.first
-<span class="p">		-</span> second.second
-<span class="p">	3.</span> third<span class="sb">
-
-	1. first
-		- dash
-		* asterisks
-		+ plus
-
-	- dash
-	* asterisks
-	+ plus
-</span></code></pre></div></div>
-
-<p><br /></p>
-
-<ol>
-  <li>first</li>
-  <li>second
-    <ul>
-      <li>second.first</li>
-      <li>second.second</li>
-    </ul>
-  </li>
-  <li>
-    <p>third</p>
-  </li>
-  <li>first
-    <ul>
-      <li>dash</li>
-      <li>asterisks</li>
-      <li>plus</li>
-    </ul>
-  </li>
-</ol>
-
-<ul>
-  <li>dash</li>
-  <li>asterisks</li>
-  <li>plus</li>
 </ul>
 
-<p><br /></p>
-<h2 id="2-4-링크links">2-4. 링크(Links)</h2>
-<hr />
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">GOOGLE</span><span class="p">](</span><span class="sx">https://google.com</span><span class="p">)</span>
+        
+      </section>
 
-<span class="p">[</span><span class="nv">Naver</span><span class="p">](</span><span class="sx">https://naver.com</span> <span class="nn">"링크 설명"</span><span class="p">)</span>  
+      <footer class="page__meta">
+        
+        
+  
 
-<span class="p">[</span><span class="nv">상대적 참조</span><span class="p">](</span><span class="sx">../users/hyuim</span><span class="p">)</span>
 
-<span class="p">[</span><span class="nv">Hyuim's Blog</span><span class="p">][</span><span class="ss">My Blog Link</span><span class="p">]</span>
+  
 
-문서 안에서 [참조 링크]를 사용할 수도 있다.
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a><span class="sep">, </span>
+    
+      <a href="/tags/#linux" class="page__taxonomy-item p-category" rel="tag">Linux</a><span class="sep">, </span>
+    
+      <a href="/tags/#make" class="page__taxonomy-item p-category" rel="tag">Make</a><span class="sep">, </span>
+    
+      <a href="/tags/#makefile" class="page__taxonomy-item p-category" rel="tag">Makefile</a>
+    
+    </span>
+  </p>
 
-아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.
-구글 홈페이지 : https://google.com
-네이버 홈페이지 : <span class="nv">&lt;https://naver.com&gt;</span>
 
-<span class="p">[</span><span class="ss">참조 링크</span><span class="p">]:</span> <span class="sx">https://google.com</span> <span class="nn">"구글로 이동하기"</span>
-<span class="p">[</span><span class="ss">Hyuim's Blog</span><span class="p">]:</span> <span class="sx">https://hyun-soon.github.io/</span>
-</code></pre></div></div>
-<p><br /></p>
 
-<p><a href="https://google.com">GOOGLE</a></p>
 
-<p><a href="https://naver.com" title="링크 설명">Naver</a></p>
+  
 
-<p><a href="../users/hyuim">상대적 참조</a></p>
 
-<p>[Hyuim’s Blog][My Blog Link]</p>
+  
 
-<p>문서 안에서 <a href="https://google.com" title="구글로 이동하기">참조 링크</a>를 사용할 수도 있다.</p>
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a>
+    
+    </span>
+  </p>
 
-<p>아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.</p>
 
-<p>구글 홈페이지 : https://google.com</p>
+        
 
-<p>네이버 홈페이지 : <a href="https://naver.com">https://naver.com</a></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time></p>
 
-<p><br /></p>
-<h2 id="2-5-이미지images">2-5. 이미지(Images)</h2>
-<hr />
-<p>링크와 비슷하지만 <u>앞에 ! 가 붙는다</u>.</p>
+      </footer>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![image name](https://cdn.pixabay.com/photo/2019/12/22/17/13/french-bulldog-4713013_1280.jpg)
-</code></pre></div></div>
-<p><br /></p>
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
 
-<p><img src="https://cdn.pixabay.com/photo/2019/12/22/17/13/french-bulldog-4713013_1280.jpg" alt="image name" /></p>
+  <a href="https://twitter.com/intent/tweet?text=Makefile%20http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FMakefile%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-<p><br /></p>
-<h2 id="2-6-코드블록code-block">2-6. 코드블록(Code block)</h2>
-<hr />
-<p>코드를 <strong>```</strong>로 감싼다.<br />
-<strong>```</strong> 옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.</p>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FMakefile%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	```c++
-		#include &lt;iostream&gt;
-	
-		using namespace std;
-	
-		int main()
-		{
-			cout &lt;&lt; "abc\n";
-			return (0);
-		}
-	```
-</code></pre></div></div>
-<p><br /></p>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FMakefile%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
 
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span>
-	<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+      
+  <nav class="pagination">
+    
+      <a href="/etc/Markdown/" class="pagination--pager" title="Markdown 사용법
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
 
-	<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"abc</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
-		<span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-	<span class="p">}</span>
-</code></pre></div></div>
+    </div>
 
-<p><br /></p>
-<h2 id="2-7-표table">2-7. 표(Table)</h2>
-<hr />
-<p>헤더 셀을 구분할 때 3개 이상의 <code class="language-plaintext highlighter-rouge">-</code> 가 필요하다.<br />
-헤더 셀을 구분하면서 <code class="language-plaintext highlighter-rouge">:</code> 으로 열을 나눌 수 있다.<br />
-가장 좌측과 우측에 있는 <code class="language-plaintext highlighter-rouge">|</code> 는 생략 가능하다.</p>
+  </article>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Col1 | Col2 | Col3 |
-| --- |: --- |: --- |
-| a | b | c |
-| d | e | f |
-| g | h | i |
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
 
-Col1 | Col2 | Col3
---- |: --- |: ---
-a | b | c
-d | e | f
-g | h | i
-</code></pre></div></div>
-<p><br /></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Col1</th>
-      <th>Col2</th>
-      <th>Col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-    </tr>
-    <tr>
-      <td>d</td>
-      <td>e</td>
-      <td>f</td>
-    </tr>
-    <tr>
-      <td>g</td>
-      <td>h</td>
-      <td>i</td>
-    </tr>
-  </tbody>
-</table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Col1</th>
-      <th>Col2</th>
-      <th>Col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-    </tr>
-    <tr>
-      <td>d</td>
-      <td>e</td>
-      <td>f</td>
-    </tr>
-    <tr>
-      <td>g</td>
-      <td>h</td>
-      <td>i</td>
-    </tr>
-  </tbody>
-</table>
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/Markdown/" rel="permalink">Markdown 사용법
+</a>
+      
+    </h2>
+    
 
-<p><br /></p>
-<h2 id="2-8-인용문block-quote">2-8. 인용문(Block Quote)</h2>
-<hr />
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인용문 예시
-&gt; 이렇게 인용문을 사용할 수 있습니다.
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-18T00:00:00+09:00">October 18, 2023</time>
+      </span>
+    
 
-중첩된 인용문
-&gt; 중첩된 인용문도
-&gt;&gt; 이렇게 하면
-&gt;&gt; 사용할 수
-&gt;&gt;&gt; 있습니다.
-&gt;&gt;&gt; example1
-&gt;&gt;&gt; example2
-&gt;&gt;&gt; example3
-</code></pre></div></div>
-<p><br /></p>
+    
 
-<p>인용문 예시</p>
+    
+  </p>
 
-<blockquote>
-  <p>이렇게 인용문을 사용할 수 있습니다.</p>
-</blockquote>
 
-<p>중첩된 인용문</p>
+    <p class="archive__item-excerpt" itemprop="description">Markdown 사용법을 알아보자.
+</p>
+  </article>
+</div>
 
-<blockquote>
-  <p>중첩된 인용문도</p>
-  <blockquote>
-    <p>이렇게 하면
-사용할 수</p>
-    <blockquote>
-      <p>있습니다.<br />
-example1<br />
-example2<br />
-example3</p>
-    </blockquote>
-  </blockquote>
-</blockquote>
+        
+      </div>
+    </div>
+  
+  
+</div>
 
-<p><br /></p>
-<h2 id="2-9-수평선horizontal-rule">2-9. 수평선(Horizontal Rule)</h2>
-<hr />
-<p>다음의 기호들을 3개씩 사용하면 수평선을 만들 수 있다.</p>
+    </div>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-(Hyphens)
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
-***
-(Asterisks)
+      </div>
+    
 
-___
-(Underscores)
-</code></pre></div></div>
-<p><br /></p>
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
 
-<hr />
-<p>(Hyphens)</p>
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
 
-<hr />
-<p>(Asterisks)</p>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
 
-<hr />
-<p>(Underscores)</p>
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
 
-<p><br /></p>
-<h2 id="2-10-줄바꿈line-breaks">2-10. 줄바꿈(Line Breaks)</h2>
-<hr />
-<p>일반 줄바꿈이 동작하지 않는다면, 2번의 띄어쓰기를 줄바꿈으로 사용할 수 있다.</p>
+<div class="page__footer-copyright">&copy; 2023 Hyunsoon Im. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가나다라  &lt;!--2칸의 공백--&gt;
-마바사
-</code></pre></div></div>
-<p><br /></p>
+      </footer>
+    </div>
 
-<p>가나다라  <!--2칸의 공백--><br />
-마바사</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Etc" /><category term="Etc" /><category term="Markdown" /><summary type="html"><![CDATA[Markdown 사용법을 알아보자.]]></summary></entry></feed>
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'hyun-soon/hyun-soon.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOKeOOEA');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOKeOOEM4CaKQd');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>
