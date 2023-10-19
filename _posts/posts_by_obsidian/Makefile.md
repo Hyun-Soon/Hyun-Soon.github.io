@@ -239,6 +239,31 @@ OBJS = main.o read.o write.o
 ```
 
 
+## 2-6. addprefix(접두어 붙이기)
+
+목적에 맞게 폴더를 나눠서 작업을 하거나, 소스 파일들을 어떤 폴더에 옮겨야 하는 상황일 때, makefile이 소스 파일의 위치를 인지할 수 있도록 변수 앞에 경로를 붙여줘야 한다.
+
+변수의 앞에 문자를 붙일 때, addprefix를 사용하면 간편하게 작업할 수 있다.
+
+```makefile
+//예를 들어 main.c, read.c, write.c가 my_files 폴더에 있는 경우,
+
+SRCS = main.c \
+	read.c \
+	write.c
+
+PATH_PREFIX = ./my_files/
+
+SRCS_WITH_PATH = $(addprefix $(PATH_PREFIX), $(SRCS))
+```
+<br>
+위 코드는 다음과 같은 의미를 갖는다.
+```makefile
+SRCS_WITH_PATH = ./my_files/main.c \
+				./my_files/read.c \
+				./my_files/write.c
+```
+<br>
 ### 📬 **Reference**
 
 [GNU Make 강좌](http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make.html#toc3)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-19T19:07:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Makefile</title><link href="http://localhost:4000/42seoul/Makefile/" rel="alternate" type="text/html" title="Makefile" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Makefile</id><content type="html" xml:base="http://localhost:4000/42seoul/Makefile/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-19T19:58:45+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Makefile 문법 및 예시</title><link href="http://localhost:4000/42seoul/Makefile/" rel="alternate" type="text/html" title="Makefile 문법 및 예시" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Makefile</id><content type="html" xml:base="http://localhost:4000/42seoul/Makefile/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
 <hr />
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>빌드를 쉽게 해주는 make와 Makefile에 대해 알아보자.
 </code></pre></div></div>
@@ -17,7 +17,7 @@
 여기서 <code class="language-plaintext highlighter-rouge">a.out</code>은 <code class="language-plaintext highlighter-rouge">a.o</code>에, <code class="language-plaintext highlighter-rouge">a.o</code>는 <code class="language-plaintext highlighter-rouge">a.c</code>에 의존성이 있다고 할 수 있다.</p>
 
 <div class="notice--primary">
-  <p><strong>inform:</strong> <code class="language-plaintext highlighter-rouge">.o</code>파일은 컴파일 과정에서 생성되는 오브젝트 파일입니다.</p>
+  <p>🔔 <code class="language-plaintext highlighter-rouge">.o</code>파일은 컴파일 과정에서 생성되는 오브젝트 파일입니다.</p>
 </div>
 
 <p>이번엔 더 복잡한 상황을 생각해 보자.<br />
@@ -259,13 +259,82 @@ make가 규칙을 정의하면 변경이 필요한 것만 만들어 주는 프�
 </code></pre></div></div>
 
 <div class="notice--warning">
-  <p><strong>warning:</strong> <code class="language-plaintext highlighter-rouge">OBJS : .o = .c</code>처럼 가독성을 위해 띄어쓰지 말 것.<br />
+  <p>⚠ <code class="language-plaintext highlighter-rouge">OBJS : .o = .c</code>처럼 가독성을 위해 띄어쓰지 말 것.<br />
 띄어쓰면 makefile이 인식하지 못한다.</p>
 </div>
 
 <p>위 예제의 OBJS에는 SRCS에서 .c가 .o로 바뀐 이름들이 할당된다. 즉 아래와 같다.</p>
 
 <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">OBJS</span> <span class="o">=</span> main.o read.o write.o
+</code></pre></div></div>
+<p><br /></p>
+<h2 id="2-6-addprefix접두어-붙이기">2-6. addprefix(접두어 붙이기)</h2>
+
+<p>목적에 맞게 폴더를 나눠서 작업을 하거나, 소스 파일들을 어떤 폴더에 옮겨야 하는 상황일 때, makefile이 소스 파일의 위치를 인지할 수 있도록 변수 앞에 경로를 붙여줘야 한다.</p>
+
+<p>변수의 앞에 문자를 붙일 때, addprefix를 사용하면 간편하게 작업할 수 있다.</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#예를 들어 main.c, read.c, write.c가 my_files 폴더에 있는 경우,
+</span>
+<span class="nv">SRCS</span> <span class="o">=</span> main.c <span class="se">\</span>
+	read.c <span class="se">\</span>
+	write.c
+
+<span class="nv">PATH_PREFIX</span> <span class="o">=</span> ./my_files/
+
+<span class="nv">SRCS_WITH_PATH</span> <span class="o">=</span> <span class="p">$(</span>addprefix <span class="p">$(</span>PATH_PREFIX<span class="p">)</span>, <span class="p">$(</span>SRCS<span class="p">))</span>
+</code></pre></div></div>
+<p><br />
+위 코드는 다음과 같은 의미를 갖는다.</p>
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">SRCS_WITH_PATH</span> <span class="o">=</span> ./my_files/main.c <span class="se">\</span>
+				./my_files/read.c <span class="se">\</span>
+				./my_files/write.c
+</code></pre></div></div>
+<p><br /></p>
+<h2 id="2-7-예시">2-7. 예시</h2>
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 디렉토리 구조 : ./headers, ./libft, ./srcs
+# headers : pipex.h 헤더파일이 있는 디렉토리
+# libft : libft.a 아카이브 파일이 있는 디렉토리
+# srcs : main.c, init.c 등 소스파일이 있는 디렉토리
+</span>
+<span class="nv">SRCS_NAME</span> <span class="o">=</span>	main.c <span class="se">\</span>
+		init.c <span class="se">\</span>
+		parse.c <span class="se">\</span>
+		exec.c <span class="se">\</span>
+		redirect.c
+
+<span class="nv">OBJS</span> <span class="o">=</span> <span class="p">$(</span>SRCS:.c<span class="o">=</span>.o<span class="p">)</span>
+<span class="nv">PREFIX</span> <span class="o">=</span> ./srcs/
+<span class="nv">SRCS</span> <span class="o">=</span> <span class="p">$(</span>addprefix <span class="p">$(</span>PREFIX<span class="p">)</span>, <span class="p">$(</span>SRCS_NAME<span class="p">))</span>
+<span class="nv">CC</span> <span class="o">=</span> cc
+<span class="nv">CFLAGS</span> <span class="o">=</span> <span class="nt">-Wall</span> <span class="nt">-Wextra</span> <span class="nt">-Werror</span> <span class="nt">-c</span>
+<span class="nv">HEADER</span> <span class="o">=</span> ./headers
+<span class="nv">NAME</span> <span class="o">=</span> pipex
+
+<span class="nv">LIBFT</span> <span class="o">=</span> ft
+
+<span class="nl">all </span><span class="o">:</span> <span class="nf">$(NAME)</span>
+
+
+<span class="nl">$(NAME) </span><span class="o">:</span> <span class="nf">$(OBJS)</span>
+	<span class="nb">cd </span>libft<span class="p">;</span> make<span class="p">;</span> <span class="nb">cd</span> ..
+	<span class="p">$(</span>CC<span class="p">)</span> <span class="p">$(</span>OBJS<span class="p">)</span> <span class="nt">-Llibft</span> <span class="nt">-l</span><span class="p">$(</span>LIBFT<span class="p">)</span> <span class="nt">-o</span> <span class="p">$(</span>NAME<span class="p">)</span> <span class="nt">-I</span> <span class="p">$(</span>HEADER<span class="p">)</span>
+
+<span class="nl">%.o </span><span class="o">:</span> <span class="nf">%.c</span>
+	<span class="p">$(</span>CC<span class="p">)</span> <span class="p">$(</span>CFLAGS<span class="p">)</span> <span class="nv">$&lt;</span> <span class="nt">-o</span> <span class="nv">$@</span> <span class="nt">-I</span> <span class="p">$(</span>HEADER<span class="p">)</span>
+
+<span class="nl">clean </span><span class="o">:</span>
+	<span class="nb">cd </span>libft<span class="p">;</span> make clean<span class="p">;</span> <span class="nb">cd</span> ..
+	<span class="nb">rm</span> <span class="nt">-f</span> <span class="p">$(</span>OBJS<span class="p">)</span>
+
+<span class="nl">fclean </span><span class="o">:</span> <span class="nf">clean</span>
+	<span class="nb">cd </span>libft<span class="p">;</span> make fclean<span class="p">;</span> <span class="nb">cd</span> ..
+	<span class="nb">rm</span> <span class="nt">-f</span> <span class="p">$(</span>NAME<span class="p">)</span>
+
+<span class="nl">re </span><span class="o">:</span> <span class="nf">fclean all</span>
+
+
+<span class="nl">.PHONY </span><span class="o">:</span> <span class="nf">clean fclean re</span>
 </code></pre></div></div>
 
 <p><br /></p>
