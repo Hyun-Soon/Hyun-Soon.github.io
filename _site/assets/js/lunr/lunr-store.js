@@ -22,4 +22,10 @@ var store = [{
         "tags": ["printf","42Seoul","ft_printf"],
         "url": "/42seoul/ft_printf/",
         "teaser": null
+      },{
+        "title": "get_next_line",
+        "excerpt":"0. 과제 설명 파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다. 1. fd(File Descriptor) File Descriptor 파일을 대표하기 위해 시스템으로부터 할당 받은 음수가 아닌 정수 각각의 프로세스에서 열린 파일의 목록을 관리하는 테이블의 인덱스 흔히 유닉스 시스템에 존재하는 모든 것은 파일이라고 한다. 유닉스 시스템에서는 프로세스가 파일들에 접근할 때 ‘파일 디스크립터’라는 개념을 사용한다....","categories": ["42Seoul"],
+        "tags": ["42Seoul","get_next_line","fd"],
+        "url": "/42seoul/get_next_line/",
+        "teaser": null
       }]

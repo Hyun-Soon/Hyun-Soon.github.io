@@ -54,9 +54,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "2f7803ca01ca5b9e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "get_next_line.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -106,8 +118,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "7e54dccbf528ddbd",
@@ -123,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ft_printf.md",
+                "file": "get_next_line.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ft_printf.md",
+                "file": "get_next_line.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ft_printf.md"
+                "file": "get_next_line.md"
               }
             }
           }
@@ -184,11 +195,12 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "c0a230562315c8af",
+  "active": "2f7803ca01ca5b9e",
   "lastOpenFiles": [
-    "Makefile.md",
-    "Libft.md",
     "ft_printf.md",
+    "Libft.md",
+    "get_next_line.md",
+    "Makefile.md",
     "Screenshot 2023-10-19 at 9.58.45 PM.png",
     "Markdown 사용법.md"
   ]
