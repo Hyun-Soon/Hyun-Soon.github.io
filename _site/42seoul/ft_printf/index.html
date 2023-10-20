@@ -1,0 +1,804 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>ft_printf - Hyuim’s blog</title>
+<meta name="description" content="printf를 구현해보자.">
+
+
+  <meta name="author" content="Hyunsoon Im">
+  
+  <meta property="article:author" content="Hyunsoon Im">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Hyuim's blog">
+<meta property="og:title" content="ft_printf">
+<meta property="og:url" content="http://localhost:4000/42seoul/ft_printf/">
+
+
+  <meta property="og:description" content="printf를 구현해보자.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-10-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/42seoul/ft_printf/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Hyunsoon Im",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Hyuim's blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon_io/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Hyuim's blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/hyunsoon_drum-modified.png" alt="Hyunsoon Im" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Hyunsoon Im</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>42Seoul Student interested in <strong>Graphics</strong> and <strong>Game Engine</strong>.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Hyun-Soon" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:s7514036@naver.com" rel="me" class="u-email">
+            <meta itemprop="email" content="s7514036@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span style="font-family:sans-serif;font-size: 16px;">Posts</style> <span style="font-family:sans-serif;">(4)</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span style="font-size: 17px"; class="nav__sub-title">Categories</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/42Seoul" class="">42Seoul (3)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a style="font-size: 16px"; href="/Etc" class="">Etc (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="ft_printf">
+    <meta itemprop="description" content="printf를 구현해보자.">
+    <meta itemprop="datePublished" content="2023-10-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/42seoul/ft_printf/" class="u-url" itemprop="url">ft_printf
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#0-과제-설명">0. 과제 설명</a></li><li><a href="#1--가변-인자variable-argument">1.  가변 인자(variable argument)</a><ul><li><a href="#1-1-가변-인자-사용법">1-1. 가변 인자 사용법</a></li><li><a href="#1-2-매크로">1-2. 매크로</a><ul><li><a href="#1-2-1-va_list">1-2-1. va_list</a></li><li><a href="#1-2-2-va_start">1-2-2. va_start</a></li><li><a href="#1-2-3-va_arg">1-2-3. va_arg</a></li><li><a href="#1-2-4-va_end">1-2-4. va_end</a></li></ul></li><li><a href="#1-2-예시-코드">1-2. 예시 코드</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>printf 함수를 구현한다.
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+<h1 id="1--가변-인자variable-argument">1.  가변 인자(variable argument)</h1>
+<p>가변 인자는 말 그대로 개수가 변할 수 있는 인자이다.<br />
+함수 printf를 사용하는 경우를 생각해보자.</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"this is an example."</span><span class="p">,</span> <span class="mi">123</span><span class="p">);</span>
+	<span class="n">printf</span> <span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">456</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서 첫 번째 printf에 <code class="language-plaintext highlighter-rouge">"%s %s\n"</code>, <code class="language-plaintext highlighter-rouge">"this is an example"</code>, <code class="language-plaintext highlighter-rouge">123</code> 3개의 인자가 들어갔다. 하지만 두 번째 printf에는 <code class="language-plaintext highlighter-rouge">"%d\n"</code>, <code class="language-plaintext highlighter-rouge">456</code> 2개의 인자가 들어갔다.
+printf 함수는 첫 번째 인자 문자열에 주어지는 <code class="language-plaintext highlighter-rouge">%</code>의 수에 따라 추가적인 인자가 필요하므로, printf 함수를 만들 때 사용자가 몇 개의 인자를 넣을 것인지 미리 알 수 없다.
+이렇게 상황에 따라 함수가 받는 인자의 수를 조절하고 싶을 때 가변 인자를 사용할 수 있다.
+<br /></p>
+<h2 id="1-1-가변-인자-사용법">1-1. 가변 인자 사용법</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp">
+</span></code></pre></div></div>
+<p><br />
+가변 인자에 관한 함수와 구조체는 stdarg.h 헤더에 들어 있다.<br />
+가변 인자를 갖는 함수의 프로토 타입은 다음과 같다.
+<br /></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_args</span><span class="p">,</span> <span class="p">...);</span>
+</code></pre></div></div>
+<p><br />
+가변 인자는 몇 개가 될지 모르므로 <code class="language-plaintext highlighter-rouge">...</code>으로 표시한다. <br />
+<u>최소 1개의 고정 인수(위의 경우 num_args)가 필요하다는 점에 유의하자.</u>
+이 고정 인수는 뒤에 올 가변 인자의 개수를 알려주는 역할을 한다.</p>
+
+<h2 id="1-2-매크로">1-2. 매크로</h2>
+<p>stdarg.h에는  가변 인수를 사용하기 위한 다양한 매크로가 존재한다.</p>
+
+<h3 id="1-2-1-va_list">1-2-1. va_list</h3>
+<p>va_list는 가변 인수들의 정보를 담아 놓기 위한 타입이다. 길이가 변할 수 있는 인수들을 저장해야 하기 때문에 va_list 또한 저장 공간의 크기를 유동적으로 늘리고 줄일 수 있는 가변 공간이다.</p>
+
+<div class="notice--warning">
+  <p>⚠️ 클러스터 Mac(Intel Mac)에서는 va_list 자료형 자체로 포인터지만, M1 Mac에서는 포인터가 아닌 일반 자료형이다. 따라서 va_list를 통해 가변 인자 값에 접근하는 방식에 있어서 차이가 발생한다.</p>
+</div>
+
+<h3 id="1-2-2-va_start">1-2-2. va_start</h3>
+<p>va_start는 va_list를 사용하기 전에 초기화하는 역할을 한다. 왜 va_list를 초기화해야 할까?<br />
+va_list가 가리키고 있는 주소를 마지막 고정 인자 다음의 첫 번째 가변 인자의 주소로 설정해야 하기 때문이다(va_list는 포인터 임을 잊지 말자).<br />
+따라서 va_start는 <code class="language-plaintext highlighter-rouge">va_list</code>, <code class="language-plaintext highlighter-rouge">마지막 고정인자</code> 2개의 인자를 필요로 한다.
+<br /></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
+
+	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="c1">// ap의 주소를 고정 인자 n 다음, 즉 첫 번째 가변 인자의 주소로 옮긴다.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+<h3 id="1-2-3-va_arg">1-2-3. va_arg</h3>
+<p>va_list가 현재 가리키고 있는 인자를 반환하고, va_list의 주소를 다음 인자로 이동시킨다.
+첫 번째 인자로 va_list, 두 번째 인자로 현재 인자의 type을 입력받는다.
+<br /></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
+
+	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//ap에서 int 타입의 인자를 반환한다.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<div class="notice--primary">
+  <p>🔔 va_arg로 <code class="language-plaintext highlighter-rouge">char</code>타입 인자를 반환받는 경우, 아래와 같이 char형이 아닌 int 자료형을 두 번째 인자로 넣어줘야 한다. CPU는 메모리를 4bytes씩 접근하는데, char는 1byte만을 차지하기 때문에, 3bytes의 남는 공간이 생긴다. 하지만 1byte만 char형을 넣어놓고 바로 이어서 4bytes인 int형을 넣어 놓는다면, 메모리가 char형을 읽고 다음 4bytes 위치의 메모리에 접근했을 때 int 변수의 시작 주소가 아닌 중간 주소에 접근하는 꼴이 되므로 효율적인 메모리 접근이 불가능하다. 따라서 CPU의 메모리 접근 크기보다 작은 char형은 실질적인 내용은 1byte 밖에 없지만 4bytes의 공간을 차지하도록 할당한다.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center">char</th>
+        <th style="text-align: center">empty</th>
+        <th style="text-align: center">empty</th>
+        <th style="text-align: center">empty</th>
+        <th style="text-align: center">int</th>
+        <th style="text-align: center">int</th>
+        <th style="text-align: center">int</th>
+        <th style="text-align: center">int</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center">메모리 접근</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">메모리 접근</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</code></pre></div>  </div>
+</div>
+<p><br /></p>
+<h3 id="1-2-4-va_end">1-2-4. va_end</h3>
+<p>가변 인자를 모두 사용하고 난 후 실행하는 함수로, ap의 값을 <code class="language-plaintext highlighter-rouge">NULL</code>로 변경한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+</code></pre></div></div>
+<p><br /></p>
+<h2 id="1-2-예시-코드">1-2. 예시 코드</h2>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"ft_printf.h"</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">ft_printf</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
+	<span class="kt">size_t</span> <span class="n">bytes</span><span class="p">;</span>
+
+	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">format</span><span class="p">);</span>
+	<span class="n">bytes</span> <span class="o">=</span> <span class="n">read_format</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">ap</span><span class="p">);</span> 
+	<span class="c1">// read_format : format을 해석하고, 이에 맞게 출력 후 출력한 글자 byte 수를 리턴해주는 함수</span>
+	<span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">bytes</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a><span class="sep">, </span>
+    
+      <a href="/tags/#ft-printf" class="page__taxonomy-item p-category" rel="tag">ft_printf</a><span class="sep">, </span>
+    
+      <a href="/tags/#printf" class="page__taxonomy-item p-category" rel="tag">printf</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=ft_printf%20http%3A%2F%2Flocalhost%3A4000%2F42seoul%2Fft_printf%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2Fft_printf%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2Fft_printf%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/42seoul/Makefile/" class="pagination--pager" title="Makefile 문법 및 예시
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/Makefile/" rel="permalink">Makefile 문법 및 예시
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/Libft/" rel="permalink">Libft
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">표준 C 라이브러리(libc)에 있는 함수 및 앞으로 과제를 하면서 유용한 함수들을 구현하고 library로 만든다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/Markdown/" rel="permalink">Markdown 사용법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-18T00:00:00+09:00">October 18, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Markdown 사용법을 알아보자.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Hyunsoon Im. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'hyun-soon/hyun-soon.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOKeOOEA');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOKeOOEM4CaKQd');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>

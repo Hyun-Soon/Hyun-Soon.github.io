@@ -7,7 +7,7 @@ $background-color: #0D0D0D !default; //#1D1D35 !default; //#252a34 !default;
 $text-color: #EEEEEE !default; //#eaeaea !default;
 $primary-color: #3cb371 !default;//#F5B061 !default;//#3CB371 !default;//주 색상 //#3cb371 !default; //#fcf4a0 !default;
 $border-color: mix(#fff, $background-color, 20%) !default;
-$code-background-color: mix($primary-color, $background-color, 40%) !default; //''코드블럭 색상 //#109972 !default; //mix(#109972, $background-color, 30%) !default; //mix(#000, $background-color, 15%) !default;
+$code-background-color: #636366; //mix($primary-color, $background-color, 40%) !default; //''코드블럭 색상 //#109972 !default; //mix(#109972, $background-color, 30%) !default; //mix(#000, $background-color, 15%) !default;
 $code-background-color-dark: mix(#000, $background-color, 20%) !default;
 $form-background-color: mix(#000, $background-color, 15%) !default;
 $footer-background-color: mix(#000, $background-color, 30%) !default;

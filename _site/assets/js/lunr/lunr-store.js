@@ -5,12 +5,6 @@ var store = [{
         "url": "/etc/Markdown/",
         "teaser": null
       },{
-        "title": "Test",
-        "excerpt":"abc      test    test tab  ","categories": [],
-        "tags": [],
-        "url": "/test/",
-        "teaser": null
-      },{
         "title": "Libft",
         "excerpt":"0. 과제 설명 libc에 있는 함수 및 앞으로의 문제를 푸는 데 유용한 함수들을 구현하고 library로 만든다. 1. Library 1-1. Library란? 라이브러리는 주로 소프트웨어를 개발할 때 컴퓨터 프로그램이 사용하는 비휘발성 자원의 모임이다. 비휘발성 자원의 예로는 미리 작성된 코드, 함수, 클래스, 자료형 등이 있다. 라이브러리는 재사용이 필요한 기능의 반복적인 코드 작성을 피하고, 언제든지 필요한 곳에서 호출하여...","categories": ["42Seoul"],
         "tags": ["42Seoul","Libft","Archive","Library"],
@@ -21,5 +15,11 @@ var store = [{
         "excerpt":"0. 들어가며 빌드를 쉽게 해주는 make와 Makefile에 대해 알아보자. 1. make란? \"의존성 관리”와 “증분 빌드” 기능을 갖춘 빌드 도구. 1-1. 의존성 관리 빌드 과정에서 의존성에 따른 빌드 순서는 무척 중요하다. 컴파일, 즉 a.c로 a.o를 만들고, a.o로 a.out을 만드는 상황을 가정하자. 여기서 a.out은 a.o에, a.o는 a.c에 의존성이 있다고 할 수 있다....","categories": ["42Seoul"],
         "tags": ["42Seoul","Linux","Make","Makefile"],
         "url": "/42seoul/Makefile/",
+        "teaser": null
+      },{
+        "title": "ft_printf",
+        "excerpt":"0. 과제 설명 printf 함수를 구현한다. 1. 가변 인자(variable argument) 가변 인자는 말 그대로 개수가 변할 수 있는 인자이다. 함수 printf를 사용하는 경우를 생각해보자. #include &lt;stdio.h&gt; int main() { printf(\"%s %d\\n\", \"this is an example.\", 123); printf (\"%d\\n\", 456); } 위 코드에서 첫 번째 printf에 \"%s %s\\n\", \"this is an...","categories": ["42Seoul"],
+        "tags": ["printf","42Seoul","ft_printf"],
+        "url": "/42seoul/ft_printf/",
         "teaser": null
       }]

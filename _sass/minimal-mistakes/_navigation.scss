@@ -515,14 +515,14 @@
   .nav__title {
     color: #fff;
     font-size: $type-size-6;
-    background: $primary-color;
+    background: #5b5b5b; //$primary-color; //toc 색상
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
   }
 
   // Scrollspy marks toc items as .active when they are in focus
   .active a {
-    @include yiq-contrasted($active-color);
+    @include yiq-contrasted(mix(#fff, #5b5b5b, 80%)); //@include yiq-contrasted($active-color); //toc active 색상 변경
   }
 }
 

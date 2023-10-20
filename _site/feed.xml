@@ -1,4 +1,135 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-19T22:16:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Libft</title><link href="http://localhost:4000/42seoul/Libft/" rel="alternate" type="text/html" title="Libft" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Libft</id><content type="html" xml:base="http://localhost:4000/42seoul/Libft/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-20T15:25:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">ft_printf</title><link href="http://localhost:4000/42seoul/ft_printf/" rel="alternate" type="text/html" title="ft_printf" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/ft_printf</id><content type="html" xml:base="http://localhost:4000/42seoul/ft_printf/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>printf 함수를 구현한다.
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+<h1 id="1--가변-인자variable-argument">1.  가변 인자(variable argument)</h1>
+<p>가변 인자는 말 그대로 개수가 변할 수 있는 인자이다.<br />
+함수 printf를 사용하는 경우를 생각해보자.</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"this is an example."</span><span class="p">,</span> <span class="mi">123</span><span class="p">);</span>
+	<span class="n">printf</span> <span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">456</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서 첫 번째 printf에 <code class="language-plaintext highlighter-rouge">"%s %s\n"</code>, <code class="language-plaintext highlighter-rouge">"this is an example"</code>, <code class="language-plaintext highlighter-rouge">123</code> 3개의 인자가 들어갔다. 하지만 두 번째 printf에는 <code class="language-plaintext highlighter-rouge">"%d\n"</code>, <code class="language-plaintext highlighter-rouge">456</code> 2개의 인자가 들어갔다.
+printf 함수는 첫 번째 인자 문자열에 주어지는 <code class="language-plaintext highlighter-rouge">%</code>의 수에 따라 추가적인 인자가 필요하므로, printf 함수를 만들 때 사용자가 몇 개의 인자를 넣을 것인지 미리 알 수 없다.
+이렇게 상황에 따라 함수가 받는 인자의 수를 조절하고 싶을 때 가변 인자를 사용할 수 있다.
+<br /></p>
+<h2 id="1-1-가변-인자-사용법">1-1. 가변 인자 사용법</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp">
+</span></code></pre></div></div>
+<p><br />
+가변 인자에 관한 함수와 구조체는 stdarg.h 헤더에 들어 있다.<br />
+가변 인자를 갖는 함수의 프로토 타입은 다음과 같다.
+<br /></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_args</span><span class="p">,</span> <span class="p">...);</span>
+</code></pre></div></div>
+<p><br />
+가변 인자는 몇 개가 될지 모르므로 <code class="language-plaintext highlighter-rouge">...</code>으로 표시한다. <br />
+<u>최소 1개의 고정 인수(위의 경우 num_args)가 필요하다는 점에 유의하자.</u>
+이 고정 인수는 뒤에 올 가변 인자의 개수를 알려주는 역할을 한다.</p>
+
+<h2 id="1-2-매크로">1-2. 매크로</h2>
+<p>stdarg.h에는  가변 인수를 사용하기 위한 다양한 매크로가 존재한다.</p>
+
+<h3 id="1-2-1-va_list">1-2-1. va_list</h3>
+<p>va_list는 가변 인수들의 정보를 담아 놓기 위한 타입이다. 길이가 변할 수 있는 인수들을 저장해야 하기 때문에 va_list 또한 저장 공간의 크기를 유동적으로 늘리고 줄일 수 있는 가변 공간이다.</p>
+
+<div class="notice--warning">
+  <p>⚠️ 클러스터 Mac(Intel Mac)에서는 va_list 자료형 자체로 포인터지만, M1 Mac에서는 포인터가 아닌 일반 자료형이다. 따라서 va_list를 통해 가변 인자 값에 접근하는 방식에 있어서 차이가 발생한다.</p>
+</div>
+
+<h3 id="1-2-2-va_start">1-2-2. va_start</h3>
+<p>va_start는 va_list를 사용하기 전에 초기화하는 역할을 한다. 왜 va_list를 초기화해야 할까?<br />
+va_list가 가리키고 있는 주소를 마지막 고정 인자 다음의 첫 번째 가변 인자의 주소로 설정해야 하기 때문이다(va_list는 포인터 임을 잊지 말자).<br />
+따라서 va_start는 <code class="language-plaintext highlighter-rouge">va_list</code>, <code class="language-plaintext highlighter-rouge">마지막 고정인자</code> 2개의 인자를 필요로 한다.
+<br /></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
+
+	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="c1">// ap의 주소를 고정 인자 n 다음, 즉 첫 번째 가변 인자의 주소로 옮긴다.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+<h3 id="1-2-3-va_arg">1-2-3. va_arg</h3>
+<p>va_list가 현재 가리키고 있는 인자를 반환하고, va_list의 주소를 다음 인자로 이동시킨다.
+첫 번째 인자로 va_list, 두 번째 인자로 현재 인자의 type을 입력받는다.
+<br /></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
+
+	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//ap에서 int 타입의 인자를 반환한다.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<div class="notice--primary">
+  <p>🔔 va_arg로 <code class="language-plaintext highlighter-rouge">char</code>타입 인자를 반환받는 경우, 아래와 같이 char형이 아닌 int 자료형을 두 번째 인자로 넣어줘야 한다. CPU는 메모리를 4bytes씩 접근하는데, char는 1byte만을 차지하기 때문에, 3bytes의 남는 공간이 생긴다. 하지만 1byte만 char형을 넣어놓고 바로 이어서 4bytes인 int형을 넣어 놓는다면, 메모리가 char형을 읽고 다음 4bytes 위치의 메모리에 접근했을 때 int 변수의 시작 주소가 아닌 중간 주소에 접근하는 꼴이 되므로 효율적인 메모리 접근이 불가능하다. 따라서 CPU의 메모리 접근 크기보다 작은 char형은 실질적인 내용은 1byte 밖에 없지만 4bytes의 공간을 차지하도록 할당한다.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center">char</th>
+        <th style="text-align: center">empty</th>
+        <th style="text-align: center">empty</th>
+        <th style="text-align: center">empty</th>
+        <th style="text-align: center">int</th>
+        <th style="text-align: center">int</th>
+        <th style="text-align: center">int</th>
+        <th style="text-align: center">int</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center">메모리 접근</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">메모리 접근</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+        <td style="text-align: center">————</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</code></pre></div>  </div>
+</div>
+<p><br /></p>
+<h3 id="1-2-4-va_end">1-2-4. va_end</h3>
+<p>가변 인자를 모두 사용하고 난 후 실행하는 함수로, ap의 값을 <code class="language-plaintext highlighter-rouge">NULL</code>로 변경한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+</code></pre></div></div>
+<p><br /></p>
+<h2 id="1-2-예시-코드">1-2. 예시 코드</h2>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"ft_printf.h"</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">ft_printf</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
+	<span class="kt">size_t</span> <span class="n">bytes</span><span class="p">;</span>
+
+	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">format</span><span class="p">);</span>
+	<span class="n">bytes</span> <span class="o">=</span> <span class="n">read_format</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">ap</span><span class="p">);</span> 
+	<span class="c1">// read_format : format을 해석하고, 이에 맞게 출력 후 출력한 글자 byte 수를 리턴해주는 함수</span>
+	<span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">bytes</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="printf" /><category term="42Seoul" /><category term="ft_printf" /><summary type="html"><![CDATA[printf를 구현해보자.]]></summary></entry><entry><title type="html">Libft</title><link href="http://localhost:4000/42seoul/Libft/" rel="alternate" type="text/html" title="Libft" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Libft</id><content type="html" xml:base="http://localhost:4000/42seoul/Libft/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libc에 있는 함수 및 앞으로의 문제를 푸는 데 유용한 함수들을 구현하고 library로 만든다.
 </code></pre></div></div>
 
@@ -951,9 +1082,4 @@ ___
 <p><br /></p>
 
 <p>가나다라  <!--2칸의 공백--><br />
-마바사</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Etc" /><category term="Etc" /><category term="Markdown" /><summary type="html"><![CDATA[Markdown 사용법을 알아보자.]]></summary></entry><entry><title type="html">Test</title><link href="http://localhost:4000/test/" rel="alternate" type="text/html" title="Test" /><published>2023-10-18T00:00:00+09:00</published><updated>2023-10-18T00:00:00+09:00</updated><id>http://localhost:4000/test</id><content type="html" xml:base="http://localhost:4000/test/"><![CDATA[<h1 id="abc">abc</h1>
-
-<ul>
-  <li>test<br />
-  test tab</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><summary type="html"><![CDATA[abc]]></summary></entry></feed>
+마바사</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Etc" /><category term="Etc" /><category term="Markdown" /><summary type="html"><![CDATA[Markdown 사용법을 알아보자.]]></summary></entry></feed>
