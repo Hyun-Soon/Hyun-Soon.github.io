@@ -36,10 +36,12 @@ h6 {
 h1 {
   margin-top: 0;
   font-size: $h-size-1;
+  // color: mix(#000, $primary-color, 60%); //mix(#d47e6c, $code-background-color, 90%); // color: mix(#fab565, $code-background-color, 70%); //h1 색상 변경
 }
 
 h2 {
   font-size: $h-size-2;
+  // color: mix(#fff, #5b5b5b, 60%);
 }
 
 h3 {

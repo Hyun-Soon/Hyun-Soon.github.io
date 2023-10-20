@@ -64,7 +64,7 @@ inode table은 소유자 그룹, 접근 모드(읽기, 쓰기, 실행 권한), �
 <br>
 # 2. File Control을 위한 함수들
 
-## open
+## open()
 
 Linux, Unix 계열의 시스템에서 Process가 File을 열 때 open 함수 혹은 openat 함수를 사용할 수 있다.
 
@@ -82,7 +82,7 @@ int openat(int dirfd, const char *pathname, int flag, mode_t mode);
 
 File Descriptor(fd)값을 반환한다. 에러가 나면 -1을 반환한다.
 
-## creat
+## creat()
 
 새로운 파일 생성은 creat 함수를 이용할 수 있다.
 
@@ -94,7 +94,7 @@ int creat(const char *path, mode_t mode)
 
 creat 함수의 단점은 write 모드로만 열린다는 것이다. 다시 읽기 위해서는 creat 함수로 만든 파일을 close 함수로 닫고, O_RDONLY로 읽는 과정이 필요하다.
 
-## close
+## close()
 
 open 함수로 연 파일은 close 함수로 닫을 수 있다.
 
@@ -106,7 +106,7 @@ int close(int fd);
 
 정상적으로 종료되면 0, 실패하면 -1을 리턴한다.
 
-## read
+## read()
 
 file을 열고 난 후 데이터를 읽어올 때에는 read 함수를 사용한다.
 
@@ -118,7 +118,7 @@ ssize_t read(int fd, void *buff, size_t nbytes);
 
 read 함수는 파일로 부터 읽은 데이터를 저장할 공간인 buff를 가리키는 포인터와, 읽을 데이터의 크기를 받아서 정상적으로 종료되면 읽어온 바이트 수를, 실패하면 -1을, 읽을 데이터가 없으면 (파일의 끝에서 시도) 0을 반환한다.
 
-## write
+## write()
 
 파일을 열고 난 후 데이터를 쓸 때에는 write 함수를 사용한다.
 
@@ -174,13 +174,10 @@ int		main()
 
 위 코드의 경우 static int num이라는 내부 정적 변수의 초기화는 프로그램의 시작에 이뤄지며 초기 값은 1이 된다. 이 때 static int num은 increase_num이라는 함수의 지역 변수처럼 보여 Stack에 위치할 것 같지만, 실제로는 (이 경우에는 초기화 구문이 존재하므로 BSS 영역이 아닌) Data 영역에 위치하고 있다. 위에서 언급했던 초기화 구문이 동작하지 않는다는 얘기는 increase_num 함수 내의 초기화 구문인 static int num = 1이 매 함수 실행마다 이뤄지지 않는다는 말이다. 또한 내부 정적 변수는 특정 함수 혹은 클래스 간 공유되어 사용된다고 했기 때문에 위 main 함수의 실행 결과는 1, 2, 3이 된다.
 
-4.  주의할 점
+<div class="notice--warning" markdown="1">
+⚠️ 다른 소스 파일에 존재하는 전역 static 변수 (외부 정적 변수)는 참조할 수 없다.
+</div>
 
-다른 소스 파일에 존재하는 전역 static 변수 (외부 정적 변수)는 참조할 수 없다.
-
-즉, extern이 불가능하고 이를 시도하면 컴파일 오류가 발생한다.
-
-또한 static 변수는 매개 변수로 사용할 수 없다.
 <br>
 <br>
 # 4. 주의할 점

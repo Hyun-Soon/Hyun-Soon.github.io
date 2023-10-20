@@ -21,7 +21,7 @@
   transition: 0.2s;
 
   &:hover {
-    color: mix(#3cff71, $link-color, 80%); //mix(#000, $primary-color, 25%); //돋보기 색상 변경
+    color: #fab565; //mix(#3cff71, $link-color, 80%); //mix(#000, $primary-color, 25%); //돋보기 색상 변경
   }
 }
 

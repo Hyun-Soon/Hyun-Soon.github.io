@@ -66,9 +66,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e8e0f4fbf907f579",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Born2beroot.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -134,7 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "get_next_line.md",
+                "file": "Born2beroot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +163,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "get_next_line.md",
+                "file": "Born2beroot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +186,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "get_next_line.md"
+                "file": "Born2beroot.md"
               }
             }
           }
@@ -195,12 +207,13 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "2f7803ca01ca5b9e",
+  "active": "e8e0f4fbf907f579",
   "lastOpenFiles": [
-    "ft_printf.md",
-    "Libft.md",
     "get_next_line.md",
     "Makefile.md",
+    "Born2beroot.md",
+    "Libft.md",
+    "ft_printf.md",
     "Screenshot 2023-10-19 at 9.58.45 PM.png",
     "Markdown 사용법.md"
   ]

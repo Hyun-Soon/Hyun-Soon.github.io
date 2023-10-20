@@ -1,0 +1,227 @@
+<h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libc에 있는 함수 및 앞으로의 문제를 푸는 데 필요한 함수들을 구현한다.
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+<h1 id="1-library">1. Library</h1>
+<p><br /></p>
+<h2 id="1-1-library란">1-1. Library란?</h2>
+
+<p><strong>라이브러리</strong>는 주로 소프트웨어를 개발할 때 컴퓨터 프로그램이 사용하는 비휘발성 자원의 모임이다.
+비휘발성 자원의 예로는 미리 작성된 코드, 함수, 클래스, 자료형 등이 있다.<br />
+라이브러리는 재사용이 필요한 기능의 반복적인 코드 작성을 피하고, 언제든지 필요한 곳에서 호출하여 사용하기 위한 목적을 가지고 만들어진다.<br />
+새로운 소스 파일들과 빠르게 링크될 수 있도록 보통 컴파일된 형태인 <code class="language-plaintext highlighter-rouge">object file</code>로 존재하며 미리 컴파일 되어 있기 때문에 컴파일 시간도 단축된다.
+<br /></p>
+<h2 id="1-2-library의-종류">1-2. Library의 종류</h2>
+
+<p>라이브러리는 크게 <strong>정적 라이브러리</strong>와 <strong>동적 라이브러리</strong> 두 종류로 사용된다.<br />
+두 라이브러리의 가장 큰 차이점은 실행파일에 링킹되는 시점이다.</p>
+
+<p><strong>정적 라이브러리</strong>(Static Library) (.a / .lib)</p>
+<blockquote>
+  <p>정적으로 만들어진 라이브러리는 링크 단계에서 실행 파일에 포함된다.
+즉, 라이브러리의 동작 코드가 실행 파일에 들어있기 때문에 별도의 추가 작업 없이 실행 파일에서
+바로 라이브러리의 함수들을 사용할 수 있다.
+하지만 실행 파일에서 사용하지 않는 코드가 라이브러리에 많이 담겨 있을수록, 실행 파일의 불필요한 볼륨이
+커지기 때문에 메모리의 공간 활용 효율이 떨어지는 등의 문제가 생긴다.
+<br /></p>
+</blockquote>
+
+<p><strong>동적 라이브러리</strong>(Dynamic Library) (.so / .dll)</p>
+<blockquote>
+  <p>컴파일 타임에 링킹되는 정적 라이브러리와 다르게 동적 라이브러리는 런타임에 연결된다.
+정적 라이브러리와의 가장 큰 차이점은, 라이브러리를 사용할 때 각각의 프로세스마다 메모리에 라이브러리 &gt; 전체 내용을 할당하는 것이 아닌, 필요한 내용만 할당하여 사용할 수 있다는 점이다.
+이러한 특징이 생기는 이유는 obj 파일을 만들 때 프로그램에서 사용하는 모든 라이브러리 모듈을 복사하지 않고, 해당 모듈의 주소만을 가지고 있다가 런타임에 실행 파일과 라이브러리가 메모리에 위치될 때 해당 모듈의 주소로 가서 필요한 것만 들고 오는 방식이기 때문이다. 런타임에 운영체제에 의하여 이러한 작업이 수행된다.
+<br /></p>
+</blockquote>
+
+<p><strong>정적 라이브러리와 동적 라이브러리의 차이점</strong></p>
+<blockquote>
+  <p>정적 라이브러리는 실행할 때 라이브러리의 내용을 모두 메모리에 로드하는 반면, 동적 라이브러리는 메모리에 이미 존재하는 경우 로드되는 시간과 공간을 아낄 수 있다. 하지만 매번 라이브러리의 주소에 접근해야 하기 때문에 오버헤드가 존재해 수행 시간은 정적 라이브러리보다 느리다.
+<br /></p>
+  <h2 id="1-3-라이브러리-만들기">1-3. 라이브러리 만들기</h2>
+</blockquote>
+
+<ul>
+  <li>명령어 : ar → 컴파일된 <em>.o 파일들을 묶어서 library (</em>.a)로 만든다.</li>
+</ul>
+
+<p>| option | meaning |
+| :—: | :—: |
+| -r | 지정한 파일을 archive 파일에 추가, 만약 기존 파일이면 치환한다. |
+| -c | archive가 생성 되어질 때 기본적으로 표준 에러로 기록되어지는 진단 메세지의 출력을 제한한다. |
+| -u | 오브젝트 파일의 타임스탬프를 비교해 새로운 파일일 경우에만 치환한다. |
+| -v | 자세한 내용을 보여주는 verbose 모드로, 파일 크기나 갱신 시각 등의 상세 정보를 출력한다. |
+<br />
+<br /></p>
+<h2 id="필요-개념">필요 개념</h2>
+
+<ul>
+  <li><strong>void pointer로 입력받은 인자를 unsigned char 포인터로 캐스팅해서 접근하는 이유</strong><br />
+ void pointer에 어떤 포인터가 들어올지 모르기 때문에 1바이트씩 접근해야 안전하다. 포인터는 주소값이기 때문에 부호를 쓰지 않는다. 따라서 char가 아닌 unsigned char를 쓰는 것이 관례이다.
+<br /></li>
+  <li><strong>const int*와 int* const의 차이</strong><br />
+  const int<em>( = int const *)는 const int형을 가리키는 포인터로, 포인터 값은 변경 가능하지만 내부의 int값은 const로 선언되어 변경이 불가능하다. 반면 int</em> const는 const 포인터가 int형을 가리키고 있으므로 포인터의 값은 변경 불가능하지만 내부의 int값은 변경이 가능하다.
+<br /></li>
+  <li>
+    <p><strong>mem vs str functions</strong><br />
+  str함수는 “문자열을 검사하기 위한” 함수. 즉, ‘\0’ 또는 size를 통해서 종료 시점을 결정한다.<br />
+  반면 mem 함수는 모든 배열에 대해 사용할 수 있어야 하기 때문에 size만을 통해서 종료 시점을 결정한다.</p>
+
+    <p>함수 내부에서 unsigned char로 캐스팅 해주는 이유 : unsigned char는 변수 안의 모든 값이 부호비트나 패딩비트같이 어떠한 용도로 사용되는 값이 없고, 우리가 전달하고자 하는 값으로 모두 차있기 때문에 비트 해석이 왜곡될 걱정이 없다.</p>
+
+    <p>*패딩비트 : 가장 큰 자료형의 크기를 따르기 때문에 생기는 사용하지 않는 비트
+<br /></p>
+  </li>
+  <li><strong>size_t</strong><br />
+  size_t는 typedef를 이용하여 정의한 하나의 별칭(alias)으로 ‘이론상 가장 큰 사이즈를 담을 수 있는 unsigned 데이터 타입’으로 정의된다.<br />
+  즉, 32bit에서는 unsigned int, 64bit에서는 unsigned long long이 된다.
+<br /></li>
+  <li><strong>함수 포인터</strong><br />
+  포인터는 다른 변수의 주소를 저장하는 변수다. 이와 유사하게 함수 포인터는 함수의 주소를 저장하는 변수다.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>식별자 foo는 함수의 이름이다. 변수와 마찬가지로 함수는 메모리의 할당된 주소에 있다.</p>
+
+<p>() 연산자를 통해 함수를 호출하면, 호출되는 함수의 주소로 점프하여 실행한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">foo</span><span class="p">();</span> <span class="c1">//foo 함수의 주소(ex.0x002717f0)로 점프한다.</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>함수 foo를 printf로 출력하면 0x002717f0가 출력된다.
+<br />
+함수 포인터는 함수의 주소를 저장했다가, 해당 주소의 함수를 호출하는 데 사용하는 포인터를 말한다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>반환형식 (* 식별자) (파라미터형 목록)
+</code></pre></div></div>
+
+<p>위와 같은 형식으로 사용한다.
+<br />
+<strong>함수 포인터 사용법</strong></p>
+
+<ol>
+  <li>반환값과 매개변수가 없는 경우</li>
+</ol>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">print_hello</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello, world!</span><span class="se">\\</span><span class="s">n"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)();</span>
+
+	<span class="n">fp</span> <span class="o">=</span> <span class="n">print_hello</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">()</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="o">!</span>
+</code></pre></div></div>
+
+<ol>
+  <li>반환값과 매개변수가 있는 경우</li>
+</ol>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+	<span class="n">fp</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+
+	<span class="n">fp</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+	<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span><span class="mi">8</span>
+			   <span class="mi">2</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li><strong>함수 포인터 배열 사용하기</strong></li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;}</span>
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;}</span>
+<span class="kt">int</span> <span class="nf">mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;}</span>
+<span class="kt">int</span> <span class="nf">div</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//함수 포인터 배열 선언</span>
+	
+	<span class="n">fp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mul</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">div</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="mi">30</span>
+			<span class="mi">10</span>
+			<span class="mi">200</span>
+			<span class="mi">2</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li><strong>typedef로 함수 포인터 간소화 하기</strong></li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">PtrFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
+
+<span class="n">PtrFunc</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li><strong>메모리 해제(free)</strong>
+  동적 메모리를 할당하면 힙(heap) 메모리의 공간을 할당받는다. 이 공간은 프로그램이 종료될 때까지 보존된다. 따라서 메모리를 할당만 하고 해제를 해주지 않으면 메모리 사용량만 계속 증가하게 된다. 즉 프로그램이 필요하지 않은 메모리를 계속 점유하고 있는 현상을 “메모리 누수(memory leak)”라고 한다. 즉 동적 할당으로 힙 메모리에 공간을 생성해놓은 뒤 회수하지 않으면 프로그램이 실행되는 동안은 그 공간은 계속해서 살아있게 되고 이는 메모리의 낭비를 초래하여 성능 부하를 이르킬 수 있다. 고로 사용하지 않는 메모리는 free함수를 사용하여 꼭 회수해줘야 한다.</li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li><strong>2의 보수법</strong>
+  C언어는 2진 보수 방식을 사용한다.<br />
+  첫번째 비트가 0일 때는 양수라는 의미로 2진수를 읽듯이 읽으면 된다. 첫번째 비트가 1일 때는 음수라는 의미로 2진 보수를 역(1을 빼고 1진 보수법 적용)으로 취한 값이 절댓값이 된다.<br />
+  예를 들어 8비트의 메모리에 10010001 값이 들어 있다면 첫번째 비트가 1이므로 음수를 의미한다. 절댓값을 계산해보면 10010001 → 10010000 → 01101111로 1 + 2 + 4 + 8 + 32 + 64 = 111이다. 즉 10010001은 -111이다.<br />
+  2진 보수 방식에서 8비트(1바이트)로 표현할 때 01111111이 가장 큰 정수이고, 10000000이 가장 작은 정수이다.
+<br /></li>
+  <li>**큰 자료형 → 작은 자료형 형 변환시 뒤쪽(오른쪽) 비트부터 자른다.
+<br /></li>
+</ul>

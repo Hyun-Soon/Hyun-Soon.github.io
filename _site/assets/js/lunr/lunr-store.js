@@ -17,6 +17,12 @@ var store = [{
         "url": "/42seoul/Makefile/",
         "teaser": null
       },{
+        "title": "Born2beroot",
+        "excerpt":"0. 과제 설명 가상 머신을 이용해 엄격한 규칙들로 이루어진 나만의 서버를 구현한다. 1. 필요 개념 Server 클라이언트의 요청을 받으면 서비스, 데이터를 제공하는 컴퓨터 혹은 프로그램(요청을 받으면 데이터를 보내주는 기계) 닭갈비집 알바생으로 비유하면 이해가 쉽다. 닭갈비 2인분 주세요~ 하면 닭갈비 2인분을 가져다 주는 것 처럼, 웹서버도 마찬가지로 네이버 웹툰 페이지 주세요~...","categories": ["42Seoul"],
+        "tags": ["42Seoul","Born2beroot","가상머신","VM","virtual_machine"],
+        "url": "/42seoul/Born2beroot/",
+        "teaser": null
+      },{
         "title": "ft_printf",
         "excerpt":"0. 과제 설명 printf 함수를 구현한다. 1. 가변 인자(variable argument) 가변 인자는 말 그대로 개수가 변할 수 있는 인자이다. 함수 printf를 사용하는 경우를 생각해보자. #include &lt;stdio.h&gt; int main() { printf(\"%s %d\\n\", \"this is an example.\", 123); printf (\"%d\\n\", 456); } 위 코드에서 첫 번째 printf에 \"%s %s\\n\", \"this is an...","categories": ["42Seoul"],
         "tags": ["printf","42Seoul","ft_printf"],

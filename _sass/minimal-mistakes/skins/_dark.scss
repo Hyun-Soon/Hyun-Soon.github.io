@@ -3,20 +3,20 @@
    ========================================================================== */
 
 /* Colors */
-$background-color: #0D0D0D !default; //#1D1D35 !default; //#252a34 !default;
+$background-color: #1e1e1e !default; //#1D1D35 !default; //#252a34 !default;
 $text-color: #EEEEEE !default; //#eaeaea !default;
-$primary-color: #3cb371 !default;//#F5B061 !default;//#3CB371 !default;//주 색상 //#3cb371 !default; //#fcf4a0 !default;
+$primary-color: #f9f871 !default;//#F5B061 !default;//#3CB371 !default;//주 색상 //#3cb371 !default; //#fcf4a0 !default;
 $border-color: mix(#fff, $background-color, 20%) !default;
 $code-background-color: #636366; //mix($primary-color, $background-color, 40%) !default; //''코드블럭 색상 //#109972 !default; //mix(#109972, $background-color, 30%) !default; //mix(#000, $background-color, 15%) !default;
 $code-background-color-dark: mix(#000, $background-color, 20%) !default;
 $form-background-color: mix(#000, $background-color, 15%) !default;
 $footer-background-color: mix(#000, $background-color, 30%) !default;
 $link-color: $primary-color !default; //mix($primary-color, $text-color, 50%) !default;
-$link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#ff9966, $link-color, 30%) !default;
+$link-color-hover: #fab565; //mix(#fab565, $link-color, 80%) !default; //mix(#ff9966, $link-color, 30%) !default;
 $link-color-visited: $primary-color !default; //mix(#000, $link-color, 25%) !default;
 $masthead-link-color: $primary-color !default; //$text-color !default;
-$masthead-link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#000, $text-color, 20%) !default;
-$navicon-link-color-hover: mix(#3cff71, $link-color, 80%) !default; //mix(#000, $background-color, 30%) !default; //
+$masthead-link-color-hover: #fab565; //mix(#fab565, $link-color, 80%) !default; //mix(#000, $text-color, 20%) !default;
+$navicon-link-color-hover: #fab565; //mix(#fab565, $link-color, 80%) !default; //mix(#000, $background-color, 30%) !default; //
 
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,
