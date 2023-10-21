@@ -422,7 +422,7 @@ apt-get(Advanced Packaging Tool)은 우분투(Ubuntu)를 포함한 데비안(Deb
 <br>
 <br>
 
-### 📬 **Reference**
+# 📬 **Reference**
 
 [https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/](https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/)
 

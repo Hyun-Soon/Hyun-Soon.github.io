@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-21T12:23:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-21T12:45:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가상 머신을 이용해 엄격한 규칙들로 이루어진 나만의 서버를 구현한다.
 </code></pre></div></div>
 
@@ -495,7 +495,7 @@
 <br /></li>
 </ul>
 
-<h3 id="reference">📬 <strong>Reference</strong></h3>
+<h1 id="reference">📬 <strong>Reference</strong></h1>
 
 <p><a href="https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/">https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Born2beroot" /><category term="가상머신" /><category term="VM" /><category term="virtual_machine" /><summary type="html"><![CDATA[가상머신을 이용해 나만의 서버를 만들어 보자.]]></summary></entry><entry><title type="html">Fract’ol</title><link href="http://localhost:4000/42seoul/Fract'ol/" rel="alternate" type="text/html" title="Fract’ol" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Fract&apos;ol</id><content type="html" xml:base="http://localhost:4000/42seoul/Fract&apos;ol/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlx 라이브러리를 이용해 다양한 Fractal을 구현한다.
@@ -685,10 +685,12 @@
   <span class="err">cc</span> <span class="err">first.o</span> <span class="err">second.o</span> <span class="err">-Llibft</span> <span class="err">-lft</span>
 </code></pre></div>    </div>
   </li>
-  <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.
-    <h2 id="reference">📬 <strong>Reference</strong></h2>
-  </li>
+  <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.</li>
 </ul>
+
+<p><br />
+<br /></p>
+<h1 id="reference">📬 <strong>Reference</strong></h1>
 
 <p><a href="https://yeosong1.github.io/miniRT%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">42 wiki</a><br />
 <a href="https://javalab.org/mandelbrot_set/">자바 실험실</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Fractol" /><category term="Fractal" /><category term="mlx" /><summary type="html"><![CDATA[mlx를 이용해 다양한 Fractal을 구현해보자.]]></summary></entry><entry><title type="html">ft_printf</title><link href="http://localhost:4000/42seoul/ft_printf/" rel="alternate" type="text/html" title="ft_printf" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/ft_printf</id><content type="html" xml:base="http://localhost:4000/42seoul/ft_printf/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
@@ -1616,8 +1618,10 @@ make가 규칙을 정의하면 변경이 필요한 것만 만들어 주는 프�
 <span class="nl">.PHONY </span><span class="o">:</span> <span class="nf">clean fclean re</span>
 </code></pre></div></div>
 
-<p><br /></p>
-<h3 id="reference">📬 <strong>Reference</strong></h3>
+<p><br />
+<br /></p>
+
+<h1 id="reference">📬 <strong>Reference</strong></h1>
 
 <ul>
   <li><a href="http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make.html#toc3">GNU Make 강좌</a></li>
