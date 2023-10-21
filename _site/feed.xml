@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-21T12:18:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-21T12:23:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가상 머신을 이용해 엄격한 규칙들로 이루어진 나만의 서버를 구현한다.
 </code></pre></div></div>
 
@@ -513,7 +513,7 @@
 
 <p>프랙탈을 더 예쁘게(자세하게) 구현하고 싶다면, 각 점이 <strong>얼마나 빠르게</strong> 발산하는 지에 따라서 색을 다르게 표현해 주면 된다.</p>
 
-<h4 id="망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</h4>
+<h3 id="망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</h3>
 
 \[Z_0 = 0\]
 
@@ -521,11 +521,11 @@
 
 <p>위 식을 만족(수렴)하는 C의 집합.</p>
 
-<h4 id="줄리아-집합julia-set">줄리아 집합(Julia set)</h4>
+<h3 id="줄리아-집합julia-set">줄리아 집합(Julia set)</h3>
 
 <p>망델브로 집합과 식은 같지만, 주어진 C에 대해 점화식이 수렴하는 Z의 집합이라는 점이 다르다.</p>
 
-<h4 id="불타는-배burning-ship">불타는 배(Burning ship)</h4>
+<h3 id="불타는-배burning-ship">불타는 배(Burning ship)</h3>
 
 \[z_0 = 0\]
 
@@ -631,14 +631,14 @@
 
 <h2 id="exit-vs-return">exit vs return</h2>
 
-<h4 id="exit">exit()</h4>
+<h3 id="exit">exit()</h3>
 <ul>
   <li>exit() 함수는 프로그램을 즉시 종료시키는 기능을 한다.</li>
   <li>이 함수를 호출하면 프로그램이 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
   <li>종료 코드(exit code)를 지정할 수 있으며, 이는 프로그램이 종료되면 운영 체제에게 전달된다.</li>
   <li>일반적으로 0은 성공적인 종료를 의미하고, 0 이외의 값은 오류를 나타낸다.</li>
   <li>exit() 함수는 주로 비정상적인 상황이 발생했을 때 또는 특정 조건이 충족되었을 때 프로그램을 종료하는 데 사용된다.
-    <h4 id="return">return()</h4>
+    <h3 id="return">return()</h3>
   </li>
   <li>return 구문은 함수에서 결과 값을 반환하는 용도로 사용된다.</li>
   <li>함수 내에서 return을 사용하면 함수가 값을 계산하거나 처리한 후, 그 값을 호출한 부분으로 반환한다.</li>
@@ -686,7 +686,7 @@
 </code></pre></div>    </div>
   </li>
   <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.
-    <h3 id="reference">📬 <strong>Reference</strong></h3>
+    <h2 id="reference">📬 <strong>Reference</strong></h2>
   </li>
 </ul>
 
