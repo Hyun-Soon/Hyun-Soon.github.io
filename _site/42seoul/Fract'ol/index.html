@@ -1,0 +1,948 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Fract’ol - Hyuim’s blog</title>
+<meta name="description" content="mlx를 이용해 다양한 Fractal을 구현해보자.">
+
+
+  <meta name="author" content="Hyunsoon Im">
+  
+  <meta property="article:author" content="Hyunsoon Im">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Hyuim's blog">
+<meta property="og:title" content="Fract’ol">
+<meta property="og:url" content="http://localhost:4000/42seoul/Fract'ol/">
+
+
+  <meta property="og:description" content="mlx를 이용해 다양한 Fractal을 구현해보자.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-10-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/42seoul/Fract'ol/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Hyunsoon Im",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Hyuim's blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon_io/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+      inlineMath: [ ['$', '$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Hyuim's blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/hyunsoon_drum-modified.png" alt="Hyunsoon Im" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Hyunsoon Im</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>42Seoul Student interested in <strong>Graphics</strong> and <strong>Game Engine</strong>.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Hyun-Soon" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:s7514036@naver.com" rel="me" class="u-email">
+            <meta itemprop="email" content="s7514036@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span style="font-family:sans-serif;font-size: 16px;">Posts</style> <span style="font-family:sans-serif;">(7)</style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span style="font-size: 17px"; class="nav__sub-title">Categories</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/42Seoul" class="">42Seoul (6)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a style="font-size: 16px"; href="/Etc" class="">Etc (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Fract’ol">
+    <meta itemprop="description" content="mlx를 이용해 다양한 Fractal을 구현해보자.">
+    <meta itemprop="datePublished" content="2023-10-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/42seoul/Fract'ol/" class="u-url" itemprop="url">Fract’ol
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#0-과제-설명">0. 과제 설명</a></li><li><a href="#1-필요-개념">1. 필요 개념</a><ul><li><a href="#fractal">Fractal</a><ul><li><a href="#망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</a></li><li><a href="#줄리아-집합julia-set">줄리아 집합(Julia set)</a></li><li><a href="#불타는-배burning-ship">불타는 배(Burning ship)</a></li></ul></li></ul></li><li><a href="#pixel">Pixel</a></li><li><a href="#byte-orderendian">Byte Order(Endian)</a></li><li><a href="#bit-calculator">Bit Calculator</a></li><li><a href="#hooking">Hooking</a></li><li><a href="#exit-vs-return">exit vs return</a><ul><li><a href="#exit">exit()</a></li><li><a href="#return">return()</a></li></ul></li></ul></li></ul></li><li><a href="#2-구현">2. 구현</a><ul><li><a href="#마우스-위치-기준으로-확대하기">마우스 위치 기준으로 확대하기</a></li></ul></li><li><a href="#3-시행착오">3. 시행착오</a><ul><li><a href="#reference">📬 Reference</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlx 라이브러리를 이용해 다양한 Fractal을 구현한다.
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="1-필요-개념">1. 필요 개념</h1>
+
+<h2 id="fractal">Fractal</h2>
+
+<p>프랙탈은 일부 작은 조각이 전체와 비슷한 기하학적 형태 즉, 자기 유사성을 가지는 기하학적 구조이다. 자기 유사성은 같은 패턴에 대해 재귀 또는 반복을 이용해 구현한다.</p>
+
+<p>복소 평면에서 각 점이 <u>점화식에서 발산하는지, 발산하지 않는지에 따라</u> 프랙탈 집합이 결정된다.</p>
+
+<p>프랙탈을 더 예쁘게(자세하게) 구현하고 싶다면, 각 점이 <strong>얼마나 빠르게</strong> 발산하는 지에 따라서 색을 다르게 표현해 주면 된다.</p>
+
+<h4 id="망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</h4>
+
+\[Z_0 = 0\]
+
+\[Z_n+_1 = Z_n ^2 + C\]
+
+<p>위 식을 만족(수렴)하는 C의 집합.</p>
+
+<h4 id="줄리아-집합julia-set">줄리아 집합(Julia set)</h4>
+
+<p>망델브로 집합과 식은 같지만, 주어진 C에 대해 점화식이 수렴하는 Z의 집합이라는 점이 다르다.</p>
+
+<h4 id="불타는-배burning-ship">불타는 배(Burning ship)</h4>
+
+\[z_0 = 0\]
+
+\[z_{n+1} = (|Re(z_n)| + i|Im(z_n)|)^2 + c\]
+
+<p><br /></p>
+
+<h2 id="pixel">Pixel</h2>
+
+<p><code class="language-plaintext highlighter-rouge">picture element</code>의 약자로, 디지털 이미지의 가장 작은 단위.<br />
+화소라고도 부르며, 이미지를 구성하는 각 점 또는 작은 사각형으로 이해할 수 있다.</p>
+
+<p>픽셀은 색상 정보를 나타내기 위해 비트로 표현된다. 8비트, 16비트, 24비트, 32비트(약 42억 색상) 등의 비트 깊이로 표현된다.</p>
+
+<p>4바이트(32비트, int) 픽셀의 경우, 각 바이트는 알파 투명도(A), R, G, B 값을 나타낸다.</p>
+
+<p>32비트 컴퓨터 아키텍처에서는 메모리의 주소 지정이 32비트로 이루어지기 때문에 한번에 4바이트 크기의 데이터를 처리하는 것이 효율적이고, 따라서 픽셀을 4바이트로 표현하는 것은 자연스럽다.</p>
+
+<h2 id="byte-orderendian">Byte Order(Endian)</h2>
+
+<p><a href="https://jhnyang.tistory.com/172">[Byte Order 바이트 오더] 빅엔디안(Big Endian)과 리틀엔디안(little endian) - 1편</a></p>
+
+<h2 id="bit-calculator">Bit Calculator</h2>
+
+<p><strong>«, »</strong> : 피연산자의 비트 열을 왼쪽, 오른쪽으로 이동시킨다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+	<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
+	<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00111100</span>
+
+	<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00010000</span>
+	<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
+	<span class="kt">int</span> <span class="n">result4</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+</code></pre></div></div>
+
+<p>\&amp; : 비트단위로 AND 연산을 한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">&amp;</span> <span class="n">num2</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>**</td>
+      <td>** : 비트단위로 OR 연산을 한다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">|</span> <span class="n">num2</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">=</span> <span class="mi">31</span>
+</code></pre></div></div>
+
+<p><strong>^</strong> : 두 개의 비트가 서로 다른 경우에 1을 반환하는 XOR 연산이다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">0</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">27</span>
+</code></pre></div></div>
+
+<p><strong>~</strong> : 비트를 0에서 1로, 1에서 0으로 반전시키는 NOT 연산자이다. 보수 연산이라고도 불린다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="mi">0</span> <span class="o">--&gt;</span> <span class="mi">1</span>
+<span class="o">~</span><span class="mi">1</span> <span class="o">--&gt;</span> <span class="mi">0</span>
+
+<span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">~</span><span class="n">num1</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span> <span class="c1">// 11111111 11111111 11111111 11110000</span>
+</code></pre></div></div>
+
+<h2 id="hooking">Hooking</h2>
+
+<p>컴퓨터 프로그래밍에서 Hooking이라는 용어는 소프트웨어 구성 요소간에 전달되는 함수 호출이나 메시지 또는 이벤트를 가로 채서 운영 체제, 응용 프로그램 또는 기타 소프트웨어 구성 요소의 동작을 변경하거나 강화하는 데 사용되는 다양한 기술을 말한다. 이러한 가로채는 함수 호출, 이벤트 또는 메시지를 처리하는 코드를 Hook이라고 한다.</p>
+
+<h2 id="exit-vs-return">exit vs return</h2>
+
+<h4 id="exit">exit()</h4>
+<ul>
+  <li>exit() 함수는 프로그램을 즉시 종료시키는 기능을 한다.</li>
+  <li>이 함수를 호출하면 프로그램이 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
+  <li>종료 코드(exit code)를 지정할 수 있으며, 이는 프로그램이 종료되면 운영 체제에게 전달된다.</li>
+  <li>일반적으로 0은 성공적인 종료를 의미하고, 0 이외의 값은 오류를 나타낸다.</li>
+  <li>exit() 함수는 주로 비정상적인 상황이 발생했을 때 또는 특정 조건이 충족되었을 때 프로그램을 종료하는 데 사용된다.
+    <h4 id="return">return()</h4>
+  </li>
+  <li>return 구문은 함수에서 결과 값을 반환하는 용도로 사용된다.</li>
+  <li>함수 내에서 return을 사용하면 함수가 값을 계산하거나 처리한 후, 그 값을 호출한 부분으로 반환한다.</li>
+  <li>함수가 값을 반환하면, 호출한 부분에서 반환ㄴ된 값을 변수에 할당하거나 다른 작업에 활용할 수 있다.</li>
+  <li>함수는 return을 만나면 해당 구문에서 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
+</ul>
+
+<p>요약하면, <code class="language-plaintext highlighter-rouge">exit()</code> 함수는 프로세스 자체를 종료시키는 데 사용되고, <code class="language-plaintext highlighter-rouge">return</code> 구문은 함수 내에서 결과값을 반환하고 함수의 실행을 제어하는 데 사용된다.</p>
+
+<p><br />
+<br /></p>
+
+<h1 id="2-구현">2. 구현</h1>
+
+<h2 id="마우스-위치-기준으로-확대하기">마우스 위치 기준으로 확대하기</h2>
+
+<p>복소 평면 <code class="language-plaintext highlighter-rouge">r</code>축의 가장 작은 값을 <code class="language-plaintext highlighter-rouge">min_r</code>, 확대 후 새로운 r축의 최소값(모니터에 보여지는 r축의 최소값)을 <code class="language-plaintext highlighter-rouge">new_min_r</code>, 확대를 하기 위한 <code class="language-plaintext highlighter-rouge">ZOOMIN</code> 상수를 0.9라고 하자.</p>
+
+<p>마우스 포인터의 위치 x, y는 <u>확대 전이나 확대 후나 같은 값</u>을 가져야 한다(마우스 포인터를 기준으로 확대할 것이므로).</p>
+
+<p>즉,</p>
+
+\[min\_r + x * dx = new\_min\_r + x * 0.9 * dx\]
+
+\[new\_min\_r = min\_r + 0.1 * x * dx\]
+
+<p>따라서 ZOOMIN 할 때마다<br />
+<br /></p>
+
+\[min\_r += 0.1 * x * dx\]
+
+<p><br />
+위와 같이 <code class="language-plaintext highlighter-rouge">min_r</code>을 업데이트 해주면 된다.
+<br /></p>
+
+<h1 id="3-시행착오">3. 시행착오</h1>
+
+<ul>
+  <li>double로 계산해야하는 변수를 int로 선언해놔서, 이미지가 부드럽게 이어지지 않고 큼지막한 직사각형처럼 각이 졌다. → 비교적 좁은 범위에서 이미지를 디스플레이하는 경우였어서 int로 변수를 사용하면 이렇게 보였다.</li>
+  <li>문자열도 header 파일에 <code class="language-plaintext highlighter-rouge">define</code>할 수 있다.</li>
+  <li>libft는 이미 makefile이 있으므로, fractol makefile을 실행할 때 libft 디렉토리로 들어가서 libft makefile을 실행시키고, 나와서 libft.a만 따로 사용해서 makefile을 구성하면 된다.
+    <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">$(NAME) </span><span class="o">:</span> <span class="nf">$(OBJS)</span>
+  <span class="err">cd</span> <span class="err">libft;</span> <span class="err">make;</span> <span class="err">cd</span> <span class="err">..</span>
+  <span class="err">cc</span> <span class="err">first.o</span> <span class="err">second.o</span> <span class="err">-Llibft</span> <span class="err">-lft</span>
+</code></pre></div>    </div>
+  </li>
+  <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.
+    <h3 id="reference">📬 <strong>Reference</strong></h3>
+  </li>
+</ul>
+
+<p><a href="https://yeosong1.github.io/miniRT%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">42 wiki</a><br />
+<a href="https://javalab.org/mandelbrot_set/">자바 실험실</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a><span class="sep">, </span>
+    
+      <a href="/tags/#fractal" class="page__taxonomy-item p-category" rel="tag">Fractal</a><span class="sep">, </span>
+    
+      <a href="/tags/#fractol" class="page__taxonomy-item p-category" rel="tag">Fractol</a><span class="sep">, </span>
+    
+      <a href="/tags/#mlx" class="page__taxonomy-item p-category" rel="tag">mlx</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Fract%27ol%20http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FFract%27ol%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FFract%27ol%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FFract%27ol%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/42seoul/Born2beroot/" class="pagination--pager" title="Born2beroot
+">Previous</a>
+    
+    
+      <a href="/42seoul/ft_printf/" class="pagination--pager" title="ft_printf
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/get_next_line/" rel="permalink">get_next_line
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/ft_printf/" rel="permalink">ft_printf
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">printf를 구현해보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/Born2beroot/" rel="permalink">Born2beroot
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">가상머신을 이용해 나만의 서버를 만들어 보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/Makefile/" rel="permalink">Makefile 문법 및 예시
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Hyunsoon Im. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'hyun-soon/hyun-soon.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOKeOOEA');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOKeOOEM4CaKQd');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+
+  </body>
+</html>

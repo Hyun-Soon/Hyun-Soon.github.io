@@ -90,7 +90,7 @@
       &.current,
       &.current.disabled {
         color: #fff;
-        background: $primary-color;
+        background: #636366; //home 아래쪽 페이지 표시 배경 색상 변경
       }
 
       &.disabled {

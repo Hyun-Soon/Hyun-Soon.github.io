@@ -23,6 +23,12 @@ var store = [{
         "url": "/42seoul/Born2beroot/",
         "teaser": null
       },{
+        "title": "Fract'ol",
+        "excerpt":"0. 과제 설명 mlx 라이브러리를 이용해 다양한 Fractal을 구현한다. 1. 필요 개념 Fractal 프랙탈은 일부 작은 조각이 전체와 비슷한 기하학적 형태 즉, 자기 유사성을 가지는 기하학적 구조이다. 자기 유사성은 같은 패턴에 대해 재귀 또는 반복을 이용해 구현한다. 복소 평면에서 각 점이 점화식에서 발산하는지, 발산하지 않는지에 따라 프랙탈 집합이 결정된다. 프랙탈을...","categories": ["42Seoul"],
+        "tags": ["42Seoul","Fractol","Fractal","mlx"],
+        "url": "/42seoul/Fract'ol/",
+        "teaser": null
+      },{
         "title": "ft_printf",
         "excerpt":"0. 과제 설명 printf 함수를 구현한다. 1. 가변 인자(variable argument) 가변 인자는 말 그대로 개수가 변할 수 있는 인자이다. 함수 printf를 사용하는 경우를 생각해보자. #include &lt;stdio.h&gt; int main() { printf(\"%s %d\\n\", \"this is an example.\", 123); printf (\"%d\\n\", 456); } 위 코드에서 첫 번째 printf에 \"%s %s\\n\", \"this is an...","categories": ["42Seoul"],
         "tags": ["printf","42Seoul","ft_printf"],
