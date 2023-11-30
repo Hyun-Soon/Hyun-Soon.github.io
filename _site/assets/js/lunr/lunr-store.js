@@ -40,4 +40,10 @@ var store = [{
         "tags": ["42Seoul","get_next_line","fd"],
         "url": "/42seoul/get_next_line/",
         "teaser": null
+      },{
+        "title": "Push Swap 병합정렬 가이드",
+        "excerpt":"0. 과제 설명 \bStack A, Stack B가 있는 상황에서 Stack A에 숫자가 랜덤으로 들어온다. 주어진 명령어를 최소한으로 사용하여 Stack A에 숫자들을 오름차순으로 정렬한다. 1. 명령어 sa : stack A의 맨 위 2개 요소의 위치를 바꾼다. sb : stack B의 맨 위 2개 요소의 위치를 바꾼다. ss : sa와 sb를 동시에...","categories": ["42Seoul"],
+        "tags": ["42Seoul","Push_Swap","Merge_sort"],
+        "url": "/42seoul/Push_swap/",
+        "teaser": null
       }]
