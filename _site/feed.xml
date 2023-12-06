@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-30T15:10:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Push Swap 병합정렬 가이드</title><link href="http://localhost:4000/42seoul/Push_swap/" rel="alternate" type="text/html" title="Push Swap 병합정렬 가이드" /><published>2023-11-30T00:00:00+09:00</published><updated>2023-11-30T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Push_swap</id><content type="html" xml:base="http://localhost:4000/42seoul/Push_swap/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-06T13:54:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">pipex 가이드</title><link href="http://localhost:4000/42seoul/Pipex/" rel="alternate" type="text/html" title="pipex 가이드" /><published>2023-12-06T00:00:00+09:00</published><updated>2023-12-06T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Pipex</id><content type="html" xml:base="http://localhost:4000/42seoul/Pipex/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로세스간 통신을 도와주는 pipe에 대해 이해하고 사용해보자.
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="1-pipe">1. Pipe</h1>
+<h2 id="1-1-ipcinter-process-communication">1-1. IPC(Inter Process Communication)</h2>
+
+<p><strong>프로세스</strong>란 메모리에 올라와 실행되고 있는 프로그램을 말한다. 각각의 프로세스는 고유의 메모리 공간을 가지기 때문에 한 프로세스가 다른 프로세스의 데이터에 접근하는 것이 불가능하다. 이런 문제를 해결하기 위해 여러가지 방법이 있는데, 이런 방법들을 IPC라고 한다.</p>
+
+<h2 id="1-2-pipe">1-2. pipe</h2>
+
+<p>pipe는 IPC의 하나로, 임시 파일(pipe)을 만들고 프로세스의 결과를 해당 파일에 저장, 다음 프로세스가 해당 파일에서 이전 결과를 읽어와 사용하는 식으로 프로세스간에 소통한다.</p>
+
+<p>예를 들어, 다음과 같은 명령어가 있다고 하자.</p>
+<pre><code class="language-command">ls | cat
+</code></pre>
+<p><code class="language-plaintext highlighter-rouge">ls</code> 명령어는 현재 디렉토리에 있는 파일들의 목록을 보여주고, <code class="language-plaintext highlighter-rouge">cat</code> 명령어는 입력으로 받은 내용을 출력해준다. <code class="language-plaintext highlighter-rouge">cat</code> 명령어를 단일로 사용했을 때는 유저가 내용을 입력할 때까지 기다리지만, 위와 같이 실행하면 <code class="language-plaintext highlighter-rouge">ls</code> 명령어의 결과물이 pipe(|)에 저장되고, <code class="language-plaintext highlighter-rouge">cat</code> 은 유저의 input대신 pipe에 저장된 내용을 입력으로 받아와 명령어를 실행한다. 따라서 위 명령어의 출력은 <code class="language-plaintext highlighter-rouge">ls</code>의 출력과 같을 것이다.</p>
+
+<p>그렇다면 infile이라는 파일이 있다고 할 때, 아래 명령어의 결과는 어떨까?</p>
+<pre><code class="language-command">cat &lt; infile | ls
+</code></pre>
+
+<p><code class="language-plaintext highlighter-rouge">&lt; infile</code>은 입력을 infile로 하겠다는 의미이다. 즉, <code class="language-plaintext highlighter-rouge">cat &lt; infile</code>은 infile 안의 내용을 파이프에 쓰게 된다. 하지만 <code class="language-plaintext highlighter-rouge">ls</code>는 입력이 필요없는, 현재 디렉토리의 파일들을 출력해주는 명령어이므로 앞의 파이프에 내용이 있어도 신경쓰지않고 <code class="language-plaintext highlighter-rouge">ls</code>명령어의 결과를 그대로 출력하게 된다. 따라서 위 명령어의 결과는 <code class="language-plaintext highlighter-rouge">ls</code>의 결과와 같다.</p>
+
+<p><br /></p>
+
+<h1 id="2-redirection">2. Redirection</h1>
+
+<p>위에서 <code class="language-plaintext highlighter-rouge">cat &lt; infile</code>은 뒤에 오는 파일(infile)을 입력으로 한다고 설명했다. 조금 더 정확히 말하면 표준 입력으로 연결되어 있는 fd 0번을 infile로 바꿔서 연결시킨다는 말이다. <code class="language-plaintext highlighter-rouge">cat</code>은 fd 0번에서 입력을 받도록 프로그래밍 되어 있는데, fd 0번을 infile로 연결시켜 놨으므로 표준 입력이 아닌 infile의 내용을 받아와 출력하게 되는 것이다. 이처럼 프로그램이나 명령어의 입출력을 파일이나 다른 입출력 장치로 바꾸는 것을 redirection이라고 한다.</p>
+
+<p>리다이렉션은 4가지로 구분할 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;</code> : 표준 입력에 연결되어 있는 fd 0번을 <code class="language-plaintext highlighter-rouge">&lt;</code>뒤에 오는 파일로 연결한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;</code> : 표준 출력에 연결되어 있는 fd 1번을 <code class="language-plaintext highlighter-rouge">&gt;</code> 뒤에 오는 파일로 연결한다. <code class="language-plaintext highlighter-rouge">&gt;</code> 뒤의 파일이름에 해당하는 파일을 만들고 결과물을 거기에 저장한다. 만약 해당 이름의 파일이 이미 존재하면, 기존 내용이 사라지고 마지막에 실행한 명령어의 결과가 저장되므로 주의해야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> : heredoc이라고 불리며, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code> 뒤에 오는 문자가 입력될 때까지 계속 입력을 받는다. 예를 들어, <code class="language-plaintext highlighter-rouge">&lt;&lt; eof</code>이면 eof를 입력하기 전까지 계속 입력을 받고, 입력 받는 내용들은 임시 파일에 저장된다. 종료 문자인 eof가 입력되면 표준 입력에 연결되어 있는 fd 0번을 해당 임시 파일로 연결한다. 명령어가 다 실행되고 나면 임시 파일은 삭제된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 표준 출력에 연결되어 있는 fd 1번을 <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 뒤에 오는 파일로 연결한다. 만약 <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>뒤의 파일 이름에 해당하는 파일이 이미 존재하면, 그 파일의 내용 뒤에 이어쓰기한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="3-주의할-점-및-팁">3. 주의할 점 및 팁</h1>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sleep 3 | sleep 3 | sleep 3</code>의 경우 병렬 실행되어 9초가 아닌 3초를 sleep 해야 한다.</li>
+  <li>lsof 명령어를 사용해 fd leak이 나지 않는지 확인한다.  <code class="language-plaintext highlighter-rouge">cat /dev/random | head -1</code> 명령어를 넣어 보자.</li>
+  <li>파이프를 여러 개 사용하는 경우, 첫 명령어, 마지막 명령어, 그 외 중간에 있는 명령어로 구분하여 리다이렉션 방향을 고민해야 한다.</li>
+  <li>과제를 하면서 이 재생목록이 정말 큰 도움이 됐다.
+<a href="https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY">유튜브 코드볼트</a></li>
+</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="process" /><category term="fd" /><category term="pipe" /><summary type="html"><![CDATA[pipe에 대해 알아보자.]]></summary></entry><entry><title type="html">Push Swap 병합정렬 가이드</title><link href="http://localhost:4000/42seoul/Push_swap/" rel="alternate" type="text/html" title="Push Swap 병합정렬 가이드" /><published>2023-11-30T00:00:00+09:00</published><updated>2023-11-30T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Push_swap</id><content type="html" xml:base="http://localhost:4000/42seoul/Push_swap/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stack A, Stack B가 있는 상황에서 Stack A에 숫자가 랜덤으로 들어온다. 주어진 명령어를 최소한으로 사용하여 Stack A에 숫자들을 오름차순으로 정렬한다.
 </code></pre></div></div>
 
@@ -364,7 +415,203 @@ va_list가 가리키고 있는 주소를 마지막 고정 인자 다음의 첫 �
   <li>read가 -1을 리턴했을 때, 모든 노드를 삭제하는 것이 아니라 해당 노드만 삭제해야 한다. 만약 사용자가 실수로 잘못된 fd를 입력했을 때, 기존의 정상 노드까지 다 삭제되어 버리면 남아있던 buf가 사라져서 정보를 잃게 된다. 이렇게 작동하면 사용자가 너무 불편할 것이다. 코드를 짤 때 사용자의 입장에서 생각해보자.</li>
   <li>read가 0을 리턴했을 때는 buf에 남아있는 내용을 리턴해주고 노드를 clear한다.</li>
   <li>node 구조체에 buf_size를 넣어 놓음으로써 ret을 제외한 임시 문자열(buf)의 마지막에 <code class="language-plaintext highlighter-rouge">\0</code>문자를 넣을 필요가 없었다. buf_size를 참고하여 문자열을 순회할 수 있었다. 구조체를 만들 때, 해당 구조체에 필요한 정보가 무엇이 있는지 생각해보고 구조체에 추가해서 코드를 간편하게 줄이자.</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="get_next_line" /><category term="fd" /><summary type="html"><![CDATA[파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.]]></summary></entry><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="get_next_line" /><category term="fd" /><summary type="html"><![CDATA[파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.]]></summary></entry><entry><title type="html">Fract’ol</title><link href="http://localhost:4000/42seoul/Fract'ol/" rel="alternate" type="text/html" title="Fract’ol" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Fract&apos;ol</id><content type="html" xml:base="http://localhost:4000/42seoul/Fract&apos;ol/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlx 라이브러리를 이용해 다양한 Fractal을 구현한다.
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="1-필요-개념">1. 필요 개념</h1>
+
+<h2 id="fractal">Fractal</h2>
+
+<p>프랙탈은 일부 작은 조각이 전체와 비슷한 기하학적 형태 즉, 자기 유사성을 가지는 기하학적 구조이다. 자기 유사성은 같은 패턴에 대해 재귀 또는 반복을 이용해 구현한다.</p>
+
+<p>복소 평면에서 각 점이 <u>점화식에서 발산하는지, 발산하지 않는지에 따라</u> 프랙탈 집합이 결정된다.</p>
+
+<p>프랙탈을 더 예쁘게(자세하게) 구현하고 싶다면, 각 점이 <strong>얼마나 빠르게</strong> 발산하는 지에 따라서 색을 다르게 표현해 주면 된다.</p>
+
+<h3 id="망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</h3>
+
+\[Z_0 = 0\]
+
+\[Z_n+_1 = Z_n ^2 + C\]
+
+<p>위 식을 만족(수렴)하는 C의 집합.</p>
+
+<h3 id="줄리아-집합julia-set">줄리아 집합(Julia set)</h3>
+
+<p>망델브로 집합과 식은 같지만, 주어진 C에 대해 점화식이 수렴하는 Z의 집합이라는 점이 다르다.</p>
+
+<h3 id="불타는-배burning-ship">불타는 배(Burning ship)</h3>
+
+\[z_0 = 0\]
+
+\[z_{n+1} = (|Re(z_n)| + i|Im(z_n)|)^2 + c\]
+
+<p><br /></p>
+
+<h2 id="pixel">Pixel</h2>
+
+<p><code class="language-plaintext highlighter-rouge">picture element</code>의 약자로, 디지털 이미지의 가장 작은 단위.<br />
+화소라고도 부르며, 이미지를 구성하는 각 점 또는 작은 사각형으로 이해할 수 있다.</p>
+
+<p>픽셀은 색상 정보를 나타내기 위해 비트로 표현된다. 8비트, 16비트, 24비트, 32비트(약 42억 색상) 등의 비트 깊이로 표현된다.</p>
+
+<p>4바이트(32비트, int) 픽셀의 경우, 각 바이트는 알파 투명도(A), R, G, B 값을 나타낸다.</p>
+
+<p>32비트 컴퓨터 아키텍처에서는 메모리의 주소 지정이 32비트로 이루어지기 때문에 한번에 4바이트 크기의 데이터를 처리하는 것이 효율적이고, 따라서 픽셀을 4바이트로 표현하는 것은 자연스럽다.</p>
+
+<h2 id="byte-orderendian">Byte Order(Endian)</h2>
+
+<p><a href="https://jhnyang.tistory.com/172">[Byte Order 바이트 오더] 빅엔디안(Big Endian)과 리틀엔디안(little endian) - 1편</a></p>
+
+<h2 id="bit-calculator">Bit Calculator</h2>
+
+<p><strong>«, »</strong> : 피연산자의 비트 열을 왼쪽, 오른쪽으로 이동시킨다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+	<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
+	<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00111100</span>
+
+	<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00010000</span>
+	<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
+	<span class="kt">int</span> <span class="n">result4</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+</code></pre></div></div>
+
+<p>\&amp; : 비트단위로 AND 연산을 한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">&amp;</span> <span class="n">num2</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>**</td>
+      <td>** : 비트단위로 OR 연산을 한다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">|</span> <span class="n">num2</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">=</span> <span class="mi">31</span>
+</code></pre></div></div>
+
+<p><strong>^</strong> : 두 개의 비트가 서로 다른 경우에 1을 반환하는 XOR 연산이다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">0</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
+
+<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">27</span>
+</code></pre></div></div>
+
+<p><strong>~</strong> : 비트를 0에서 1로, 1에서 0으로 반전시키는 NOT 연산자이다. 보수 연산이라고도 불린다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="mi">0</span> <span class="o">--&gt;</span> <span class="mi">1</span>
+<span class="o">~</span><span class="mi">1</span> <span class="o">--&gt;</span> <span class="mi">0</span>
+
+<span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">~</span><span class="n">num1</span><span class="p">;</span>
+
+<span class="o">--&gt;</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span> <span class="c1">// 11111111 11111111 11111111 11110000</span>
+</code></pre></div></div>
+
+<h2 id="hooking">Hooking</h2>
+
+<p>컴퓨터 프로그래밍에서 Hooking이라는 용어는 소프트웨어 구성 요소간에 전달되는 함수 호출이나 메시지 또는 이벤트를 가로 채서 운영 체제, 응용 프로그램 또는 기타 소프트웨어 구성 요소의 동작을 변경하거나 강화하는 데 사용되는 다양한 기술을 말한다. 이러한 가로채는 함수 호출, 이벤트 또는 메시지를 처리하는 코드를 Hook이라고 한다.</p>
+
+<h2 id="exit-vs-return">exit vs return</h2>
+
+<h3 id="exit">exit()</h3>
+<ul>
+  <li>exit() 함수는 프로그램을 즉시 종료시키는 기능을 한다.</li>
+  <li>이 함수를 호출하면 프로그램이 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
+  <li>종료 코드(exit code)를 지정할 수 있으며, 이는 프로그램이 종료되면 운영 체제에게 전달된다.</li>
+  <li>일반적으로 0은 성공적인 종료를 의미하고, 0 이외의 값은 오류를 나타낸다.</li>
+  <li>exit() 함수는 주로 비정상적인 상황이 발생했을 때 또는 특정 조건이 충족되었을 때 프로그램을 종료하는 데 사용된다.
+    <h3 id="return">return()</h3>
+  </li>
+  <li>return 구문은 함수에서 결과 값을 반환하는 용도로 사용된다.</li>
+  <li>함수 내에서 return을 사용하면 함수가 값을 계산하거나 처리한 후, 그 값을 호출한 부분으로 반환한다.</li>
+  <li>함수가 값을 반환하면, 호출한 부분에서 반환ㄴ된 값을 변수에 할당하거나 다른 작업에 활용할 수 있다.</li>
+  <li>함수는 return을 만나면 해당 구문에서 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
+</ul>
+
+<p>요약하면, <code class="language-plaintext highlighter-rouge">exit()</code> 함수는 프로세스 자체를 종료시키는 데 사용되고, <code class="language-plaintext highlighter-rouge">return</code> 구문은 함수 내에서 결과값을 반환하고 함수의 실행을 제어하는 데 사용된다.</p>
+
+<p><br />
+<br /></p>
+
+<h1 id="2-구현">2. 구현</h1>
+
+<h2 id="마우스-위치-기준으로-확대하기">마우스 위치 기준으로 확대하기</h2>
+
+<p>복소 평면 <code class="language-plaintext highlighter-rouge">r</code>축의 가장 작은 값을 <code class="language-plaintext highlighter-rouge">min_r</code>, 확대 후 새로운 r축의 최소값(모니터에 보여지는 r축의 최소값)을 <code class="language-plaintext highlighter-rouge">new_min_r</code>, 확대를 하기 위한 <code class="language-plaintext highlighter-rouge">ZOOMIN</code> 상수를 0.9라고 하자.</p>
+
+<p>마우스 포인터의 위치 x, y는 <u>확대 전이나 확대 후나 같은 값</u>을 가져야 한다(마우스 포인터를 기준으로 확대할 것이므로).</p>
+
+<p>즉,</p>
+
+\[min\_r + x * dx = new\_min\_r + x * 0.9 * dx\]
+
+\[new\_min\_r = min\_r + 0.1 * x * dx\]
+
+<p>따라서 ZOOMIN 할 때마다<br />
+<br /></p>
+
+\[min\_r += 0.1 * x * dx\]
+
+<p><br />
+위와 같이 <code class="language-plaintext highlighter-rouge">min_r</code>을 업데이트 해주면 된다.
+<br /></p>
+
+<h1 id="3-시행착오">3. 시행착오</h1>
+
+<ul>
+  <li>double로 계산해야하는 변수를 int로 선언해놔서, 이미지가 부드럽게 이어지지 않고 큼지막한 직사각형처럼 각이 졌다. → 비교적 좁은 범위에서 이미지를 디스플레이하는 경우였어서 int로 변수를 사용하면 이렇게 보였다.</li>
+  <li>문자열도 header 파일에 <code class="language-plaintext highlighter-rouge">define</code>할 수 있다.</li>
+  <li>libft는 이미 makefile이 있으므로, fractol makefile을 실행할 때 libft 디렉토리로 들어가서 libft makefile을 실행시키고, 나와서 libft.a만 따로 사용해서 makefile을 구성하면 된다.
+    <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">$(NAME) </span><span class="o">:</span> <span class="nf">$(OBJS)</span>
+  <span class="err">cd</span> <span class="err">libft;</span> <span class="err">make;</span> <span class="err">cd</span> <span class="err">..</span>
+  <span class="err">cc</span> <span class="err">first.o</span> <span class="err">second.o</span> <span class="err">-Llibft</span> <span class="err">-lft</span>
+</code></pre></div>    </div>
+  </li>
+  <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.</li>
+</ul>
+
+<p><br />
+<br /></p>
+<h1 id="reference">📬 <strong>Reference</strong></h1>
+
+<p><a href="https://yeosong1.github.io/miniRT%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">42 wiki</a><br />
+<a href="https://javalab.org/mandelbrot_set/">자바 실험실</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Fractol" /><category term="Fractal" /><category term="mlx" /><summary type="html"><![CDATA[mlx를 이용해 다양한 Fractal을 구현해보자.]]></summary></entry><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가상 머신을 이용해 엄격한 규칙들로 이루어진 나만의 서버를 구현한다.
 </code></pre></div></div>
 
@@ -863,474 +1110,7 @@ va_list가 가리키고 있는 주소를 마지막 고정 인자 다음의 첫 �
 
 <h1 id="reference">📬 <strong>Reference</strong></h1>
 
-<p><a href="https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/">https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Born2beroot" /><category term="가상머신" /><category term="VM" /><category term="virtual_machine" /><summary type="html"><![CDATA[가상머신을 이용해 나만의 서버를 만들어 보자.]]></summary></entry><entry><title type="html">Fract’ol</title><link href="http://localhost:4000/42seoul/Fract'ol/" rel="alternate" type="text/html" title="Fract’ol" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Fract&apos;ol</id><content type="html" xml:base="http://localhost:4000/42seoul/Fract&apos;ol/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlx 라이브러리를 이용해 다양한 Fractal을 구현한다.
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="1-필요-개념">1. 필요 개념</h1>
-
-<h2 id="fractal">Fractal</h2>
-
-<p>프랙탈은 일부 작은 조각이 전체와 비슷한 기하학적 형태 즉, 자기 유사성을 가지는 기하학적 구조이다. 자기 유사성은 같은 패턴에 대해 재귀 또는 반복을 이용해 구현한다.</p>
-
-<p>복소 평면에서 각 점이 <u>점화식에서 발산하는지, 발산하지 않는지에 따라</u> 프랙탈 집합이 결정된다.</p>
-
-<p>프랙탈을 더 예쁘게(자세하게) 구현하고 싶다면, 각 점이 <strong>얼마나 빠르게</strong> 발산하는 지에 따라서 색을 다르게 표현해 주면 된다.</p>
-
-<h3 id="망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</h3>
-
-\[Z_0 = 0\]
-
-\[Z_n+_1 = Z_n ^2 + C\]
-
-<p>위 식을 만족(수렴)하는 C의 집합.</p>
-
-<h3 id="줄리아-집합julia-set">줄리아 집합(Julia set)</h3>
-
-<p>망델브로 집합과 식은 같지만, 주어진 C에 대해 점화식이 수렴하는 Z의 집합이라는 점이 다르다.</p>
-
-<h3 id="불타는-배burning-ship">불타는 배(Burning ship)</h3>
-
-\[z_0 = 0\]
-
-\[z_{n+1} = (|Re(z_n)| + i|Im(z_n)|)^2 + c\]
-
-<p><br /></p>
-
-<h2 id="pixel">Pixel</h2>
-
-<p><code class="language-plaintext highlighter-rouge">picture element</code>의 약자로, 디지털 이미지의 가장 작은 단위.<br />
-화소라고도 부르며, 이미지를 구성하는 각 점 또는 작은 사각형으로 이해할 수 있다.</p>
-
-<p>픽셀은 색상 정보를 나타내기 위해 비트로 표현된다. 8비트, 16비트, 24비트, 32비트(약 42억 색상) 등의 비트 깊이로 표현된다.</p>
-
-<p>4바이트(32비트, int) 픽셀의 경우, 각 바이트는 알파 투명도(A), R, G, B 값을 나타낸다.</p>
-
-<p>32비트 컴퓨터 아키텍처에서는 메모리의 주소 지정이 32비트로 이루어지기 때문에 한번에 4바이트 크기의 데이터를 처리하는 것이 효율적이고, 따라서 픽셀을 4바이트로 표현하는 것은 자연스럽다.</p>
-
-<h2 id="byte-orderendian">Byte Order(Endian)</h2>
-
-<p><a href="https://jhnyang.tistory.com/172">[Byte Order 바이트 오더] 빅엔디안(Big Endian)과 리틀엔디안(little endian) - 1편</a></p>
-
-<h2 id="bit-calculator">Bit Calculator</h2>
-
-<p><strong>«, »</strong> : 피연산자의 비트 열을 왼쪽, 오른쪽으로 이동시킨다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-	<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
-	<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00111100</span>
-
-	<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00010000</span>
-	<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
-	<span class="kt">int</span> <span class="n">result4</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-</code></pre></div></div>
-
-<p>\&amp; : 비트단위로 AND 연산을 한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
-
-<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">&amp;</span> <span class="n">num2</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">4</span>
-</code></pre></div></div>
-
-<table>
-  <tbody>
-    <tr>
-      <td>**</td>
-      <td>** : 비트단위로 OR 연산을 한다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
-
-<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">|</span> <span class="n">num2</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">=</span> <span class="mi">31</span>
-</code></pre></div></div>
-
-<p><strong>^</strong> : 두 개의 비트가 서로 다른 경우에 1을 반환하는 XOR 연산이다.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">1</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">0</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
-
-<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">27</span>
-</code></pre></div></div>
-
-<p><strong>~</strong> : 비트를 0에서 1로, 1에서 0으로 반전시키는 NOT 연산자이다. 보수 연산이라고도 불린다.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="mi">0</span> <span class="o">--&gt;</span> <span class="mi">1</span>
-<span class="o">~</span><span class="mi">1</span> <span class="o">--&gt;</span> <span class="mi">0</span>
-
-<span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">~</span><span class="n">num1</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span> <span class="c1">// 11111111 11111111 11111111 11110000</span>
-</code></pre></div></div>
-
-<h2 id="hooking">Hooking</h2>
-
-<p>컴퓨터 프로그래밍에서 Hooking이라는 용어는 소프트웨어 구성 요소간에 전달되는 함수 호출이나 메시지 또는 이벤트를 가로 채서 운영 체제, 응용 프로그램 또는 기타 소프트웨어 구성 요소의 동작을 변경하거나 강화하는 데 사용되는 다양한 기술을 말한다. 이러한 가로채는 함수 호출, 이벤트 또는 메시지를 처리하는 코드를 Hook이라고 한다.</p>
-
-<h2 id="exit-vs-return">exit vs return</h2>
-
-<h3 id="exit">exit()</h3>
-<ul>
-  <li>exit() 함수는 프로그램을 즉시 종료시키는 기능을 한다.</li>
-  <li>이 함수를 호출하면 프로그램이 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
-  <li>종료 코드(exit code)를 지정할 수 있으며, 이는 프로그램이 종료되면 운영 체제에게 전달된다.</li>
-  <li>일반적으로 0은 성공적인 종료를 의미하고, 0 이외의 값은 오류를 나타낸다.</li>
-  <li>exit() 함수는 주로 비정상적인 상황이 발생했을 때 또는 특정 조건이 충족되었을 때 프로그램을 종료하는 데 사용된다.
-    <h3 id="return">return()</h3>
-  </li>
-  <li>return 구문은 함수에서 결과 값을 반환하는 용도로 사용된다.</li>
-  <li>함수 내에서 return을 사용하면 함수가 값을 계산하거나 처리한 후, 그 값을 호출한 부분으로 반환한다.</li>
-  <li>함수가 값을 반환하면, 호출한 부분에서 반환ㄴ된 값을 변수에 할당하거나 다른 작업에 활용할 수 있다.</li>
-  <li>함수는 return을 만나면 해당 구문에서 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
-</ul>
-
-<p>요약하면, <code class="language-plaintext highlighter-rouge">exit()</code> 함수는 프로세스 자체를 종료시키는 데 사용되고, <code class="language-plaintext highlighter-rouge">return</code> 구문은 함수 내에서 결과값을 반환하고 함수의 실행을 제어하는 데 사용된다.</p>
-
-<p><br />
-<br /></p>
-
-<h1 id="2-구현">2. 구현</h1>
-
-<h2 id="마우스-위치-기준으로-확대하기">마우스 위치 기준으로 확대하기</h2>
-
-<p>복소 평면 <code class="language-plaintext highlighter-rouge">r</code>축의 가장 작은 값을 <code class="language-plaintext highlighter-rouge">min_r</code>, 확대 후 새로운 r축의 최소값(모니터에 보여지는 r축의 최소값)을 <code class="language-plaintext highlighter-rouge">new_min_r</code>, 확대를 하기 위한 <code class="language-plaintext highlighter-rouge">ZOOMIN</code> 상수를 0.9라고 하자.</p>
-
-<p>마우스 포인터의 위치 x, y는 <u>확대 전이나 확대 후나 같은 값</u>을 가져야 한다(마우스 포인터를 기준으로 확대할 것이므로).</p>
-
-<p>즉,</p>
-
-\[min\_r + x * dx = new\_min\_r + x * 0.9 * dx\]
-
-\[new\_min\_r = min\_r + 0.1 * x * dx\]
-
-<p>따라서 ZOOMIN 할 때마다<br />
-<br /></p>
-
-\[min\_r += 0.1 * x * dx\]
-
-<p><br />
-위와 같이 <code class="language-plaintext highlighter-rouge">min_r</code>을 업데이트 해주면 된다.
-<br /></p>
-
-<h1 id="3-시행착오">3. 시행착오</h1>
-
-<ul>
-  <li>double로 계산해야하는 변수를 int로 선언해놔서, 이미지가 부드럽게 이어지지 않고 큼지막한 직사각형처럼 각이 졌다. → 비교적 좁은 범위에서 이미지를 디스플레이하는 경우였어서 int로 변수를 사용하면 이렇게 보였다.</li>
-  <li>문자열도 header 파일에 <code class="language-plaintext highlighter-rouge">define</code>할 수 있다.</li>
-  <li>libft는 이미 makefile이 있으므로, fractol makefile을 실행할 때 libft 디렉토리로 들어가서 libft makefile을 실행시키고, 나와서 libft.a만 따로 사용해서 makefile을 구성하면 된다.
-    <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">$(NAME) </span><span class="o">:</span> <span class="nf">$(OBJS)</span>
-  <span class="err">cd</span> <span class="err">libft;</span> <span class="err">make;</span> <span class="err">cd</span> <span class="err">..</span>
-  <span class="err">cc</span> <span class="err">first.o</span> <span class="err">second.o</span> <span class="err">-Llibft</span> <span class="err">-lft</span>
-</code></pre></div>    </div>
-  </li>
-  <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.</li>
-</ul>
-
-<p><br />
-<br /></p>
-<h1 id="reference">📬 <strong>Reference</strong></h1>
-
-<p><a href="https://yeosong1.github.io/miniRT%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">42 wiki</a><br />
-<a href="https://javalab.org/mandelbrot_set/">자바 실험실</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Fractol" /><category term="Fractal" /><category term="mlx" /><summary type="html"><![CDATA[mlx를 이용해 다양한 Fractal을 구현해보자.]]></summary></entry><entry><title type="html">Libft</title><link href="http://localhost:4000/42seoul/Libft/" rel="alternate" type="text/html" title="Libft" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Libft</id><content type="html" xml:base="http://localhost:4000/42seoul/Libft/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libc에 있는 함수 및 앞으로의 문제를 푸는 데 유용한 함수들을 구현하고 library로 만든다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-library">1. Library</h1>
-
-<h2 id="1-1-library란">1-1. Library란?</h2>
-
-<p><strong>라이브러리</strong>는 주로 소프트웨어를 개발할 때 컴퓨터 프로그램이 사용하는 비휘발성 자원의 모임이다.
-비휘발성 자원의 예로는 미리 작성된 코드, 함수, 클래스, 자료형 등이 있다.<br />
-라이브러리는 재사용이 필요한 기능의 반복적인 코드 작성을 피하고, 언제든지 필요한 곳에서 호출하여 사용하기 위한 목적을 가지고 만들어진다.<br />
-새로운 소스 파일들과 빠르게 링크될 수 있도록 보통 컴파일된 형태인 <code class="language-plaintext highlighter-rouge">object file</code>로 존재하며 미리 컴파일 되어 있기 때문에 컴파일 시간도 단축된다.
-<br /></p>
-<h2 id="1-2-library의-종류">1-2. Library의 종류</h2>
-
-<p>라이브러리는 크게 <strong>정적 라이브러리</strong>와 <strong>동적 라이브러리</strong> 두 종류로 사용된다.<br />
-두 라이브러리의 가장 큰 차이점은 실행파일에 링킹되는 시점이다.</p>
-
-<ul>
-  <li>
-    <p><strong>정적 라이브러리</strong>(Static Library) (.a / .lib)</p>
-
-    <p>정적으로 만들어진 라이브러리는 링크 단계에서 실행 파일에 포함된다.
-  즉, 라이브러리의 동작 코드가 실행 파일에 들어있기 때문에 별도의 추가 작업 없이 실행 파일에서
-  바로 라이브러리의 함수들을 사용할 수 있다.
-  하지만 실행 파일에서 사용하지 않는 코드가 라이브러리에 많이 담겨 있을수록, 실행 파일의 불필요한 볼륨이
-  커지기 때문에 메모리의 공간 활용 효율이 떨어지는 등의 문제가 생긴다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>동적 라이브러리</strong>(Dynamic Library) (.so / .dll)</p>
-
-    <p>컴파일 타임에 링킹되는 정적 라이브러리와 다르게 동적 라이브러리는 런타임에 연결된다.
-  정적 라이브러리와의 가장 큰 차이점은, 라이브러리를 사용할 때 각각의 프로세스마다 메모리에 라이브러리 전체 내용을 할당하는 것이 아닌, 필요한 내용만 할당하여 사용할 수 있다는 점이다.
-  이러한 특징이 생기는 이유는 obj 파일을 만들 때 프로그램에서 사용하는 모든 라이브러리 모듈을 복사하지 않고, 해당 모듈의 주소만을 가지고 있다가 런타임에 실행 파일과 라이브러리가 메모리에 위치될 때 해당 모듈의 주소로 가서 필요한 것만 들고 오는 방식이기 때문이다. 런타임에 운영체제에 의하여 이러한 작업이 수행된다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>정적 라이브러리와 동적 라이브러리의 차이점</strong></p>
-
-    <p>정적 라이브러리는 실행할 때 라이브러리의 내용을 모두 메모리에 로드하는 반면, 동적 라이브러리는 메모리에 이미 존재하는 경우 로드되는 시간과 공간을 아낄 수 있다. 하지만 매번 라이브러리의 주소에 접근해야 하기 때문에 오버헤드가 존재해 수행 시간은 정적 라이브러리보다 느리다.</p>
-  </li>
-</ul>
-
-<p><br /></p>
-<h2 id="1-3-라이브러리-만들기">1-3. 라이브러리 만들기</h2>
-
-<p>명령어 ar을 사용한다.<br />
-컴파일된 <em>.o 파일들을 묶어서 library (</em>.a)로 만든다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">option</th>
-      <th style="text-align: center">meaning</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">-r</td>
-      <td style="text-align: center">지정한 파일을 archive 파일에 추가, 만약 기존 파일이면 치환한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-c</td>
-      <td style="text-align: center">archive가 생성 되어질 때 기본적으로 표준 에러로 기록되어지는 진단 메세지의 출력을 제한한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-u</td>
-      <td style="text-align: center">오브젝트 파일의 타임스탬프를 비교해 새로운 파일일 경우에만 치환한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-v</td>
-      <td style="text-align: center">자세한 내용을 보여주는 verbose 모드로, 파일 크기나 갱신 시각 등의 상세 정보를 출력한다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br />
-<br /></p>
-<h1 id="2-필요-개념">2. 필요 개념</h1>
-
-<ul>
-  <li>
-    <p><strong>void pointer로 입력받은 인자를 unsigned char 포인터로 캐스팅해서 접근하는 이유</strong></p>
-
-    <p>void pointer에 어떤 포인터가 들어올지 모르기 때문에 1바이트씩 접근해야 안전하다. 포인터는 주소값이기 때문에 부호를 쓰지 않는다. 따라서 char가 아닌 unsigned char를 쓰는 것이 관례이다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>const int*와 int* const의 차이</strong></p>
-
-    <p>const int<em>( = int const *)는 const int형을 가리키는 포인터로, 포인터 값은 변경 가능하지만 내부의 int값은 const로 선언되어 변경이 불가능하다. 반면 int</em> const는 const 포인터가 int형을 가리키고 있으므로 포인터의 값은 변경 불가능하지만 내부의 int값은 변경이 가능하다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>mem vs str functions</strong></p>
-
-    <p>str함수는 “문자열을 검사하기 위한” 함수. 즉, ‘\0’ 또는 size를 통해서 종료 시점을 결정한다.<br />
-  반면 mem 함수는 모든 배열에 대해 사용할 수 있어야 하기 때문에 size만을 통해서 종료 시점을 결정한다.</p>
-
-    <p>함수 내부에서 unsigned char로 캐스팅 해주는 이유 : unsigned char는 변수 안의 모든 값이 부호비트나 패딩비트같이 어떠한 용도로 사용되는 값이 없고, 우리가 전달하고자 하는 값으로 모두 차있기 때문에 비트 해석이 왜곡될 걱정이 없다.</p>
-
-    <p>*패딩비트 : 가장 큰 자료형의 크기를 따르기 때문에 생기는 사용하지 않는 비트
-<br /></p>
-  </li>
-  <li>
-    <p><strong>size_t</strong></p>
-
-    <p>size_t는 typedef를 이용하여 정의한 하나의 별칭(alias)으로 ‘이론상 가장 큰 사이즈를 담을 수 있는 unsigned 데이터 타입’으로 정의된다.<br />
-  즉, 32bit에서는 unsigned int, 64bit에서는 unsigned long long이 된다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>함수 포인터</strong></p>
-
-    <p>포인터는 다른 변수의 주소를 저장하는 변수다. 이와 유사하게 함수 포인터는 함수의 주소를 저장하는 변수다.</p>
-  </li>
-</ul>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>식별자 foo는 함수의 이름이다. 변수와 마찬가지로 함수는 메모리의 할당된 주소에 있다.</p>
-
-<p>() 연산자를 통해 함수를 호출하면, 호출되는 함수의 주소로 점프하여 실행한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">foo</span><span class="p">();</span> <span class="c1">//foo 함수의 주소(ex.0x002717f0)로 점프한다.</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>함수 foo를 printf로 출력하면 0x002717f0가 출력된다.
-<br />
-함수 포인터는 함수의 주소를 저장했다가, 해당 주소의 함수를 호출하는 데 사용하는 포인터를 말한다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>반환형식 (* 식별자) (파라미터형 목록)
-</code></pre></div></div>
-
-<p>위와 같은 형식으로 사용한다.</p>
-
-<p><br /></p>
-<ul>
-  <li><strong>함수 포인터 사용법</strong></li>
-</ul>
-
-<p>반환값과 매개변수가 없는 경우</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">void</span> <span class="nf">print_hello</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello, world!</span><span class="se">\\</span><span class="s">n"</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)();</span>
-
-	<span class="n">fp</span> <span class="o">=</span> <span class="n">print_hello</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">()</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="o">!</span>
-</code></pre></div></div>
-
-<p>반환값과 매개변수가 있는 경우</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-	<span class="n">fp</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
-
-	<span class="n">fp</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-	<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span><span class="mi">8</span>
-			   <span class="mi">2</span>
-</code></pre></div></div>
-<p><br /></p>
-<ul>
-  <li><strong>함수 포인터 배열 사용하기</strong></li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;}</span>
-<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;}</span>
-<span class="kt">int</span> <span class="nf">mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;}</span>
-<span class="kt">int</span> <span class="nf">div</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//함수 포인터 배열 선언</span>
-	
-	<span class="n">fp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mul</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">div</span><span class="p">;</span>
-
-	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
-	<span class="p">}</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="mi">30</span>
-			<span class="mi">10</span>
-			<span class="mi">200</span>
-			<span class="mi">2</span>
-</code></pre></div></div>
-<p><br /></p>
-<ul>
-  <li><strong>typedef로 함수 포인터 간소화 하기</strong></li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">PtrFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
-
-<span class="n">PtrFunc</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
-</code></pre></div></div>
-<p><br /></p>
-<ul>
-  <li>
-    <p><strong>메모리 해제(free)</strong></p>
-
-    <p>동적 메모리를 할당하면 힙(heap) 메모리의 공간을 할당받는다. 이 공간은 프로그램이 종료될 때까지 보존된다. 따라서 메모리를 할당만 하고 해제를 해주지 않으면 메모리 사용량만 계속 증가하게 된다. 즉 프로그램이 필요하지 않은 메모리를 계속 점유하고 있는 현상을 “메모리 누수(memory leak)”라고 한다. 즉 동적 할당으로 힙 메모리에 공간을 생성해놓은 뒤 회수하지 않으면 프로그램이 실행되는 동안은 그 공간은 계속해서 살아있게 되고 이는 메모리의 낭비를 초래하여 성능 부하를 이르킬 수 있다. 고로 사용하지 않는 메모리는 free함수를 사용하여 꼭 회수해줘야 한다.</p>
-  </li>
-</ul>
-
-<p><br /></p>
-<ul>
-  <li>
-    <p><strong>2의 보수법</strong></p>
-
-    <p>C언어는 2진 보수 방식을 사용한다.<br />
-  첫번째 비트가 0일 때는 양수라는 의미로 2진수를 읽듯이 읽으면 된다. 첫번째 비트가 1일 때는 음수라는 의미로 2진 보수를 역(1을 빼고 1진 보수법 적용)으로 취한 값이 절댓값이 된다.<br />
-  예를 들어 8비트의 메모리에 10010001 값이 들어 있다면 첫번째 비트가 1이므로 음수를 의미한다. 절댓값을 계산해보면 10010001 → 10010000 → 01101111로 1 + 2 + 4 + 8 + 32 + 64 = 111이다. 즉 10010001은 -111이다.<br />
-  2진 보수 방식에서 8비트(1바이트)로 표현할 때 01111111이 가장 큰 정수이고, 10000000이 가장 작은 정수이다.
-<br /></p>
-  </li>
-  <li>
-    <p>큰 자료형 → 작은 자료형 형 변환시 뒤쪽(오른쪽) 비트부터 자른다.
-<br /></p>
-  </li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Libft" /><category term="Archive" /><category term="Library" /><summary type="html"><![CDATA[표준 C 라이브러리(libc)에 있는 함수 및 앞으로 과제를 하면서 유용한 함수들을 구현하고 library로 만든다.]]></summary></entry><entry><title type="html">Makefile 문법 및 예시</title><link href="http://localhost:4000/42seoul/Makefile/" rel="alternate" type="text/html" title="Makefile 문법 및 예시" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Makefile</id><content type="html" xml:base="http://localhost:4000/42seoul/Makefile/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
+<p><a href="https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/">https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Born2beroot" /><category term="가상머신" /><category term="VM" /><category term="virtual_machine" /><summary type="html"><![CDATA[가상머신을 이용해 나만의 서버를 만들어 보자.]]></summary></entry><entry><title type="html">Makefile 문법 및 예시</title><link href="http://localhost:4000/42seoul/Makefile/" rel="alternate" type="text/html" title="Makefile 문법 및 예시" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Makefile</id><content type="html" xml:base="http://localhost:4000/42seoul/Makefile/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
 <hr />
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>빌드를 쉽게 해주는 make와 Makefile에 대해 알아보자.
 </code></pre></div></div>
@@ -1677,7 +1457,278 @@ make가 규칙을 정의하면 변경이 필요한 것만 만들어 주는 프�
 <ul>
   <li><a href="http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make.html#toc3">GNU Make 강좌</a></li>
   <li><a href="https://80000coding.oopy.io/6172b586-8056-4cb1-8c4f-2179009aef3f#6172b586-8056-4cb1-8c4f-2179009aef3f">Makefile, make 기초</a></li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Linux" /><category term="Make" /><category term="Makefile" /><summary type="html"><![CDATA[리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.]]></summary></entry><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/etc/Markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2023-10-18T00:00:00+09:00</published><updated>2023-10-18T00:00:00+09:00</updated><id>http://localhost:4000/etc/Markdown</id><content type="html" xml:base="http://localhost:4000/etc/Markdown/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
+</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Linux" /><category term="Make" /><category term="Makefile" /><summary type="html"><![CDATA[리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.]]></summary></entry><entry><title type="html">Libft</title><link href="http://localhost:4000/42seoul/Libft/" rel="alternate" type="text/html" title="Libft" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Libft</id><content type="html" xml:base="http://localhost:4000/42seoul/Libft/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libc에 있는 함수 및 앞으로의 문제를 푸는 데 유용한 함수들을 구현하고 library로 만든다.
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h1 id="1-library">1. Library</h1>
+
+<h2 id="1-1-library란">1-1. Library란?</h2>
+
+<p><strong>라이브러리</strong>는 주로 소프트웨어를 개발할 때 컴퓨터 프로그램이 사용하는 비휘발성 자원의 모임이다.
+비휘발성 자원의 예로는 미리 작성된 코드, 함수, 클래스, 자료형 등이 있다.<br />
+라이브러리는 재사용이 필요한 기능의 반복적인 코드 작성을 피하고, 언제든지 필요한 곳에서 호출하여 사용하기 위한 목적을 가지고 만들어진다.<br />
+새로운 소스 파일들과 빠르게 링크될 수 있도록 보통 컴파일된 형태인 <code class="language-plaintext highlighter-rouge">object file</code>로 존재하며 미리 컴파일 되어 있기 때문에 컴파일 시간도 단축된다.
+<br /></p>
+<h2 id="1-2-library의-종류">1-2. Library의 종류</h2>
+
+<p>라이브러리는 크게 <strong>정적 라이브러리</strong>와 <strong>동적 라이브러리</strong> 두 종류로 사용된다.<br />
+두 라이브러리의 가장 큰 차이점은 실행파일에 링킹되는 시점이다.</p>
+
+<ul>
+  <li>
+    <p><strong>정적 라이브러리</strong>(Static Library) (.a / .lib)</p>
+
+    <p>정적으로 만들어진 라이브러리는 링크 단계에서 실행 파일에 포함된다.
+  즉, 라이브러리의 동작 코드가 실행 파일에 들어있기 때문에 별도의 추가 작업 없이 실행 파일에서
+  바로 라이브러리의 함수들을 사용할 수 있다.
+  하지만 실행 파일에서 사용하지 않는 코드가 라이브러리에 많이 담겨 있을수록, 실행 파일의 불필요한 볼륨이
+  커지기 때문에 메모리의 공간 활용 효율이 떨어지는 등의 문제가 생긴다.
+<br /></p>
+  </li>
+  <li>
+    <p><strong>동적 라이브러리</strong>(Dynamic Library) (.so / .dll)</p>
+
+    <p>컴파일 타임에 링킹되는 정적 라이브러리와 다르게 동적 라이브러리는 런타임에 연결된다.
+  정적 라이브러리와의 가장 큰 차이점은, 라이브러리를 사용할 때 각각의 프로세스마다 메모리에 라이브러리 전체 내용을 할당하는 것이 아닌, 필요한 내용만 할당하여 사용할 수 있다는 점이다.
+  이러한 특징이 생기는 이유는 obj 파일을 만들 때 프로그램에서 사용하는 모든 라이브러리 모듈을 복사하지 않고, 해당 모듈의 주소만을 가지고 있다가 런타임에 실행 파일과 라이브러리가 메모리에 위치될 때 해당 모듈의 주소로 가서 필요한 것만 들고 오는 방식이기 때문이다. 런타임에 운영체제에 의하여 이러한 작업이 수행된다.
+<br /></p>
+  </li>
+  <li>
+    <p><strong>정적 라이브러리와 동적 라이브러리의 차이점</strong></p>
+
+    <p>정적 라이브러리는 실행할 때 라이브러리의 내용을 모두 메모리에 로드하는 반면, 동적 라이브러리는 메모리에 이미 존재하는 경우 로드되는 시간과 공간을 아낄 수 있다. 하지만 매번 라이브러리의 주소에 접근해야 하기 때문에 오버헤드가 존재해 수행 시간은 정적 라이브러리보다 느리다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+<h2 id="1-3-라이브러리-만들기">1-3. 라이브러리 만들기</h2>
+
+<p>명령어 ar을 사용한다.<br />
+컴파일된 <em>.o 파일들을 묶어서 library (</em>.a)로 만든다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">option</th>
+      <th style="text-align: center">meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">-r</td>
+      <td style="text-align: center">지정한 파일을 archive 파일에 추가, 만약 기존 파일이면 치환한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-c</td>
+      <td style="text-align: center">archive가 생성 되어질 때 기본적으로 표준 에러로 기록되어지는 진단 메세지의 출력을 제한한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-u</td>
+      <td style="text-align: center">오브젝트 파일의 타임스탬프를 비교해 새로운 파일일 경우에만 치환한다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-v</td>
+      <td style="text-align: center">자세한 내용을 보여주는 verbose 모드로, 파일 크기나 갱신 시각 등의 상세 정보를 출력한다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<br /></p>
+<h1 id="2-필요-개념">2. 필요 개념</h1>
+
+<ul>
+  <li>
+    <p><strong>void pointer로 입력받은 인자를 unsigned char 포인터로 캐스팅해서 접근하는 이유</strong></p>
+
+    <p>void pointer에 어떤 포인터가 들어올지 모르기 때문에 1바이트씩 접근해야 안전하다. 포인터는 주소값이기 때문에 부호를 쓰지 않는다. 따라서 char가 아닌 unsigned char를 쓰는 것이 관례이다.
+<br /></p>
+  </li>
+  <li>
+    <p><strong>const int*와 int* const의 차이</strong></p>
+
+    <p>const int<em>( = int const *)는 const int형을 가리키는 포인터로, 포인터 값은 변경 가능하지만 내부의 int값은 const로 선언되어 변경이 불가능하다. 반면 int</em> const는 const 포인터가 int형을 가리키고 있으므로 포인터의 값은 변경 불가능하지만 내부의 int값은 변경이 가능하다.
+<br /></p>
+  </li>
+  <li>
+    <p><strong>mem vs str functions</strong></p>
+
+    <p>str함수는 “문자열을 검사하기 위한” 함수. 즉, ‘\0’ 또는 size를 통해서 종료 시점을 결정한다.<br />
+  반면 mem 함수는 모든 배열에 대해 사용할 수 있어야 하기 때문에 size만을 통해서 종료 시점을 결정한다.</p>
+
+    <p>함수 내부에서 unsigned char로 캐스팅 해주는 이유 : unsigned char는 변수 안의 모든 값이 부호비트나 패딩비트같이 어떠한 용도로 사용되는 값이 없고, 우리가 전달하고자 하는 값으로 모두 차있기 때문에 비트 해석이 왜곡될 걱정이 없다.</p>
+
+    <p>*패딩비트 : 가장 큰 자료형의 크기를 따르기 때문에 생기는 사용하지 않는 비트
+<br /></p>
+  </li>
+  <li>
+    <p><strong>size_t</strong></p>
+
+    <p>size_t는 typedef를 이용하여 정의한 하나의 별칭(alias)으로 ‘이론상 가장 큰 사이즈를 담을 수 있는 unsigned 데이터 타입’으로 정의된다.<br />
+  즉, 32bit에서는 unsigned int, 64bit에서는 unsigned long long이 된다.
+<br /></p>
+  </li>
+  <li>
+    <p><strong>함수 포인터</strong></p>
+
+    <p>포인터는 다른 변수의 주소를 저장하는 변수다. 이와 유사하게 함수 포인터는 함수의 주소를 저장하는 변수다.</p>
+  </li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>식별자 foo는 함수의 이름이다. 변수와 마찬가지로 함수는 메모리의 할당된 주소에 있다.</p>
+
+<p>() 연산자를 통해 함수를 호출하면, 호출되는 함수의 주소로 점프하여 실행한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">foo</span><span class="p">();</span> <span class="c1">//foo 함수의 주소(ex.0x002717f0)로 점프한다.</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>함수 foo를 printf로 출력하면 0x002717f0가 출력된다.
+<br />
+함수 포인터는 함수의 주소를 저장했다가, 해당 주소의 함수를 호출하는 데 사용하는 포인터를 말한다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>반환형식 (* 식별자) (파라미터형 목록)
+</code></pre></div></div>
+
+<p>위와 같은 형식으로 사용한다.</p>
+
+<p><br /></p>
+<ul>
+  <li><strong>함수 포인터 사용법</strong></li>
+</ul>
+
+<p>반환값과 매개변수가 없는 경우</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">print_hello</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello, world!</span><span class="se">\\</span><span class="s">n"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)();</span>
+
+	<span class="n">fp</span> <span class="o">=</span> <span class="n">print_hello</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">()</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="o">!</span>
+</code></pre></div></div>
+
+<p>반환값과 매개변수가 있는 경우</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+	<span class="n">fp</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+
+	<span class="n">fp</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+	<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span><span class="mi">8</span>
+			   <span class="mi">2</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li><strong>함수 포인터 배열 사용하기</strong></li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;}</span>
+<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;}</span>
+<span class="kt">int</span> <span class="nf">mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;}</span>
+<span class="kt">int</span> <span class="nf">div</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//함수 포인터 배열 선언</span>
+	
+	<span class="n">fp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mul</span><span class="p">;</span>
+	<span class="n">fp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">div</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="mi">30</span>
+			<span class="mi">10</span>
+			<span class="mi">200</span>
+			<span class="mi">2</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li><strong>typedef로 함수 포인터 간소화 하기</strong></li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">PtrFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
+
+<span class="n">PtrFunc</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li>
+    <p><strong>메모리 해제(free)</strong></p>
+
+    <p>동적 메모리를 할당하면 힙(heap) 메모리의 공간을 할당받는다. 이 공간은 프로그램이 종료될 때까지 보존된다. 따라서 메모리를 할당만 하고 해제를 해주지 않으면 메모리 사용량만 계속 증가하게 된다. 즉 프로그램이 필요하지 않은 메모리를 계속 점유하고 있는 현상을 “메모리 누수(memory leak)”라고 한다. 즉 동적 할당으로 힙 메모리에 공간을 생성해놓은 뒤 회수하지 않으면 프로그램이 실행되는 동안은 그 공간은 계속해서 살아있게 되고 이는 메모리의 낭비를 초래하여 성능 부하를 이르킬 수 있다. 고로 사용하지 않는 메모리는 free함수를 사용하여 꼭 회수해줘야 한다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li>
+    <p><strong>2의 보수법</strong></p>
+
+    <p>C언어는 2진 보수 방식을 사용한다.<br />
+  첫번째 비트가 0일 때는 양수라는 의미로 2진수를 읽듯이 읽으면 된다. 첫번째 비트가 1일 때는 음수라는 의미로 2진 보수를 역(1을 빼고 1진 보수법 적용)으로 취한 값이 절댓값이 된다.<br />
+  예를 들어 8비트의 메모리에 10010001 값이 들어 있다면 첫번째 비트가 1이므로 음수를 의미한다. 절댓값을 계산해보면 10010001 → 10010000 → 01101111로 1 + 2 + 4 + 8 + 32 + 64 = 111이다. 즉 10010001은 -111이다.<br />
+  2진 보수 방식에서 8비트(1바이트)로 표현할 때 01111111이 가장 큰 정수이고, 10000000이 가장 작은 정수이다.
+<br /></p>
+  </li>
+  <li>
+    <p>큰 자료형 → 작은 자료형 형 변환시 뒤쪽(오른쪽) 비트부터 자른다.
+<br /></p>
+  </li>
+</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Libft" /><category term="Archive" /><category term="Library" /><summary type="html"><![CDATA[표준 C 라이브러리(libc)에 있는 함수 및 앞으로 과제를 하면서 유용한 함수들을 구현하고 library로 만든다.]]></summary></entry><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/etc/Markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2023-10-18T00:00:00+09:00</published><updated>2023-10-18T00:00:00+09:00</updated><id>http://localhost:4000/etc/Markdown</id><content type="html" xml:base="http://localhost:4000/etc/Markdown/"><![CDATA[<h1 id="0-들어가며">0. 들어가며</h1>
 <hr />
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.  
 이런 파일들은 Markdown 문법으로 작성된 파일이다.  
