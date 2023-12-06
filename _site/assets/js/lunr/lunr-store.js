@@ -47,6 +47,12 @@ var store = [{
         "url": "/42seoul/Push_swap/",
         "teaser": null
       },{
+        "title": "Philosophers 가이드",
+        "excerpt":"0. 과제 설명 Dining Philosopher 문제를 해결해 본다. multi threads, multi processors 환경에서 발생할 수 있는 race condition 및 deadlock을 방지한다. 1. 필요 개념 1-1. 공유 자원 여러 프로세스 또는 스레드가 공동으로 사용하는 변수, 메모리, 파일 등의 자원이나 변수를 의미한다. 1-2. Thread thread란 프로세스 내에서 작업이 실행되는 흐름의 단위를 말한다....","categories": ["42Seoul"],
+        "tags": ["42Seoul","Philosophers","Dining_Philosophers","semaphore","mutex","race_condition"],
+        "url": "/42seoul/Philosophers/",
+        "teaser": null
+      },{
         "title": "pipex 가이드",
         "excerpt":"0. 과제 설명 프로세스간 통신을 도와주는 pipe에 대해 이해하고 사용해보자. 1. Pipe 1-1. IPC(Inter Process Communication) 프로세스란 메모리에 올라와 실행되고 있는 프로그램을 말한다. 각각의 프로세스는 고유의 메모리 공간을 가지기 때문에 한 프로세스가 다른 프로세스의 데이터에 접근하는 것이 불가능하다. 이런 문제를 해결하기 위해 여러가지 방법이 있는데, 이런 방법들을 IPC라고 한다. 1-2....","categories": ["42Seoul"],
         "tags": ["42Seoul","process","fd","pipe"],
