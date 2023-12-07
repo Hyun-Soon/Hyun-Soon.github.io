@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Push Swap 병합정렬 가이드 - Hyuim’s blog</title>
-<meta name="description" content="병합 정렬로 Push Swap을 해결해보자.">
+<!-- begin _includes/seo.html --><title>  네트워크 기초 - Hyuim’s blog</title>
+<meta name="description" content="네트워크가 무엇인지 알아보자.">
 
 
   <meta name="author" content="Hyunsoon Im">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="Push Swap 병합정렬 가이드">
-<meta property="og:url" content="http://localhost:4000/42seoul/Push_swap/">
+<meta property="og:title" content="  네트워크 기초">
+<meta property="og:url" content="http://localhost:4000/network/network01/">
 
 
-  <meta property="og:description" content="병합 정렬로 Push Swap을 해결해보자.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2023-11-30T00:00:00+09:00">
+  <meta property="og:description" content="네트워크가 무엇인지 알아보자.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2023-12-07T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/42seoul/Push_swap/">
+
+<link rel="canonical" href="http://localhost:4000/network/network01/">
 
 
 
@@ -358,204 +358,21 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Push Swap 병합정렬 가이드">
-    <meta itemprop="description" content="병합 정렬로 Push Swap을 해결해보자.">
-    <meta itemprop="datePublished" content="2023-11-30T00:00:00+09:00">
+    <meta itemprop="headline" content="  네트워크 기초">
+    <meta itemprop="description" content="네트워크가 무엇인지 알아보자.">
+    <meta itemprop="datePublished" content="2023-12-07T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/42seoul/Push_swap/" class="u-url" itemprop="url">Push Swap 병합정렬 가이드
-</a>
-          </h1>
-          
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-11-30T00:00:00+09:00">November 30, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#0-과제-설명">0. 과제 설명</a></li><li><a href="#1-명령어">1. 명령어</a></li><li><a href="#2-push-swap-병합-정렬">2. Push Swap 병합 정렬</a></li></ul>
-
-            </nav>
-          </aside>
-        
-        <h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stack A, Stack B가 있는 상황에서 Stack A에 숫자가 랜덤으로 들어온다. 주어진 명령어를 최소한으로 사용하여 Stack A에 숫자들을 오름차순으로 정렬한다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-명령어">1. 명령어</h1>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">sa</code> : stack A의 맨 위 2개 요소의 위치를 바꾼다.</li>
-  <li><code class="language-plaintext highlighter-rouge">sb</code> : stack B의 맨 위 2개 요소의 위치를 바꾼다.</li>
-  <li><code class="language-plaintext highlighter-rouge">ss</code> : sa와 sb를 동시에 실행한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">pa</code> : stack B 맨 위 1개 요소를 stack a의 맨 위로 옮긴다.</li>
-  <li><code class="language-plaintext highlighter-rouge">pb</code> : stack A 맨 위 1개 요소를 stack b의 맨 위로 옮긴다.</li>
-  <li><code class="language-plaintext highlighter-rouge">ra</code> : stack A의 요소들을 위로 한칸씩 올리고, 맨 위의 요소는 바닥으로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rb</code> : stack B의 요소들을 위로 한칸씩 올리고, 맨 위의 요소는 바닥으로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rr</code> : ra와 rb를 동시에 실행한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rra</code> : stack A의 요소들을 아래로 한칸씩 내리고, 맨 밑의 요소는 맨 위로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rrb</code> : stack B의 요소들을 아래로 한칸씩 내리고, 맨 밑의 요소는 맨 위로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rrr</code> : rra와 rrb를 동시에 실행한다.
-&lt;/br&gt;
-&lt;/br&gt;</li>
-</ul>
-
-<h1 id="2-push-swap-병합-정렬">2. Push Swap 병합 정렬</h1>
-
-<p>병합 정렬은 분할 정복 알고리즘의 하나로, 최악의 경우와 최선의 경우가 많이 차이 나지 않는 안정 정렬에 속한다.</p>
-
-<p>stack a에 다음 그림과 같이 100개의 정렬되지 않은 숫자가 들어온다고 가정하자.</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/8914da71-2560-4c08-b9a5-29e7d6a9bb4f" alt="Pasted image 20231127003216" /></p>
-
-<p>우리의 목표는 결과를 아래와 같이 만드는 것이다(stack A가 정렬됐다고 가정하고, 숫자의 크기에 비례하게 가로 길이를 표현해서 추상적으로 삼각형을 표현했다).</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/241d5ff7-a60e-49a7-a05b-485fbf33b243" alt="Pasted image 20231127002730" /></p>
-
-<p>stack A에 위 그림과 같이 오름차순으로 쌓기 위해서는 큰 수부터 stack A에 쌓아야 하고, 적은 명령어로 stack A에 숫자를 쌓을 수 있는 위치로는 stack A의 bottom(<code class="language-plaintext highlighter-rouge">rra</code> 명령어를 사용), stack B의 top(<code class="language-plaintext highlighter-rouge">pa</code>), 그리고 stack B의 bottom(<code class="language-plaintext highlighter-rouge">rrb</code> + <code class="language-plaintext highlighter-rouge">pa</code>) 이렇게 3가지가 있다.</p>
-
-<p>stack A에 하나의 정렬된 큰 삼각형을 만들기 위해, 그리고 최대한 명령어의 개수를 줄이기 위해 3 방향(stack A의 bottom, stack B의 top, stack B의 bottom)에서 병합을 실행할 것이다.</p>
-
-<p>정방향(오름차순) 삼각형을 stack A에 만들기 위해서 stack A bottom, stack B top, stack B bottom에서 병합을 진행할 때, 각 위치에 존재하는 숫자들은 필요에 맞게 정렬되어 있어야 한다. 아래 그림을 보자.</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/af0e5952-d22f-4188-abf1-3d48b1c3f4df" alt="Pasted image 20231130134131" /></p>
-
-<p>stack A top에 정방향 삼각형을 만들기 위해 접근이 가장 빠른 stack A bottom, stack B bottom, stack B top에서 끝값들을 비교해 큰 순서대로 stack A에 값을 쌓아줬다. 각각의 작은 3개의 삼각형이 모두 사라질 때까지 반복하면 큰 정방향 삼각형을 만들 수 있다. 그렇다면 작은 3개의 삼각형은 어떤 삼각형을 합쳐야 만들 수 있을까?</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/62728fcd-dea8-45d5-9a90-d2c0cd130145" alt="Pasted image 20231130140141" /></p>
-
-<p>위 공식을 이용하면 다음과 같이 재귀적으로 stack A에 정방향 삼각형을 만들 수 있다.</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/41a92c9b-f041-48e4-b4a1-9b551ffb6677" alt="Pasted image 20231130143847" /></p>
-
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a><span class="sep">, </span>
-    
-      <a href="/tags/#merge-sort" class="page__taxonomy-item p-category" rel="tag">Merge_sort</a><span class="sep">, </span>
-    
-      <a href="/tags/#push-swap" class="page__taxonomy-item p-category" rel="tag">Push_Swap</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-11-30T00:00:00+09:00">November 30, 2023</time></p>
-
-      </footer>
-
-      <!-- <section class="page__share">
-  
-    <h4 class="page__share-title">Share on</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=Push+Swap+%EB%B3%91%ED%95%A9%EC%A0%95%EB%A0%AC+%EA%B0%80%EC%9D%B4%EB%93%9C%20http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FPush_swap%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FPush_swap%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FPush_swap%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
- -->
-      
-      
-
-      
-  <nav class="pagination">
-    
-      <a href="/42seoul/get_next_line/" class="pagination--pager" title="get_next_line
-">Previous</a>
-    
-    
-      <a href="/42seoul/Philosophers/" class="pagination--pager" title="Philosophers 가이드
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">You may also enjoy</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/network/network01/" rel="permalink"><ol>
+            <a href="http://localhost:4000/network/network01/" class="u-url" itemprop="url"><ol>
   <li>네트워크 기초</li>
 </ol>
 </a>
-      
-    </h2>
-    
+          </h1>
+          
 
   <p class="page__meta">
     
@@ -573,11 +390,151 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">네트워크가 무엇인지 알아보자.
-</p>
-  </article>
-</div>
+        </header>
+      
 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-컴퓨터-네트워크란">1. 컴퓨터 네트워크란?</a></li><li><a href="#2-패킷이란">2. 패킷이란?</a></li><li><a href="#3-lan과-wan">3. LAN과 WAN</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="1-컴퓨터-네트워크란">1. 컴퓨터 네트워크란?</h1>
+
+<p>네트워크란 사람과 사람, 도로와 철도, 물류 등 다양한 분야에서 연결을 나타내는 단어다. 컴퓨터 간의 연결을 컴퓨터 네트워크(이하 네트워크)라고 부른다. 우리는 네트워크를 통해 컴퓨터 간의 데이터 전송, 웹사이트 열람, 메일 송수신과 같은 일을 할 수 있다.</p>
+
+<p><strong>인터넷</strong>은 전 세계의 작은 네트워크부터 큰 네트워크까지를 연결하는 거대한 네트워크를 말한다.</p>
+
+<p><br /></p>
+<h1 id="2-패킷이란">2. 패킷이란?</h1>
+
+<p>패킷은 컴퓨터 간에 데이터를 주고받을 때 네트워크를 통해 전송되는 데이터의 작은 조각을 말한다. 큰 데이터를 그대로 보내면 네트워크의 <u>대역폭</u>을 너무 많이 차지(점유)해서 다른 패킷의 흐름을 막을 위험이 있다. 따라서 용량이 큰 사진 같은 데이터는 패킷으로 나눠서 보내야 한다.</p>
+
+<p>패킷이 목적지에 도착하면, 목적지에서는 패킷을 원래의 파일로 되돌리는 작업을 해야 한다. 패킷은 전송한 순서대로 도착하지 않을 수도 있고, 네트워크가 지연되어서 늦게 도착하거나 패킷이 누락되기도 한다. 즉, 목적지에 도착한 패킷은 순서 없이 제각각이다. 그래서 송신 측에서 수신 측으로 패킷을 보낼 때는 각 패킷에 순서대로 번호를 붙여서 보낸다. 번호에 맞춰 정렬하면 늦게 도착한 패킷도 원래 위치를 찾아갈 수 있다.</p>
+
+<p>*대역폭(bandwidth) : 일반적으로는 네트워크에서 이용 가능한 최대 전송 속도로 정보를 전송할 수 있는 단위 시간당 전송량을 말한다.</p>
+
+<p><br /></p>
+<h1 id="3-lan과-wan">3. LAN과 WAN</h1>
+
+<p>네트워크는 접속할 수 있는 범위에 따라 크게 두 가지 종류로 나눌 수 있다. 첫 번째는 특정 지역을 범위로 하는 네트워크로 <code class="language-plaintext highlighter-rouge">LAN(Local Area Network)</code>이라고 한다. 가정이나 빌딩 안 사무실 같이 지리적으로 제한된 곳에서 컴퓨터와 프린터 등을 연결할 수 있는 네트워크다.  두 번째는 지리적으로 넓은 범위에 구축된 네트워크로 <code class="language-plaintext highlighter-rouge">WAN(Wide Area Network)</code>이라고 하며, <u>인터넷 서비스 제공자(ISP)</u>가 제공하는 서비스를 사용하여 구축된 네트워크를 말한다. LAN과 LAN을 연결하는 것으로 생각해도 된다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">LAN</th>
+      <th style="text-align: center">WAN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">범위</td>
+      <td style="text-align: center">좁다(건물이나 특정 지역)</td>
+      <td style="text-align: center">넓다(LAN과 LAN을 연결)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">속도</td>
+      <td style="text-align: center">빠르다</td>
+      <td style="text-align: center">느리다</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">오류</td>
+      <td style="text-align: center">적다</td>
+      <td style="text-align: center">많다</td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#lan" class="page__taxonomy-item p-category" rel="tag">LAN</a><span class="sep">, </span>
+    
+      <a href="/tags/#network" class="page__taxonomy-item p-category" rel="tag">Network</a><span class="sep">, </span>
+    
+      <a href="/tags/#packet" class="page__taxonomy-item p-category" rel="tag">Packet</a><span class="sep">, </span>
+    
+      <a href="/tags/#wan" class="page__taxonomy-item p-category" rel="tag">WAN</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#network" class="page__taxonomy-item p-category" rel="tag">Network</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-12-07T00:00:00+09:00">December 7, 2023</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=01.+%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC+%EA%B8%B0%EC%B4%88%20http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/42seoul/Pipex/" class="pagination--pager" title="pipex 가이드
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -648,6 +605,43 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">Dining Philosopher 문제를 해결해보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/42seoul/Push_swap/" rel="permalink">Push Swap 병합정렬 가이드
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-11-30T00:00:00+09:00">November 30, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">병합 정렬로 Push Swap을 해결해보자.
 </p>
   </article>
 </div>

@@ -18,5 +18,7 @@ sidebar1:
     children:
     - title: "42Seoul"
       url: "42Seoul"
+    - title: "Network"
+      url: "Network"
     - title: "Algorithm"
       text: "More text here."

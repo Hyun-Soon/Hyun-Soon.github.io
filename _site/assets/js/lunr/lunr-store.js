@@ -58,4 +58,10 @@ var store = [{
         "tags": ["42Seoul","process","fd","pipe"],
         "url": "/42seoul/Pipex/",
         "teaser": null
+      },{
+        "title": "01. 네트워크 기초",
+        "excerpt":"1. 컴퓨터 네트워크란? 네트워크란 사람과 사람, 도로와 철도, 물류 등 다양한 분야에서 연결을 나타내는 단어다. 컴퓨터 간의 연결을 컴퓨터 네트워크(이하 네트워크)라고 부른다. 우리는 네트워크를 통해 컴퓨터 간의 데이터 전송, 웹사이트 열람, 메일 송수신과 같은 일을 할 수 있다. 인터넷은 전 세계의 작은 네트워크부터 큰 네트워크까지를 연결하는 거대한 네트워크를 말한다. 2....","categories": ["Network"],
+        "tags": ["Network","Packet","LAN","WAN"],
+        "url": "/network/network01/",
+        "teaser": null
       }]

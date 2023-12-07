@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01. 네트워크의 구조.md",
+                "file": "01. 네트워크 기초.md",
                 "mode": "source",
                 "source": false
               }
@@ -206,7 +206,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01. 네트워크의 구조.md",
+                "file": "01. 네트워크 기초.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -223,7 +223,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01. 네트워크의 구조.md",
+                "file": "01. 네트워크 기초.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -246,7 +246,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01. 네트워크의 구조.md"
+                "file": "01. 네트워크 기초.md"
               }
             }
           }
@@ -270,22 +270,22 @@
   "active": "2eeaa8ed30866109",
   "lastOpenFiles": [
     "Philosophers 가이드.md",
-    "01. 네트워크의 구조.md",
-    "Pipex 가이드.md",
-    "Libft.md",
     "Push Swap 병합정렬 가이드.md",
+    "Fract'ol.md",
+    "Born2beroot.md",
+    "get_next_line.md",
+    "ft_printf.md",
+    "Libft.md",
+    "Makefile.md",
+    "Markdown 사용법.md",
+    "01. 네트워크 기초.md",
+    "Pipex 가이드.md",
     "Pasted image 20231130143847.png",
     "Pasted image 20231130140141.png",
     "Pasted image 20231130134131.png",
     "Pasted image 20231127002023.png",
     "Pasted image 20231127002730.png",
     "Pasted image 20231127003216.png",
-    "ft_printf.md",
-    "get_next_line.md",
-    "Fract'ol.md",
-    "Makefile.md",
-    "Born2beroot.md",
-    "Screenshot 2023-10-19 at 9.58.45 PM.png",
-    "Markdown 사용법.md"
+    "Screenshot 2023-10-19 at 9.58.45 PM.png"
   ]
 }
