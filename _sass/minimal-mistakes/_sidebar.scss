@@ -19,12 +19,20 @@
   @include breakpoint($large) {
     float: left;
     width: calc(#{$right-sidebar-width-narrow} - 1em);
-    opacity: 0.75;
+    opacity: 1;
     -webkit-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
 
-    &:hover {
-      opacity: 1;
+    .nav__list {
+      .nav__items {
+        li {
+          ul {
+            &:hover {
+              color: $link-color-hover;
+            }
+          }
+        }
+      }
     }
 
     &.sticky {

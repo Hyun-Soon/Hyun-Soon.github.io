@@ -70,4 +70,88 @@ var store = [{
         "tags": [],
         "url": "/network/network02/",
         "teaser": null
+      },{
+        "title": "03.물리 계층",
+        "excerpt":"1. 전기 신호 전기 신호의 종류에는 2가지가 있다. 아날로그 신호 : 물결 모양의 전기 신호로, 라디오 방송 등에서 사용된다. 디지털 신호 : 사각형이 반복되는 모양으로, 0과 1로 이루어진 비트 집합을 전기 신호로 전송할 때 사용된다. 2. 물리 계층과 LAN 카드 컴퓨터는 네트워크를 통해 데이터를 송수신할 수 있도록 LAN 카드(내장형 또는...","categories": ["Network"],
+        "tags": ["cable","LAN","repeater","hub"],
+        "url": "/network/network03/",
+        "teaser": null
+      },{
+        "title": "03.물리 계층",
+        "excerpt":"1. 전기 신호 전기 신호의 종류에는 2가지가 있다. 아날로그 신호 : 물결 모양의 전기 신호로, 라디오 방송 등에서 사용된다. 디지털 신호 : 사각형이 반복되는 모양으로, 0과 1로 이루어진 비트 집합을 전기 신호로 전송할 때 사용된다. 2. 물리 계층과 LAN 카드 컴퓨터는 네트워크를 통해 데이터를 송수신할 수 있도록 LAN 카드(내장형 또는...","categories": ["Network"],
+        "tags": ["cable","LAN","repeater","hub"],
+        "url": "/network/network03/",
+        "teaser": null
+      },{
+        "title": "04.데이터 링크 계층",
+        "excerpt":"1. Ethernet OSI 모델의 2계층인 데이터 링크 계층에서는 네트워크 장비 간에 신호를 주고 받는 규칙을 정한다. 이 때 가장 많이 사용되는 규칙이 Ethernet이다. 즉, LAN에서 데이터를 어떻게 주고받을 지에 대한 약속이다. 허브에 3개의 컴퓨터가 연결되어 있다고 가정하자. 만약 컴퓨터 1에서 컴퓨터 3에 데이터를 보내기 위해 허브에 데이터를 전달하면, 허브는 컴퓨터...","categories": ["Network"],
+        "tags": ["Ethernet","MacAddress","Switch"],
+        "url": "/network/network04/",
+        "teaser": null
+      },{
+        "title": "05.네트워크 계층",
+        "excerpt":"1. 다른 네트워크 간의 통신 네트워크 계층에서는 네트워크 간의 통신을 가능하게 한다. 같은 네트워크 상의 컴퓨터로 정보를 전달할 때는 Ethernet과 스위치를 통해 소통이 가능했지만, 다른 네트워크 상의 컴퓨터로 데이터를 보내려면 MAC주소 외에 네트워크 주소가 추가로 필요하다. 네트워크를 식별하는 데 사용되는 주소를 IP 주소라고 한다. IP(Internet Protocol)는 네트워크 계층에서 사용되는 프로토콜이다....","categories": ["Network"],
+        "tags": ["Network","Subnet","IP"],
+        "url": "/network/network05/",
+        "teaser": null
+      },{
+        "title": "06.전송 계층",
+        "excerpt":"1. 전송 계층의 역할 데이터가 신뢰할 수 있는 데이터인지 검사하고, 오류가 있으면 재전송을 요청한다. 받은 데이터를 필요로 하는 어플리케이션에 전달한다. 전송 계층의 통신 방식으로 2가지를 꼽을 수 있다. 연결형 통신 : 신뢰, 정확성을 우선으로 하여 통신 과정에서 여러 번 확인 절차를 거친다. 비연결형 통신 : 동영상 같이 빠른 전송이 필요한...","categories": ["Network"],
+        "tags": ["TCP","Port","UDP"],
+        "url": "/network/network06/",
+        "teaser": null
+      },{
+        "title": "04.데이터 링크 계층",
+        "excerpt":"1. Ethernet OSI 모델의 2계층인 데이터 링크 계층에서는 네트워크 장비 간에 신호를 주고 받는 규칙을 정한다. 이 때 가장 많이 사용되는 규칙이 Ethernet이다. 즉, LAN에서 데이터를 어떻게 주고받을 지에 대한 약속이다. 허브에 3개의 컴퓨터가 연결되어 있다고 가정하자. 만약 컴퓨터 1에서 컴퓨터 3에 데이터를 보내기 위해 허브에 데이터를 전달하면, 허브는 컴퓨터...","categories": ["Network"],
+        "tags": ["Ethernet","MacAddress","Switch"],
+        "url": "/network/network04/",
+        "teaser": null
+      },{
+        "title": "05.네트워크 계층",
+        "excerpt":"1. 다른 네트워크 간의 통신 네트워크 계층에서는 네트워크 간의 통신을 가능하게 한다. 같은 네트워크 상의 컴퓨터로 정보를 전달할 때는 Ethernet과 스위치를 통해 소통이 가능했지만, 다른 네트워크 상의 컴퓨터로 데이터를 보내려면 MAC주소 외에 네트워크 주소가 추가로 필요하다. 네트워크를 식별하는 데 사용되는 주소를 IP 주소라고 한다. IP(Internet Protocol)는 네트워크 계층에서 사용되는 프로토콜이다....","categories": ["Network"],
+        "tags": ["Network","Subnet","IP"],
+        "url": "/network/network05/",
+        "teaser": null
+      },{
+        "title": "06.전송 계층",
+        "excerpt":"1. 전송 계층의 역할 데이터가 신뢰할 수 있는 데이터인지 검사하고, 오류가 있으면 재전송을 요청한다. 받은 데이터를 필요로 하는 어플리케이션에 전달한다. 전송 계층의 통신 방식으로 2가지를 꼽을 수 있다. 연결형 통신 : 신뢰, 정확성을 우선으로 하여 통신 과정에서 여러 번 확인 절차를 거친다. 비연결형 통신 : 동영상 같이 빠른 전송이 필요한...","categories": ["Network"],
+        "tags": ["TCP","Port","UDP"],
+        "url": "/network/network06/",
+        "teaser": null
+      },{
+        "title": "07.응용 계층",
+        "excerpt":"1. 응용 계층의 역할 서비스를 제공하는 측을 서버, 서비스를 요청하는 측에서 사용하는 프로그램을 클라이언트라고 한다. 이런 어플리케이션은 응용 계층에서 동작한다(여기서 응용 계층은 5계층의 세션 계층과 6계층의 표현 계층을 포함하는 의미). 응용 계층에서는 클라이언트의 요청을 서버 프로그램이 이해할 수 있는 데이터로 변환하고 전송한다. 클라이언트 측 어플리케이션과 서버 측 어플리케이션이 통신해야 하기...","categories": ["Network"],
+        "tags": ["HTTP","DNS","www"],
+        "url": "/network/network07/",
+        "teaser": null
+      },{
+        "title": "08.OSI 모델",
+        "excerpt":"1. OSI 모델의 각 계층 응용 계층(세션 계층 + 표현 계층) : 어플리케이션 등에서 사용하는 데이터를 송수신하는 데 필요하다. 전송 계층 : 목적지에 데이터를 정확하게 전달하는 데 필요하다. 네트워크 계층 : 다른 네트워크에 있는 목적지에 데이터를 전달하는 데 필요하다. 데이터 링크 계층 : 랜에서 데이터를 송수신하는 데 피룡하다. 물리 계층...","categories": ["Network"],
+        "tags": ["OSI"],
+        "url": "/network/network08/",
+        "teaser": null
+      },{
+        "title": "09.무선 랜",
+        "excerpt":"1. 무선 랜 무선 랜은 WAP(Wireless Access Point)와 무선 클라이언트(컴퓨터나 스마트폰 등)로 구성된다. 컴퓨터가 WAP(무선 공유기)와 통신하려면 무선 랜 칩(chip)과 무선 랜 어댑터(adapter)가 필요하다. 무선 랜 어댑터는 USB 메모리 방식과 컴퓨터 카드 방식이 있다. 2. 무선 랜 연결 방식 infrastructure : WAP를 통해 통신하는 방식 Ad Hoc : 무선 클라이언트끼리...","categories": ["Network"],
+        "tags": ["LAN","Push_Swap","SSID","Channel","beacon"],
+        "url": "/network/network09/",
+        "teaser": null
+      },{
+        "title": "07.응용 계층",
+        "excerpt":"1. 응용 계층의 역할 서비스를 제공하는 측을 서버, 서비스를 요청하는 측에서 사용하는 프로그램을 클라이언트라고 한다. 이런 어플리케이션은 응용 계층에서 동작한다(여기서 응용 계층은 5계층의 세션 계층과 6계층의 표현 계층을 포함하는 의미). 응용 계층에서는 클라이언트의 요청을 서버 프로그램이 이해할 수 있는 데이터로 변환하고 전송한다. 클라이언트 측 어플리케이션과 서버 측 어플리케이션이 통신해야 하기...","categories": ["Network"],
+        "tags": ["HTTP","DNS","www"],
+        "url": "/network/network07/",
+        "teaser": null
+      },{
+        "title": "08.OSI 모델",
+        "excerpt":"1. OSI 모델의 각 계층 응용 계층(세션 계층 + 표현 계층) : 어플리케이션 등에서 사용하는 데이터를 송수신하는 데 필요하다. 전송 계층 : 목적지에 데이터를 정확하게 전달하는 데 필요하다. 네트워크 계층 : 다른 네트워크에 있는 목적지에 데이터를 전달하는 데 필요하다. 데이터 링크 계층 : 랜에서 데이터를 송수신하는 데 피룡하다. 물리 계층...","categories": ["Network"],
+        "tags": ["OSI"],
+        "url": "/network/network08/",
+        "teaser": null
+      },{
+        "title": "09.무선 랜",
+        "excerpt":"1. 무선 랜 무선 랜은 WAP(Wireless Access Point)와 무선 클라이언트(컴퓨터나 스마트폰 등)로 구성된다. 컴퓨터가 WAP(무선 공유기)와 통신하려면 무선 랜 칩(chip)과 무선 랜 어댑터(adapter)가 필요하다. 무선 랜 어댑터는 USB 메모리 방식과 컴퓨터 카드 방식이 있다. 2. 무선 랜 연결 방식 infrastructure : WAP를 통해 통신하는 방식 Ad Hoc : 무선 클라이언트끼리...","categories": ["Network"],
+        "tags": ["LAN","Push_Swap","SSID","Channel","beacon"],
+        "url": "/network/network09/",
+        "teaser": null
       }]

@@ -4,155 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "69d88f87fe0fa993",
+        "id": "7b7b99c0ed1a740e",
         "type": "tabs",
         "children": [
           {
-            "id": "59151ca73f7c5496",
+            "id": "64712cf60cf4dd5e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Markdown 사용법.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f0dc9ce3ddf380d5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Makefile.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "52f837778c7ccba4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Libft.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c0a230562315c8af",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ft_printf.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2f7803ca01ca5b9e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "get_next_line.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e8e0f4fbf907f579",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Born2beroot.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "855ef95140b2015d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Fract'ol.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "948bf7cf5a27d1a9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Philosophers 가이드.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "021e5d86fd346485",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Push Swap 병합정렬 가이드.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8b444755b322a139",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Philosophers 가이드.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2eeaa8ed30866109",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "01. 네트워크 기초.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f0b50d41de12fde5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02.네트워크의 기본 규칙.md",
+                "file": "Graphics.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 11
+        ]
       }
     ],
     "direction": "vertical"
@@ -218,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02.네트워크의 기본 규칙.md",
+                "file": "Graphics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -235,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02.네트워크의 기본 규칙.md",
+                "file": "Graphics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -258,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02.네트워크의 기본 규칙.md"
+                "file": "Graphics.md"
               }
             }
           }
@@ -279,19 +146,30 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "f0b50d41de12fde5",
+  "active": "64712cf60cf4dd5e",
   "lastOpenFiles": [
-    "01. 네트워크 기초.md",
-    "02.네트워크의 기본 규칙.md",
+    "Graphics.md",
+    "Smilegate Unseen 지원서 입력사항.md",
+    "무제 파일.md",
+    "Markdown 사용법.md",
+    "Makefile.md",
+    "Libft.md",
+    "ft_printf.md",
+    "get_next_line.md",
+    "Born2beroot.md",
+    "Fract'ol.md",
     "Philosophers 가이드.md",
     "Push Swap 병합정렬 가이드.md",
-    "Fract'ol.md",
-    "Born2beroot.md",
-    "get_next_line.md",
-    "ft_printf.md",
-    "Libft.md",
-    "Makefile.md",
-    "Markdown 사용법.md",
+    "01. 네트워크 기초.md",
+    "02.네트워크의 기본 규칙.md",
+    "2023-12-23-network09.md",
+    "2023-12-23-network08.md",
+    "2023-12-23-network07.md",
+    "2023-12-20-network06.md",
+    "2023-12-19-network03.md",
+    "2023-12-20-network04.md",
+    "2023-12-20-network05.md",
+    "03.물리 계층.md",
     "Pipex 가이드.md",
     "Pasted image 20231130143847.png",
     "Pasted image 20231130140141.png",

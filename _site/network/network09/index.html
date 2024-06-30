@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Hyuim's blog - Page 2</title>
-<meta name="description" content="Hyuim’s personal blog.">
+<!-- begin _includes/seo.html --><title>09.무선 랜 - Hyuim’s blog</title>
+<meta name="description" content="무선 랜에 대해 알아보자.">
 
 
   <meta name="author" content="Hyunsoon Im">
   
+  <meta property="article:author" content="Hyunsoon Im">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="Hyuim’s blog">
-<meta property="og:url" content="http://localhost:4000/page2/">
+<meta property="og:title" content="09.무선 랜">
+<meta property="og:url" content="http://localhost:4000/network/network09/">
 
 
-  <meta property="og:description" content="Hyuim’s personal blog.">
-
-
-
+  <meta property="og:description" content="무선 랜에 대해 알아보자.">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2023-12-23T00:00:00+09:00">
 
 
 
@@ -41,13 +45,9 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/page2/">
+<link rel="canonical" href="http://localhost:4000/network/network09/">
 
 
-  <link rel="prev" href="http://localhost:4000/">
-
-
-  <link rel="next" href="http://localhost:4000/page3/">
 
 
 <script type="application/ld+json">
@@ -102,9 +102,33 @@
 <!-- end custom head snippets -->
 
     
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+      inlineMath: [ ['$', '$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+    
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -146,6 +170,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -342,24 +368,203 @@
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="09.무선 랜">
+    <meta itemprop="description" content="무선 랜에 대해 알아보자.">
+    <meta itemprop="datePublished" content="2023-12-23T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title"></h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/network/network09/" class="u-url" itemprop="url">09.무선 랜
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
+      </span>
     
 
-<h3 class="archive__subtitle">Recent posts</h3>
+    
+
+    
+  </p>
 
 
+        </header>
+      
 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-무선-랜">1. 무선 랜</a></li><li><a href="#2-무선-랜-연결-방식">2. 무선 랜 연결 방식</a></li><li><a href="#3-ssid">3. SSID</a></li><li><a href="#4-채널">4. 채널</a></li></ul>
 
-<div class="entries-list">
+            </nav>
+          </aside>
+        
+        <h1 id="1-무선-랜">1. 무선 랜</h1>
+
+<p>무선 랜은 <code class="language-plaintext highlighter-rouge">WAP(Wireless Access Point)</code>와 <code class="language-plaintext highlighter-rouge">무선 클라이언트(컴퓨터나 스마트폰 등)</code>로 구성된다.
+컴퓨터가 WAP(무선 공유기)와 통신하려면 무선 랜 칩(chip)과 무선 랜 어댑터(adapter)가 필요하다.
+무선 랜 어댑터는 USB 메모리 방식과 컴퓨터 카드 방식이 있다.</p>
+
+<h1 id="2-무선-랜-연결-방식">2. 무선 랜 연결 방식</h1>
+
+<ol>
+  <li>infrastructure : WAP를 통해 통신하는 방식</li>
+  <li>Ad Hoc : 무선 클라이언트끼리 직접 통신하는 방식</li>
+</ol>
+
+<h1 id="3-ssid">3. SSID</h1>
+
+<p>무선 액세스 포인트와 무선 클라이언트를 연결하려면 혼선을 피하기 위해 <code class="language-plaintext highlighter-rouge">SSID</code>라는 액세스 포인트의 고유 이름을 사용해야 한다. 또한 무선 클라이언트가 자동으로 무선 액세스 포인트를 찾아 통신할 수 있기 위해 네트워크 이름, 인증, 암호화, 암호화 키를 설정해야 한다.
+무선 액세스 포인트는 <code class="language-plaintext highlighter-rouge">beacon</code>이라고 하는 자기를 알리는 신호를 네트워크에 있는 모든 기기에 주기적으로 전송한다. 무선 클라이언트는 이 신호를 받은 후 자신의 SSID와 같은지 WAP에 문의한다. 같은 SSID의 WAP이 응답을 하고 서로의 존재를 알게 되면, 인증 방식이 올바른지 확인하고 무선 클라이언트는 WAP에 연결을 요청한다. WAP으로 부터 승인을 받으면 연결하여 통신을 할 수 있게 된다.</p>
+
+<h1 id="4-채널">4. 채널</h1>
+
+<p>WAP과 무선 클라이언트 사이의 거리가 멀수록 전파가 약해져 접속이 잘 안되거나 통신 속도가 느려진다. 이러한 이유로 WAP을 여러 대 설치해야한다. 무선 랜은 여러 기기를 동시에 연결할 수 있도록 주파수 대역을 분할하는데, 그 주파수 대역을 <code class="language-plaintext highlighter-rouge">채널</code>이라고 부른다. 공유기와 컴퓨터가 연결되려면 두 기기 모두 같은 채널을 설정해야 한다. 반면 공유기끼리는 다른 채널을 설정해야 한다. 다른 채널끼리는 주파수가 서로 다르기 때문에 전파가 겹치더라도 서로 간섭이 일어나지 않고 통신 속도도 떨어지지 않는다.
+전파가 겹치는 무선 공유기들이 같은 채널로 설정되어 있으면 주파수가 서로 겹치면서 <code class="language-plaintext highlighter-rouge">전파 간섭</code>이 생기고 통신 속도가 느려진다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
   
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#beacon" class="page__taxonomy-item p-category" rel="tag">beacon</a><span class="sep">, </span>
+    
+      <a href="/tags/#channel" class="page__taxonomy-item p-category" rel="tag">Channel</a><span class="sep">, </span>
+    
+      <a href="/tags/#lan" class="page__taxonomy-item p-category" rel="tag">LAN</a><span class="sep">, </span>
+    
+      <a href="/tags/#push-swap" class="page__taxonomy-item p-category" rel="tag">Push_Swap</a><span class="sep">, </span>
+    
+      <a href="/tags/#ssid" class="page__taxonomy-item p-category" rel="tag">SSID</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#network" class="page__taxonomy-item p-category" rel="tag">Network</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=09.%EB%AC%B4%EC%84%A0+%EB%9E%9C%20http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork09%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork09%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork09%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/network/network08/" class="pagination--pager" title="08.OSI 모델
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/network/network08/" rel="permalink">08.OSI 모델
+</a>
+      
+    </h2>
     
 
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
 
 
-<div class="list__item">
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 전반적인 흐름에 대해 알아보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -391,17 +596,17 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/network/network06/" rel="permalink">06.전송 계층
+        <a href="/network/network09/" rel="permalink">09.무선 랜
 </a>
       
     </h2>
@@ -413,7 +618,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time>
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
       </span>
     
 
@@ -423,22 +628,22 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 4계층인 전송 계층에 대해 알아보자.
+    <p class="archive__item-excerpt" itemprop="description">무선 랜에 대해 알아보자.
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/network/network05/" rel="permalink">05.네트워크 계층
+        <a href="/network/network08/" rel="permalink">08.OSI 모델
 </a>
       
     </h2>
@@ -450,7 +655,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time>
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
       </span>
     
 
@@ -460,158 +665,18 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 3계층인 네트워크 계층에 대해 알아보자.
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 전반적인 흐름에 대해 알아보자.
 </p>
   </article>
 </div>
 
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/network/network04/" rel="permalink">04.데이터 링크 계층
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 2계층인 데이터 링크 계층에 대해 알아보자.
-</p>
-  </article>
-</div>
-
+      </div>
+    </div>
   
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/network/network06/" rel="permalink">06.전송 계층
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 4계층인 전송 계층에 대해 알아보자.
-</p>
-  </article>
-</div>
-
   
 </div>
 
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        <li><a href="/page2/" class="disabled current">2</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page3/">3</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page4/">4</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page5/">5</a></li>
-      
-    
-
-    
-    
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
-
-    
-      <li><a href="/page6/">6</a></li>
-    
-
-    
-    
-      <li><a href="/page3/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
-</div>
     </div>
 
     
@@ -676,6 +741,33 @@
 <script src="/assets/js/lunr/lunr-en.js"></script>
 
 
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'hyun-soon/hyun-soon.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOKeOOEA');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOKeOOEM4CaKQd');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
 
 
 

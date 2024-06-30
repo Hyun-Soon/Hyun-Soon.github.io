@@ -1,1744 +1,380 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-07T16:16:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">02.네트워크의 기본 규칙</title><link href="http://localhost:4000/network/network02/" rel="alternate" type="text/html" title="02.네트워크의 기본 규칙" /><published>2023-12-07T00:00:00+09:00</published><updated>2023-12-07T00:00:00+09:00</updated><id>http://localhost:4000/network/network02</id><content type="html" xml:base="http://localhost:4000/network/network02/"><![CDATA[<h1 id="1-protocol이란">1. Protocol이란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-06-30T15:02:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">09.무선 랜</title><link href="http://localhost:4000/network/network09/" rel="alternate" type="text/html" title="09.무선 랜" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network09</id><content type="html" xml:base="http://localhost:4000/network/network09/"><![CDATA[<h1 id="1-무선-랜">1. 무선 랜</h1>
 
-<p>한국인과 멕시코인이 있을 때, 사용 언어가 다르기 때문에 소통에 문제가 생긴다. 영어를 사용하자는 등 약속을 해야 소통이 가능해질 것이다. 이처럼 네트워크에서도 문제없이 통신하려면 규칙(약속)을 지켜야 한다. 이와 같은 규칙을 <code class="language-plaintext highlighter-rouge">Protocol(프로토콜)</code>이라고 한다.</p>
+<p>무선 랜은 <code class="language-plaintext highlighter-rouge">WAP(Wireless Access Point)</code>와 <code class="language-plaintext highlighter-rouge">무선 클라이언트(컴퓨터나 스마트폰 등)</code>로 구성된다.
+컴퓨터가 WAP(무선 공유기)와 통신하려면 무선 랜 칩(chip)과 무선 랜 어댑터(adapter)가 필요하다.
+무선 랜 어댑터는 USB 메모리 방식과 컴퓨터 카드 방식이 있다.</p>
 
-<p><br /></p>
-<h1 id="2-osi-모델이란">2. OSI 모델이란?</h1>
-
-<p>OSI 모델은 네트워크 기술의 기본이 되는 모델(표준 규격)이다. 데이터의 송수신 과정 동안 컴퓨터 내부에서 여러 가지 일을 하는데, 이 때 일을 7개의 계층으로 나눠서 하게 된다. 계층 대신 레이어라는 용어를 사용하기도 하며, 7 계층은 다음과 같다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><strong>명칭</strong></th>
-      <th style="text-align: center"><strong>계층</strong></th>
-      <th style="text-align: center">역할</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">응용 계층</td>
-      <td style="text-align: center">7계층</td>
-      <td style="text-align: center">이메일과 파일 전송, 웹 사이트 조회 등 애플리케이션에 대한 서비스를 제공한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">표현 계층</td>
-      <td style="text-align: center">6계층</td>
-      <td style="text-align: center">문자 코드, 압축, 암호화 등의 데이터를 변환한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">세션 계층</td>
-      <td style="text-align: center">5계층</td>
-      <td style="text-align: center">세션 체결, 통신 방식을 결정한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">전송 계층</td>
-      <td style="text-align: center">4계층</td>
-      <td style="text-align: center">신뢰할 수 있는 통신을 구현한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">네트워크 계층</td>
-      <td style="text-align: center">3계층</td>
-      <td style="text-align: center">다른 네트워크와 통신하기 위한 경로 설정 및 논리 주소를 결정한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">데이터 링크 계층</td>
-      <td style="text-align: center">2계층</td>
-      <td style="text-align: center">네트워크 기기 간의 데이터 전송 및 물리 주소를 결정한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">물리 계층</td>
-      <td style="text-align: center">1계층</td>
-      <td style="text-align: center">시스템 간의 물리적인 연결과 전기 신호를 변환 및 제어한다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>송신할 때 데이터는 맨 위의 응용 계층에서 아래 계층으로 전달되며, 수신 측에서는 아래 계층에서 위 계층으로 전달 받는다.</p>
-
-<h1 id="3-tcpip-모델이란">3. TCP/IP 모델이란?</h1>
-
-<p>OSI 모델 7계층의 네트워크에서 데이터를 전송하는 과정을 네 개 계층으로 단순화시켜 사용하는 모델이다. 인터넷 모델이라고도 한다. 구조는 다음과 같다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><strong>명칭</strong></th>
-      <th style="text-align: center"><strong>계층</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">응용 계층</td>
-      <td style="text-align: center">4계층</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">전송 계층</td>
-      <td style="text-align: center">3계층</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">인터넷 계층</td>
-      <td style="text-align: center">2계층</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">네트워크 접속 계층</td>
-      <td style="text-align: center">1계층</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>현대의 인터넷은 대부분 TCP/IP 프로토콜 스택을 기반으로 동작한다. TCP/IP는 인터넷에서 데이터 통신을 위한 주요 프로토콜을 제공하는 모델로, 이 모델은 표준화되어 있고 많은 네트워크 장비 및 응용 프로그램이 이를 지원하고 있다.</p>
-
-<p><br /></p>
-<h1 id="4-encapsulation캡슐화와-decapsulation역캡슐화">4. Encapsulation(캡슐화)와 Decapsulation(역캡슐화)</h1>
-
-<p>데이터를 보내려고 할 때, 데이터의 앞부분에 전송하는 데 필요한 정보를 붙여서 다음 계층으로 보낸다. 이 정보를 <code class="language-plaintext highlighter-rouge">헤더</code>라고 하는데 헤더에는 데이터를 전달받을 상대방에 대한 정보도 포함되어 있다.이처럼 헤더를 붙여 나가는 걸 <code class="language-plaintext highlighter-rouge">캡슐화</code>, 데이터를 받는 쪽에서 헤더를 하나씩 제거해가는 것을 <code class="language-plaintext highlighter-rouge">역캡슐화</code>라고 한다.</p>
-
-<p>송신 측 컴퓨터에서 웹 사이트에 접속하려고 하면 응용계층에서 접속 요청 데이터가 생성된다. 이 데이터는 전송 계층에 전달되는데, 전송 계층에서 신뢰할 수 있는 통신이 이루어 지도록 응용 계층에서 만들어진 데이터에 헤더를 붙인다. 데이터가 네트워크 계층으로 넘어가면 이 데이터가 다른 네트워크와 통신할 수 있게 만들기 위해 네트워크 계층에서도 헤더를 붙인다. 또한 데이터 링크 계층으로 넘어가면 물리적인 통신 채널을 연결하기 위해 또다시 앞에 헤더를 붙이고, 여기서는 트레일러까지 붙인다. 트레일러는 데이터를 전달할 때 데이터의 마지막에 추가하는 정보를 말한다. 즉, 데이터 링크 계층까지 도달한 데이터는 전송 계층 헤더, 네트워크 계층 헤더, 데이터 링크 계층 헤더와 트레일러가 추가 되어있고, 이 데이터는 최종적으로 전기 신호로 변환돼서 수신측에 도착한다. 이처럼 필요한 데이터를 추가해 나가는 것을 캡슐화라고 한다.</p>
-
-<p>수신 측에서는 송신 측에서의 캡슐화 과정을 반대로 진행하며 데이터를 수신한다.</p>
-
-<p><br /></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><summary type="html"><![CDATA[네트워크 통신의 기본 규칙인 프로토콜에 대해 알아보자.]]></summary></entry><entry><title type="html">01.네트워크 기초</title><link href="http://localhost:4000/network/network01/" rel="alternate" type="text/html" title="01.네트워크 기초" /><published>2023-12-07T00:00:00+09:00</published><updated>2023-12-07T00:00:00+09:00</updated><id>http://localhost:4000/network/network01</id><content type="html" xml:base="http://localhost:4000/network/network01/"><![CDATA[<h1 id="1-컴퓨터-네트워크란">1. 컴퓨터 네트워크란?</h1>
-
-<p>네트워크란 사람과 사람, 도로와 철도, 물류 등 다양한 분야에서 연결을 나타내는 단어다. 컴퓨터 간의 연결을 컴퓨터 네트워크(이하 네트워크)라고 부른다. 우리는 네트워크를 통해 컴퓨터 간의 데이터 전송, 웹사이트 열람, 메일 송수신과 같은 일을 할 수 있다.</p>
-
-<p><strong>인터넷</strong>은 전 세계의 작은 네트워크부터 큰 네트워크까지를 연결하는 거대한 네트워크를 말한다.</p>
-
-<p><br /></p>
-<h1 id="2-패킷이란">2. 패킷이란?</h1>
-
-<p>패킷은 컴퓨터 간에 데이터를 주고받을 때 네트워크를 통해 전송되는 데이터의 작은 조각을 말한다. 큰 데이터를 그대로 보내면 네트워크의 <u>대역폭</u>을 너무 많이 차지(점유)해서 다른 패킷의 흐름을 막을 위험이 있다. 따라서 용량이 큰 사진 같은 데이터는 패킷으로 나눠서 보내야 한다.</p>
-
-<p>패킷이 목적지에 도착하면, 목적지에서는 패킷을 원래의 파일로 되돌리는 작업을 해야 한다. 패킷은 전송한 순서대로 도착하지 않을 수도 있고, 네트워크가 지연되어서 늦게 도착하거나 패킷이 누락되기도 한다. 즉, 목적지에 도착한 패킷은 순서 없이 제각각이다. 그래서 송신 측에서 수신 측으로 패킷을 보낼 때는 각 패킷에 순서대로 번호를 붙여서 보낸다. 번호에 맞춰 정렬하면 늦게 도착한 패킷도 원래 위치를 찾아갈 수 있다.</p>
-
-<p>*대역폭(bandwidth) : 일반적으로는 네트워크에서 이용 가능한 최대 전송 속도로 정보를 전송할 수 있는 단위 시간당 전송량을 말한다.</p>
-
-<p><br /></p>
-
-<h1 id="3-lan과-wan">3. LAN과 WAN</h1>
-
-<p>네트워크는 접속할 수 있는 범위에 따라 크게 두 가지 종류로 나눌 수 있다. 첫 번째는 특정 지역을 범위로 하는 네트워크로 <code class="language-plaintext highlighter-rouge">LAN(Local Area Network)</code>이라고 한다. 가정이나 빌딩 안 사무실 같이 지리적으로 제한된 곳에서 컴퓨터와 프린터 등을 연결할 수 있는 네트워크다.  두 번째는 지리적으로 넓은 범위에 구축된 네트워크로 <code class="language-plaintext highlighter-rouge">WAN(Wide Area Network)</code>이라고 하며, <u>인터넷 서비스 제공자(ISP)</u>가 제공하는 서비스를 사용하여 구축된 네트워크를 말한다. LAN과 LAN을 연결하는 것으로 생각해도 된다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"> </th>
-      <th style="text-align: center">LAN</th>
-      <th style="text-align: center">WAN</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">범위</td>
-      <td style="text-align: center">좁다(건물이나 특정 지역)</td>
-      <td style="text-align: center">넓다(LAN과 LAN을 연결)</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">속도</td>
-      <td style="text-align: center">빠르다</td>
-      <td style="text-align: center">느리다</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">오류</td>
-      <td style="text-align: center">적다</td>
-      <td style="text-align: center">많다</td>
-    </tr>
-  </tbody>
-</table>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="Network" /><category term="Packet" /><category term="LAN" /><category term="WAN" /><summary type="html"><![CDATA[네트워크가 무엇인지 알아보자.]]></summary></entry><entry><title type="html">Philosophers 가이드</title><link href="http://localhost:4000/42seoul/Philosophers/" rel="alternate" type="text/html" title="Philosophers 가이드" /><published>2023-12-06T00:00:00+09:00</published><updated>2023-12-06T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Philosophers</id><content type="html" xml:base="http://localhost:4000/42seoul/Philosophers/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dining Philosopher 문제를 해결해 본다. multi threads, multi processors 환경에서 발생할 수 있는 race condition 및 deadlock을 방지한다.
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="1-필요-개념">1. 필요 개념</h1>
-<p><br /></p>
-
-<h2 id="1-1-공유-자원">1-1. 공유 자원</h2>
-
-<p>여러 프로세스 또는 스레드가 공동으로 사용하는 변수, 메모리, 파일 등의 자원이나 변수를 의미한다.</p>
-
-<p><br /></p>
-
-<h2 id="1-2-thread">1-2. Thread</h2>
-
-<p>thread란 프로세스 내에서 작업이 실행되는 흐름의 단위를 말한다. 모든 프로세스에는 한 개 이상의 스레드가 존재하여 작업을 수행하며, 두 개 이상의 스레드를 가지는 경우를 멀티 스레드(multi threads)라고 한다. 아래 코드를 보자.</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="kt">void</span> <span class="nf">increase_a</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-		<span class="n">a</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">pthread_t</span> <span class="n">th1</span><span class="p">,</span> <span class="n">th2</span><span class="p">;</span>
-
-	<span class="err"></span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">th1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">increase_a</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-	<span class="err"></span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">th2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">increase_a</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-	<span class="n">pthread_join</span><span class="p">(</span><span class="n">th1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-	<span class="n">pthread_join</span><span class="p">(</span><span class="n">th2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"a : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-</code></pre></div></div>
-
-<p>pthread_create함수를 통해 실행 흐름의 단위인 스레드를 2개 만들었다. 각각의 thread는 increase_a 함수를 실행하고 pthread_join을 통해 종료될 것이다. 즉 increase_a 함수가 2번 실행된다는 것이고 printf의 결과로 2000000이 출력될 것을 예상할 수 있다.</p>
-
-<p><br /></p>
-
-<h2 id="1-3-race-condition">1-3. Race Condition</h2>
-
-<p>1-2의 코드에서 우리는 결과가 2000000일 것이라고 예상했다. 하지만 실제로 코드를 실행해보면 출력이 2000000이 아닌 경우가 종종 발생한다. 왜 이런 현상이 발생할까?</p>
-
-<p>각각의 스레드가 a++을 한번씩 실행한다고 생각해보자.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Thread 1</th>
-      <th>Thread 2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>메모리에서 CPU로 a 값을 가져온다 — a = 0</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>a++ — a = 1</td>
-      <td>메모리에서 CPU로 a 값을 가져온다 — a = 0</td>
-    </tr>
-    <tr>
-      <td>a 값을 메모리에 업데이트 해준다 — a = 1</td>
-      <td>a++ — a = 1</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>a 값을 메모리에 업데이트 해준다 — a = 1</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>a++이 총 2번 실행이 됐지만, thread 1이 값을 연산 후 메모리에 업데이트 해주기 전에 thread 2가 값을 확인했기 때문에 a = 1이 되는 상황이 발생했다. Race Condition은 이렇게 공유 자원에 대해 여러 프로세스 또는 스레드들이 동시에 접근을 시도하여 결과에 영향을 줄 수 있는 상태를 말한다.</p>
-
-<p><br /></p>
-
-<h2 id="1-4-critical-section">1-4. Critical Section</h2>
-
-<p>critical section이란 병렬 프로그래밍에서 스레드 또는 프로세스가 동시 접근을 해서는 안되는 코드 영역을 말한다. critical section의 목적은 공유 자원에 대한 동시 접근으로 인해 발생할 수 있는 race condition을 방지하고 데이터 일관성을 유지하는 것이다. 이를 위해서는 상호 배제(mutual exclusion) 매커니즘이 필요하며 대표적인 방법으로 mutex와 semaphore가 있다.</p>
-
-<p><br /></p>
-
-<h2 id="1-5-mutex">1-5. Mutex</h2>
-
-<p>critical section에 동시 접근을 막기 위한 기법 중 하나로 <strong>Mut</strong>ual <strong>Ex</strong>clusion을 줄여서 Mutex라고 부른다.
-mutex는 lock과 unlock 두 가지 기능을 가진다.
-공유 변수 a에 대한 동시 접근을 막고 싶다면 다음과 같이 mutex를 사용할 수 있다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="c1">//critical section 진입</span>
-<span class="n">mutex_lock</span><span class="p">();</span>
-<span class="n">a</span><span class="o">++</span><span class="p">;</span>
-<span class="n">mutex_unlock</span><span class="p">();</span>
-<span class="c1">//critical section 탈출</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="p">.</span>
-</code></pre></div></div>
-
-<p>thread 1이 mutex_lock을 실행하고 다음 줄인 a++로 갔을 때, thread 2가 mutex_lock()에 접근한다면 thread 2는 코드를 더 이상 진행하지 못하고 mutex_lock()에 멈춰있게 된다. thread 1이 a++ 실행 후 mutex_unlock()까지 실행해야 thread 2는 비로소 mutex_lock()을 실행하고 a++로 넘어가게 된다.</p>
-
-<p>이런 식으로 mutex를 사용하면 한 스레드가 공유 변수에 접근했을 때 다른 스레드들의 접근을 배제함으로써 race condition을 방지하고 원자성을 보장할 수 있다.</p>
-
-<p><br /></p>
-
-<h2 id="1-6-semaphore">1-6. Semaphore</h2>
-
-<p>mutex는 한 스레드가 critical section에 진입하면 다른 모든 스레드의 접근을 막는 방식으로 작동한다. 반면 Semaphore는 한 스레드가 critical section에 진입했더라도 가용할 수 있는 자원이 남아 있으면, 남은 수 만큼의 스레드의 접근을 허용한다.</p>
-
-<p>백화점 화장실을 떠올려 보자.</p>
+<h1 id="2-무선-랜-연결-방식">2. 무선 랜 연결 방식</h1>
 
 <ol>
-  <li>변기를 사용할 수 있는 칸이 5칸이 있다(어떤 공유 변수를 동시에 5개의 스레드까지 사용해도 상관 없는 경우 semaphore의 초기 값을 5로 초기화한다).</li>
-  <li>한 명이 첫 번째 칸에 들어간다면 남아 있는 사용가능한 칸은 4칸이 있다(어떤 스레드가 공유 변수에 접근할 때 semaphore 값을 하나 내려서 4로 만든 뒤 공유 변수를 사용한다).</li>
-  <li>다음 사람이 화장실에 들어왔을 때 남은 4칸 중 하나에 들어갈 것이고 남은 칸은 3칸이 된다(다른 스레드가 공유 변수에 접근할 때 semaphore 값을 하나 내려서 3으로 만든 뒤 공유 변수를 사용한다).</li>
-  <li>한 명이 볼일이 끝나서 칸에서 나오게 되면 사용 가능한 칸은 1칸이 늘어난다(스레드 하나가 공유 변수 사용이 끝났으면 semaphore 값을 하나 올린다).</li>
-  <li>모든 칸을 사용 중이라면 남은 칸은 0칸이 되고, 이후에 오는 사람은 한명이 나올 때 까지 기다려야 한다(스레드가 공유 변수에 접근하려고 할 때 해당 변수의 semaphore 값이 0이라면 양수가 될 때까지 기다려야 한다).</li>
+  <li>infrastructure : WAP를 통해 통신하는 방식</li>
+  <li>Ad Hoc : 무선 클라이언트끼리 직접 통신하는 방식</li>
 </ol>
 
-<p>semaphore는 위와 같은 식으로 공유 변수에 대한 접근을 제한한다.</p>
+<h1 id="3-ssid">3. SSID</h1>
 
-<p><br /></p>
+<p>무선 액세스 포인트와 무선 클라이언트를 연결하려면 혼선을 피하기 위해 <code class="language-plaintext highlighter-rouge">SSID</code>라는 액세스 포인트의 고유 이름을 사용해야 한다. 또한 무선 클라이언트가 자동으로 무선 액세스 포인트를 찾아 통신할 수 있기 위해 네트워크 이름, 인증, 암호화, 암호화 키를 설정해야 한다.
+무선 액세스 포인트는 <code class="language-plaintext highlighter-rouge">beacon</code>이라고 하는 자기를 알리는 신호를 네트워크에 있는 모든 기기에 주기적으로 전송한다. 무선 클라이언트는 이 신호를 받은 후 자신의 SSID와 같은지 WAP에 문의한다. 같은 SSID의 WAP이 응답을 하고 서로의 존재를 알게 되면, 인증 방식이 올바른지 확인하고 무선 클라이언트는 WAP에 연결을 요청한다. WAP으로 부터 승인을 받으면 연결하여 통신을 할 수 있게 된다.</p>
 
-<h2 id="1-7-dead-lock">1-7. Dead Lock</h2>
+<h1 id="4-채널">4. 채널</h1>
 
-<p>둘 이상의 프로세스(스레드)가 다른 프로세스(스레드)가 점유하고 있는 자원을 얻기 위해 서로 기다리는 경우 무한 대기에 빠지는 상황을 말한다.
-예를 들어, 한 스레드가 공유 자원 a, b에 접근하기 위해 다음과 같은 코드를 실행 중이라면</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="n">mutex_lock</span><span class="p">(</span><span class="n">mutex_a</span><span class="p">);</span>
-<span class="n">a</span><span class="o">++</span><span class="p">;</span>
-<span class="n">mutex_lock</span><span class="p">(</span><span class="n">mutex_b</span><span class="p">);</span>
-<span class="n">b</span><span class="o">++</span><span class="p">;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="n">mutex_a</span><span class="p">);</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="n">mutex_b</span><span class="p">);</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="p">.</span>
-</code></pre></div></div>
+<p>WAP과 무선 클라이언트 사이의 거리가 멀수록 전파가 약해져 접속이 잘 안되거나 통신 속도가 느려진다. 이러한 이유로 WAP을 여러 대 설치해야한다. 무선 랜은 여러 기기를 동시에 연결할 수 있도록 주파수 대역을 분할하는데, 그 주파수 대역을 <code class="language-plaintext highlighter-rouge">채널</code>이라고 부른다. 공유기와 컴퓨터가 연결되려면 두 기기 모두 같은 채널을 설정해야 한다. 반면 공유기끼리는 다른 채널을 설정해야 한다. 다른 채널끼리는 주파수가 서로 다르기 때문에 전파가 겹치더라도 서로 간섭이 일어나지 않고 통신 속도도 떨어지지 않는다.
+전파가 겹치는 무선 공유기들이 같은 채널로 설정되어 있으면 주파수가 서로 겹치면서 <code class="language-plaintext highlighter-rouge">전파 간섭</code>이 생기고 통신 속도가 느려진다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="LAN" /><category term="Push_Swap" /><category term="SSID" /><category term="Channel" /><category term="beacon" /><summary type="html"><![CDATA[무선 랜에 대해 알아보자.]]></summary></entry><entry><title type="html">07.응용 계층</title><link href="http://localhost:4000/network/network07/" rel="alternate" type="text/html" title="07.응용 계층" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network07</id><content type="html" xml:base="http://localhost:4000/network/network07/"><![CDATA[<h1 id="1-응용-계층의-역할">1. 응용 계층의 역할</h1>
 
-<p>아래 코드를 실행 중인 또 다른 스레드와 dead lock을 일으킬 수 있다(열심히 고민해 보자).</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="n">mutex_lock</span><span class="p">(</span><span class="n">mutex_b</span><span class="p">);</span>
-<span class="n">b</span><span class="o">++</span><span class="p">;</span>
-<span class="n">mutex_lock</span><span class="p">(</span><span class="n">mutex_a</span><span class="p">);</span>
-<span class="n">b</span><span class="o">++</span><span class="p">;</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="n">mutex_a</span><span class="p">);</span>
-<span class="n">mutex_unlock</span><span class="p">(</span><span class="n">mutex_b</span><span class="p">);</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="p">.</span>
-</code></pre></div></div>
+<p>서비스를 제공하는 측을 <code class="language-plaintext highlighter-rouge">서버</code>, 서비스를 요청하는 측에서 사용하는 프로그램을 <code class="language-plaintext highlighter-rouge">클라이언트</code>라고 한다.
+이런 어플리케이션은 응용 계층에서 동작한다(여기서 응용 계층은 5계층의 세션 계층과 6계층의 표현 계층을 포함하는 의미).
+응용 계층에서는 클라이언트의 요청을 서버 프로그램이 이해할 수 있는 데이터로 변환하고 전송한다.
+클라이언트 측 어플리케이션과 서버 측 어플리케이션이 통신해야 하기 때문에 여기서도 프로토콜이 필요하다.</p>
 
-<h3 id="1-7-1-deadlock-발생조건-4가지">1-7-1. DeadLock 발생조건 4가지</h3>
+<p>응용 계층의 대표적인 프로토콜 종류</p>
+<ol>
+  <li>HTTP : 웹사이트 접속</li>
+  <li>FTP : 파일 전송</li>
+  <li>SMTP : 메일 송신</li>
+  <li>POP3 : 메일 수신</li>
+  <li>DNS : 이름 해석(컴퓨터나 네트워크 장비에 붙여진 이름을 기반으로 IP 주소를 알아내는 것)</li>
+</ol>
+
+<h1 id="2-world-wide-webwww">2. World Wide Web(www)</h1>
+
+<p>W3나 Web이라고도 불린다.
+www에는 다음 3가지 기술이 사용된다.</p>
 
 <ol>
-  <li><strong>상호 배제</strong> : 한 번에 프로세스(스레드) 하나만 특정 공유 자원을 사용할 수 있다. 사용 중인 자원을 다른 프로세스(스레드)가 사용하려면 해당 자원에 걸린 제한이 해제될 때까지 기다려야 한다.</li>
-  <li><strong>점유 대기</strong> : 자원을 최소한 하나 확보하고, 다른 자원을 점유하기 위해 대기하는 프로세스(스레드)가 존재해야 한다.</li>
-  <li><strong>비선점</strong> : 다른 프로세스나 스레드가 점유한 자원을 강제로 빼앗을 수 없다.</li>
-  <li><strong>순환 대기</strong> : 자원을 얻으려는 프로세스(스레드)가 순환 형태로 대기하고 있어야 한다.</li>
+  <li>HTML : 
+  웹 페이지에서 문장 구조나 문자를 꾸미는 태그를 사용하여 작성하는 마크업 언어. 하이퍼링크를 사용할 수 있다. 이동한 사이트에 글과 그림이 있다면, 클라이언트는 글과 그림을 따로 요청하기 때문에 가끔 글이 먼저 보이고 그림이 나중에 보이는 경우가 발생한다.</li>
+  <li>URL :
+인터넷에서 파일 위치를 지정하기 위해 기술된 주소. 웹 사이트 주소를 지정하기 위해 사용된다.</li>
+  <li>HTTP : 
+  클라이언트는 웹 사이트를 보기 위해 웹 서버의 80번 포트를 통해 HTTP 통신을 한다. 클라이언트에서 index.html을 달라는 HTTP 요청을 보내면, 서버에서 HTTP 응답을 반환하고 index.html을 클라이언트에게 보낸다. 이전에는 요청이 있을 때마다 연결을 수립하고 해당 요청 처리 후 바로 연결을 끊었지만, HTTP/1.1 버전부터 keepalive 기능이 추가되어서 한번 연결을 수립하면 필요한 모든 요청을 처리 후 연결을 끊을 수 있게 되었기 때문에 효율이 상승했다.</li>
 </ol>
 
-<h3 id="1-7-2-deadlock-해결법">1-7-2. DeadLock 해결법</h3>
+<h1 id="3-domain-name">3. Domain name</h1>
+
+<p>일반적으로 서버 컴퓨터에 접속하려면 서버 컴퓨터의 IP 주소를 알아야 하는데, 우리는 웹 브라우저 주소창에 www.google.com을 입력해도 구글 서버 컴퓨터로부터 정보를 받아올 수 있다.
+<code class="language-plaintext highlighter-rouge">DNS</code>는 이처럼 URL을 IP 주소로 변환(이름 해석)해주는 시스템이다.
+www.google.com을 컴퓨터나 네트워크를 식별하기 위해 붙여진 이름 즉 <code class="language-plaintext highlighter-rouge">도메인 이름</code>이라고 한다. 도메인 이름 앞에 있는 www는 <code class="language-plaintext highlighter-rouge">호스트 이름(서버 이름)</code>이다.
+컴퓨터에서 www.google.com에 접속하려고 하면 컴퓨터는 우선 DNS 서버에 가서 www.google.com의 IP 주소를 요청한다. 이후 DNS 서버에서 해당 IP 주소를 넘겨주면 컴퓨터는 해당 IP 주소로 접속한다.
+DNS 서버는 전 세계에 계층적으로 연결되어 있기 때문에 만약 컴퓨터가 요청한 첫번째 DNS 서버가 IP 주소를 모른다면, 첫번째 DNS 서버가 두번째 DNS 서버에게 IP 주소를 요청해서 이를 사용자 컴퓨터에게 전달한다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="HTTP" /><category term="DNS" /><category term="www" /><summary type="html"><![CDATA[OSI 모델의 응용 계층에 대해 알아 보자.]]></summary></entry><entry><title type="html">09.무선 랜</title><link href="http://localhost:4000/network/network09/" rel="alternate" type="text/html" title="09.무선 랜" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network09</id><content type="html" xml:base="http://localhost:4000/network/network09/"><![CDATA[<h1 id="1-무선-랜">1. 무선 랜</h1>
+
+<p>무선 랜은 <code class="language-plaintext highlighter-rouge">WAP(Wireless Access Point)</code>와 <code class="language-plaintext highlighter-rouge">무선 클라이언트(컴퓨터나 스마트폰 등)</code>로 구성된다.
+컴퓨터가 WAP(무선 공유기)와 통신하려면 무선 랜 칩(chip)과 무선 랜 어댑터(adapter)가 필요하다.
+무선 랜 어댑터는 USB 메모리 방식과 컴퓨터 카드 방식이 있다.</p>
+
+<h1 id="2-무선-랜-연결-방식">2. 무선 랜 연결 방식</h1>
 
 <ol>
-  <li><strong>예방(Prevention)</strong> : 데드락의 발생조건 4가지 중 하나도 만족하지 않게 설계하는 것. 시스템 처리량이나 효율을 떨어뜨리는 문제가 발생할 수 있다.</li>
-  <li><strong>회피(Avoidance)</strong> : 데드락 발생 가능성을 허용하지만 적절하게 회피하는 방법. 프로세스들이 요청하는 모든 자원을, 데드락을 발생시키지 않으면서 차례로 모두에게 할당해 줄 수 있다면 <strong>safe state</strong>에 있다고 말한다. 또한 특정한 순서로 프로세스들에게 자원을 할당, 실행, 종료 등의 작업을 할 때 데드락이 발생하지 않는 순서를 <strong>safe sequence</strong>라고 한다. 회피 알고리즘은 자원을 할당한 후에도 시스템이 항상 safe state에 있을 수 있도록 할당을 허용하는 것이다.</li>
-  <li><strong>탐지 및 회복(Detection and Recovery)</strong> : 시스템이 데드락 예방이나 회피를 하지 않았을 때, 데드락이 발생하면 이를 탐지하고 회복하는 알고리즘.</li>
+  <li>infrastructure : WAP를 통해 통신하는 방식</li>
+  <li>Ad Hoc : 무선 클라이언트끼리 직접 통신하는 방식</li>
 </ol>
 
-<p><br /></p>
+<h1 id="3-ssid">3. SSID</h1>
 
-<h2 id="1-8-context-switch">1-8. Context Switch</h2>
+<p>무선 액세스 포인트와 무선 클라이언트를 연결하려면 혼선을 피하기 위해 <code class="language-plaintext highlighter-rouge">SSID</code>라는 액세스 포인트의 고유 이름을 사용해야 한다. 또한 무선 클라이언트가 자동으로 무선 액세스 포인트를 찾아 통신할 수 있기 위해 네트워크 이름, 인증, 암호화, 암호화 키를 설정해야 한다.
+무선 액세스 포인트는 <code class="language-plaintext highlighter-rouge">beacon</code>이라고 하는 자기를 알리는 신호를 네트워크에 있는 모든 기기에 주기적으로 전송한다. 무선 클라이언트는 이 신호를 받은 후 자신의 SSID와 같은지 WAP에 문의한다. 같은 SSID의 WAP이 응답을 하고 서로의 존재를 알게 되면, 인증 방식이 올바른지 확인하고 무선 클라이언트는 WAP에 연결을 요청한다. WAP으로 부터 승인을 받으면 연결하여 통신을 할 수 있게 된다.</p>
 
-<p>하나의 프로세스(스레드)가 CPU를 사용하던 상황에서 다른 프로세스(스레드)가 CPU를 사용하기 위해, 먼저 사용하고 있던 프로세스(스레드)의 상태를 저장해놓고 다음 프로세스(스레드)의 저장되어 있던 상태를 불러오는 것을 말한다.</p>
+<h1 id="4-채널">4. 채널</h1>
 
-<p>프로세스 끼리는 메모리를 공유하지 않지만 스레드 끼리는 <code class="language-plaintext highlighter-rouge">stack</code>영역을 제외한 <code class="language-plaintext highlighter-rouge">code</code>, <code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">heap</code> 영역을 공유하기 때문에, 프로세스에서 다른 프로세스로 context switch가 일어나는 것보다, 한 프로세스 내의 스레드 사이에서 context switch가 발생하는 것이 overhead가 적다.</p>
-
-<p><br /></p>
-
-<h2 id="1-9-효율적인-멀티스레딩">1-9. 효율적인 멀티스레딩</h2>
-
-<p>스레드를 많이 만든다고 무조건 좋은 프로그램이 아니다. 이는 하드웨어의 성능에 따라 달라진다.</p>
-
-<p><a href="https://www.youtube.com/watch?v=M1e9nmmD3II&amp;t=16s">유튜브 포프tv</a></p>
-
-<p><br /></p>
-
-<h1 id="3-시행착오-및-팁">3. 시행착오 및 팁</h1>
-
-<ul>
-  <li>Mandatory
-    <ol>
-      <li>philosopher가 1명일 때 프로그램을 종료하기 위해 pthread_detach()를 사용했는데, main thread에서 free를 완료하고 난 후, 아직 종료되지 않은 philo 스레드에서 free된 변수를 참조하면 segfault가 발생한다.</li>
-      <li>인자에 0이 오는 경우는 웬만하면 에러처리하자.</li>
-      <li>반복되는 계산은 변수에 담아서 계산을 줄이자.</li>
-    </ol>
-  </li>
-  <li>Bonus
-    <ol>
-      <li>스레드 없이 프로세스 자체에서 먹기, 자기, 생각하기를 하면서 죽는 시간을 계산하려고 했으나, 죽었는지 체크해주는 스레드가 없으면 usleep이 걸려있는 동안 자신이 죽었는지 확인할 방법이 없다.</li>
-      <li><code class="language-plaintext highlighter-rouge">typedef int sem_t</code>로 선언되어 있어서 sem_t 변수에 직접 접근해서 값을 확인할 수 있을 줄 알았지만 불가능했다.</li>
-    </ol>
-  </li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Philosophers" /><category term="Dining_Philosophers" /><category term="semaphore" /><category term="mutex" /><category term="race_condition" /><summary type="html"><![CDATA[Dining Philosopher 문제를 해결해보자.]]></summary></entry><entry><title type="html">pipex 가이드</title><link href="http://localhost:4000/42seoul/Pipex/" rel="alternate" type="text/html" title="pipex 가이드" /><published>2023-12-06T00:00:00+09:00</published><updated>2023-12-06T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Pipex</id><content type="html" xml:base="http://localhost:4000/42seoul/Pipex/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로세스간 통신을 도와주는 pipe에 대해 이해하고 사용해보자.
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="1-pipe">1. Pipe</h1>
-<h2 id="1-1-ipcinter-process-communication">1-1. IPC(Inter Process Communication)</h2>
-
-<p><strong>프로세스</strong>란 메모리에 올라와 실행되고 있는 프로그램을 말한다. 각각의 프로세스는 고유의 메모리 공간을 가지기 때문에 한 프로세스가 다른 프로세스의 데이터에 접근하는 것이 불가능하다. 이런 문제를 해결하기 위해 여러가지 방법이 있는데, 이런 방법들을 IPC라고 한다.</p>
-
-<h2 id="1-2-pipe">1-2. pipe</h2>
-
-<p>pipe는 IPC의 하나로, 임시 파일(pipe)을 만들고 프로세스의 결과를 해당 파일에 저장, 다음 프로세스가 해당 파일에서 이전 결과를 읽어와 사용하는 식으로 프로세스간에 소통한다.</p>
-
-<p>예를 들어, 다음과 같은 명령어가 있다고 하자.</p>
-<pre><code class="language-command">ls | cat
-</code></pre>
-<p><code class="language-plaintext highlighter-rouge">ls</code> 명령어는 현재 디렉토리에 있는 파일들의 목록을 보여주고, <code class="language-plaintext highlighter-rouge">cat</code> 명령어는 입력으로 받은 내용을 출력해준다. <code class="language-plaintext highlighter-rouge">cat</code> 명령어를 단일로 사용했을 때는 유저가 내용을 입력할 때까지 기다리지만, 위와 같이 실행하면 <code class="language-plaintext highlighter-rouge">ls</code> 명령어의 결과물이 pipe(|)에 저장되고, <code class="language-plaintext highlighter-rouge">cat</code> 은 유저의 input대신 pipe에 저장된 내용을 입력으로 받아와 명령어를 실행한다. 따라서 위 명령어의 출력은 <code class="language-plaintext highlighter-rouge">ls</code>의 출력과 같을 것이다.</p>
-
-<p>그렇다면 infile이라는 파일이 있다고 할 때, 아래 명령어의 결과는 어떨까?</p>
-<pre><code class="language-command">cat &lt; infile | ls
-</code></pre>
-
-<p><code class="language-plaintext highlighter-rouge">&lt; infile</code>은 입력을 infile로 하겠다는 의미이다. 즉, <code class="language-plaintext highlighter-rouge">cat &lt; infile</code>은 infile 안의 내용을 파이프에 쓰게 된다. 하지만 <code class="language-plaintext highlighter-rouge">ls</code>는 입력이 필요없는, 현재 디렉토리의 파일들을 출력해주는 명령어이므로 앞의 파이프에 내용이 있어도 신경쓰지않고 <code class="language-plaintext highlighter-rouge">ls</code>명령어의 결과를 그대로 출력하게 된다. 따라서 위 명령어의 결과는 <code class="language-plaintext highlighter-rouge">ls</code>의 결과와 같다.</p>
-
-<p><br /></p>
-
-<h1 id="2-redirection">2. Redirection</h1>
-
-<p>위에서 <code class="language-plaintext highlighter-rouge">cat &lt; infile</code>은 뒤에 오는 파일(infile)을 입력으로 한다고 설명했다. 조금 더 정확히 말하면 표준 입력으로 연결되어 있는 fd 0번을 infile로 바꿔서 연결시킨다는 말이다. <code class="language-plaintext highlighter-rouge">cat</code>은 fd 0번에서 입력을 받도록 프로그래밍 되어 있는데, fd 0번을 infile로 연결시켜 놨으므로 표준 입력이 아닌 infile의 내용을 받아와 출력하게 되는 것이다. 이처럼 프로그램이나 명령어의 입출력을 파일이나 다른 입출력 장치로 바꾸는 것을 redirection이라고 한다.</p>
-
-<p>리다이렉션은 4가지로 구분할 수 있다.</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;</code> : 표준 입력에 연결되어 있는 fd 0번을 <code class="language-plaintext highlighter-rouge">&lt;</code>뒤에 오는 파일로 연결한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&gt;</code> : 표준 출력에 연결되어 있는 fd 1번을 <code class="language-plaintext highlighter-rouge">&gt;</code> 뒤에 오는 파일로 연결한다. <code class="language-plaintext highlighter-rouge">&gt;</code> 뒤의 파일이름에 해당하는 파일을 만들고 결과물을 거기에 저장한다. 만약 해당 이름의 파일이 이미 존재하면, 기존 내용이 사라지고 마지막에 실행한 명령어의 결과가 저장되므로 주의해야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> : heredoc이라고 불리며, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code> 뒤에 오는 문자가 입력될 때까지 계속 입력을 받는다. 예를 들어, <code class="language-plaintext highlighter-rouge">&lt;&lt; eof</code>이면 eof를 입력하기 전까지 계속 입력을 받고, 입력 받는 내용들은 임시 파일에 저장된다. 종료 문자인 eof가 입력되면 표준 입력에 연결되어 있는 fd 0번을 해당 임시 파일로 연결한다. 명령어가 다 실행되고 나면 임시 파일은 삭제된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 표준 출력에 연결되어 있는 fd 1번을 <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 뒤에 오는 파일로 연결한다. 만약 <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>뒤의 파일 이름에 해당하는 파일이 이미 존재하면, 그 파일의 내용 뒤에 이어쓰기한다.</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="3-주의할-점-및-팁">3. 주의할 점 및 팁</h1>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">sleep 3 | sleep 3 | sleep 3</code>의 경우 병렬 실행되어 9초가 아닌 3초를 sleep 해야 한다.</li>
-  <li>lsof 명령어를 사용해 fd leak이 나지 않는지 확인한다.  <code class="language-plaintext highlighter-rouge">cat /dev/random | head -1</code> 명령어를 넣어 보자.</li>
-  <li>파이프를 여러 개 사용하는 경우, 첫 명령어, 마지막 명령어, 그 외 중간에 있는 명령어로 구분하여 리다이렉션 방향을 고민해야 한다.</li>
-  <li>과제를 하면서 이 재생목록이 정말 큰 도움이 됐다.
-<a href="https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY">유튜브 코드볼트</a></li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="process" /><category term="fd" /><category term="pipe" /><summary type="html"><![CDATA[pipe에 대해 알아보자.]]></summary></entry><entry><title type="html">Push Swap 병합정렬 가이드</title><link href="http://localhost:4000/42seoul/Push_swap/" rel="alternate" type="text/html" title="Push Swap 병합정렬 가이드" /><published>2023-11-30T00:00:00+09:00</published><updated>2023-11-30T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Push_swap</id><content type="html" xml:base="http://localhost:4000/42seoul/Push_swap/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stack A, Stack B가 있는 상황에서 Stack A에 숫자가 랜덤으로 들어온다. 주어진 명령어를 최소한으로 사용하여 Stack A에 숫자들을 오름차순으로 정렬한다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-명령어">1. 명령어</h1>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">sa</code> : stack A의 맨 위 2개 요소의 위치를 바꾼다.</li>
-  <li><code class="language-plaintext highlighter-rouge">sb</code> : stack B의 맨 위 2개 요소의 위치를 바꾼다.</li>
-  <li><code class="language-plaintext highlighter-rouge">ss</code> : sa와 sb를 동시에 실행한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">pa</code> : stack B 맨 위 1개 요소를 stack a의 맨 위로 옮긴다.</li>
-  <li><code class="language-plaintext highlighter-rouge">pb</code> : stack A 맨 위 1개 요소를 stack b의 맨 위로 옮긴다.</li>
-  <li><code class="language-plaintext highlighter-rouge">ra</code> : stack A의 요소들을 위로 한칸씩 올리고, 맨 위의 요소는 바닥으로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rb</code> : stack B의 요소들을 위로 한칸씩 올리고, 맨 위의 요소는 바닥으로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rr</code> : ra와 rb를 동시에 실행한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rra</code> : stack A의 요소들을 아래로 한칸씩 내리고, 맨 밑의 요소는 맨 위로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rrb</code> : stack B의 요소들을 아래로 한칸씩 내리고, 맨 밑의 요소는 맨 위로 보낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">rrr</code> : rra와 rrb를 동시에 실행한다.
-&lt;/br&gt;
-&lt;/br&gt;</li>
-</ul>
-
-<h1 id="2-push-swap-병합-정렬">2. Push Swap 병합 정렬</h1>
-
-<p>병합 정렬은 분할 정복 알고리즘의 하나로, 최악의 경우와 최선의 경우가 많이 차이 나지 않는 안정 정렬에 속한다.</p>
-
-<p>stack a에 다음 그림과 같이 100개의 정렬되지 않은 숫자가 들어온다고 가정하자.</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/8914da71-2560-4c08-b9a5-29e7d6a9bb4f" alt="Pasted image 20231127003216" /></p>
-
-<p>우리의 목표는 결과를 아래와 같이 만드는 것이다(stack A가 정렬됐다고 가정하고, 숫자의 크기에 비례하게 가로 길이를 표현해서 추상적으로 삼각형을 표현했다).</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/241d5ff7-a60e-49a7-a05b-485fbf33b243" alt="Pasted image 20231127002730" /></p>
-
-<p>stack A에 위 그림과 같이 오름차순으로 쌓기 위해서는 큰 수부터 stack A에 쌓아야 하고, 적은 명령어로 stack A에 숫자를 쌓을 수 있는 위치로는 stack A의 bottom(<code class="language-plaintext highlighter-rouge">rra</code> 명령어를 사용), stack B의 top(<code class="language-plaintext highlighter-rouge">pa</code>), 그리고 stack B의 bottom(<code class="language-plaintext highlighter-rouge">rrb</code> + <code class="language-plaintext highlighter-rouge">pa</code>) 이렇게 3가지가 있다.</p>
-
-<p>stack A에 하나의 정렬된 큰 삼각형을 만들기 위해, 그리고 최대한 명령어의 개수를 줄이기 위해 3 방향(stack A의 bottom, stack B의 top, stack B의 bottom)에서 병합을 실행할 것이다.</p>
-
-<p>정방향(오름차순) 삼각형을 stack A에 만들기 위해서 stack A bottom, stack B top, stack B bottom에서 병합을 진행할 때, 각 위치에 존재하는 숫자들은 필요에 맞게 정렬되어 있어야 한다. 아래 그림을 보자.</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/af0e5952-d22f-4188-abf1-3d48b1c3f4df" alt="Pasted image 20231130134131" /></p>
-
-<p>stack A top에 정방향 삼각형을 만들기 위해 접근이 가장 빠른 stack A bottom, stack B bottom, stack B top에서 끝값들을 비교해 큰 순서대로 stack A에 값을 쌓아줬다. 각각의 작은 3개의 삼각형이 모두 사라질 때까지 반복하면 큰 정방향 삼각형을 만들 수 있다. 그렇다면 작은 3개의 삼각형은 어떤 삼각형을 합쳐야 만들 수 있을까?</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/62728fcd-dea8-45d5-9a90-d2c0cd130145" alt="Pasted image 20231130140141" /></p>
-
-<p>위 공식을 이용하면 다음과 같이 재귀적으로 stack A에 정방향 삼각형을 만들 수 있다.</p>
-
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/41a92c9b-f041-48e4-b4a1-9b551ffb6677" alt="Pasted image 20231130143847" /></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Push_Swap" /><category term="Merge_sort" /><summary type="html"><![CDATA[병합 정렬로 Push Swap을 해결해보자.]]></summary></entry><entry><title type="html">Born2beroot</title><link href="http://localhost:4000/42seoul/Born2beroot/" rel="alternate" type="text/html" title="Born2beroot" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Born2beroot</id><content type="html" xml:base="http://localhost:4000/42seoul/Born2beroot/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가상 머신을 이용해 엄격한 규칙들로 이루어진 나만의 서버를 구현한다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-필요-개념">1. 필요 개념</h1>
-
-<h2 id="server">Server</h2>
-
-<p>클라이언트의 요청을 받으면 서비스, 데이터를 제공하는 컴퓨터 혹은 프로그램(요청을 받으면 데이터를 보내주는 기계)</p>
-
-<p>닭갈비집 알바생으로 비유하면 이해가 쉽다.<br />
-닭갈비 2인분 주세요~ 하면 닭갈비 2인분을 가져다 주는 것 처럼, 웹서버도 마찬가지로 네이버 웹툰 페이지 주세요~ 하면 네이버 웹툰 페이지를 가져다 준다. 이것이 서버다.</p>
-
-<p>서버를 구축할 때, OS를 선택해야 한다. 운영체제의 종류는 다양하기 때문에 사용성에 맞는 적절한 서버 운영체제를 선택하는 것이 중요하다. 이후 그 운영체제로 돌아가는 서버를 다룬다.
-<br /></p>
-<h2 id="linux">Linux</h2>
-
-<ul>
-  <li>GUI vs CLI
-  Graphical User Interface vs Command-Line Interface</li>
-</ul>
-
-<p>윈도우, 맥OS, 안드로이드, IOS 등은 일반인, 즉 개발자가 아닌 사람들을 대상으로 만들어진 운영체제이기 때문에 GUI로 만들어진 화면에서 만들어진 기능을 사용할 수 있도록 환경을 제공하는 데 초점이 맞춰져 있다.</p>
-
-<p>리눅스는 버전에 따라 GUI도 제공하지만, 가장 큰 장점은 CLI로 사용자가 할 수 있는 무궁무진한 작업들이다. 타 OS들이 완제품이라면 리눅스는 프로그래밍을 할 줄 아는 프로그래머들이 얼마든 이것저것 만져보고 개조해 볼 수 있는 조립식 제품 같은 개념이다.
-<br /></p>
-<ul>
-  <li>오픈소스 운영체제</li>
-</ul>
-
-<p>리눅스는 오픈소스 운영체제이다. 오픈소스라 함은 누구나 공짜로 가져다 쓸 수 있을 뿐 아니라, 그 설계도인 코드도 마음대로 들여다볼 수 있고 이를 원하는대로 개조할 수도 있다는 의미다. 리눅스를 사용할 때 Ubuntu, 민트, CentOS 등등 수많은 버전들 중에서 골라야 하는 건 바로 이 때문이다. 리누스 토르발즈가 만든 리눅스에서 출발했지만, 이를 필요에 따라 개조하고 발전시킨 여러 버전들이 만들어졌기 때문이다.</p>
-
-<ul>
-  <li>Linux 커널(kernel)</li>
-</ul>
-
-<p>커널은 <strong>운영체제의 핵심</strong>으로 하드웨어와 프로그램 사이에서 인터페이스를 제공한다. OS의 최하단, 하드웨어를 상대하는 최전선에서 하드웨어를 직접 다루고 제어한다. 즉, 운영체제라는 소프트웨어의 존재이유이자 핵심.
-<br /></p>
-<h2 id="network">Network</h2>
-
-<ul>
-  <li>네트워크란?</li>
-</ul>
-
-<p>네트워크란 Net + Work의 합성어로 컴퓨터(노드)들이 그물처럼 연결되어 상호작용하는 통신 이용 형태를 말한다.</p>
-
-<ul>
-  <li>IP 주소란?</li>
-</ul>
-
-<p>네트워크 환경에서 컴퓨터(노드)간에 통신하기 위해 각 컴퓨터에 부여된 네트워크상의 주소.<br />
- ip주소는 네트워크 주소와 호스트 주소로 나뉜다.<br />
- <code class="language-plaintext highlighter-rouge">192.163.0.101</code> 이라는 ip 주소가 있다고 하자.<br />
- <code class="language-plaintext highlighter-rouge">192.168.0</code>은 네트워크 주소이고, <code class="language-plaintext highlighter-rouge">101</code>은 호스트 주소가 된다.<br />
- 네트워크 주소는 공통적인 부분이고(ex. 서울시 중랑구 면목동 @@아파트 105동), 호스트 주소가 유일한 식별자 역할을 한다(ex. 202호).
-<br /></p>
-<h2 id="partition과-mount">Partition과 Mount</h2>
-
-<ul>
-  <li>
-    <p>Partition</p>
-
-    <ul>
-      <li>하나의 물리적인 디스크를 여러개의 논리적 디스크로 나누는 것.</li>
-      <li>Primary Partition은 하드 MBR에 기록되는 4개의 파티션을 말한다. 각각의 파티션별로 시작, 끝 지점이 기록되어 있고, OS의 디스크 드라이버는 이것을 인식하고 이 영역 내에서만 쓴다.</li>
-      <li>Logical Partition은 파티션 하나를 내부적으로 파티션 몇 개로 나눈 것이고, 이 때 자기 자신을 몇 개로 나눈 파티션을 확장 파티션이라고 한다.</li>
-    </ul>
-  </li>
-  <li>
-    <p>File System</p>
-
-    <ul>
-      <li>파일 시스템(File System)은 운영 체제에서 파일과 디렉토리를 구성하고 저장하는 방식이다. 파일 시스템은 디스크, CD-ROM 등의 저장 장치를 관리하고, 사용자와 프로그램이 파일을 읽고 쓰는 방법을 제공한다. 리눅스에서는 다양한 파일 시스템이 지원되며, 대표적으로 ext4, XFS, NTFS, FAT32 등이 있다. 각 파일 시스템마다 특정한 특징과 장단점이 있으며, 사용 목적에 따라 선택할 수 있다.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Mount</p>
-
-    <ul>
-      <li>파일 시스템을 운영 체제의 디렉토리 구조에 연결하는 것.</li>
-      <li>리눅스 파일 단위로 모든 장치를 관리하기 때문에 새롭게 만든 파일 시스템을 사용하기 위해서는 디스크 장치를 임의의 디렉토리에 마운트 시켜 사용해야 한다. 마운트를 통해 해당 파일 시스템을 읽고 쓸 수 있게 되며, 해당 파티션의 파일이 디렉토리 구조에서 접근 가능해진다.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Mount Point</p>
-
-    <ul>
-      <li>파일 시스템을 운영 체제의 디렉토리 구조에 연결할 때 사용되는 디렉토리를 의미한다.</li>
-      <li>마운트 포인트는 해당 파일 시스템의 루트 디렉토리 역할을 하며, 해당 파일 시스템 내의 파일과 디렉토리는 마운트 포인트를 통해 접근된다.</li>
-      <li>예를 들어, ‘/dev/sda1’ 파티션을 ‘/mnt/data’ 디렉토리에 마운트하면, ‘mnt/data’는 해당 파티션의 루트 디렉토리가 된다. 따라서 ‘/mnt/data/file.txt’와 같은 경로로 파일에 접근할 수 있다.</li>
-      <li>마운트 포인트는 일반적으로 빈 디렉토리를 사용한다. 디렉토리 내부에 다른 파일이나 디렉토리가 존재하면, 해당 디렉토리를 마운트 포인트로 사용할 수 없다.
-<br /></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="lvm">LVM</h2>
-
-<p>LVM(Logical Volume Manager)는 리눅스의 저장 공간을 효율적이고 유연하게 관리하기 위한 커널의 한 부분이다.</p>
-
-<p>LVM은 리눅스 안에서 하나의 디스크를 여러 파티션으로 분할해서 파일 시스템을 이용해 특정 디렉토리와 연결시켜 사용한다. 파티션을 논리적인 개념인 볼륨으로 나눠서 더 유동적으로 디스크의 용량을 관리할 수도 있다. 볼륨은 기본적으로 단일 파티션에 상주하게 되지만 다수의 파티션을 하나의 볼륨으로 관리할 수도 있다. 따라서 여러 개의 파티션을 합치거나 분할하기에 용이하다.</p>
-
-<p><strong>파티션</strong></p>
-
-<p>디스크는 파티션이라는 논리적인 크기로 분할/통합해서 사용한다. 하나의 디스크를 여러 개로 분할하기도 하고 여러 개의 디스크를 하나의 파티션으로 통합하기도 한다.</p>
-
-<p>파티션은 고정적이고 물리적인 개념이 강하며 한 번 크기를 설정하면 변경하거나 추가하기 힘들고 OS는 각 파티션을 별도의 디스크처럼 인식한다.</p>
-
-<p><strong>볼륨</strong></p>
-
-<p>파일 시스템으로 포맷된 디스크 상의 저장 영역이라고도 하며 파티션과 비슷한 개념이지만 엄연히 다르다.</p>
-
-<p>볼륨은 디스크의 단일 파티션에 상주하게 되며 파티션보다 논리적으로 유동적이다. 우리는 하나의 디스크를 여러 개의 파티션으로 나누어 사용한다. 이 때 볼륨은 파티션마다 하나씩 존재하기도 하고, 여러 파티션에 하나만 존재할 수도 있다.</p>
-
-<p><strong>LVM vs 일반 disk partitioning</strong></p>
-
-<p>LVM이 아닌 기존 방식의 경우, 하드 디스크를 파티셔닝 한 후 OS 영역에 마운트하여 read/write를 수행했다.</p>
-
-<p>이 경우 저장 공간의 크기가 고정되어서 증설/축소가 어렵다. 이를 보완하기 위한 방법으로 LVM을 구성할 수 있다.</p>
-
-<p>LVM은 파티션 대신에 volume이라는 단위로 저장 장치를 다룬다.</p>
-
-<p>스토리지의 확장, 변경에 유연하며, 크기를 변경할 때 기존 데이터의 이전이 필요 없다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/boot를 lvm 밖에 설정하는 이유는 lvm을 암호화해놨기 때문에, /boot를 lvm에 넣어놓으면 부트를 하지 못하기 때문이다. 부트를 해야 암호를 물어보던가 말던가 할 수 있다.
-</code></pre></div></div>
-
-<p><br /></p>
-<h2 id="ssh">SSH</h2>
-
-<p>SSH(Secure SHell)는 컴퓨터와 컴퓨터가 인터넷과 같은 Public Network를 통해 서로 통신을 할 때 보안적으로 안전하게 사용하기 위해 사용하는 네트워크 *프로토콜이다.</p>
-
-<p><strong>대표적인 사용 예</strong></p>
-<ul>
-  <li>데이터 전송(소스 코드를 원격 저장소인 Github에 Push할 때)</li>
-  <li>원격 제어(AWS와 같은 클라우드 서비스에 접속하여 해당 머신에 명령을 내릴 때)</li>
-</ul>
-
-<p>FTP나 Telnet과 같은 다른 컴퓨터와 통신을 위해 사용하는 프로토콜도 있는 반면 SSH를 사용하는 이유는 ‘보안’이다. FTP, Talnet은 민감한 정보(로그인 정보 등)를 주고 받기에는 정보를 직접 네트워크를 통해 넘기기 때문에 누구나 해당 정보를 열어볼 수 있으므로 보안에 상당히 취약하다. 반면 SSH는 먼저 보안적으로 훨씬 안전한 채널을 구성한 뒤 정보를 교환하기 때문에 민감한 정보를 주고 받기에 훨씬 유용하다.</p>
-
-<p>*프로토콜 : 복수의 컴퓨터 사이나 중앙 컴퓨터와 단말기 사이에서 데이터 통신을 원활하게 하기 위해 필요한 통신 규약. 신호 송신의 순서, 데이터의 표현법, 오류 검출법 등을 정함.</p>
-
-<p><strong>SSH 작동 원리</strong></p>
-
-<p>SSH는 다른 컴퓨터와 통신을 하기 위해 접속을 할 때 우리가 일반적으로 사용하는 비밀번호의 입력을 통한 접속을 하지 않는다. 기본적으로 SSH는 한 쌍의 Key를 통해 접속하려는 컴퓨터와 인증 과정을 거치게 된다.</p>
-
-<p>한쌍의 키는 다음과 같다.</p>
-
-<ul>
-  <li>Private Key</li>
-  <li>Public Key</li>
-</ul>
-
-<p>SSH는 암호화된 통신을 위해 사용되는 프로토콜로, 키 기반 인증을 지원합니다. 이것은 공개 키/개인 키 쌍을 사용하여 사용자를 인증하고 서버에 안전하게 로그인할 수 있도록 한다.</p>
-
-<p>공개 키/개인 키 쌍은 두 개의 다른 키로 구성됩니다. 공개 키는 다른 사용자들과 공유할 수 있는 키이며, 개인 키는 단 하나의 소유자만이 액세스할 수 있는 비밀 키다.</p>
-
-<p>공개 키는 보안적으로 안전하다. 개인 키를 알지 못하면 공개 키를 통해 암호화된 정보를 해독할 수 없기 때문이다. 공개 키는 일반적으로 사용자가 SSH 서버에 로그인하고자 할 때, SSH 클라이언트에서 서버에 보내지며, 서버는 이를 수신하고 인증을 위해 공개 키와 일치하는 개인 키를 요청한다.</p>
-
-<p>반면에 개인 키는 항상 소유자에게 보관되어야 한다. 개인 키가 유출될 경우, 해당 키로 암호화된 모든 정보는 해독될 수 있으므로 보안에 매우 취약하다. 따라서 개인 키는 안전한 저장소에 보관해야 한다.</p>
-
-<p>이러한 이유로, 공개 키/개인 키 쌍을 사용한 SSH 인증 방식은 매우 안전하고 널리 사용되고 있다.
-<br /></p>
-<h2 id="tty">TTY</h2>
-
-<p>TTY는 콘솔 또는 터미널을 의미하며, 사용자와 컴퓨터 간의 상호작용을 위한 인터페이스이다. 즉, TTY는 사용자가 컴퓨터와 상호작용할 때, 문자 기반 인터페이스를 제공하는 장치나 프로그램이다.</p>
-
-<p>일반적으로 리눅스나 유닉스 시스템에서, 새로운 콘솔 창을 열거나 SSH 세션을 열 때마다 TTY가 생성된다. 이 TTY는 터미널 에뮬레이터를 통해 사용자와 컴퓨터 간의 상호작용을 가능하게 한다.</p>
-
-<p>우리가 사용하는 리눅스 환경은 기본적으로 TTY(Teletypewriter) 위에 그려져 있다. 즉, 데스크탑 GUI(xwindows) 환경은 실질적으로 *콘솔 위에 올려져 있는 형태인 것이다.</p>
-
-<p>콘솔은 CLI 혹은 CUI라고도 불리며 컴퓨터를 운용하기 위한 목적으로 텍스트를 사용자와 컴퓨터가 주고 받는 인터페이스를 말한다.</p>
-
-<p>TTY는 일반적으로 /dev/ttyX 또는 /dev/pts/X의 형식으로 표현된다. 여기서 X는 TTY의 번호를 나타낸다. 예를 들어, /dev/tty1은 시스템의 첫 번째 TTY를 나타낸다.</p>
-
-<p>전체 콘솔은 다음과 같은 구성을 가지고 있다.</p>
-
-<ul>
-  <li>/dev(device)
-    <ul>
-      <li>TTY(일반 CLI 콘솔)
-        <ul>
-          <li>TTYs(시리얼 tty)</li>
-          <li>PTS(기본 xwindows를 위한 가상 콘솔)
-            <ul>
-              <li>PTY(외부의 원격 접속을 위한 가상 콘솔)</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p>콘솔 모드는 모니터, 키보드로 직접 본체에 연결된 모드를 말하고, 2번째 콘솔부터가 가상 콘솔이다. 2번째 모니터, 키보드는 실제로 존재하지 않으니까 가상(pseudo)이라는 말이 붙는다.</p>
-
-<p>*콘솔 : 서버의 로컬 장치(물리적 터미널)에서 직접 명령어를 작성할 수 있는 입출력 장치. 콘솔이 물리적인 장치라면 터미널은 원격제어 환경까지 포함하는 더 넓은 의미라고 할 수 있다.
-<br /></p>
-<h2 id="apparmor">AppArmor</h2>
-
-<p>리눅스 커널에서 동작하는 보안 모듈 중 하나로, 프로세스가 사용할 수 있는 파일, 디렉토리, 네트워크 포트 등의 자원에 대한 접근을 제한하는 보안 기능을 제공한다.</p>
-
-<p>기본적으로 시스템에서 실행 중인 프로세스들에게 보안 정책을 적용하며, 허용되지 않은 동작이나 시도를 감지하고 차단할 수 있다. 예를 들어, 특정 프로그램이 사용할 수 있는 파일이나 디렉토리를 제한하거나, 특정 프로그램이 인터넷에 연결되는 것을 막을 수 있다.</p>
-
-<blockquote>
-  <p>핸드폰 어플의 카메라, 위치 등의 접근 권한과 비슷하다.</p>
-</blockquote>
-
-<p>*모듈 : 프로그램을 작성할 때 필요한 함수, 클래스, 변수, 상수 등의 코드 블록을 담고 있는 파일 단위. 모듈을 사용하면 코드를 재사용하고 구성 요소를 분리하여 개발 및 유지 보수를 용이하게 할 수 있다.</p>
-
-<p>* MAC(Mandatory Access control) : 컴퓨터 보안에서 사용하는 용어로, 운영체제가 어떤 수행 객체(subject)의 다른 객체(object)로의 접근과 수행 기능을 제한하는 식으로 보안성을 높이는 기능을 의미한다. 운영체제가 직접 관여하기 때문에 이 보안 기능은 강제(Mandatory)된다.</p>
-
-<p>* SELinux : 관리자가 시스템 액세스 권한을 효과적으로 제어할 수 있게 하는 Linux 시스템용 보안 아키텍처. Redhat 계열의 리눅스에서 사용한다.
-<br /></p>
-<h2 id="ubuntu-package-manager">Ubuntu Package Manager</h2>
-
-<ul>
-  <li>apt</li>
-</ul>
-
-<p>Advanced Package Tool의 약자로, apt-get을 개선한 패키지 관리 도구. apt는 패키지 설치, 업그레이드, 삭제, 의존성 해결 등을 자동으로 처리해준다. apt는 패키지 관리에 필요한 메타 데이터를 인터넷으로부터 다운로드해야 하기 때문에, 인터넷에 연결되어 있어야 한다.</p>
-
-<ul>
-  <li>dpkg</li>
-</ul>
-
-<p>Debian Package의 약자로, 패키지 설치와 관리를 위한 기본적인 도구이다. dpkg는 패키지를 직접 설치, 삭제하며, 파일 시스템과 관련된 작업을 수행한다. dpkg는 apt-get과 같은 고급 패키지 관리 도구의 기반 기술로 사용된다.</p>
-
-<ul>
-  <li>aptitude</li>
-</ul>
-
-<p>aptitude는 apt와 비슷한 고급 패키지 관리 도구이다. apt와 마찬가지로 패키지 설치, 업그레이드, 삭제, 의존성 해결 등을 처리한다. aptitude는 apt와 달리 패키지 관리에 대한 명령어를 더 많이 제공하며, 대화형 인터페이스도 제공한다. CLI(Command Line Interface)인 apt과 달리 CUI(Command-line User Interface)를 기반으로 하기 때문에 더 직관적이고 사용자 친화적인 UI를 제공한다.</p>
-
-<p>이들 패키지 관리 도구는 모두 Debian 계열 리눅스에서 사용되며, Ubuntu와 같은 다른 Debian 기반 배포판에서도 널리 사용된다. 이들 도구는 리눅스 시스템에서 패키지 관리를 자동화하고, 개발자 및 시스템 관리자가 소프트웨어 설치와 유지 보수를 효율적으로 수행할 수 있도록 도와준다.
- <br /></p>
-<h2 id="firewall">Firewall</h2>
-
-<p>네트워크 방화벽은 시스템과 외부 소스 사이에 장벽을 형성한다. 본질적으로 외부에서 발생한 피해가 확산하여 소중한 내부 데이터를 손상시키지 못하도록 차단한다.</p>
-
-<p>방화벽은 다음과 같이 작동한다.</p>
+<p>WAP과 무선 클라이언트 사이의 거리가 멀수록 전파가 약해져 접속이 잘 안되거나 통신 속도가 느려진다. 이러한 이유로 WAP을 여러 대 설치해야한다. 무선 랜은 여러 기기를 동시에 연결할 수 있도록 주파수 대역을 분할하는데, 그 주파수 대역을 <code class="language-plaintext highlighter-rouge">채널</code>이라고 부른다. 공유기와 컴퓨터가 연결되려면 두 기기 모두 같은 채널을 설정해야 한다. 반면 공유기끼리는 다른 채널을 설정해야 한다. 다른 채널끼리는 주파수가 서로 다르기 때문에 전파가 겹치더라도 서로 간섭이 일어나지 않고 통신 속도도 떨어지지 않는다.
+전파가 겹치는 무선 공유기들이 같은 채널로 설정되어 있으면 주파수가 서로 겹치면서 <code class="language-plaintext highlighter-rouge">전파 간섭</code>이 생기고 통신 속도가 느려진다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="LAN" /><category term="Push_Swap" /><category term="SSID" /><category term="Channel" /><category term="beacon" /><summary type="html"><![CDATA[무선 랜에 대해 알아보자.]]></summary></entry><entry><title type="html">08.OSI 모델</title><link href="http://localhost:4000/network/network08/" rel="alternate" type="text/html" title="08.OSI 모델" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network08</id><content type="html" xml:base="http://localhost:4000/network/network08/"><![CDATA[<h1 id="1-osi-모델의-각-계층">1. OSI 모델의 각 계층</h1>
 
 <ol>
-  <li>검사 : 시스템으로 송수신되는 *트래픽을 바이트 단위로 빈틈없이 검사한다.</li>
-  <li>결정 : 허용할 작업 또는 특성을 정의합니다. 이 때 정해진 규칙과 비교하여 트래픽을 결정한다.</li>
-  <li>실행 : 규칙에 부합하는 트래픽은 허용되며, 그렇지 않은 트래픽은 거부된다.</li>
+  <li>응용 계층(세션 계층 + 표현 계층) : 어플리케이션 등에서 사용하는 데이터를 송수신하는 데 필요하다.</li>
+  <li>전송 계층 : 목적지에 데이터를 정확하게 전달하는 데 필요하다.</li>
+  <li>네트워크 계층 : 다른 네트워크에 있는 목적지에 데이터를 전달하는 데 필요하다.</li>
+  <li>데이터 링크 계층 : 랜에서 데이터를 송수신하는 데 피룡하다.</li>
+  <li>물리 계층 : 데이터를 전기 신호로 변환하는 데 필요하다.</li>
 </ol>
 
-<p>* 트래픽 : 네트워크에서 “트래픽”은 전송되는 데이터의 양을 의미한다. 즉, 네트워크를 통해 전송되는 모든 데이터의 양을 말한다. 이러한 데이터는 인터넷을 통해 이메일, 웹 페이지, 파일, 미디어 스트림 등 다양한 형태로 전송될 수 있다.
-<br /></p>
-<h2 id="ufw">UFW</h2>
+<p>컴퓨터에서 데이터를 보낼 때, 7계층을 내려가며 캡슐화가 되고 목적지인 컴퓨터에 도착하면 7계층을 올라가며 역캡슐화가 된다.
+스위치에서는 데이터 링크 계층까지, 라우터에서는 네트워크 계층까지 올라가며 역캡슐화가 됐다가 다시 내려오며 캡슐화가 된다.</p>
 
-<p>ufw는 Uncomplicated Firewall의 약자로, Ubuntu 및 Debian 기반 시스템에서 사용할 수 있는 간단한 방화벽 도구이다. ufw는 iptables(기본적인 방화벽 명령어)를 기반으로 하며, 쉬운 사용성과 간단한 구성을 통해 시스템 보안을 유지할 수 있도록 도와준다. 명령줄 인터페이스를 제공하기 때문에 사용자가 수동으로 iptables 규칙을 작성하는 것보다 더 쉽게 사용할 수 있다.</p>
+<h1 id="2-컴퓨터의-데이터가-전기-신호로-변환되는-과정">2. 컴퓨터의 데이터가 전기 신호로 변환되는 과정</h1>
 
-<p>ufw를 사용해 다음과 같은 작업을 수행할 수 있다.</p>
-
-<ul>
-  <li>특정 포트의 트래픽 허용 또는 차단</li>
-  <li>특정 IP 주소 또는 IP 대역의 트래픽 허용 또는 차단</li>
-  <li>다양한 프로토콜 (TCP, UDP 등)의 트래픽 허용 또는 차단
-<br /></li>
-</ul>
-
-<h2 id="gateway">Gateway</h2>
-
-<p>쉽게 말하면 다른 네트워크로 가기 위한 문이다. 서로 다른 프로토콜을 가진 네트워크를 연결하기 위한 translator다. 서로 다른 네트워크 대역을 가진 네트워크끼리 통신을 하려고 하면, 우선 Gateway로 간 후 목적지를 찾아간다.</p>
-
-<p>예를 들어, 하나의 네트워크를 집이라고 하면, 우리가 네트워크가 틀린(옆집) 집으로 가려면 현관문을 거쳐야 우리집이 아닌 다른 곳으로 갈 수가 있다. Gateway도 마찬가지다. 내가 사용하는 네트워크(ex. 192.168.10.0)에서 다른 네트워크(172.16.20.0) 대역으로 통신을 하려면, Gateway를 거쳐야만 통신이 가능하다. 보통 같은 네트워크에서는 *MAC Address를 이용해서 통신을 하기 때문에 Gateway를 몰라도 통신이 가능하다. 같은 네트워크 대역일 때, 즉 아파트 같은 103동일 때 105호에서 1203호를 가도 아파트 현관을 거치지 않아도 되는 것과 마찬가지.</p>
-
-<p>* MAC Address : 주민등록번호와 같이 단 하나의 고유한 주소를 부여해서 통신을 할 수 있도록 만든 일종의 하드웨어 주소
-<br /></p>
-<h2 id="port-forwarding">Port Forwarding</h2>
-
-<p>포트포워딩은 공유기의 포트를 통해 이 공유기와 연결된 기기들이 특정 포트에 진입할 수 있게 하는 기능이다.</p>
-
-<p>만약 공유기에 컴퓨터와 핸드폰이 연결되어 있는데 그냥 공유기 주소 + 포트번호로 입력한다면 공유기의 ‘어느 기기’의 포트로 들어가야 하는지 알 수 없다. 따라서 포트 포워딩은 공유기에 연결된 기기의 포트를 특정 번호를 통해 전달(forwarding)해 주는 것이라고 이해할 수 있다. 또는 공유기에 기기 + 해당 기기의 포트에 해당하는 포트 번호를 할당해 준다고 봐도 된다. 예를 들어 공유기의 180포트로 접속하면 핸드폰의 5000 포트에 접속하게 하고, 280포트로 접속하면 컴퓨터의 5000포트에 접속하게 하는 것이다. 여기서 180, 280 등을 지정하는 작업이 포트포워딩이다.
-<br /></p>
-<h2 id="명령어-저장-위치">명령어 저장 위치</h2>
-
-<p>| 디렉토리 | 용도 | 사용권한 |
-| :—: | :—: | :—: |
-| /bin | 기본적인 명령어 | 일반 사용자 |
-| /sbin | 시스템 관리를 위한 명령어 | 슈퍼 유저(root) |
-| /usr/bin | /bin에 있는 명령어를 제외한 기본적인 명령어 | 일반 사용자 |
-| /usr/sbin | /sbin에 있는 명령어를 제외한, 시스템 관리를 위한 명령어 | 슈퍼 유저(root) |
-<br /></p>
-<h2 id="shell--shell-script">Shell &amp; Shell Script</h2>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Linux_system_diagram.png" alt="Shell" /></p>
-
-<p>쉘은 커널과 사용자 간의 다리 역할을 하는 것으로 사용자로부터 명령을 받아 명령을 해독하고 프로그램을 실행하는 역할을 한다. 즉, 사용자가 사용자 프로그램을 이용해 명령어를 입력하면 사용자가 이용하는 쉘이 명령을 받아 커널에 전달해 준다.</p>
-
-<p>쉘 스크립트는 쉘에게 어떠한 명령을 할지 스크립트를 ‘.sh’ 파일 확장자로 작성하여 만든 파일이다. 확장자를 sh 파일로 하는 것은 리눅스 사용자에게 ASCII test 실행파일이라는 암묵적인 약속이다.</p>
-
-<p>쉘 스크립트는</p>
 <ol>
-  <li>반복되는 작업의 자동화(cron)가 가능하다.</li>
-  <li>다른 프로그래밍 언어 보다 훨씬 더 빠른 경우가 많다.</li>
-  <li>컴파일 단계가 없기 때문에 스크립트는 디버깅을 하는 동안 빠르게 실행할 수 있다.</li>
-  <li>스크립트의 내용을 모르는 사용자도 실행할 수 있다.</li>
-  <li>모니터링, 데이터 백업, 복구, 보안, 인증 등 여러 상황에서 많이 활용된다.
-<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">응용 계층</code>에서 3-way handshake로 connection이 확립된다.</li>
+  <li>웹 브라우저에서 url을 입력하여 접속하면 html 데이터를 보내달라는 데이터(요청)가 생성된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">전송 계층</code>에서 TCP 헤더(출발지 포트 번호, 목적지 포트 번호가 들어 있다)가 붙는다. 즉, <strong>세그먼트</strong>가 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">네트워크 계층</code>에서 세그먼트에 IP 헤더(출발지 IP, 목적지 IP 주소가 붙어 있다)가 붙는다. 즉, <strong>IP 패킷</strong>이 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 링크 계층</code>에서 이더넷 헤더와 트레일러가 붙는다. 즉, <strong>이더넷 프레임</strong>이 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">물리 계층</code>에서 랜카드에 의해 <strong>전기 신호</strong>로 변환되어 네트워크로 전송된다.</li>
 </ol>
 
-<h2 id="cpu-vs-virtual-cpuvcpu">CPU vs Virtual CPU(vCPU)</h2>
+<p>전기 신호를 받아 데이터로 변환하여 어플리케이션에 전달하는 과정은 위 과정의 역순이다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="OSI" /><summary type="html"><![CDATA[OSI 모델의 전반적인 흐름에 대해 알아보자.]]></summary></entry><entry><title type="html">07.응용 계층</title><link href="http://localhost:4000/network/network07/" rel="alternate" type="text/html" title="07.응용 계층" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network07</id><content type="html" xml:base="http://localhost:4000/network/network07/"><![CDATA[<h1 id="1-응용-계층의-역할">1. 응용 계층의 역할</h1>
 
-<p>virtual CPU는 가상화 환경에서 사용되는 가상의 중앙 처리 장치이다. 가상 CPU는 호스트 컴퓨터의 물리적 CPU 자원을 사용하여 가상머신(VM)을 구동하면서 각 VM에게 독립적인 CPU 자원을 할당하는 방식으로 동작한다.</p>
+<p>서비스를 제공하는 측을 <code class="language-plaintext highlighter-rouge">서버</code>, 서비스를 요청하는 측에서 사용하는 프로그램을 <code class="language-plaintext highlighter-rouge">클라이언트</code>라고 한다.
+이런 어플리케이션은 응용 계층에서 동작한다(여기서 응용 계층은 5계층의 세션 계층과 6계층의 표현 계층을 포함하는 의미).
+응용 계층에서는 클라이언트의 요청을 서버 프로그램이 이해할 수 있는 데이터로 변환하고 전송한다.
+클라이언트 측 어플리케이션과 서버 측 어플리케이션이 통신해야 하기 때문에 여기서도 프로토콜이 필요하다.</p>
 
-<p>가상 CPU는 가상 머신에 대한 하드웨어 추상화를 제공하며, 여러 가상 CPU를 각각의 가상 머신에 할당함으로써 각각의 VM이 독립적으로 작동하도록 한다. 가상 CPU를 사용하면 여러 개의 가상 머신을 하나의 호스트 컴퓨터에서 실행할 수 있으며, 각각의 가상 머신은 서로 독립적으로 실행되어 상호 간에 영향을 미치지 않는다.</p>
+<p>응용 계층의 대표적인 프로토콜 종류</p>
+<ol>
+  <li>HTTP : 웹사이트 접속</li>
+  <li>FTP : 파일 전송</li>
+  <li>SMTP : 메일 송신</li>
+  <li>POP3 : 메일 수신</li>
+  <li>DNS : 이름 해석(컴퓨터나 네트워크 장비에 붙여진 이름을 기반으로 IP 주소를 알아내는 것)</li>
+</ol>
 
-<p>가상 CPU는 클라우드 컴퓨팅, 서버 가상화, 컨테이너 가상화 등에서 사용된다. 이를 통해 하나의 물리적 서버에서 여러 개의 가상 서버를 실행하여 하드웨어 자원을 효율적으로 사용할 수 있다.
-<br /></p>
-<h2 id="processor-vs-cpu-vs-core">Processor vs CPU vs Core</h2>
+<h1 id="2-world-wide-webwww">2. World Wide Web(www)</h1>
 
-<p><strong>Processor</strong></p>
+<p>W3나 Web이라고도 불린다.
+www에는 다음 3가지 기술이 사용된다.</p>
 
-<p>컴퓨터 운영을 위해 기본적인 명령어들을 처리하고 반응하기 위한 논리회로이다. 보통 소프트웨어의 지시를 읽고 하드웨어의 다른 부분으로 신호를 보내는 제어장치(Control Unit)와 덧셈, 뺄셈 등 사칙연산과 AND, OR과 같은 논리연산 등을 담당하는 연산장치(ALU)로 구성된다. 디바이스가 해야할 일을 총 지휘하는 프로세서를 CPU라고 하며, CPU의 기능을 보조하는 프로세서를 보조 프로세서(Coprocessor)라고 한다. 그러나 프로세서라는 용어는 점차 CPU라는 용어를 대체해왔다.</p>
+<ol>
+  <li>HTML : 
+  웹 페이지에서 문장 구조나 문자를 꾸미는 태그를 사용하여 작성하는 마크업 언어. 하이퍼링크를 사용할 수 있다. 이동한 사이트에 글과 그림이 있다면, 클라이언트는 글과 그림을 따로 요청하기 때문에 가끔 글이 먼저 보이고 그림이 나중에 보이는 경우가 발생한다.</li>
+  <li>URL :
+인터넷에서 파일 위치를 지정하기 위해 기술된 주소. 웹 사이트 주소를 지정하기 위해 사용된다.</li>
+  <li>HTTP : 
+  클라이언트는 웹 사이트를 보기 위해 웹 서버의 80번 포트를 통해 HTTP 통신을 한다. 클라이언트에서 index.html을 달라는 HTTP 요청을 보내면, 서버에서 HTTP 응답을 반환하고 index.html을 클라이언트에게 보낸다. 이전에는 요청이 있을 때마다 연결을 수립하고 해당 요청 처리 후 바로 연결을 끊었지만, HTTP/1.1 버전부터 keepalive 기능이 추가되어서 한번 연결을 수립하면 필요한 모든 요청을 처리 후 연결을 끊을 수 있게 되었기 때문에 효율이 상승했다.</li>
+</ol>
 
-<p><strong>CPU</strong></p>
+<h1 id="3-domain-name">3. Domain name</h1>
 
-<p>컴퓨터를 뇌에 비유하자면 단기기억 담당은 RAM, 장기기억은 하드디스크, CPU는 사고를 담당하는 대뇌피질 정도로 볼 수 있다. 대뇌피질 없이 인간의 사고가 성립하지 않듯이 컴퓨터도 CPU 없이는 그냥 전기 잡아먹는 기계가 된다.</p>
+<p>일반적으로 서버 컴퓨터에 접속하려면 서버 컴퓨터의 IP 주소를 알아야 하는데, 우리는 웹 브라우저 주소창에 www.google.com을 입력해도 구글 서버 컴퓨터로부터 정보를 받아올 수 있다.
+<code class="language-plaintext highlighter-rouge">DNS</code>는 이처럼 URL을 IP 주소로 변환(이름 해석)해주는 시스템이다.
+www.google.com을 컴퓨터나 네트워크를 식별하기 위해 붙여진 이름 즉 <code class="language-plaintext highlighter-rouge">도메인 이름</code>이라고 한다. 도메인 이름 앞에 있는 www는 <code class="language-plaintext highlighter-rouge">호스트 이름(서버 이름)</code>이다.
+컴퓨터에서 www.google.com에 접속하려고 하면 컴퓨터는 우선 DNS 서버에 가서 www.google.com의 IP 주소를 요청한다. 이후 DNS 서버에서 해당 IP 주소를 넘겨주면 컴퓨터는 해당 IP 주소로 접속한다.
+DNS 서버는 전 세계에 계층적으로 연결되어 있기 때문에 만약 컴퓨터가 요청한 첫번째 DNS 서버가 IP 주소를 모른다면, 첫번째 DNS 서버가 두번째 DNS 서버에게 IP 주소를 요청해서 이를 사용자 컴퓨터에게 전달한다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="HTTP" /><category term="DNS" /><category term="www" /><summary type="html"><![CDATA[OSI 모델의 응용 계층에 대해 알아 보자.]]></summary></entry><entry><title type="html">08.OSI 모델</title><link href="http://localhost:4000/network/network08/" rel="alternate" type="text/html" title="08.OSI 모델" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network08</id><content type="html" xml:base="http://localhost:4000/network/network08/"><![CDATA[<h1 id="1-osi-모델의-각-계층">1. OSI 모델의 각 계층</h1>
 
-<p>간단하게 말하자면 컴퓨터의 뇌와 같다.</p>
+<ol>
+  <li>응용 계층(세션 계층 + 표현 계층) : 어플리케이션 등에서 사용하는 데이터를 송수신하는 데 필요하다.</li>
+  <li>전송 계층 : 목적지에 데이터를 정확하게 전달하는 데 필요하다.</li>
+  <li>네트워크 계층 : 다른 네트워크에 있는 목적지에 데이터를 전달하는 데 필요하다.</li>
+  <li>데이터 링크 계층 : 랜에서 데이터를 송수신하는 데 피룡하다.</li>
+  <li>물리 계층 : 데이터를 전기 신호로 변환하는 데 필요하다.</li>
+</ol>
 
-<p>컴퓨터의 구성 단위 중 기억, 연산, 제어의 3대 기능을 종합하는 장치이고 컴퓨터의 가장 중요한 부분이다.</p>
+<p>컴퓨터에서 데이터를 보낼 때, 7계층을 내려가며 캡슐화가 되고 목적지인 컴퓨터에 도착하면 7계층을 올라가며 역캡슐화가 된다.
+스위치에서는 데이터 링크 계층까지, 라우터에서는 네트워크 계층까지 올라가며 역캡슐화가 됐다가 다시 내려오며 캡슐화가 된다.</p>
 
-<p><strong>Core</strong></p>
+<h1 id="2-컴퓨터의-데이터가-전기-신호로-변환되는-과정">2. 컴퓨터의 데이터가 전기 신호로 변환되는 과정</h1>
 
-<p>코어란 각종 연산을 하는 CPU의 핵심요소이며, CPU 내부에는 코어 말고도 컨트롤러, 캐시메모리 등이 있다. A가 혼자 100의 일을 다 하기에는 힘들지만 B와 함께 50씩 나눠서 일을하면 일처리가 빠르고 편할 것이다. 이것이 코어의 개념이다.
-<br /></p>
-<h2 id="lighttpd-mariadb-php">lighttpd, MariaDB, PHP</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">응용 계층</code>에서 3-way handshake로 connection이 확립된다.</li>
+  <li>웹 브라우저에서 url을 입력하여 접속하면 html 데이터를 보내달라는 데이터(요청)가 생성된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">전송 계층</code>에서 TCP 헤더(출발지 포트 번호, 목적지 포트 번호가 들어 있다)가 붙는다. 즉, <strong>세그먼트</strong>가 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">네트워크 계층</code>에서 세그먼트에 IP 헤더(출발지 IP, 목적지 IP 주소가 붙어 있다)가 붙는다. 즉, <strong>IP 패킷</strong>이 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">데이터 링크 계층</code>에서 이더넷 헤더와 트레일러가 붙는다. 즉, <strong>이더넷 프레임</strong>이 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">물리 계층</code>에서 랜카드에 의해 <strong>전기 신호</strong>로 변환되어 네트워크로 전송된다.</li>
+</ol>
 
-<p><strong>lighttpd</strong></p>
+<p>전기 신호를 받아 데이터로 변환하여 어플리케이션에 전달하는 과정은 위 과정의 역순이다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="OSI" /><summary type="html"><![CDATA[OSI 모델의 전반적인 흐름에 대해 알아보자.]]></summary></entry><entry><title type="html">05.네트워크 계층</title><link href="http://localhost:4000/network/network05/" rel="alternate" type="text/html" title="05.네트워크 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network05</id><content type="html" xml:base="http://localhost:4000/network/network05/"><![CDATA[<h1 id="1-다른-네트워크-간의-통신">1. 다른 네트워크 간의 통신</h1>
 
-<p>경량 웹서버. 적은 메모리와 CPU 자원으로 높은 성능을 내는 것이 특징. Apache와 NGINX가 가장 많이 쓰이는 웹서버이다.</p>
+<p><code class="language-plaintext highlighter-rouge">네트워크 계층</code>에서는 네트워크 간의 통신을 가능하게 한다. 같은 네트워크 상의 컴퓨터로 정보를 전달할 때는 Ethernet과 스위치를 통해 소통이 가능했지만, 다른 네트워크 상의 컴퓨터로 데이터를 보내려면 MAC주소 외에 네트워크 주소가 추가로 필요하다.
+네트워크를 식별하는 데 사용되는 주소를 <code class="language-plaintext highlighter-rouge">IP 주소</code>라고 한다. IP(Internet Protocol)는 네트워크 계층에서 사용되는 프로토콜이다. 네트워크 계층에서 다른 네트워크로 데이터를 전송하기 위해 <code class="language-plaintext highlighter-rouge">라우터(router)</code>라는 장비가 필요하다. 라우터는 데이터가 목적지까지 가는데 최적의 경로를 알려주는 역할을 한다. 이처럼 목적지 IP주소까지 어떤 경로로 데이터를 보낼지 결정하는 것을 <code class="language-plaintext highlighter-rouge">라우팅(routing)</code>이라고 한다. 라우터에는 <code class="language-plaintext highlighter-rouge">라우팅 테이블(routing table)</code>이 있어서 경로 정보를 등록하고 관리한다.
+네트워크 계층에서 데이터를 캡슐화할 때, 데이터 앞에 IP 헤더를 붙인다.</p>
 
-<p><strong>PHP</strong></p>
+<p><code class="language-plaintext highlighter-rouge">라우터</code> : 서로 다른 네트워크를 연결해 주는 장치
+<code class="language-plaintext highlighter-rouge">라우팅 테이블</code> : 컴퓨터 네트워크에서 목적지 주소를 목적지에 도달하기 위한 네트워크 노선으로 변환시킬 목적으로 사용되는 정보.
+<code class="language-plaintext highlighter-rouge">라우팅</code> : 패킷을 목적지 컴퓨터까지 보낼 때 최적의 경로를 선택하여 전송하는 것
+<code class="language-plaintext highlighter-rouge">정적 라우팅</code> : 관리자가 미리 라우팅 테이블에 경로를 수동으로 추가하는 방법. 목적지까지의 경로를 고정하거나 목적지까지의 경로가 하나로 한정되는 경우에 사용한다.
+<code class="language-plaintext highlighter-rouge">동적 라우팅</code> : 네트워크 변경을 자동으로 감지하여 라우팅 테이블을 업데이트하거나 네트워크 장애가 발생했을 때 라우터끼리 정보를 교환하여 최적의 경로로 전환하는 방법이다. 관리자는 정적 라우팅처럼 라우팅 테이블에 경로를 수동으로 추가할 필요가 없다.</p>
 
-<p>서버 측에서 동작하는 웹 프로그래밍 언어로, Personal HomePage tools의 약자이다. PHP는 주로 동적 웹 사이트, 웹 애플리케이션 및 웹 서비스를 개발하는 데 사용된다. 무료이며 오픈 소시이기 때문에 다양한 개발자들에게 널리 사용되고 있다. PHP는 웹 개발에 필요한 기능을 포함하고 있으며, 데이터베이스 연결, 파일 업로드 및 처리, 세션 관리, 쿠키 처리 등을 쉽게 구현할 수 있다.</p>
+<h1 id="2-ip-주소">2. IP 주소</h1>
 
-<p><strong>MariaDB</strong></p>
+<p>IP 주소는 ISP(인터넷 서비스 제공자)에게 받을 수 있다.</p>
 
-<p>MariaDB는 MySQL 데이터베이스 관리 시스템의 분기 버전이다. MySQL과 동일한 구조와 기능을 제공하며, MySQL과 호환되는 대부분의 애플리케이션 및 도구들과 호환된다.
-<br /></p>
-
-<h2 id="wordpress">WordPress</h2>
-
-<p>워드프레스는 오픈소스 기반 설치형 블로그 또는 CMS이다.</p>
-
-<p>CMS : Contents Management System의 약자로 게시판, 레이아웃, 모듈 등을 쉽게 관리할 수 있는 프로그램.</p>
-
-<p>언어는 PHP를 사용하고 있다. 설치형 블로그는 무료로 사용할 수 있고, CMS는 유료.</p>
-
-<p>* wget : wget은 웹사이트에서 파일을 다운로드하는 데 사용되는 커맨드 라인 도구이다. 이를 사용하여 웹 서버에서 파일을 직접 다운로드하거나 FTP 서버에서 파일을 가져올 수 있다. ‘wget’은 많은 옵션을 제공하여 다운로드 속도를 제어하고 재시도 횟수를 지정하고, 다운로드 중에 끊어진 연결을 자동으로 다시 연결하고, 다운로드 된 파일에 대한 각종 정보를 표시할 수 있다.
-<br />
-<br /></p>
-
-<h1 id="2-명령어">2. 명령어</h1>
-
-<p>apt-get(Advanced Packaging Tool)은 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 명령어 도구이다.
-<br /></p>
-<h3 id="package">Package</h3>
-
+<p>IP는 2가지 버전이 있다.</p>
 <ul>
-  <li>dpkg –get-selections : 설치되어 있는 package 확인</li>
-  <li>apt-get install sudo : sudo 설치</li>
-  <li>apt-get update : 운영체제에서 사용 가능한 패키지들과 그 버전에 대한 정보를 업데이트. 설치되어 있는 패키지를 최신으로 업데이트하는 것이 아닌, 설치가능한 리스트를 업데이트하는 것. → apt-get install 명령을 이용해서 특정 패키지를 설치할 수 없는 경우 패키지 리스트를 최신으로 업데이트 해야 할 필요가 있다.</li>
-  <li>apt-get upgrade : 운영체제에 apt-get install 명령으로 설치한 패키지들을 최신 버전으로 업그레이드 하는 명령어이다. apt-get upgrade 명령을 이용하면 apt-get update로 가져온 각 패키지들의 최신 버전에 맞게 업그레이드를 해준다.</li>
-  <li>apt list &lt;package name&gt; : 패키지 설치 확인
-<br /></li>
+  <li>IPv4 : 32비트</li>
+  <li>IPv6 : 128비트</li>
 </ul>
 
-<h3 id="sudo">SUDO</h3>
+<p>IPv4는 32비트이기 때문에 표현할 수 있는 주소에 한계가 있어서 IPv6가 등장하게 되었다.
+IPv4로 표현할 수 있는 주소가 현재 필요로 하는 IP 주소의 수보다 부족하기 때문에 현재는 <code class="language-plaintext highlighter-rouge">공인 IP 주소</code>와 <code class="language-plaintext highlighter-rouge">사설 IP 주소</code>를 사용하고 있다.
+참고로 공인 IP 주소는 ISP가 제공한다.</p>
 
 <ul>
-  <li>su - : 사용자 계정에서 root 계정 로그인</li>
-  <li>su - $username : 루트 계정에서 사용자 계정으로 로그인</li>
-  <li>visudo : sudo 권한을 편집. /etc/sudoers에 접근해 직접 편집할 수도 있지만, 문법체크를 해주는 visudo를 쓰는 게 좋다.</li>
-  <li>usermod -aG sudo &lt;username&gt; : 해당 유저를 sudo 그룹에 추가
-<br /></li>
+  <li>공인 IP 주소 : 인터넷에 직접 연결되는 컴퓨터나 라우터에 할당</li>
+  <li>사설 IP 주소 : 회사나 가정의 랜에 있는 컴퓨터에 할당</li>
 </ul>
 
-<h3 id="password">PASSWORD</h3>
+<p>비트로 인한 IP 주소 수의 한계를 극복하기 위해 공인 IP는 라우터에 할당하고, 각 컴퓨터에는 랜의 네트워크 관리자가 자유롭게 사설 IP 주소를 할당하거나 라우터의 DHCP 기능을 사용하여 주소를 자동으로 할당한다.
+이런 식으로 IP를 사용하면 공인 IP 주소를 절약할 수 있다. 사설 IP 주소는 한 네트워크 내에서 배정하는 주소기 때문에 서로 다른 네트워크 끼리는 중복이 될 수 있다.</p>
+
+<p>IP 주소를 표시할 때, 사람이 읽기 편하도록 8비트 단위로 나눠서 표시하는데, 이를 <code class="language-plaintext highlighter-rouge">옥텟(octet)</code>이라고 한다.</p>
+
+<p>ex. 11000100 11100100 000011000 00000010 -&gt; 4개의 옥텟
+이를 더 읽기 편하도록 10진수로 변환하여 표시하기도 한다.
+=&gt; 136.196.24.2</p>
+
+<p>IP 주소는 <code class="language-plaintext highlighter-rouge">네트워크 주소</code>와 <code class="language-plaintext highlighter-rouge">호스트 주소</code>로 구성되어 있다.
+네트워크 주소는 어떤 네트워크인지를 나타내며, 호스트 주소는 해당 네트워크의 어떤 컴퓨터인지를 나타낸다.</p>
+
+<p>IP 주소는 A~E 클래스로 구분하며 일반적으로는 A~C 클래스를 사용한다.
+A 클래스는 처음 1 옥텟을 네트워크 ID, 나머지 3 옥텟을 호스트 ID로 사용한다.
+B 클래스는 처음 2 옥텟을 네트워크 ID, 나머지 2 옥텟을 호스트 ID로 사용하며
+C 클래스는 처음 3 옥텟을 네트워크 ID, 나머지 1 옥텟을 호스트 ID로 사용한다.</p>
+
+<p>A 클래스에서 네트워크 ID의 범위는 00000001 ~ 01111111이며,
+B 클래스에서 네트워크 ID의 범위는 10000000 00000000 ~ 10111111 11111111,
+C 클래스에서 네트워크 ID의 범위는 11000000 00000000 00000000 ~ 11011111 11111111 11111111이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">네트워크 주소</code>를 표현할 때, 호스트 주소에 해당하는 비트는 0으로 채워 놓는다.
+A 클래스 네트워크의 경우, 마지막 옥텟이 호스트 주소에 해당하므로 네트워크 주소가 192.168.1에 해당하는 경우를 예를 들면 다음과 같이 표현할 수 있다.
+ex. 192.168.1.0</p>
+
+<p><code class="language-plaintext highlighter-rouge">브로드캐스트 주소</code>는 해당 네트워크에 존재하는 모든 컴퓨터에 한번에 데이터를 전송할 때 사용하는 주소이다.
+브로드 캐스트 주소는 호스트 주소에 해당하는 비트를 전부 1로 채워 놓는다.
+192.168.1에 해당하는 네트워크의 경우, 다음과 같다.
+ex. 192.168.1.255</p>
+
+<h1 id="3-subnet">3. Subnet</h1>
+
+<p>분할된 네트워크를 말하며, 네트워크를 분할하는 것을 subneting이라고 한다. 서브넷팅을 할 때, 호스트 ID에 해당하는 비트를 서브넷 ID로 사용한다. 따라서 “네트워크 ID + 호스트 ID”였던 구성이 “네트워크 ID + 서브넷 ID + 호스트 ID”로 바뀐다. 이렇게 서브넷 ID까지 사용하면 네트워크 ID가 어디까지인지 구분하기 힘들어진다. 이 때 이를 구분하기 위해 <code class="language-plaintext highlighter-rouge">Subnet Mask</code>라는 것을 사용한다.</p>
+
+<p>서브넷 마스크는 네트워크 ID를 알아내기 위한 수단으로, A 클래스의 경우 처음 1옥텟이 네트워크 ID이므로 255.0.0.0, B 클래스의 경우 255.255.0.0, C 클래스의 경우 255.255.255.0이 된다. 이를 prefix 표기법으로도 표현할 수 있는데, 각각은 /8, /16, /24가 된다. 슬래쉬 이후에 몇 비트를 네트워크 ID로 표현하는 지를 나타낸다.</p>
+
+<p>자신의 IP 주소와 서브넷 마스크를 &amp;연산(비트 연산)하면 네트워크 ID를 구할 수 있다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="Network" /><category term="Subnet" /><category term="IP" /><summary type="html"><![CDATA[OSI 모델의 3계층인 네트워크 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">04.데이터 링크 계층</title><link href="http://localhost:4000/network/network04/" rel="alternate" type="text/html" title="04.데이터 링크 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network04</id><content type="html" xml:base="http://localhost:4000/network/network04/"><![CDATA[<h1 id="1-ethernet">1. Ethernet</h1>
+
+<p>OSI 모델의 2계층인 데이터 링크 계층에서는 네트워크 장비 간에 신호를 주고 받는 규칙을 정한다. 이 때 가장 많이 사용되는 규칙이 <code class="language-plaintext highlighter-rouge">Ethernet</code>이다. 즉, LAN에서 데이터를 어떻게 주고받을 지에 대한 약속이다.
+허브에 3개의 컴퓨터가 연결되어 있다고 가정하자. 만약 컴퓨터 1에서 컴퓨터 3에 데이터를 보내기 위해 허브에 데이터를 전달하면, 허브는 컴퓨터 2와 3 모두에 데이터를 보낸다.
+이 때 데이터에는 목적지 주소가 포함되어 있어 목적지가 아닌 컴퓨터 2에서는 데이터를 받은 후 파기한다.</p>
+
+<p>만약 컴퓨터 여러 대에서 동시에 데이터를 보내게 되면 충돌이 일어날 수 있다. 이를 방지하기 위해 Ethernet은 CSMA/CD 방법을 사용한다.</p>
 
 <ul>
-  <li>chage -l &lt;username&gt; : 현재 사용자의 암호정보 확인</li>
-  <li>sudo vi /etc/pam.d/common-password : 현재 패스워드 정책 확인</li>
-  <li>sudo vim /etc/login.defs : 패스워드 정책 커스텀</li>
-  <li>sudo apt install libpam-pwquality : 패스워드 정책 설정에 필요한 모듈 설치</li>
-  <li>passwd -e &lt;username&gt; : 계정 비밀번호 변경. 명령어를 입력 → logout → 다시 로그인 할 때 비밀번호 변경</li>
+  <li>CS : 데이터를 보내려는 컴퓨터의 케이블에 전류가 흐르고 있는지 확인</li>
+  <li>MA : 전류가 흐르고 있지 않다면 데이터를 송신</li>
+  <li>CD : 충돌이 일어나는 지 확인</li>
 </ul>
 
-<p>/etc, /usr/etc 디렉토리는 시스템의 부팅, 셧다운 시에 필요한 파일들과 시스템의 전반에 걸친 설정 파일들 및 초기 스크립트 파일들이 있다. 시스템에 어떤 문제가 생긴다거나, 시스템 전체 환경에 관한 설정을 바꾸기 위해서는 이들 디렉토리 내에 포함되어 있는 파일들에 대하여 잘 알아야 한다.
-<br /></p>
+<p>현재는 효율이 좋지 않아 CSMA/CD 방식을 잘 사용하지 않고, 대신 <code class="language-plaintext highlighter-rouge">switch</code> 네트워크 장비를 사용한다.</p>
 
-<h3 id="user">USER</h3>
+<h1 id="2-mac-주소">2. MAC 주소</h1>
+
+<p>비트를 전기 신호로 변환하는 LAN 카드는 각각 고유한 <code class="language-plaintext highlighter-rouge">MAC 주소</code>를 가지고 있다. MAC 주소는 6바이트로 이루어져 있으며 앞의 3바이트는 제조사 번호, 뒤의 3바이트는 제조사에서 붙인 일련번호를 의미한다.
+OSI 모델의 데이터 링크 계층, TCP/IP 모델의 네트워크 계층에서는 LAN 카드로 데이터를 전송하기 전에 <code class="language-plaintext highlighter-rouge">헤더</code>와 <code class="language-plaintext highlighter-rouge">트레일러</code>를 붙인다. 헤더는 총 14바이트로 목적지 MAC 주소(6바이트), 출발지 MAC주소(6바이트), Ethernet type(2바이트)로 이루어져 있다.
+여기서 Ethernet type은 Ethernet으로 전송되는 상위 계층 프로토콜의 종류를 나타낸다. 트레일러는 FCS(Frame Check Sequence)라고도 불리며, 데이터 전송 도중 오류 발생 여부를 확인하는 용도이다.</p>
+
+<p>헤더와 트레일러가 추가된 데이터를 <code class="language-plaintext highlighter-rouge">프레임(Frame)</code>이라고 한다. 즉, 네트워크를 통해 전송되는 것이 바로 프레임이다.</p>
+
+<p>수신 측의 컴퓨터에서는 이 프레임을 받아서 목적지 주소가 자신과 일치하면 역캡슐화를 통해 데이터를 얻는다.</p>
+
+<h1 id="3-switch">3. Switch</h1>
+
+<p>Switch는 데이터 링크 계층에서 작동하며 Layer 2 Switch, Switching hub라고도 불린다. 스위치 내부에는 Switch의 포트 번호와 해당 포트에 연결되어 있는 컴퓨터의 MAC 주소가 등록되어 있는 데이터베이스인 <code class="language-plaintext highlighter-rouge">MAC address table</code>가 존재한다.
+스위치가 처음 켜지면 Mac address table에는 아무런 정보가 없다. 이 때 컴퓨터 1에서 컴퓨터 5에 데이터를 전송하기 위해 프레임을 스위치로 보내면, MAC address table에 컴퓨터 1의 MAC 주소와 포트 번호 정보가 업데이트된다. 하지만 목적지인 컴퓨터 5에 대한 정보가 테이블에 없으므로 컴퓨터 1을 제외한 모든 포트에 프레임을 보낸다. 이를 <code class="language-plaintext highlighter-rouge">flooding</code>이라고 한다.
+만약 컴퓨터 5의 정보가 테이블에 있었다면, 스위치는 프레임을 컴퓨터 5에 해당하는 포트로만 전달하며 이를 <code class="language-plaintext highlighter-rouge">MAC 주소 필터링</code>이라고 한다.</p>
+
+<h1 id="4-통신-방식">4. 통신 방식</h1>
 
 <ul>
-  <li>
-    <p>sudo adduser &lt;username&gt; : 새 사용자 계정 생성</p>
-  </li>
-  <li>
-    <p>sudo usermod -aG sudo &lt;username&gt; : sudo 그룹에 사용자 추가</p>
-  </li>
-  <li>
-    <p>sudo deluser username : 사용자 삭제</p>
-  </li>
-  <li>
-    <p>hostnameclt : hostname 확인</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">hostnamectl set-hostname --static &lt;username&gt;</code> : hostname 변경(재부팅 해야함)</p>
-  </li>
-  <li>
-    <p>groupadd user42 : 그룹 추가</p>
-  </li>
-  <li>
-    <p>lsblk : 파티션 구조 확인</p>
-  </li>
-  <li>
-    <p>ss -tunlp : 수신 포트를 확인</p>
-  </li>
-  <li>
-    <p>reboot : 재부팅. 설정이 반영이 안됐을 때는 재부팅 해보자.
-<br /></p>
-  </li>
+  <li>전이중 통신 방식 : 각각 송신과 수신을 위한 회선이 존재해 데이터의 송수신이 동시에 가능한 방식</li>
+  <li>반이중 통신 방식 : 회선 하나로 송신과 수신을 번갈아 가며 통신하는 방식</li>
 </ul>
 
-<h3 id="ip">IP</h3>
+<p>허브는 회선 하나를 사용하기 때문에 반이중 통신 방식을 사용하며 충돌 도메인(충돌이 발생했을 때 영향을 미치는 범위)의 범위가 허브에 연결되어 있는 모든 컴퓨터가 된다. 반면 스위치는 송신과 수신을 위한 회선이 따로 존재하기 때문에 충돌이 발생할 확률이 적고 충돌 도메인 또한 충돌이 발생한 컴퓨터 하나로 제한된다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="Ethernet" /><category term="MacAddress" /><category term="Switch" /><summary type="html"><![CDATA[OSI 모델의 2계층인 데이터 링크 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">06.전송 계층</title><link href="http://localhost:4000/network/network06/" rel="alternate" type="text/html" title="06.전송 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network06</id><content type="html" xml:base="http://localhost:4000/network/network06/"><![CDATA[<h1 id="1-전송-계층의-역할">1. 전송 계층의 역할</h1>
 
+<ol>
+  <li>데이터가 신뢰할 수 있는 데이터인지 검사하고, 오류가 있으면 재전송을 요청한다.</li>
+  <li>받은 데이터를 필요로 하는 어플리케이션에 전달한다.</li>
+</ol>
+
+<p>전송 계층의 통신 방식으로 2가지를 꼽을 수 있다.</p>
+<ol>
+  <li>연결형 통신 : 신뢰, 정확성을 우선으로 하여 통신 과정에서 여러 번 확인 절차를 거친다.</li>
+  <li>비연결형 통신 : 동영상 같이 빠른 전송이 필요한 경우에 상대편과 통신하지 않고 보낸다.</li>
+</ol>
+
+<p>전송 계층의 연결형 통신 프로토콜에는 <code class="language-plaintext highlighter-rouge">TCP</code>가 사용되고, 비연결형 통신 프로토콜에는 <code class="language-plaintext highlighter-rouge">UDP</code>가 사용된다.</p>
+
+<h1 id="2-tcp">2. TCP</h1>
+
+<p>연결형 통신 프로토콜이다.
+전송 계층에서 네트워크 계층으로 데이터를 보낼 때 TCP 헤더를 붙이는데, 이 때 TCP 헤더가 붙은 데이터를 <code class="language-plaintext highlighter-rouge">segment</code>라고 한다.
+TCP에서 데이터를 전송하려면 먼저 <code class="language-plaintext highlighter-rouge">connection</code>이라는 가상의 독점 통신로를 확보해야 한다. 커넥션을 확보해야만 데이터를 전송할 수 있다. 데이터를 보내기 전에 연결(connection)을 확립하기 위해 패킷 요청을 세 번 교환하는 것을 <code class="language-plaintext highlighter-rouge">3-way handshake</code>라고 한다.</p>
+
+<p>송신 측에서 수신 측으로 세그먼트를 보낼 때, 하나를 보내고 한 번 확인하는 식으로 데이터를 전달하면 시간이 오래걸리고 효율이 낮아지게 된다. 이를 해결하기 위해 세그먼트 여러 개를 많이 보내 놓고, 확인 응답을 몰아서 받는 방식을 사용한다.
+세그먼트 여러 개를 많이 보내 놓을 수 있는 이유는 수신 측에서 버퍼에 데이터를 담아 놓기 때문이다. 3-way handshake를 할 때 양 측 컴퓨터는 상대방 컴퓨터의 버퍼 사이즈(window size)를 파악해 놓고 오버플로우가 나지 않게 데이터를 송수신한다. window size에 대한 정보는 TCP 헤더에 담긴다.</p>
+
+<p>3-way handshake 이후 데이터를 전송할 때는 TCP 헤더의 일련번호와 확인 응답 번호가 사용된다.
+TCP에서 데이터를 보낼 때 각 데이터에 일련 번호를 부여해 TCP 패킷의 순서를 제어할 수 있다.</p>
+
+<h1 id="3-포트-번호">3. 포트 번호</h1>
+
+<p>TCP 헤더에는 <code class="language-plaintext highlighter-rouge">출발지 포트 번호</code>와 <code class="language-plaintext highlighter-rouge">목적지 포트 번호</code>가 들어 있다. 이를 확인하여 어떤 어플리케이션으로 이 데이터가 가야하는지를 알 수 있다.
+포트 번호는 0~65535번을 사용할 수 있다.</p>
+
+<p>0~1023번 : well-known ports라고 하며 주요 프로토콜이 사용하도록 예약되어 있다.
+1024번 : 예약되어 있지만 사용되지 않는 포트이다.
+1025번 이상 : 랜덤포트로, 클라이언트 측의 송신 포트로 사용된다.</p>
+
+<p>동작하는 어플리케이션들은 각각 포트 번호가 있어서 다른 어플리케이션과 구분된다. 데이터를 어플리케이션에 보낼 때, 이 포트 번호를 보고 구분하여 데이터를 전달한다.</p>
+
+<h1 id="4-udp">4. UDP</h1>
+
+<p>TCP가 신뢰할 수 있는 방식으로 안전하게 데이터를 상대방에가 전달하는 프로토콜이었다면, 비연결형 통신 프로토콜인 UDP는 효율성을 중요하게 여기는 프로토콜이다.
+UDP는 데이터를 전송할 때 일일이 확인 작업을 하지 않기 때문에 데이터를 효율적으로 빠르게 보내는 것이 장점이다.
+UDP 헤더가 붙은 데이터를 <code class="language-plaintext highlighter-rouge">UDP 데이터그램</code>이라고 한다. UDP 헤더는 신뢰성과 정확성이 필요하지 않아 TCP 헤더보다 훨씬 들어있는 정보가 적다.
+UDP를 이용하면 같은 랜에 있는 컴퓨터나 네트워크 장비에 데이터를 일괄로 보낼 수 있으며, 이것을 <code class="language-plaintext highlighter-rouge">broadcast</code>라고 한다.
+TCP는 3-way handshake와 같이 데이터를 전송할 때도 확인 응답을 하나씩 보내야 하기 때문에 브로드캐스트 같이 불특정 다수에게 보내는 통신에는 적합하지 않다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="TCP" /><category term="Port" /><category term="UDP" /><summary type="html"><![CDATA[OSI 모델의 4계층인 전송 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">05.네트워크 계층</title><link href="http://localhost:4000/network/network05/" rel="alternate" type="text/html" title="05.네트워크 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network05</id><content type="html" xml:base="http://localhost:4000/network/network05/"><![CDATA[<h1 id="1-다른-네트워크-간의-통신">1. 다른 네트워크 간의 통신</h1>
+
+<p><code class="language-plaintext highlighter-rouge">네트워크 계층</code>에서는 네트워크 간의 통신을 가능하게 한다. 같은 네트워크 상의 컴퓨터로 정보를 전달할 때는 Ethernet과 스위치를 통해 소통이 가능했지만, 다른 네트워크 상의 컴퓨터로 데이터를 보내려면 MAC주소 외에 네트워크 주소가 추가로 필요하다.
+네트워크를 식별하는 데 사용되는 주소를 <code class="language-plaintext highlighter-rouge">IP 주소</code>라고 한다. IP(Internet Protocol)는 네트워크 계층에서 사용되는 프로토콜이다. 네트워크 계층에서 다른 네트워크로 데이터를 전송하기 위해 <code class="language-plaintext highlighter-rouge">라우터(router)</code>라는 장비가 필요하다. 라우터는 데이터가 목적지까지 가는데 최적의 경로를 알려주는 역할을 한다. 이처럼 목적지 IP주소까지 어떤 경로로 데이터를 보낼지 결정하는 것을 <code class="language-plaintext highlighter-rouge">라우팅(routing)</code>이라고 한다. 라우터에는 <code class="language-plaintext highlighter-rouge">라우팅 테이블(routing table)</code>이 있어서 경로 정보를 등록하고 관리한다.
+네트워크 계층에서 데이터를 캡슐화할 때, 데이터 앞에 IP 헤더를 붙인다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">라우터</code> : 서로 다른 네트워크를 연결해 주는 장치
+<code class="language-plaintext highlighter-rouge">라우팅 테이블</code> : 컴퓨터 네트워크에서 목적지 주소를 목적지에 도달하기 위한 네트워크 노선으로 변환시킬 목적으로 사용되는 정보.
+<code class="language-plaintext highlighter-rouge">라우팅</code> : 패킷을 목적지 컴퓨터까지 보낼 때 최적의 경로를 선택하여 전송하는 것
+<code class="language-plaintext highlighter-rouge">정적 라우팅</code> : 관리자가 미리 라우팅 테이블에 경로를 수동으로 추가하는 방법. 목적지까지의 경로를 고정하거나 목적지까지의 경로가 하나로 한정되는 경우에 사용한다.
+<code class="language-plaintext highlighter-rouge">동적 라우팅</code> : 네트워크 변경을 자동으로 감지하여 라우팅 테이블을 업데이트하거나 네트워크 장애가 발생했을 때 라우터끼리 정보를 교환하여 최적의 경로로 전환하는 방법이다. 관리자는 정적 라우팅처럼 라우팅 테이블에 경로를 수동으로 추가할 필요가 없다.</p>
+
+<h1 id="2-ip-주소">2. IP 주소</h1>
+
+<p>IP 주소는 ISP(인터넷 서비스 제공자)에게 받을 수 있다.</p>
+
+<p>IP는 2가지 버전이 있다.</p>
 <ul>
-  <li>ip addr : ip 확인</li>
-  <li>ip route : gateway 확인</li>
-  <li>ipconfig getifaddr en0 : 현재 사용중인 Mac의 ip 확인</li>
-  <li>id &lt;username&gt; : user의 그룹 확인
-<br /></li>
+  <li>IPv4 : 32비트</li>
+  <li>IPv6 : 128비트</li>
 </ul>
 
-<h3 id="ufw-1">UFW</h3>
+<p>IPv4는 32비트이기 때문에 표현할 수 있는 주소에 한계가 있어서 IPv6가 등장하게 되었다.
+IPv4로 표현할 수 있는 주소가 현재 필요로 하는 IP 주소의 수보다 부족하기 때문에 현재는 <code class="language-plaintext highlighter-rouge">공인 IP 주소</code>와 <code class="language-plaintext highlighter-rouge">사설 IP 주소</code>를 사용하고 있다.
+참고로 공인 IP 주소는 ISP가 제공한다.</p>
 
 <ul>
-  <li>ufw status : ufw 상태 확인</li>
-  <li>ufw enable : ufw 실행</li>
-  <li>ufw disable : ufw 중지</li>
-  <li>ufw allow 4242/tcp : 4242번 포트를 allow</li>
-  <li>ufw delete allow 8080/tcp : 8080번 포트를 delete
-<br /></li>
+  <li>공인 IP 주소 : 인터넷에 직접 연결되는 컴퓨터나 라우터에 할당</li>
+  <li>사설 IP 주소 : 회사나 가정의 랜에 있는 컴퓨터에 할당</li>
 </ul>
 
-<h3 id="apparmor-1">AppArmor</h3>
+<p>비트로 인한 IP 주소 수의 한계를 극복하기 위해 공인 IP는 라우터에 할당하고, 각 컴퓨터에는 랜의 네트워크 관리자가 자유롭게 사설 IP 주소를 할당하거나 라우터의 DHCP 기능을 사용하여 주소를 자동으로 할당한다.
+이런 식으로 IP를 사용하면 공인 IP 주소를 절약할 수 있다. 사설 IP 주소는 한 네트워크 내에서 배정하는 주소기 때문에 서로 다른 네트워크 끼리는 중복이 될 수 있다.</p>
 
-<ul>
-  <li>aa-enabled : AppArmor 실행여부 확인
-<br /></li>
-</ul>
+<p>IP 주소를 표시할 때, 사람이 읽기 편하도록 8비트 단위로 나눠서 표시하는데, 이를 <code class="language-plaintext highlighter-rouge">옥텟(octet)</code>이라고 한다.</p>
 
-<h3 id="cron">CRON</h3>
+<p>ex. 11000100 11100100 000011000 00000010 -&gt; 4개의 옥텟
+이를 더 읽기 편하도록 10진수로 변환하여 표시하기도 한다.
+=&gt; 136.196.24.2</p>
 
-<ul>
-  <li>crontab -e : crontab 실행</li>
-  <li>crontab -l : crontab 내용 확인</li>
-  <li>crontab -r : 크론탭 삭제</li>
-  <li>systemctl disable cron</li>
-  <li>sudo /etc/init.d/cron stop</li>
-</ul>
+<p>IP 주소는 <code class="language-plaintext highlighter-rouge">네트워크 주소</code>와 <code class="language-plaintext highlighter-rouge">호스트 주소</code>로 구성되어 있다.
+네트워크 주소는 어떤 네트워크인지를 나타내며, 호스트 주소는 해당 네트워크의 어떤 컴퓨터인지를 나타낸다.</p>
 
-<p><br /></p>
+<p>IP 주소는 A~E 클래스로 구분하며 일반적으로는 A~C 클래스를 사용한다.
+A 클래스는 처음 1 옥텟을 네트워크 ID, 나머지 3 옥텟을 호스트 ID로 사용한다.
+B 클래스는 처음 2 옥텟을 네트워크 ID, 나머지 2 옥텟을 호스트 ID로 사용하며
+C 클래스는 처음 3 옥텟을 네트워크 ID, 나머지 1 옥텟을 호스트 ID로 사용한다.</p>
 
-<h3 id="ssh-1">SSH</h3>
+<p>A 클래스에서 네트워크 ID의 범위는 00000001 ~ 01111111이며,
+B 클래스에서 네트워크 ID의 범위는 10000000 00000000 ~ 10111111 11111111,
+C 클래스에서 네트워크 ID의 범위는 11000000 00000000 00000000 ~ 11011111 11111111 11111111이다.</p>
 
-<ul>
-  <li>vi /etc/ssh/sshd_config : ssh 서버 설정 파일 vi로 열기(client는 ssh_config 파일)</li>
-</ul>
+<p><code class="language-plaintext highlighter-rouge">네트워크 주소</code>를 표현할 때, 호스트 주소에 해당하는 비트는 0으로 채워 놓는다.
+A 클래스 네트워크의 경우, 마지막 옥텟이 호스트 주소에 해당하므로 네트워크 주소가 192.168.1에 해당하는 경우를 예를 들면 다음과 같이 표현할 수 있다.
+ex. 192.168.1.0</p>
 
-<p><br /></p>
+<p><code class="language-plaintext highlighter-rouge">브로드캐스트 주소</code>는 해당 네트워크에 존재하는 모든 컴퓨터에 한번에 데이터를 전송할 때 사용하는 주소이다.
+브로드 캐스트 주소는 호스트 주소에 해당하는 비트를 전부 1로 채워 놓는다.
+192.168.1에 해당하는 네트워크의 경우, 다음과 같다.
+ex. 192.168.1.255</p>
 
-<h3 id="bonus">BONUS</h3>
+<h1 id="3-subnet">3. Subnet</h1>
 
-<ul>
-  <li>lighttpd -v : lighttpd version 확인</li>
-  <li>systemctl stop/start/enable/status lighttpd.service : lighttpd 서버 중지, 시작, 상태 확인</li>
-  <li>vim /etc/lighttpd/conf-available/15-fastcgi-php.conf : lighttpd의 fastcgi 설정 파일 열기</li>
-  <li>systemctl stop/start/enable/disable/status mysql.service : mysql 중지, 시작, 상태 확인</li>
-  <li>mysql -u &lt;username&gt; -p : mysql 접속, -p option → passwd 입력</li>
-  <li>sudo vim /var/www/html/wordpress/wp-config.php</li>
-  <li>journalctl -f : 실시간 ssh 로그인 실패 기록</li>
-  <li>sudo systemctl status fail2ban</li>
-  <li>sudo vim /etc/fail2ban/jail.local : fail2ban 설정 파일 열기</li>
-  <li>sudo fail2ban-client status sshd : 차단 현황 보기</li>
-  <li>sudo fail2ban-client set sshd unbanip 000.000.000.000 : 차단 풀어주기
-<br />
-<br /></li>
-</ul>
+<p>분할된 네트워크를 말하며, 네트워크를 분할하는 것을 subneting이라고 한다. 서브넷팅을 할 때, 호스트 ID에 해당하는 비트를 서브넷 ID로 사용한다. 따라서 “네트워크 ID + 호스트 ID”였던 구성이 “네트워크 ID + 서브넷 ID + 호스트 ID”로 바뀐다. 이렇게 서브넷 ID까지 사용하면 네트워크 ID가 어디까지인지 구분하기 힘들어진다. 이 때 이를 구분하기 위해 <code class="language-plaintext highlighter-rouge">Subnet Mask</code>라는 것을 사용한다.</p>
 
-<h1 id="reference">📬 <strong>Reference</strong></h1>
+<p>서브넷 마스크는 네트워크 ID를 알아내기 위한 수단으로, A 클래스의 경우 처음 1옥텟이 네트워크 ID이므로 255.0.0.0, B 클래스의 경우 255.255.0.0, C 클래스의 경우 255.255.255.0이 된다. 이를 prefix 표기법으로도 표현할 수 있는데, 각각은 /8, /16, /24가 된다. 슬래쉬 이후에 몇 비트를 네트워크 ID로 표현하는 지를 나타낸다.</p>
 
-<p><a href="https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/">https://www.howtoforge.com/how-to-install-lighttpd-with-php-and-mariadb-on-debian-10/</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Born2beroot" /><category term="가상머신" /><category term="VM" /><category term="virtual_machine" /><summary type="html"><![CDATA[가상머신을 이용해 나만의 서버를 만들어 보자.]]></summary></entry><entry><title type="html">Fract’ol</title><link href="http://localhost:4000/42seoul/Fract'ol/" rel="alternate" type="text/html" title="Fract’ol" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Fract&apos;ol</id><content type="html" xml:base="http://localhost:4000/42seoul/Fract&apos;ol/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlx 라이브러리를 이용해 다양한 Fractal을 구현한다.
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="1-필요-개념">1. 필요 개념</h1>
-
-<h2 id="fractal">Fractal</h2>
-
-<p>프랙탈은 일부 작은 조각이 전체와 비슷한 기하학적 형태 즉, 자기 유사성을 가지는 기하학적 구조이다. 자기 유사성은 같은 패턴에 대해 재귀 또는 반복을 이용해 구현한다.</p>
-
-<p>복소 평면에서 각 점이 <u>점화식에서 발산하는지, 발산하지 않는지에 따라</u> 프랙탈 집합이 결정된다.</p>
-
-<p>프랙탈을 더 예쁘게(자세하게) 구현하고 싶다면, 각 점이 <strong>얼마나 빠르게</strong> 발산하는 지에 따라서 색을 다르게 표현해 주면 된다.</p>
-
-<h3 id="망델브로-집합mandelbrot-set">망델브로 집합(Mandelbrot set)</h3>
-
-\[Z_0 = 0\]
-
-\[Z_n+_1 = Z_n ^2 + C\]
-
-<p>위 식을 만족(수렴)하는 C의 집합.</p>
-
-<h3 id="줄리아-집합julia-set">줄리아 집합(Julia set)</h3>
-
-<p>망델브로 집합과 식은 같지만, 주어진 C에 대해 점화식이 수렴하는 Z의 집합이라는 점이 다르다.</p>
-
-<h3 id="불타는-배burning-ship">불타는 배(Burning ship)</h3>
-
-\[z_0 = 0\]
-
-\[z_{n+1} = (|Re(z_n)| + i|Im(z_n)|)^2 + c\]
-
-<p><br /></p>
-
-<h2 id="pixel">Pixel</h2>
-
-<p><code class="language-plaintext highlighter-rouge">picture element</code>의 약자로, 디지털 이미지의 가장 작은 단위.<br />
-화소라고도 부르며, 이미지를 구성하는 각 점 또는 작은 사각형으로 이해할 수 있다.</p>
-
-<p>픽셀은 색상 정보를 나타내기 위해 비트로 표현된다. 8비트, 16비트, 24비트, 32비트(약 42억 색상) 등의 비트 깊이로 표현된다.</p>
-
-<p>4바이트(32비트, int) 픽셀의 경우, 각 바이트는 알파 투명도(A), R, G, B 값을 나타낸다.</p>
-
-<p>32비트 컴퓨터 아키텍처에서는 메모리의 주소 지정이 32비트로 이루어지기 때문에 한번에 4바이트 크기의 데이터를 처리하는 것이 효율적이고, 따라서 픽셀을 4바이트로 표현하는 것은 자연스럽다.</p>
-
-<h2 id="byte-orderendian">Byte Order(Endian)</h2>
-
-<p><a href="https://jhnyang.tistory.com/172">[Byte Order 바이트 오더] 빅엔디안(Big Endian)과 리틀엔디안(little endian) - 1편</a></p>
-
-<h2 id="bit-calculator">Bit Calculator</h2>
-
-<p><strong>«, »</strong> : 피연산자의 비트 열을 왼쪽, 오른쪽으로 이동시킨다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-	<span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
-	<span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00111100</span>
-
-	<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00010000</span>
-	<span class="kt">int</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00011110</span>
-	<span class="kt">int</span> <span class="n">result4</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-</code></pre></div></div>
-
-<p>\&amp; : 비트단위로 AND 연산을 한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
-
-<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">&amp;</span> <span class="n">num2</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">4</span>
-</code></pre></div></div>
-
-<table>
-  <tbody>
-    <tr>
-      <td>**</td>
-      <td>** : 비트단위로 OR 연산을 한다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
-
-<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">|</span> <span class="n">num2</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">=</span> <span class="mi">31</span>
-</code></pre></div></div>
-
-<p><strong>^</strong> : 두 개의 비트가 서로 다른 경우에 1을 반환하는 XOR 연산이다.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-<span class="mi">1</span> <span class="o">^</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">0</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">0</span>
-
-<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 000010100</span>
-
-<span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num3</span> <span class="o">=</span> <span class="mi">27</span>
-</code></pre></div></div>
-
-<p><strong>~</strong> : 비트를 0에서 1로, 1에서 0으로 반전시키는 NOT 연산자이다. 보수 연산이라고도 불린다.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="mi">0</span> <span class="o">--&gt;</span> <span class="mi">1</span>
-<span class="o">~</span><span class="mi">1</span> <span class="o">--&gt;</span> <span class="mi">0</span>
-
-<span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 00000000 00000000 00000000 00001111</span>
-<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">~</span><span class="n">num1</span><span class="p">;</span>
-
-<span class="o">--&gt;</span> <span class="n">num2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span> <span class="c1">// 11111111 11111111 11111111 11110000</span>
-</code></pre></div></div>
-
-<h2 id="hooking">Hooking</h2>
-
-<p>컴퓨터 프로그래밍에서 Hooking이라는 용어는 소프트웨어 구성 요소간에 전달되는 함수 호출이나 메시지 또는 이벤트를 가로 채서 운영 체제, 응용 프로그램 또는 기타 소프트웨어 구성 요소의 동작을 변경하거나 강화하는 데 사용되는 다양한 기술을 말한다. 이러한 가로채는 함수 호출, 이벤트 또는 메시지를 처리하는 코드를 Hook이라고 한다.</p>
-
-<h2 id="exit-vs-return">exit vs return</h2>
-
-<h3 id="exit">exit()</h3>
-<ul>
-  <li>exit() 함수는 프로그램을 즉시 종료시키는 기능을 한다.</li>
-  <li>이 함수를 호출하면 프로그램이 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
-  <li>종료 코드(exit code)를 지정할 수 있으며, 이는 프로그램이 종료되면 운영 체제에게 전달된다.</li>
-  <li>일반적으로 0은 성공적인 종료를 의미하고, 0 이외의 값은 오류를 나타낸다.</li>
-  <li>exit() 함수는 주로 비정상적인 상황이 발생했을 때 또는 특정 조건이 충족되었을 때 프로그램을 종료하는 데 사용된다.
-    <h3 id="return">return()</h3>
-  </li>
-  <li>return 구문은 함수에서 결과 값을 반환하는 용도로 사용된다.</li>
-  <li>함수 내에서 return을 사용하면 함수가 값을 계산하거나 처리한 후, 그 값을 호출한 부분으로 반환한다.</li>
-  <li>함수가 값을 반환하면, 호출한 부분에서 반환ㄴ된 값을 변수에 할당하거나 다른 작업에 활용할 수 있다.</li>
-  <li>함수는 return을 만나면 해당 구문에서 즉시 종료되며, 이후의 코드는 실행되지 않는다.</li>
-</ul>
-
-<p>요약하면, <code class="language-plaintext highlighter-rouge">exit()</code> 함수는 프로세스 자체를 종료시키는 데 사용되고, <code class="language-plaintext highlighter-rouge">return</code> 구문은 함수 내에서 결과값을 반환하고 함수의 실행을 제어하는 데 사용된다.</p>
-
-<p><br />
-<br /></p>
-
-<h1 id="2-구현">2. 구현</h1>
-
-<h2 id="마우스-위치-기준으로-확대하기">마우스 위치 기준으로 확대하기</h2>
-
-<p>복소 평면 <code class="language-plaintext highlighter-rouge">r</code>축의 가장 작은 값을 <code class="language-plaintext highlighter-rouge">min_r</code>, 확대 후 새로운 r축의 최소값(모니터에 보여지는 r축의 최소값)을 <code class="language-plaintext highlighter-rouge">new_min_r</code>, 확대를 하기 위한 <code class="language-plaintext highlighter-rouge">ZOOMIN</code> 상수를 0.9라고 하자.</p>
-
-<p>마우스 포인터의 위치 x, y는 <u>확대 전이나 확대 후나 같은 값</u>을 가져야 한다(마우스 포인터를 기준으로 확대할 것이므로).</p>
-
-<p>즉,</p>
-
-\[min\_r + x * dx = new\_min\_r + x * 0.9 * dx\]
-
-\[new\_min\_r = min\_r + 0.1 * x * dx\]
-
-<p>따라서 ZOOMIN 할 때마다<br />
-<br /></p>
-
-\[min\_r += 0.1 * x * dx\]
-
-<p><br />
-위와 같이 <code class="language-plaintext highlighter-rouge">min_r</code>을 업데이트 해주면 된다.
-<br /></p>
-
-<h1 id="3-시행착오">3. 시행착오</h1>
-
-<ul>
-  <li>double로 계산해야하는 변수를 int로 선언해놔서, 이미지가 부드럽게 이어지지 않고 큼지막한 직사각형처럼 각이 졌다. → 비교적 좁은 범위에서 이미지를 디스플레이하는 경우였어서 int로 변수를 사용하면 이렇게 보였다.</li>
-  <li>문자열도 header 파일에 <code class="language-plaintext highlighter-rouge">define</code>할 수 있다.</li>
-  <li>libft는 이미 makefile이 있으므로, fractol makefile을 실행할 때 libft 디렉토리로 들어가서 libft makefile을 실행시키고, 나와서 libft.a만 따로 사용해서 makefile을 구성하면 된다.
-    <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">$(NAME) </span><span class="o">:</span> <span class="nf">$(OBJS)</span>
-  <span class="err">cd</span> <span class="err">libft;</span> <span class="err">make;</span> <span class="err">cd</span> <span class="err">..</span>
-  <span class="err">cc</span> <span class="err">first.o</span> <span class="err">second.o</span> <span class="err">-Llibft</span> <span class="err">-lft</span>
-</code></pre></div>    </div>
-  </li>
-  <li>인자의 형태가 같은 함수들은 함수포인터로 묶어서 경우에 맞게 대입해 사용하면 깔끔하다.</li>
-</ul>
-
-<p><br />
-<br /></p>
-<h1 id="reference">📬 <strong>Reference</strong></h1>
-
-<p><a href="https://yeosong1.github.io/miniRT%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">42 wiki</a><br />
-<a href="https://javalab.org/mandelbrot_set/">자바 실험실</a></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Fractol" /><category term="Fractal" /><category term="mlx" /><summary type="html"><![CDATA[mlx를 이용해 다양한 Fractal을 구현해보자.]]></summary></entry><entry><title type="html">get_next_line</title><link href="http://localhost:4000/42seoul/get_next_line/" rel="alternate" type="text/html" title="get_next_line" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/get_next_line</id><content type="html" xml:base="http://localhost:4000/42seoul/get_next_line/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-<h1 id="1-fdfile-descriptor">1. fd(File Descriptor)</h1>
-<h2 id="file-descriptor">File Descriptor</h2>
-<ul>
-  <li>파일을 대표하기 위해 시스템으로부터 할당 받은 음수가 아닌 정수</li>
-  <li>각각의 프로세스에서 열린 파일의 목록을 관리하는 테이블의 인덱스</li>
-</ul>
-
-<p><br />
-흔히 유닉스 시스템에 존재하는 모든 것은 파일이라고 한다. 유닉스 시스템에서는 프로세스가 파일들에 접근할 때 ‘파일 디스크립터’라는 개념을 사용한다.</p>
-
-<p>기본적으로 할당되는 파일 디스크립터</p>
-
-<ul>
-  <li>0 : 표준 입력(Standard Input)</li>
-  <li>1 : 표준 출력 (Standard Output)</li>
-  <li>2 : 표준 에러(Standard Error)</li>
-</ul>
-
-<p>우리가 파일을 열어서 할당되는 파일 디스크립터들은 3번부터 차례대로 부여받는다.<br />
-예를 들어, example.out 이라는 실행파일에서 open() 함수로 “file.txt” 파일을 연다면, file.txt는 fd 3번을 부여 받는다.
-<br /></p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">int</span> <span class="n">fd1</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">fd2</span><span class="p">;</span>
-
-	<span class="n">fd1</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"file.txt"</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
-	<span class="c1">//file.txt 파일을 첫 번째로 열었으므로 fd1 값은 3이 된다.</span>
-	<span class="n">fd2</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"file2.txt"</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
-	<span class="c1">//file2.txt 파일을 두 번째로 열었으므로 fd2 값은 3 다음 값인 4가 된다.</span>
-	
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h2 id="file-descriptor의-작동-방식">File Descriptor의 작동 방식</h2>
-
-<p><img src="https://mug896.github.io/bash-shell/images/file_descriptor.jpg" alt="fdTable" /></p>
-
-<p>fd는 프로세스가 가지고 있는 fd table의 인덱스이다. <code class="language-plaintext highlighter-rouge">fd = 3</code>인 경우, 위 그림처럼 fd table의 3번째 인덱스로 접근하고, 해당 인덱스가 가리키는 inode table로 가서 파일에 접근해 원하는 행동을 할 수 있는 것이다.</p>
-
-<p>file table의 각 칸들은 mode와 inode table pointer의 offset을 가지고 있다.</p>
-
-<p>inode table은 소유자 그룹, 접근 모드(읽기, 쓰기, 실행 권한), 파일 형태, 고유 번호(inode number) 등 해당 파일에 관한 정보를 가지고 있다.</p>
-
-<p><strong>inode란 무엇일까?</strong><br />
-파일을 기술하는 디스크 상의 데이터 구조로써 파일의 데이터 블록이 디스크 상의 어느 주소에 위치하고 있는가와 같은 파일에 대한 중요한 정보를 갖고 있다. 각각의 inode들은 고유 번호(inode number)를 가지고 있어서 파일을 식별할 때 사용한다.<br />
-터미널에서 ls -i 옵션으로 inode number를 확인할 수 있다.</p>
-
-<p><br />
-<br /></p>
-<h1 id="2-file-control을-위한-함수들">2. File Control을 위한 함수들</h1>
-
-<h2 id="open">open()</h2>
-
-<p>Linux, Unix 계열의 시스템에서 Process가 File을 열 때 open 함수 혹은 openat 함수를 사용할 수 있다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="c1"> // open 함수가 있는 헤더파일이다.</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">open</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flag</span><span class="p">);</span>
-
-<span class="kt">int</span> <span class="nf">open</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flag</span><span class="p">,</span> <span class="n">mode_t</span> <span class="n">mode</span><span class="p">);</span>
-
-<span class="kt">int</span> <span class="nf">openat</span><span class="p">(</span><span class="kt">int</span> <span class="n">dirfd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flag</span><span class="p">);</span>
-
-<span class="kt">int</span> <span class="nf">openat</span><span class="p">(</span><span class="kt">int</span> <span class="n">dirfd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flag</span><span class="p">,</span> <span class="n">mode_t</span> <span class="n">mode</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>File Descriptor(fd)값을 반환한다. 에러가 나면 -1을 반환한다.</p>
-
-<h2 id="creat">creat()</h2>
-
-<p>새로운 파일 생성은 creat 함수를 이용할 수 있다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="n">creat</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">,</span> <span class="n">mode_t</span> <span class="n">mode</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>creat 함수의 단점은 write 모드로만 열린다는 것이다. 다시 읽기 위해서는 creat 함수로 만든 파일을 close 함수로 닫고, O_RDONLY로 읽는 과정이 필요하다.</p>
-
-<h2 id="close">close()</h2>
-
-<p>open 함수로 연 파일은 close 함수로 닫을 수 있다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">close</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>정상적으로 종료되면 0, 실패하면 -1을 리턴한다.</p>
-
-<h2 id="read">read()</h2>
-
-<p>file을 열고 난 후 데이터를 읽어올 때에는 read 함수를 사용한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span>
-<span class="kt">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buff</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nbytes</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>read 함수는 파일로 부터 읽은 데이터를 저장할 공간인 buff를 가리키는 포인터와, 읽을 데이터의 크기를 받아서 정상적으로 종료되면 읽어온 바이트 수를, 실패하면 -1을, 읽을 데이터가 없으면 (파일의 끝에서 시도) 0을 반환한다.</p>
-
-<h2 id="write">write()</h2>
-
-<p>파일을 열고 난 후 데이터를 쓸 때에는 write 함수를 사용한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span>
-<span class="kt">ssize_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buff</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nbytes</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>정상적으로 종료되면 기록한 바이트 수를, 실패하면 -1을 반환한다.
-<br />
-<br /></p>
-<h1 id="3-static-변수">3. static 변수</h1>
-
-<h2 id="static-변수란">static 변수란?</h2>
-
-<p>static 변수는 전역 변수, 지역 변수 어느 것으로도 이용이 가능하다.</p>
-
-<p>전역이든 지역이든 static 변수는 Data Segment에 위치한다.</p>
-
-<h2 id="외부-정적-변수">외부 정적 변수</h2>
-
-<p>전역으로 선언된 static 변수는 외부 정적 변수라고도 불리며, 별도의 초기화 구문이 없어도 0으로 초기화된다.</p>
-
-<p>→ Data Segment의 BSS 영역에 위치하여 0으로 초기화된다. 초기화 구문 존재 시에는 Data Segment의 Data 영역에 위치한다.</p>
-
-<h2 id="내부-정적-변수">내부 정적 변수</h2>
-
-<p>특정 함수나 클래스 내부에 선언된 static 지역 변수는 내부 정적 변수라고도 불리며, 외부 정적 변수와 마찬가지로 별도의 초기화 구문이 없어도 0으로 초기화 된다. 또한 내부 정적 변수의 경우에도 프로세스의 메모리가 할당되는 프로그램의 시작 시점에 이뤄지기 때문에 함수 실행 등의 코드 실행으로는 초기화가 이뤄지지 않고 무시된다.</p>
-
-<p>초기화 시점이 프로그램의 시작이라서 함수 실행 시 초기화 구문에서 초기화가 안된다고 했는데, 이렇게 되어도 문제가 없는 이유는 static 변수가 함수 혹은 클래스에 대해서 내부 정적 변수로 이용되는 경우에 <u>각 함수 별 혹은 클래스 별로 공유되는 일종의 공유 변수</u>로 이용되기 때문이다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">void</span>	<span class="nf">plus_one</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">static</span> <span class="kt">int</span>	<span class="n">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
-	<span class="o">++</span><span class="n">num</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span>		<span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">plus_one</span><span class="p">();</span>
-	<span class="n">plus_one</span><span class="p">();</span>
-	<span class="n">plus_one</span><span class="p">();</span>
-	
-	<span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>위 코드의 경우 static int num이라는 내부 정적 변수의 초기화는 프로그램의 시작에 이뤄지며 초기 값은 1이 된다. 이 때 static int num은 increase_num이라는 함수의 지역 변수처럼 보여 Stack에 위치할 것 같지만, 실제로는 (이 경우에는 초기화 구문이 존재하므로 BSS 영역이 아닌) Data 영역에 위치하고 있다. 위에서 언급했던 초기화 구문이 동작하지 않는다는 얘기는 increase_num 함수 내의 초기화 구문인 static int num = 1이 매 함수 실행마다 이뤄지지 않는다는 말이다. 또한 내부 정적 변수는 특정 함수 혹은 클래스 간 공유되어 사용된다고 했기 때문에 위 main 함수의 실행 결과는 1, 2, 3이 된다.</p>
-
-<div class="notice--warning">
-  <p>⚠️ 다른 소스 파일에 존재하는 전역 static 변수 (외부 정적 변수)는 참조할 수 없다.</p>
-</div>
-
-<p><br />
-<br /></p>
-<h1 id="4-주의할-점">4. 주의할 점</h1>
-
-<ul>
-  <li>버퍼 한 번 읽을 때 \n\n\n 처럼 개행이 여러번 올 때를 생각하자.</li>
-  <li><code class="language-plaintext highlighter-rouge">NULL</code>과 안에 <code class="language-plaintext highlighter-rouge">\0</code>이 들어있는 포인터와는 전혀 다르다. NULL 포인터는 값에 접근하면 segv가 뜬다.</li>
-  <li>파일을 읽어서 ‘문자열’로 리턴하는 것이기 때문에, 마지막에 null character terminating을 해줘야 한다.</li>
-  <li>리턴할 것이 아니면 free는 웬만하면 malloc한 곳에서 용도가 끝나면 바로 해주는 것이 베스트.
-<br />
-    <h3 id="bonus-part">bonus part</h3>
-  </li>
-  <li>연결리스트에서 head는 따로 있는 노드가 아니라, 첫번째 노드를 가리키는 포인터다.</li>
-  <li>read가 -1을 리턴했을 때, 모든 노드를 삭제하는 것이 아니라 해당 노드만 삭제해야 한다. 만약 사용자가 실수로 잘못된 fd를 입력했을 때, 기존의 정상 노드까지 다 삭제되어 버리면 남아있던 buf가 사라져서 정보를 잃게 된다. 이렇게 작동하면 사용자가 너무 불편할 것이다. 코드를 짤 때 사용자의 입장에서 생각해보자.</li>
-  <li>read가 0을 리턴했을 때는 buf에 남아있는 내용을 리턴해주고 노드를 clear한다.</li>
-  <li>node 구조체에 buf_size를 넣어 놓음으로써 ret을 제외한 임시 문자열(buf)의 마지막에 <code class="language-plaintext highlighter-rouge">\0</code>문자를 넣을 필요가 없었다. buf_size를 참고하여 문자열을 순회할 수 있었다. 구조체를 만들 때, 해당 구조체에 필요한 정보가 무엇이 있는지 생각해보고 구조체에 추가해서 코드를 간편하게 줄이자.</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="get_next_line" /><category term="fd" /><summary type="html"><![CDATA[파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.]]></summary></entry><entry><title type="html">ft_printf</title><link href="http://localhost:4000/42seoul/ft_printf/" rel="alternate" type="text/html" title="ft_printf" /><published>2023-10-20T00:00:00+09:00</published><updated>2023-10-20T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/ft_printf</id><content type="html" xml:base="http://localhost:4000/42seoul/ft_printf/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>printf 함수를 구현한다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-<h1 id="1--가변-인자variable-argument">1.  가변 인자(variable argument)</h1>
-<p>가변 인자는 말 그대로 개수가 변할 수 있는 인자이다.<br />
-함수 printf를 사용하는 경우를 생각해보자.</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"this is an example."</span><span class="p">,</span> <span class="mi">123</span><span class="p">);</span>
-	<span class="n">printf</span> <span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">456</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>위 코드에서 첫 번째 printf에 <code class="language-plaintext highlighter-rouge">"%s %s\n"</code>, <code class="language-plaintext highlighter-rouge">"this is an example"</code>, <code class="language-plaintext highlighter-rouge">123</code> 3개의 인자가 들어갔다. 하지만 두 번째 printf에는 <code class="language-plaintext highlighter-rouge">"%d\n"</code>, <code class="language-plaintext highlighter-rouge">456</code> 2개의 인자가 들어갔다.
-printf 함수는 첫 번째 인자 문자열에 주어지는 <code class="language-plaintext highlighter-rouge">%</code>의 수에 따라 추가적인 인자가 필요하므로, printf 함수를 만들 때 사용자가 몇 개의 인자를 넣을 것인지 미리 알 수 없다.
-이렇게 상황에 따라 함수가 받는 인자의 수를 조절하고 싶을 때 가변 인자를 사용할 수 있다.
-<br /></p>
-<h2 id="1-1-가변-인자-사용법">1-1. 가변 인자 사용법</h2>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp">
-</span></code></pre></div></div>
-<p><br />
-가변 인자에 관한 함수와 구조체는 stdarg.h 헤더에 들어 있다.<br />
-가변 인자를 갖는 함수의 프로토 타입은 다음과 같다.
-<br /></p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_args</span><span class="p">,</span> <span class="p">...);</span>
-</code></pre></div></div>
-<p><br />
-가변 인자는 몇 개가 될지 모르므로 <code class="language-plaintext highlighter-rouge">...</code>으로 표시한다. <br />
-<u>최소 1개의 고정 인수(위의 경우 num_args)가 필요하다는 점에 유의하자.</u>
-이 고정 인수는 뒤에 올 가변 인자의 개수를 알려주는 역할을 한다.</p>
-
-<h2 id="1-2-매크로">1-2. 매크로</h2>
-<p>stdarg.h에는  가변 인수를 사용하기 위한 다양한 매크로가 존재한다.</p>
-
-<h3 id="1-2-1-va_list">1-2-1. va_list</h3>
-<p>va_list는 가변 인수들의 정보를 담아 놓기 위한 타입이다. 길이가 변할 수 있는 인수들을 저장해야 하기 때문에 va_list 또한 저장 공간의 크기를 유동적으로 늘리고 줄일 수 있는 가변 공간이다.</p>
-
-<div class="notice--warning">
-  <p>⚠️ 클러스터 Mac(Intel Mac)에서는 va_list 자료형 자체로 포인터지만, M1 Mac에서는 포인터가 아닌 일반 자료형이다. 따라서 va_list를 통해 가변 인자 값에 접근하는 방식에 있어서 차이가 발생한다.</p>
-</div>
-
-<h3 id="1-2-2-va_start">1-2-2. va_start</h3>
-<p>va_start는 va_list를 사용하기 전에 초기화하는 역할을 한다. 왜 va_list를 초기화해야 할까?<br />
-va_list가 가리키고 있는 주소를 마지막 고정 인자 다음의 첫 번째 가변 인자의 주소로 설정해야 하기 때문이다(va_list는 포인터 임을 잊지 말자).<br />
-따라서 va_start는 <code class="language-plaintext highlighter-rouge">va_list</code>, <code class="language-plaintext highlighter-rouge">마지막 고정인자</code> 2개의 인자를 필요로 한다.
-<br /></p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="p">...)</span>
-<span class="p">{</span>
-	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
-
-	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="c1">// ap의 주소를 고정 인자 n 다음, 즉 첫 번째 가변 인자의 주소로 옮긴다.</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p><br /></p>
-<h3 id="1-2-3-va_arg">1-2-3. va_arg</h3>
-<p>va_list가 현재 가리키고 있는 인자를 반환하고, va_list의 주소를 다음 인자로 이동시킨다.
-첫 번째 인자로 va_list, 두 번째 인자로 현재 인자의 type을 입력받는다.
-<br /></p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="p">...)</span>
-<span class="p">{</span>
-	<span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
-	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
-
-	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
-	<span class="n">ret</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//ap에서 int 타입의 인자를 반환한다.</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p><br /></p>
-
-<div class="notice--primary">
-  <p>🔔 va_arg로 <code class="language-plaintext highlighter-rouge">char</code>타입 인자를 반환받는 경우, 아래와 같이 char형이 아닌 int 자료형을 두 번째 인자로 넣어줘야 한다. CPU는 메모리를 4bytes씩 접근하는데, char는 1byte만을 차지하기 때문에, 3bytes의 남는 공간이 생긴다. 하지만 1byte만 char형을 넣어놓고 바로 이어서 4bytes인 int형을 넣어 놓는다면, 메모리가 char형을 읽고 다음 4bytes 위치의 메모리에 접근했을 때 int 변수의 시작 주소가 아닌 중간 주소에 접근하는 꼴이 되므로 효율적인 메모리 접근이 불가능하다. 따라서 CPU의 메모리 접근 크기보다 작은 char형은 실질적인 내용은 1byte 밖에 없지만 4bytes의 공간을 차지하도록 할당한다.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="text-align: center">char</th>
-        <th style="text-align: center">empty</th>
-        <th style="text-align: center">empty</th>
-        <th style="text-align: center">empty</th>
-        <th style="text-align: center">int</th>
-        <th style="text-align: center">int</th>
-        <th style="text-align: center">int</th>
-        <th style="text-align: center">int</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: center">메모리 접근</td>
-        <td style="text-align: center">————</td>
-        <td style="text-align: center">————</td>
-        <td style="text-align: center">————</td>
-        <td style="text-align: center">메모리 접근</td>
-        <td style="text-align: center">————</td>
-        <td style="text-align: center">————</td>
-        <td style="text-align: center">————</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-</code></pre></div>  </div>
-</div>
-<p><br /></p>
-<h3 id="1-2-4-va_end">1-2-4. va_end</h3>
-<p>가변 인자를 모두 사용하고 난 후 실행하는 함수로, ap의 값을 <code class="language-plaintext highlighter-rouge">NULL</code>로 변경한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
-</code></pre></div></div>
-<p><br /></p>
-<h1 id="2-예시-코드">2. 예시 코드</h1>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"ft_printf.h"</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">ft_printf</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...)</span>
-<span class="p">{</span>
-	<span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
-	<span class="kt">size_t</span> <span class="n">bytes</span><span class="p">;</span>
-
-	<span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">format</span><span class="p">);</span>
-	<span class="n">bytes</span> <span class="o">=</span> <span class="n">read_format</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">ap</span><span class="p">);</span> 
-	<span class="c1">// read_format : format을 해석하고, 이에 맞게 출력 후 출력한 글자 byte 수를 리턴해주는 함수</span>
-	<span class="n">va_end</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
-	<span class="k">return</span> <span class="p">(</span><span class="n">bytes</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="printf" /><category term="42Seoul" /><category term="ft_printf" /><summary type="html"><![CDATA[printf를 구현해보자.]]></summary></entry><entry><title type="html">Libft</title><link href="http://localhost:4000/42seoul/Libft/" rel="alternate" type="text/html" title="Libft" /><published>2023-10-19T00:00:00+09:00</published><updated>2023-10-19T00:00:00+09:00</updated><id>http://localhost:4000/42seoul/Libft</id><content type="html" xml:base="http://localhost:4000/42seoul/Libft/"><![CDATA[<h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libc에 있는 함수 및 앞으로의 문제를 푸는 데 유용한 함수들을 구현하고 library로 만든다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-library">1. Library</h1>
-
-<h2 id="1-1-library란">1-1. Library란?</h2>
-
-<p><strong>라이브러리</strong>는 주로 소프트웨어를 개발할 때 컴퓨터 프로그램이 사용하는 비휘발성 자원의 모임이다.
-비휘발성 자원의 예로는 미리 작성된 코드, 함수, 클래스, 자료형 등이 있다.<br />
-라이브러리는 재사용이 필요한 기능의 반복적인 코드 작성을 피하고, 언제든지 필요한 곳에서 호출하여 사용하기 위한 목적을 가지고 만들어진다.<br />
-새로운 소스 파일들과 빠르게 링크될 수 있도록 보통 컴파일된 형태인 <code class="language-plaintext highlighter-rouge">object file</code>로 존재하며 미리 컴파일 되어 있기 때문에 컴파일 시간도 단축된다.
-<br /></p>
-<h2 id="1-2-library의-종류">1-2. Library의 종류</h2>
-
-<p>라이브러리는 크게 <strong>정적 라이브러리</strong>와 <strong>동적 라이브러리</strong> 두 종류로 사용된다.<br />
-두 라이브러리의 가장 큰 차이점은 실행파일에 링킹되는 시점이다.</p>
-
-<ul>
-  <li>
-    <p><strong>정적 라이브러리</strong>(Static Library) (.a / .lib)</p>
-
-    <p>정적으로 만들어진 라이브러리는 링크 단계에서 실행 파일에 포함된다.
-  즉, 라이브러리의 동작 코드가 실행 파일에 들어있기 때문에 별도의 추가 작업 없이 실행 파일에서
-  바로 라이브러리의 함수들을 사용할 수 있다.
-  하지만 실행 파일에서 사용하지 않는 코드가 라이브러리에 많이 담겨 있을수록, 실행 파일의 불필요한 볼륨이
-  커지기 때문에 메모리의 공간 활용 효율이 떨어지는 등의 문제가 생긴다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>동적 라이브러리</strong>(Dynamic Library) (.so / .dll)</p>
-
-    <p>컴파일 타임에 링킹되는 정적 라이브러리와 다르게 동적 라이브러리는 런타임에 연결된다.
-  정적 라이브러리와의 가장 큰 차이점은, 라이브러리를 사용할 때 각각의 프로세스마다 메모리에 라이브러리 전체 내용을 할당하는 것이 아닌, 필요한 내용만 할당하여 사용할 수 있다는 점이다.
-  이러한 특징이 생기는 이유는 obj 파일을 만들 때 프로그램에서 사용하는 모든 라이브러리 모듈을 복사하지 않고, 해당 모듈의 주소만을 가지고 있다가 런타임에 실행 파일과 라이브러리가 메모리에 위치될 때 해당 모듈의 주소로 가서 필요한 것만 들고 오는 방식이기 때문이다. 런타임에 운영체제에 의하여 이러한 작업이 수행된다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>정적 라이브러리와 동적 라이브러리의 차이점</strong></p>
-
-    <p>정적 라이브러리는 실행할 때 라이브러리의 내용을 모두 메모리에 로드하는 반면, 동적 라이브러리는 메모리에 이미 존재하는 경우 로드되는 시간과 공간을 아낄 수 있다. 하지만 매번 라이브러리의 주소에 접근해야 하기 때문에 오버헤드가 존재해 수행 시간은 정적 라이브러리보다 느리다.</p>
-  </li>
-</ul>
-
-<p><br /></p>
-<h2 id="1-3-라이브러리-만들기">1-3. 라이브러리 만들기</h2>
-
-<p>명령어 ar을 사용한다.<br />
-컴파일된 <em>.o 파일들을 묶어서 library (</em>.a)로 만든다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">option</th>
-      <th style="text-align: center">meaning</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">-r</td>
-      <td style="text-align: center">지정한 파일을 archive 파일에 추가, 만약 기존 파일이면 치환한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-c</td>
-      <td style="text-align: center">archive가 생성 되어질 때 기본적으로 표준 에러로 기록되어지는 진단 메세지의 출력을 제한한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-u</td>
-      <td style="text-align: center">오브젝트 파일의 타임스탬프를 비교해 새로운 파일일 경우에만 치환한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-v</td>
-      <td style="text-align: center">자세한 내용을 보여주는 verbose 모드로, 파일 크기나 갱신 시각 등의 상세 정보를 출력한다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br />
-<br /></p>
-<h1 id="2-필요-개념">2. 필요 개념</h1>
-
-<ul>
-  <li>
-    <p><strong>void pointer로 입력받은 인자를 unsigned char 포인터로 캐스팅해서 접근하는 이유</strong></p>
-
-    <p>void pointer에 어떤 포인터가 들어올지 모르기 때문에 1바이트씩 접근해야 안전하다. 포인터는 주소값이기 때문에 부호를 쓰지 않는다. 따라서 char가 아닌 unsigned char를 쓰는 것이 관례이다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>const int*와 int* const의 차이</strong></p>
-
-    <p>const int<em>( = int const *)는 const int형을 가리키는 포인터로, 포인터 값은 변경 가능하지만 내부의 int값은 const로 선언되어 변경이 불가능하다. 반면 int</em> const는 const 포인터가 int형을 가리키고 있으므로 포인터의 값은 변경 불가능하지만 내부의 int값은 변경이 가능하다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>mem vs str functions</strong></p>
-
-    <p>str함수는 “문자열을 검사하기 위한” 함수. 즉, ‘\0’ 또는 size를 통해서 종료 시점을 결정한다.<br />
-  반면 mem 함수는 모든 배열에 대해 사용할 수 있어야 하기 때문에 size만을 통해서 종료 시점을 결정한다.</p>
-
-    <p>함수 내부에서 unsigned char로 캐스팅 해주는 이유 : unsigned char는 변수 안의 모든 값이 부호비트나 패딩비트같이 어떠한 용도로 사용되는 값이 없고, 우리가 전달하고자 하는 값으로 모두 차있기 때문에 비트 해석이 왜곡될 걱정이 없다.</p>
-
-    <p>*패딩비트 : 가장 큰 자료형의 크기를 따르기 때문에 생기는 사용하지 않는 비트
-<br /></p>
-  </li>
-  <li>
-    <p><strong>size_t</strong></p>
-
-    <p>size_t는 typedef를 이용하여 정의한 하나의 별칭(alias)으로 ‘이론상 가장 큰 사이즈를 담을 수 있는 unsigned 데이터 타입’으로 정의된다.<br />
-  즉, 32bit에서는 unsigned int, 64bit에서는 unsigned long long이 된다.
-<br /></p>
-  </li>
-  <li>
-    <p><strong>함수 포인터</strong></p>
-
-    <p>포인터는 다른 변수의 주소를 저장하는 변수다. 이와 유사하게 함수 포인터는 함수의 주소를 저장하는 변수다.</p>
-  </li>
-</ul>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>식별자 foo는 함수의 이름이다. 변수와 마찬가지로 함수는 메모리의 할당된 주소에 있다.</p>
-
-<p>() 연산자를 통해 함수를 호출하면, 호출되는 함수의 주소로 점프하여 실행한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">foo</span><span class="p">();</span> <span class="c1">//foo 함수의 주소(ex.0x002717f0)로 점프한다.</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>함수 foo를 printf로 출력하면 0x002717f0가 출력된다.
-<br />
-함수 포인터는 함수의 주소를 저장했다가, 해당 주소의 함수를 호출하는 데 사용하는 포인터를 말한다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>반환형식 (* 식별자) (파라미터형 목록)
-</code></pre></div></div>
-
-<p>위와 같은 형식으로 사용한다.</p>
-
-<p><br /></p>
-<ul>
-  <li><strong>함수 포인터 사용법</strong></li>
-</ul>
-
-<p>반환값과 매개변수가 없는 경우</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">void</span> <span class="nf">print_hello</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"Hello, world!</span><span class="se">\\</span><span class="s">n"</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)();</span>
-
-	<span class="n">fp</span> <span class="o">=</span> <span class="n">print_hello</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">()</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="o">!</span>
-</code></pre></div></div>
-
-<p>반환값과 매개변수가 있는 경우</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-	<span class="n">fp</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
-
-	<span class="n">fp</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-	<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span><span class="mi">8</span>
-			   <span class="mi">2</span>
-</code></pre></div></div>
-<p><br /></p>
-<ul>
-  <li><strong>함수 포인터 배열 사용하기</strong></li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;}</span>
-<span class="kt">int</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;}</span>
-<span class="kt">int</span> <span class="nf">mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;}</span>
-<span class="kt">int</span> <span class="nf">div</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">//함수 포인터 배열 선언</span>
-	
-	<span class="n">fp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mul</span><span class="p">;</span>
-	<span class="n">fp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">div</span><span class="p">;</span>
-
-	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> <span class="n">fp</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
-	<span class="p">}</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-&gt;</span> <span class="err">실행결과</span> <span class="o">:</span> <span class="mi">30</span>
-			<span class="mi">10</span>
-			<span class="mi">200</span>
-			<span class="mi">2</span>
-</code></pre></div></div>
-<p><br /></p>
-<ul>
-  <li><strong>typedef로 함수 포인터 간소화 하기</strong></li>
-</ul>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">PtrFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
-
-<span class="n">PtrFunc</span> <span class="o">=</span> <span class="n">add</span><span class="p">;</span>
-</code></pre></div></div>
-<p><br /></p>
-<ul>
-  <li>
-    <p><strong>메모리 해제(free)</strong></p>
-
-    <p>동적 메모리를 할당하면 힙(heap) 메모리의 공간을 할당받는다. 이 공간은 프로그램이 종료될 때까지 보존된다. 따라서 메모리를 할당만 하고 해제를 해주지 않으면 메모리 사용량만 계속 증가하게 된다. 즉 프로그램이 필요하지 않은 메모리를 계속 점유하고 있는 현상을 “메모리 누수(memory leak)”라고 한다. 즉 동적 할당으로 힙 메모리에 공간을 생성해놓은 뒤 회수하지 않으면 프로그램이 실행되는 동안은 그 공간은 계속해서 살아있게 되고 이는 메모리의 낭비를 초래하여 성능 부하를 이르킬 수 있다. 고로 사용하지 않는 메모리는 free함수를 사용하여 꼭 회수해줘야 한다.</p>
-  </li>
-</ul>
-
-<p><br /></p>
-<ul>
-  <li>
-    <p><strong>2의 보수법</strong></p>
-
-    <p>C언어는 2진 보수 방식을 사용한다.<br />
-  첫번째 비트가 0일 때는 양수라는 의미로 2진수를 읽듯이 읽으면 된다. 첫번째 비트가 1일 때는 음수라는 의미로 2진 보수를 역(1을 빼고 1진 보수법 적용)으로 취한 값이 절댓값이 된다.<br />
-  예를 들어 8비트의 메모리에 10010001 값이 들어 있다면 첫번째 비트가 1이므로 음수를 의미한다. 절댓값을 계산해보면 10010001 → 10010000 → 01101111로 1 + 2 + 4 + 8 + 32 + 64 = 111이다. 즉 10010001은 -111이다.<br />
-  2진 보수 방식에서 8비트(1바이트)로 표현할 때 01111111이 가장 큰 정수이고, 10000000이 가장 작은 정수이다.
-<br /></p>
-  </li>
-  <li>
-    <p>큰 자료형 → 작은 자료형 형 변환시 뒤쪽(오른쪽) 비트부터 자른다.
-<br /></p>
-  </li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="42Seoul" /><category term="42Seoul" /><category term="Libft" /><category term="Archive" /><category term="Library" /><summary type="html"><![CDATA[표준 C 라이브러리(libc)에 있는 함수 및 앞으로 과제를 하면서 유용한 함수들을 구현하고 library로 만든다.]]></summary></entry></feed>
+<p>자신의 IP 주소와 서브넷 마스크를 &amp;연산(비트 연산)하면 네트워크 ID를 구할 수 있다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="Network" /><category term="Subnet" /><category term="IP" /><summary type="html"><![CDATA[OSI 모델의 3계층인 네트워크 계층에 대해 알아보자.]]></summary></entry></feed>

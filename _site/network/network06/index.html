@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>pipex 가이드 - Hyuim’s blog</title>
-<meta name="description" content="pipe에 대해 알아보자.">
+<!-- begin _includes/seo.html --><title>06.전송 계층 - Hyuim’s blog</title>
+<meta name="description" content="OSI 모델의 4계층인 전송 계층에 대해 알아보자.">
 
 
   <meta name="author" content="Hyunsoon Im">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="pipex 가이드">
-<meta property="og:url" content="http://localhost:4000/42seoul/Pipex/">
+<meta property="og:title" content="06.전송 계층">
+<meta property="og:url" content="http://localhost:4000/network/network06/">
 
 
-  <meta property="og:description" content="pipe에 대해 알아보자.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2023-12-06T00:00:00+09:00">
+  <meta property="og:description" content="OSI 모델의 4계층인 전송 계층에 대해 알아보자.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2023-12-20T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/42seoul/Pipex/">
+
+<link rel="canonical" href="http://localhost:4000/network/network06/">
 
 
 
@@ -369,16 +369,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="pipex 가이드">
-    <meta itemprop="description" content="pipe에 대해 알아보자.">
-    <meta itemprop="datePublished" content="2023-12-06T00:00:00+09:00">
+    <meta itemprop="headline" content="06.전송 계층">
+    <meta itemprop="description" content="OSI 모델의 4계층인 전송 계층에 대해 알아보자.">
+    <meta itemprop="datePublished" content="2023-12-20T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/42seoul/Pipex/" class="u-url" itemprop="url">pipex 가이드
+            <a href="http://localhost:4000/network/network06/" class="u-url" itemprop="url">06.전송 계층
 </a>
           </h1>
           
@@ -389,7 +389,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-12-06T00:00:00+09:00">December 6, 2023</time>
+        <time datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time>
       </span>
     
 
@@ -407,63 +407,56 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#0-과제-설명">0. 과제 설명</a></li><li><a href="#1-pipe">1. Pipe</a><ul><li><a href="#1-1-ipcinter-process-communication">1-1. IPC(Inter Process Communication)</a></li><li><a href="#1-2-pipe">1-2. pipe</a></li></ul></li><li><a href="#2-redirection">2. Redirection</a></li><li><a href="#3-주의할-점-및-팁">3. 주의할 점 및 팁</a></li></ul>
+              <ul class="toc__menu"><li><a href="#1-전송-계층의-역할">1. 전송 계층의 역할</a></li><li><a href="#2-tcp">2. TCP</a></li><li><a href="#3-포트-번호">3. 포트 번호</a></li><li><a href="#4-udp">4. UDP</a></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="0-과제-설명">0. 과제 설명</h1>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로세스간 통신을 도와주는 pipe에 대해 이해하고 사용해보자.
-</code></pre></div></div>
+        <h1 id="1-전송-계층의-역할">1. 전송 계층의 역할</h1>
 
-<p><br /></p>
+<ol>
+  <li>데이터가 신뢰할 수 있는 데이터인지 검사하고, 오류가 있으면 재전송을 요청한다.</li>
+  <li>받은 데이터를 필요로 하는 어플리케이션에 전달한다.</li>
+</ol>
 
-<h1 id="1-pipe">1. Pipe</h1>
-<h2 id="1-1-ipcinter-process-communication">1-1. IPC(Inter Process Communication)</h2>
+<p>전송 계층의 통신 방식으로 2가지를 꼽을 수 있다.</p>
+<ol>
+  <li>연결형 통신 : 신뢰, 정확성을 우선으로 하여 통신 과정에서 여러 번 확인 절차를 거친다.</li>
+  <li>비연결형 통신 : 동영상 같이 빠른 전송이 필요한 경우에 상대편과 통신하지 않고 보낸다.</li>
+</ol>
 
-<p><strong>프로세스</strong>란 메모리에 올라와 실행되고 있는 프로그램을 말한다. 각각의 프로세스는 고유의 메모리 공간을 가지기 때문에 한 프로세스가 다른 프로세스의 데이터에 접근하는 것이 불가능하다. 이런 문제를 해결하기 위해 여러가지 방법이 있는데, 이런 방법들을 IPC라고 한다.</p>
+<p>전송 계층의 연결형 통신 프로토콜에는 <code class="language-plaintext highlighter-rouge">TCP</code>가 사용되고, 비연결형 통신 프로토콜에는 <code class="language-plaintext highlighter-rouge">UDP</code>가 사용된다.</p>
 
-<h2 id="1-2-pipe">1-2. pipe</h2>
+<h1 id="2-tcp">2. TCP</h1>
 
-<p>pipe는 IPC의 하나로, 임시 파일(pipe)을 만들고 프로세스의 결과를 해당 파일에 저장, 다음 프로세스가 해당 파일에서 이전 결과를 읽어와 사용하는 식으로 프로세스간에 소통한다.</p>
+<p>연결형 통신 프로토콜이다.
+전송 계층에서 네트워크 계층으로 데이터를 보낼 때 TCP 헤더를 붙이는데, 이 때 TCP 헤더가 붙은 데이터를 <code class="language-plaintext highlighter-rouge">segment</code>라고 한다.
+TCP에서 데이터를 전송하려면 먼저 <code class="language-plaintext highlighter-rouge">connection</code>이라는 가상의 독점 통신로를 확보해야 한다. 커넥션을 확보해야만 데이터를 전송할 수 있다. 데이터를 보내기 전에 연결(connection)을 확립하기 위해 패킷 요청을 세 번 교환하는 것을 <code class="language-plaintext highlighter-rouge">3-way handshake</code>라고 한다.</p>
 
-<p>예를 들어, 다음과 같은 명령어가 있다고 하자.</p>
-<pre><code class="language-command">ls | cat
-</code></pre>
-<p><code class="language-plaintext highlighter-rouge">ls</code> 명령어는 현재 디렉토리에 있는 파일들의 목록을 보여주고, <code class="language-plaintext highlighter-rouge">cat</code> 명령어는 입력으로 받은 내용을 출력해준다. <code class="language-plaintext highlighter-rouge">cat</code> 명령어를 단일로 사용했을 때는 유저가 내용을 입력할 때까지 기다리지만, 위와 같이 실행하면 <code class="language-plaintext highlighter-rouge">ls</code> 명령어의 결과물이 pipe(|)에 저장되고, <code class="language-plaintext highlighter-rouge">cat</code> 은 유저의 input대신 pipe에 저장된 내용을 입력으로 받아와 명령어를 실행한다. 따라서 위 명령어의 출력은 <code class="language-plaintext highlighter-rouge">ls</code>의 출력과 같을 것이다.</p>
+<p>송신 측에서 수신 측으로 세그먼트를 보낼 때, 하나를 보내고 한 번 확인하는 식으로 데이터를 전달하면 시간이 오래걸리고 효율이 낮아지게 된다. 이를 해결하기 위해 세그먼트 여러 개를 많이 보내 놓고, 확인 응답을 몰아서 받는 방식을 사용한다.
+세그먼트 여러 개를 많이 보내 놓을 수 있는 이유는 수신 측에서 버퍼에 데이터를 담아 놓기 때문이다. 3-way handshake를 할 때 양 측 컴퓨터는 상대방 컴퓨터의 버퍼 사이즈(window size)를 파악해 놓고 오버플로우가 나지 않게 데이터를 송수신한다. window size에 대한 정보는 TCP 헤더에 담긴다.</p>
 
-<p>그렇다면 infile이라는 파일이 있다고 할 때, 아래 명령어의 결과는 어떨까?</p>
-<pre><code class="language-command">cat &lt; infile | ls
-</code></pre>
+<p>3-way handshake 이후 데이터를 전송할 때는 TCP 헤더의 일련번호와 확인 응답 번호가 사용된다.
+TCP에서 데이터를 보낼 때 각 데이터에 일련 번호를 부여해 TCP 패킷의 순서를 제어할 수 있다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">&lt; infile</code>은 입력을 infile로 하겠다는 의미이다. 즉, <code class="language-plaintext highlighter-rouge">cat &lt; infile</code>은 infile 안의 내용을 파이프에 쓰게 된다. 하지만 <code class="language-plaintext highlighter-rouge">ls</code>는 입력이 필요없는, 현재 디렉토리의 파일들을 출력해주는 명령어이므로 앞의 파이프에 내용이 있어도 신경쓰지않고 <code class="language-plaintext highlighter-rouge">ls</code>명령어의 결과를 그대로 출력하게 된다. 따라서 위 명령어의 결과는 <code class="language-plaintext highlighter-rouge">ls</code>의 결과와 같다.</p>
+<h1 id="3-포트-번호">3. 포트 번호</h1>
 
-<p><br /></p>
+<p>TCP 헤더에는 <code class="language-plaintext highlighter-rouge">출발지 포트 번호</code>와 <code class="language-plaintext highlighter-rouge">목적지 포트 번호</code>가 들어 있다. 이를 확인하여 어떤 어플리케이션으로 이 데이터가 가야하는지를 알 수 있다.
+포트 번호는 0~65535번을 사용할 수 있다.</p>
 
-<h1 id="2-redirection">2. Redirection</h1>
+<p>0~1023번 : well-known ports라고 하며 주요 프로토콜이 사용하도록 예약되어 있다.
+1024번 : 예약되어 있지만 사용되지 않는 포트이다.
+1025번 이상 : 랜덤포트로, 클라이언트 측의 송신 포트로 사용된다.</p>
 
-<p>위에서 <code class="language-plaintext highlighter-rouge">cat &lt; infile</code>은 뒤에 오는 파일(infile)을 입력으로 한다고 설명했다. 조금 더 정확히 말하면 표준 입력으로 연결되어 있는 fd 0번을 infile로 바꿔서 연결시킨다는 말이다. <code class="language-plaintext highlighter-rouge">cat</code>은 fd 0번에서 입력을 받도록 프로그래밍 되어 있는데, fd 0번을 infile로 연결시켜 놨으므로 표준 입력이 아닌 infile의 내용을 받아와 출력하게 되는 것이다. 이처럼 프로그램이나 명령어의 입출력을 파일이나 다른 입출력 장치로 바꾸는 것을 redirection이라고 한다.</p>
+<p>동작하는 어플리케이션들은 각각 포트 번호가 있어서 다른 어플리케이션과 구분된다. 데이터를 어플리케이션에 보낼 때, 이 포트 번호를 보고 구분하여 데이터를 전달한다.</p>
 
-<p>리다이렉션은 4가지로 구분할 수 있다.</p>
+<h1 id="4-udp">4. UDP</h1>
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;</code> : 표준 입력에 연결되어 있는 fd 0번을 <code class="language-plaintext highlighter-rouge">&lt;</code>뒤에 오는 파일로 연결한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&gt;</code> : 표준 출력에 연결되어 있는 fd 1번을 <code class="language-plaintext highlighter-rouge">&gt;</code> 뒤에 오는 파일로 연결한다. <code class="language-plaintext highlighter-rouge">&gt;</code> 뒤의 파일이름에 해당하는 파일을 만들고 결과물을 거기에 저장한다. 만약 해당 이름의 파일이 이미 존재하면, 기존 내용이 사라지고 마지막에 실행한 명령어의 결과가 저장되므로 주의해야 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> : heredoc이라고 불리며, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code> 뒤에 오는 문자가 입력될 때까지 계속 입력을 받는다. 예를 들어, <code class="language-plaintext highlighter-rouge">&lt;&lt; eof</code>이면 eof를 입력하기 전까지 계속 입력을 받고, 입력 받는 내용들은 임시 파일에 저장된다. 종료 문자인 eof가 입력되면 표준 입력에 연결되어 있는 fd 0번을 해당 임시 파일로 연결한다. 명령어가 다 실행되고 나면 임시 파일은 삭제된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 표준 출력에 연결되어 있는 fd 1번을 <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> 뒤에 오는 파일로 연결한다. 만약 <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>뒤의 파일 이름에 해당하는 파일이 이미 존재하면, 그 파일의 내용 뒤에 이어쓰기한다.</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="3-주의할-점-및-팁">3. 주의할 점 및 팁</h1>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">sleep 3 | sleep 3 | sleep 3</code>의 경우 병렬 실행되어 9초가 아닌 3초를 sleep 해야 한다.</li>
-  <li>lsof 명령어를 사용해 fd leak이 나지 않는지 확인한다.  <code class="language-plaintext highlighter-rouge">cat /dev/random | head -1</code> 명령어를 넣어 보자.</li>
-  <li>파이프를 여러 개 사용하는 경우, 첫 명령어, 마지막 명령어, 그 외 중간에 있는 명령어로 구분하여 리다이렉션 방향을 고민해야 한다.</li>
-  <li>과제를 하면서 이 재생목록이 정말 큰 도움이 됐다.
-<a href="https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY">유튜브 코드볼트</a></li>
-</ul>
+<p>TCP가 신뢰할 수 있는 방식으로 안전하게 데이터를 상대방에가 전달하는 프로토콜이었다면, 비연결형 통신 프로토콜인 UDP는 효율성을 중요하게 여기는 프로토콜이다.
+UDP는 데이터를 전송할 때 일일이 확인 작업을 하지 않기 때문에 데이터를 효율적으로 빠르게 보내는 것이 장점이다.
+UDP 헤더가 붙은 데이터를 <code class="language-plaintext highlighter-rouge">UDP 데이터그램</code>이라고 한다. UDP 헤더는 신뢰성과 정확성이 필요하지 않아 TCP 헤더보다 훨씬 들어있는 정보가 적다.
+UDP를 이용하면 같은 랜에 있는 컴퓨터나 네트워크 장비에 데이터를 일괄로 보낼 수 있으며, 이것을 <code class="language-plaintext highlighter-rouge">broadcast</code>라고 한다.
+TCP는 3-way handshake와 같이 데이터를 전송할 때도 확인 응답을 하나씩 보내야 하기 때문에 브로드캐스트 같이 불특정 다수에게 보내는 통신에는 적합하지 않다.</p>
 
         
       </section>
@@ -480,13 +473,11 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a><span class="sep">, </span>
+      <a href="/tags/#port" class="page__taxonomy-item p-category" rel="tag">Port</a><span class="sep">, </span>
     
-      <a href="/tags/#fd" class="page__taxonomy-item p-category" rel="tag">fd</a><span class="sep">, </span>
+      <a href="/tags/#tcp" class="page__taxonomy-item p-category" rel="tag">TCP</a><span class="sep">, </span>
     
-      <a href="/tags/#pipe" class="page__taxonomy-item p-category" rel="tag">pipe</a><span class="sep">, </span>
-    
-      <a href="/tags/#process" class="page__taxonomy-item p-category" rel="tag">process</a>
+      <a href="/tags/#udp" class="page__taxonomy-item p-category" rel="tag">UDP</a>
     
     </span>
   </p>
@@ -503,7 +494,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#42seoul" class="page__taxonomy-item p-category" rel="tag">42Seoul</a>
+      <a href="/categories/#network" class="page__taxonomy-item p-category" rel="tag">Network</a>
     
     </span>
   </p>
@@ -511,7 +502,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-12-06T00:00:00+09:00">December 6, 2023</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time></p>
 
       </footer>
 
@@ -520,11 +511,11 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=pipex+%EA%B0%80%EC%9D%B4%EB%93%9C%20http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FPipex%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=06.%EC%A0%84%EC%86%A1+%EA%B3%84%EC%B8%B5%20http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork06%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FPipex%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork06%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F42seoul%2FPipex%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fnetwork%2Fnetwork06%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
  -->
       
@@ -533,11 +524,11 @@
       
   <nav class="pagination">
     
-      <a href="/42seoul/Philosophers/" class="pagination--pager" title="Philosophers 가이드
+      <a href="/network/network05/" class="pagination--pager" title="05.네트워크 계층
 ">Previous</a>
     
     
-      <a href="/network/network01/" class="pagination--pager" title="01.네트워크 기초
+      <a href="/network/network07/" class="pagination--pager" title="07.응용 계층
 ">Next</a>
     
   </nav>
