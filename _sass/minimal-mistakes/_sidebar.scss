@@ -26,9 +26,10 @@
     .nav__list {
       .nav__items {
         li {
-          #allPosts {
+          .all-posts {
             &:hover {
               color: $link-color-hover;
+              transition: 0s;
             }
           }
           ul {
