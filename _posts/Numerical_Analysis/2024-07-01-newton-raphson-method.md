@@ -17,7 +17,7 @@ Newton's method 및 Newton-Raphson method 라고 불리는 이 방법은 실숫�
 
 제곱근을 구하는 문제를 생각해보자. 
 
-![](../_posts/asset/NumericalAnalysis/Newton-Raphson_Method1.png)
+![](/_posts/asset/NumericalAnalysis/Newton-Raphson_Method1.png)
 
 $$f(x)=x^2-N$$
 
@@ -25,7 +25,7 @@ $$f(x)=x^2-N$$
 
 답을 모르는 상황에서 임의의 x = a_1에 대해 f(a_1)와 f'(a_1)를 구해보자.
 
-![](../_posts/asset/NumericalAnalysis/Newton-Raphson_Method2.png)
+![](/_posts/asset/NumericalAnalysis/Newton-Raphson_Method2.png)
 
 f'(a)이 x = a에서 f(x)의 기울기임을 생각해보자.
 f(a) > 0, f'(a) > 0 일 때 f(x) = 0이 되는 x값은 a보다 작다는 것을 알 수 있다.
