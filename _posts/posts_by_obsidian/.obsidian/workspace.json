@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Graphics.md",
+                "file": "Newton-Raphson method.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Graphics.md",
+                "file": "Newton-Raphson method.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Graphics.md",
+                "file": "Newton-Raphson method.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Graphics.md"
+                "file": "Newton-Raphson method.md"
               }
             }
           }
@@ -148,18 +148,24 @@
   },
   "active": "64712cf60cf4dd5e",
   "lastOpenFiles": [
-    "Graphics.md",
-    "Smilegate Unseen 지원서 입력사항.md",
-    "무제 파일.md",
-    "Markdown 사용법.md",
+    "Pasted image 20240701172613.png",
+    "Push Swap 병합정렬 가이드.md",
+    "Newton-Raphson method.md",
     "Makefile.md",
+    "Pasted image 20240701164052.png",
     "Libft.md",
+    "08.OSI 모델.md",
+    "Pasted image 20240701164654.png",
+    "Philosophers 가이드.md",
+    "Markdown 사용법.md",
+    "Born2beroot.md",
+    "09.무선 랜.md",
+    "Smilegate Unseen 지원서 입력사항.md",
+    "03.물리 계층2.md",
+    "Graphics.md",
     "ft_printf.md",
     "get_next_line.md",
-    "Born2beroot.md",
     "Fract'ol.md",
-    "Philosophers 가이드.md",
-    "Push Swap 병합정렬 가이드.md",
     "01. 네트워크 기초.md",
     "02.네트워크의 기본 규칙.md",
     "2023-12-23-network09.md",
@@ -170,7 +176,6 @@
     "2023-12-20-network04.md",
     "2023-12-20-network05.md",
     "03.물리 계층.md",
-    "Pipex 가이드.md",
     "Pasted image 20231130143847.png",
     "Pasted image 20231130140141.png",
     "Pasted image 20231130134131.png",
