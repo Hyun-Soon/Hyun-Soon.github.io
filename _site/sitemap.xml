@@ -77,6 +77,10 @@
 <lastmod>2023-12-23T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/numerical-analysis/newton-raphson-method/</loc>
+<lastmod>2024-07-01T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/42Seoul</loc>
 </url>
 <url>
@@ -87,6 +91,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/numerical-analysis</loc>
 </url>
 <url>
 <loc>http://localhost:4000/page2/</loc>

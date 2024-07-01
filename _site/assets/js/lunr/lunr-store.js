@@ -112,4 +112,10 @@ var store = [{
         "tags": ["LAN","Push_Swap","SSID","Channel","beacon"],
         "url": "/network/network09/",
         "teaser": null
+      },{
+        "title": "뉴턴-랩슨 방법(Newton-Raphson method)",
+        "excerpt":"0. Newton’s method, Newton-Raphson method란? Newton’s method 및 Newton-Raphson method 라고 불리는 이 방법은 실숫값 함수의 영점을 근사하는 방법 중 하나이다. 1. 뉴턴-랩슨 방법의 이해 제곱근을 구하는 문제를 생각해보자. ![[Pasted image 20240701164052.png]] [f(x)=x^2-N] 위의 방정식에서 f(x) = 0이 되는 x값을 구하면 N의 제곱근을 구할 수 있다. 답을 모르는 상황에서 임의의...","categories": ["numerical-analysis"],
+        "tags": ["Newton-Method","Newton-Raphson-Method"],
+        "url": "/numerical-analysis/newton-raphson-method/",
+        "teaser": null
       }]

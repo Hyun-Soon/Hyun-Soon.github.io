@@ -20,5 +20,7 @@ sidebar1:
       url: "42Seoul"
     - title: "Network"
       url: "Network"
+    - title: "수치해석"
+      url: "numerical-analysis"
     - title: "Algorithm"
       text: "More text here."

@@ -39,6 +39,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "numerical-analysis" %}
+                        <li><a style="font-size: 16px"; href="/numerical-analysis" class="">수치해석 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Etc" %}
                         <li><a style="font-size: 16px"; href="/Etc" class="">Etc ({{category[1].size}})</a></li>
                     {% endif %}

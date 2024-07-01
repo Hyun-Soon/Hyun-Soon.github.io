@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>42Seoul - Hyuim’s blog</title>
-<meta name="description" content="Hyuim’s personal blog.">
+<!-- begin _includes/seo.html --><title>뉴턴-랩슨 방법(Newton-Raphson method) - Hyuim’s blog</title>
+<meta name="description" content="뉴턴-랩슨 방법을 알아보자.">
 
 
   <meta name="author" content="Hyunsoon Im">
   
+  <meta property="article:author" content="Hyunsoon Im">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="42Seoul">
-<meta property="og:url" content="http://localhost:4000/42Seoul">
+<meta property="og:title" content="뉴턴-랩슨 방법(Newton-Raphson method)">
+<meta property="og:url" content="http://localhost:4000/numerical-analysis/newton-raphson-method/">
 
 
-  <meta property="og:description" content="Hyuim’s personal blog.">
-
-
-
+  <meta property="og:description" content="뉴턴-랩슨 방법을 알아보자.">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2024-07-01T00:00:00+09:00">
 
 
 
@@ -41,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/42Seoul">
+<link rel="canonical" href="http://localhost:4000/numerical-analysis/newton-raphson-method/">
 
 
 
@@ -101,9 +105,33 @@
 <!-- end custom head snippets -->
 
     
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+      inlineMath: [ ['$', '$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+    
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -145,6 +173,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -362,17 +392,180 @@
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="뉴턴-랩슨 방법(Newton-Raphson method)">
+    <meta itemprop="description" content="뉴턴-랩슨 방법을 알아보자.">
+    <meta itemprop="datePublished" content="2024-07-01T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title">42Seoul</h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/numerical-analysis/newton-raphson-method/" class="u-url" itemprop="url">뉴턴-랩슨 방법(Newton-Raphson method)
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-01T00:00:00+09:00">July 1, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#0-newtons-method-newton-raphson-method란">0. Newton’s method, Newton-Raphson method란?</a></li><li><a href="#1-뉴턴-랩슨-방법의-이해">1. 뉴턴-랩슨 방법의 이해</a></li><li><a href="#2-뉴턴-랩슨-방법의-제약">2. 뉴턴-랩슨 방법의 제약</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="0-newtons-method-newton-raphson-method란">0. Newton’s method, Newton-Raphson method란?</h1>
+
+<p>Newton’s method 및 Newton-Raphson method 라고 불리는 이 방법은 실숫값 함수의 영점을 근사하는 방법 중 하나이다.</p>
+
+<h1 id="1-뉴턴-랩슨-방법의-이해">1. 뉴턴-랩슨 방법의 이해</h1>
+
+<p>제곱근을 구하는 문제를 생각해보자.</p>
+
+<p>![[Pasted image 20240701164052.png]]</p>
+
+<p>[f(x)=x^2-N]</p>
+
+<p>위의 방정식에서 f(x) = 0이 되는 x값을 구하면 N의 제곱근을 구할 수 있다.</p>
+
+<p>답을 모르는 상황에서 임의의 x = a_1에 대해 f(a_1)와 f’(a_1)를 구해보자.</p>
+
+<p>![[Pasted image 20240701172613.png]]</p>
+
+<p>f’(a)이 x = a에서 f(x)의 기울기임을 생각해보자.
+f(a) &gt; 0, f’(a) &gt; 0 일 때 f(x) = 0이 되는 x값은 a보다 작다는 것을 알 수 있다.</p>
+
+<p>위 그림에서 <code class="language-plaintext highlighter-rouge">a_1</code>을 통해 <code class="language-plaintext highlighter-rouge">a_2</code>를 찾을 수 있고, 이런 식으로 접선을 그려 반복하면 실제 해에 가까워지는 것을 확인할 수 있다.</p>
+
+<p>[a_2=a_1-\frac{f(a_1)}{f’(a_1)}]
+[(\because f’(a_1)=\frac{f(a_1)}{a_1-a_2})]</p>
+
+<p>즉, 뉴턴 방법(Newton’s method)는 임의의 x값에서 접선을 그려 해당 접선과 x축이 만나는 곳으로 점점 x값을 옮기며 점진적으로 해를 찾는 방법이다.</p>
+
+<h1 id="2-뉴턴-랩슨-방법의-제약">2. 뉴턴-랩슨 방법의 제약</h1>
+
+<p>간단하지만 효과적인 이 방법에는 제약이 존재한다.</p>
+
+<ul>
+  <li>해가 없는 경우, 당연히 해를 찾을 수 없다.</li>
+  <li>f(x)가 연속이고 미분 가능해야 한다.</li>
+  <li>해가 여러개인 경우, 뉴턴-랩슨 방법은 그 중 하나의 해를 찾아줄 뿐이며 초기값 <code class="language-plaintext highlighter-rouge">a_1</code>을 어떻게 설정하느냐에 따라 해가 달라질 수 있다.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#newton-method" class="page__taxonomy-item p-category" rel="tag">Newton-Method</a><span class="sep">, </span>
+    
+      <a href="/tags/#newton-raphson-method" class="page__taxonomy-item p-category" rel="tag">Newton-Raphson-Method</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#numerical-analysis" class="page__taxonomy-item p-category" rel="tag">numerical-analysis</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-07-01T00:00:00+09:00">July 1, 2024</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%89%B4%ED%84%B4-%EB%9E%A9%EC%8A%A8+%EB%B0%A9%EB%B2%95%28Newton-Raphson+method%29%20http%3A%2F%2Flocalhost%3A4000%2Fnumerical-analysis%2Fnewton-raphson-method%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fnumerical-analysis%2Fnewton-raphson-method%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fnumerical-analysis%2Fnewton-raphson-method%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/network/network09/" class="pagination--pager" title="09.무선 랜
+">Previous</a>
     
     
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/42seoul/Pipex/" rel="permalink">pipex 가이드
+        <a href="/network/network09/" rel="permalink">09.무선 랜
 </a>
       
     </h2>
@@ -384,7 +577,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-12-06T00:00:00+09:00">December 6, 2023</time>
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
       </span>
     
 
@@ -394,17 +587,22 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">pipe에 대해 알아보자.
+    <p class="archive__item-excerpt" itemprop="description">무선 랜에 대해 알아보자.
 </p>
   </article>
 </div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/42seoul/Philosophers/" rel="permalink">Philosophers 가이드
+        <a href="/network/network08/" rel="permalink">08.OSI 모델
 </a>
       
     </h2>
@@ -416,7 +614,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-12-06T00:00:00+09:00">December 6, 2023</time>
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
       </span>
     
 
@@ -426,17 +624,22 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Dining Philosopher 문제를 해결해보자.
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 전반적인 흐름에 대해 알아보자.
 </p>
   </article>
 </div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/42seoul/Push_swap/" rel="permalink">Push Swap 병합정렬 가이드
+        <a href="/network/network07/" rel="permalink">07.응용 계층
 </a>
       
     </h2>
@@ -448,7 +651,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-11-30T00:00:00+09:00">November 30, 2023</time>
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
       </span>
     
 
@@ -458,17 +661,22 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">병합 정렬로 Push Swap을 해결해보자.
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 응용 계층에 대해 알아 보자.
 </p>
   </article>
 </div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/42seoul/get_next_line/" rel="permalink">get_next_line
+        <a href="/network/network06/" rel="permalink">06.전송 계층
 </a>
       
     </h2>
@@ -480,7 +688,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
+        <time datetime="2023-12-20T00:00:00+09:00">December 20, 2023</time>
       </span>
     
 
@@ -490,174 +698,18 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 4계층인 전송 계층에 대해 알아보자.
 </p>
   </article>
 </div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/42seoul/ft_printf/" rel="permalink">ft_printf
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">printf를 구현해보자.
-</p>
-  </article>
+      </div>
+    </div>
+  
+  
 </div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/42seoul/Fract'ol/" rel="permalink">Fract’ol
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">mlx를 이용해 다양한 Fractal을 구현해보자.
-</p>
-  </article>
-</div>
-
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/42seoul/Born2beroot/" rel="permalink">Born2beroot
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-10-20T00:00:00+09:00">October 20, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">가상머신을 이용해 나만의 서버를 만들어 보자.
-</p>
-  </article>
-</div>
-
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/42seoul/Makefile/" rel="permalink">Makefile 문법 및 예시
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">리눅스에서 빌드를 편하게 해주는 Makefile에 대해 알아보자.
-</p>
-  </article>
-</div>
-
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/42seoul/Libft/" rel="permalink">Libft
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-10-19T00:00:00+09:00">October 19, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">표준 C 라이브러리(libc)에 있는 함수 및 앞으로 과제를 하면서 유용한 함수들을 구현하고 library로 만든다.
-</p>
-  </article>
-</div>
-
-
-  </div>
-</div>
     </div>
 
     
@@ -722,6 +774,33 @@
 <script src="/assets/js/lunr/lunr-en.js"></script>
 
 
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'hyun-soon/hyun-soon.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOKeOOEA');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOKeOOEM4CaKQd');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
 
 
 
