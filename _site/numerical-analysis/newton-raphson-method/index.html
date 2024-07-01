@@ -78,7 +78,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Latex -->
-<script type="text/javascript" async src="/mathjax/tex-chtml.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+
 
 <script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
@@ -444,23 +457,24 @@
 
 <p>제곱근을 구하는 문제를 생각해보자.</p>
 
-<p>![[Pasted image 20240701164052.png]]</p>
+<p><img src="../_posts/asset/NumericalAnalysis/Newton-Raphson_Method1.png" alt="" /></p>
 
-<p>[f(x)=x^2-N]</p>
+\[f(x)=x^2-N\]
 
 <p>위의 방정식에서 f(x) = 0이 되는 x값을 구하면 N의 제곱근을 구할 수 있다.</p>
 
 <p>답을 모르는 상황에서 임의의 x = a_1에 대해 f(a_1)와 f’(a_1)를 구해보자.</p>
 
-<p>![[Pasted image 20240701172613.png]]</p>
+<p><img src="../_posts/asset/NumericalAnalysis/Newton-Raphson_Method2.png" alt="" /></p>
 
 <p>f’(a)이 x = a에서 f(x)의 기울기임을 생각해보자.
 f(a) &gt; 0, f’(a) &gt; 0 일 때 f(x) = 0이 되는 x값은 a보다 작다는 것을 알 수 있다.</p>
 
 <p>위 그림에서 <code class="language-plaintext highlighter-rouge">a_1</code>을 통해 <code class="language-plaintext highlighter-rouge">a_2</code>를 찾을 수 있고, 이런 식으로 접선을 그려 반복하면 실제 해에 가까워지는 것을 확인할 수 있다.</p>
 
-<p>[a_2=a_1-\frac{f(a_1)}{f’(a_1)}]
-[(\because f’(a_1)=\frac{f(a_1)}{a_1-a_2})]</p>
+\[a_2=a_1-\frac{f(a_1)}{f'(a_1)}\]
+
+\[(\because f'(a_1)=\frac{f(a_1)}{a_1-a_2})\]
 
 <p>즉, 뉴턴 방법(Newton’s method)는 임의의 x값에서 접선을 그려 해당 접선과 x축이 만나는 곳으로 점점 x값을 옮기며 점진적으로 해를 찾는 방법이다.</p>
 
@@ -805,23 +819,7 @@ f(a) &gt; 0, f’(a) &gt; 0 일 때 f(x) = 0이 되는 x값은 a보다 작다는
 
 
 
-<!-- <script type="text/javascript" async
-	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-</script> -->
-<script type="text/javascript" async src="/mathjax/tex-chtml.js"></script>
 
-<script type="text/x-mathjax-config">
-   MathJax.Hub.Config({
-     extensions: ["tex2jax.js"],
-     jax: ["input/TeX", "output/HTML-CSS"],
-     tex2jax: {
-       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-       processEscapes: true
-     },
-     "HTML-CSS": { availableFonts: ["TeX"] }
-   });
-</script>
 
   </body>
 </html>
