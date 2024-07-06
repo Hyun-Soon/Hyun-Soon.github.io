@@ -81,7 +81,14 @@
 <lastmod>2024-07-01T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/cpp/EffectiveC++01/</loc>
+<lastmod>2024-07-06T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/42Seoul</loc>
+</url>
+<url>
+<loc>http://localhost:4000/C++</loc>
 </url>
 <url>
 <loc>http://localhost:4000/Etc</loc>
@@ -103,6 +110,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page4/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page5/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/googledc5e51b3700b51a0.html</loc>

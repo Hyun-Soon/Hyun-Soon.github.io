@@ -1,4 +1,480 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-06T16:46:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">Effective C++ Chapter 01</title><link href="http://localhost:4000/cpp/EffectiveC++01/" rel="alternate" type="text/html" title="Effective C++ Chapter 01" /><published>2024-07-06T00:00:00+09:00</published><updated>2024-07-06T00:00:00+09:00</updated><id>http://localhost:4000/cpp/EffectiveC++01</id><content type="html" xml:base="http://localhost:4000/cpp/EffectiveC++01/"><![CDATA[<h1 id="chapter-0">Chapter 0.</h1>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Effective C++ Chapter 01 - Hyuim’s blog</title>
+<meta name="description" content="Effective C++ Chapter 01 정리">
+
+
+  <meta name="author" content="Hyunsoon Im">
+  
+  <meta property="article:author" content="Hyunsoon Im">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Hyuim's blog">
+<meta property="og:title" content="Effective C++ Chapter 01">
+<meta property="og:url" content="http://localhost:4000/cpp/EffectiveC++01/">
+
+
+  <meta property="og:description" content="Effective C++ Chapter 01 정리">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-07-06T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/cpp/EffectiveC++01/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Hyunsoon Im",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Hyuim's blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Latex -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon_io/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+      inlineMath: [ ['$', '$'] ],
+      displayMath: [ ['$$', '$$'] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Hyuim's blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/hyunsoon_drum-modified.png" alt="Hyunsoon Im" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Hyunsoon Im</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>42Seoul Student interested in <strong>Graphics</strong> and <strong>Game Engine</strong>.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Hyun-Soon" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:s7514036@naver.com" rel="me" class="u-email">
+            <meta itemprop="email" content="s7514036@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            <span class="all-posts" style="font-family:sans-serif;font-size: 16px;"><a href="/">📂 Posts (21)</a></style>
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span style="font-size: 17px"; class="nav__sub-title">Categories</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/42Seoul" class="">42Seoul (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/Network" class="">Network (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/numerical-analysis" class="">수치해석 (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a style="font-size: 16px"; href="/C++" class="">C++ (1)</a></li>
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a style="font-size: 16px"; href="/Etc" class="">Etc (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Effective C++ Chapter 01">
+    <meta itemprop="description" content="Effective C++ Chapter 01 정리">
+    <meta itemprop="datePublished" content="2024-07-06T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/cpp/EffectiveC++01/" class="u-url" itemprop="url">Effective C++ Chapter 01
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-06T00:00:00+09:00">July 6, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#chapter-0">Chapter 0.</a><ul><li><a href="#0-1-explicit">0-1. explicit</a></li><li><a href="#0-2-copy-constructor">0-2. copy constructor</a></li><li><a href="#0-3-function-object">0-3. function object</a></li></ul></li><li><a href="#chapter-1-c에-왔으면-c의-법을-따릅시다">Chapter 1. C++에 왔으면 C++의 법을 따릅시다</a><ul><li><a href="#1-1-c를-언어들의-연합체로-바라보는-안목을-갖자">1-1. C++를 언어들의 연합체로 바라보는 안목을 갖자</a></li><li><a href="#1-2-define을-쓰려거든-const-enum-inline을-떠올리자">1-2. #define을 쓰려거든 const, enum, inline을 떠올리자</a></li><li><a href="#1-3-낌새만-보이면-const를-들이대-보자">1-3. 낌새만 보이면 const를 들이대 보자!</a><ul><li><a href="#상수-멤버-함수">상수 멤버 함수</a></li><li><a href="#상수-멤버-및-비상수-멤버-함수에서-코드-중복-현상을-피하는-방법">상수 멤버 및 비상수 멤버 함수에서 코드 중복 현상을 피하는 방법</a></li></ul></li><li><a href="#1-4-객체를-사용하기-전에-반드시-그-객체를-초기화하자">1-4. 객체를 사용하기 전에 반드시 그 객체를 초기화하자</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="chapter-0">Chapter 0.</h1>
 
 <h2 id="0-1-explicit">0-1. explicit</h2>
 <p>암시적 타입 변환에 생성자가 사용될 여지를 남겨둘 뚜렷한 이유가 없는 한, 생성자에 explicit specifier 우선적으로 적용하자.</p>
@@ -465,416 +941,340 @@
 
 <p class="notice--primary">🔔 기본제공 타입의 객체는 직접 손으로 초기화한다.<br />
 🔔 생성자에서는, 데이터 멤버에 대한 대입문을 생성자 본문 내부에 넣는 방법으로 멤버를 초기화하지 말고 멤버 초기화 리스트를 사용하자. 이 때, 각 데이터 멤버가 선언된 순서와 똑같이 나열해야 한다.<br />
-🔔 여러 번역 단위에 있는 비지역 정적 객체들의 초기화 순서 문제를 피해서 설계하자. 비지역 정적 객체를 지역 정적 객체로 바꾸면 된다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Cpp" /><category term="C++" /><category term="EffectiveC++" /><summary type="html"><![CDATA[Effective C++ Chapter 01 정리]]></summary></entry><entry><title type="html">뉴턴-랩슨 방법(Newton-Raphson method)</title><link href="http://localhost:4000/numerical-analysis/newton-raphson-method/" rel="alternate" type="text/html" title="뉴턴-랩슨 방법(Newton-Raphson method)" /><published>2024-07-01T00:00:00+09:00</published><updated>2024-07-01T00:00:00+09:00</updated><id>http://localhost:4000/numerical-analysis/newton-raphson-method</id><content type="html" xml:base="http://localhost:4000/numerical-analysis/newton-raphson-method/"><![CDATA[<h1 id="0-newtons-method-newton-raphson-method란">0. Newton’s method, Newton-Raphson method란?</h1>
+🔔 여러 번역 단위에 있는 비지역 정적 객체들의 초기화 순서 문제를 피해서 설계하자. 비지역 정적 객체를 지역 정적 객체로 바꾸면 된다.</p>
 
-<p>Newton’s method 및 Newton-Raphson method 라고 불리는 이 방법은 실숫값 함수의 영점을 근사하는 방법 중 하나이다.</p>
+        
+      </section>
 
-<h1 id="1-뉴턴-랩슨-방법의-이해">1. 뉴턴-랩슨 방법의 이해</h1>
+      <footer class="page__meta">
+        
+        
+  
 
-<p>제곱근을 구하는 문제를 생각해보자.</p>
 
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/4b50df00-cdbe-4552-80b6-1561a6176d63" alt="Newton-Raphson_Method1" /></p>
+  
 
-\[f(x)=x^2-N\]
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#c" class="page__taxonomy-item p-category" rel="tag">C++</a><span class="sep">, </span>
+    
+      <a href="/tags/#effectivec" class="page__taxonomy-item p-category" rel="tag">EffectiveC++</a>
+    
+    </span>
+  </p>
 
-<p>위의 방정식에서 $f(x) = 0$이 되는 $x$값을 구하면 N의 제곱근을 구할 수 있다.</p>
 
-<p>답을 모르는 상황에서 임의의 $x = a_1$에 대해 $f(a_1)$와 $f’(a_1)$를 구해보자.</p>
 
-<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/a4af5e61-ff9e-4166-bb0e-cccbbce52cc3" alt="Newton-Raphson_Method2" /></p>
 
-<p>$f’(a)$이 $x = a$에서 $f(x)$의 기울기임을 생각해보자.
-$f(a) &gt; 0$, $f’(a) &gt; 0$ 일 때 $f(x) = 0$이 되는 $x$값은 $a$보다 작다는 것을 알 수 있다.</p>
+  
 
-<p>위 그림에서 $a_1$을 통해 $a_2$를 찾을 수 있고, 이런 식으로 접선을 그려 반복하면 실제 해에 가까워지는 것을 확인할 수 있다.</p>
 
-\[a_2=a_1-\frac{f(a_1)}{f'(a_1)}\]
+  
 
-\[(\because f'(a_1)=\frac{f(a_1)}{a_1-a_2})\]
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#cpp" class="page__taxonomy-item p-category" rel="tag">Cpp</a>
+    
+    </span>
+  </p>
 
-<p><br />
-이런 식으로 해에 가까운 $x$값을 찾다가 $x$의 변화량이 일정값 이하로 작아지면, 즉 $|a_1-a_2|$ &lt; value(매우 작은 값)이 되면 $a_2$을 해로 상정한다.</p>
 
-<p>즉, 뉴턴 방법(Newton’s method)는 임의의 $x$값에서 접선을 그려 해당 접선과 $x$축이 만나는 곳으로 점점 x값을 옮기며 점진적으로 해를 찾는 방법이다.</p>
+        
 
-<h1 id="2-뉴턴-랩슨-방법의-제약">2. 뉴턴-랩슨 방법의 제약</h1>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-07-06T00:00:00+09:00">July 6, 2024</time></p>
 
-<p>간단하지만 효과적인 이 방법에는 제약이 존재한다.</p>
+      </footer>
 
-<ul>
-  <li>해가 없는 경우, 당연히 해를 찾을 수 없다.</li>
-  <li>$f(x)$가 연속이고 미분 가능해야 한다.</li>
-  <li>해가 여러개인 경우, 뉴턴-랩슨 방법은 그 중 하나의 해를 찾아줄 뿐이며 초기값 $a_1$을 어떻게 설정하느냐에 따라 해가 달라질 수 있다.</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="numerical-analysis" /><category term="Newton-Method" /><category term="Newton-Raphson-Method" /><summary type="html"><![CDATA[뉴턴-랩슨 방법을 알아보자.]]></summary></entry><entry><title type="html">08.OSI 모델</title><link href="http://localhost:4000/network/network08/" rel="alternate" type="text/html" title="08.OSI 모델" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network08</id><content type="html" xml:base="http://localhost:4000/network/network08/"><![CDATA[<h1 id="1-osi-모델의-각-계층">1. OSI 모델의 각 계층</h1>
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
 
-<ol>
-  <li>응용 계층(세션 계층 + 표현 계층) : 어플리케이션 등에서 사용하는 데이터를 송수신하는 데 필요하다.</li>
-  <li>전송 계층 : 목적지에 데이터를 정확하게 전달하는 데 필요하다.</li>
-  <li>네트워크 계층 : 다른 네트워크에 있는 목적지에 데이터를 전달하는 데 필요하다.</li>
-  <li>데이터 링크 계층 : 랜에서 데이터를 송수신하는 데 피룡하다.</li>
-  <li>물리 계층 : 데이터를 전기 신호로 변환하는 데 필요하다.</li>
-</ol>
+  <a href="https://twitter.com/intent/tweet?text=Effective+C%2B%2B+Chapter+01%20http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-<p>컴퓨터에서 데이터를 보낼 때, 7계층을 내려가며 캡슐화가 되고 목적지인 컴퓨터에 도착하면 7계층을 올라가며 역캡슐화가 된다.
-스위치에서는 데이터 링크 계층까지, 라우터에서는 네트워크 계층까지 올라가며 역캡슐화가 됐다가 다시 내려오며 캡슐화가 된다.</p>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-<h1 id="2-컴퓨터의-데이터가-전기-신호로-변환되는-과정">2. 컴퓨터의 데이터가 전기 신호로 변환되는 과정</h1>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
 
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">응용 계층</code>에서 3-way handshake로 connection이 확립된다.</li>
-  <li>웹 브라우저에서 url을 입력하여 접속하면 html 데이터를 보내달라는 데이터(요청)가 생성된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">전송 계층</code>에서 TCP 헤더(출발지 포트 번호, 목적지 포트 번호가 들어 있다)가 붙는다. 즉, <strong>세그먼트</strong>가 된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">네트워크 계층</code>에서 세그먼트에 IP 헤더(출발지 IP, 목적지 IP 주소가 붙어 있다)가 붙는다. 즉, <strong>IP 패킷</strong>이 된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">데이터 링크 계층</code>에서 이더넷 헤더와 트레일러가 붙는다. 즉, <strong>이더넷 프레임</strong>이 된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">물리 계층</code>에서 랜카드에 의해 <strong>전기 신호</strong>로 변환되어 네트워크로 전송된다.</li>
-</ol>
+      
+  <nav class="pagination">
+    
+      <a href="/numerical-analysis/newton-raphson-method/" class="pagination--pager" title="뉴턴-랩슨 방법(Newton-Raphson method)
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
 
-<p>전기 신호를 받아 데이터로 변환하여 어플리케이션에 전달하는 과정은 위 과정의 역순이다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="OSI" /><summary type="html"><![CDATA[OSI 모델의 전반적인 흐름에 대해 알아보자.]]></summary></entry><entry><title type="html">07.응용 계층</title><link href="http://localhost:4000/network/network07/" rel="alternate" type="text/html" title="07.응용 계층" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network07</id><content type="html" xml:base="http://localhost:4000/network/network07/"><![CDATA[<h1 id="1-응용-계층의-역할">1. 응용 계층의 역할</h1>
+    </div>
 
-<p>서비스를 제공하는 측을 <code class="language-plaintext highlighter-rouge">서버</code>, 서비스를 요청하는 측에서 사용하는 프로그램을 <code class="language-plaintext highlighter-rouge">클라이언트</code>라고 한다.
-이런 어플리케이션은 응용 계층에서 동작한다(여기서 응용 계층은 5계층의 세션 계층과 6계층의 표현 계층을 포함하는 의미).
-응용 계층에서는 클라이언트의 요청을 서버 프로그램이 이해할 수 있는 데이터로 변환하고 전송한다.
-클라이언트 측 어플리케이션과 서버 측 어플리케이션이 통신해야 하기 때문에 여기서도 프로토콜이 필요하다.</p>
+  </article>
 
-<p>응용 계층의 대표적인 프로토콜 종류</p>
-<ol>
-  <li>HTTP : 웹사이트 접속</li>
-  <li>FTP : 파일 전송</li>
-  <li>SMTP : 메일 송신</li>
-  <li>POP3 : 메일 수신</li>
-  <li>DNS : 이름 해석(컴퓨터나 네트워크 장비에 붙여진 이름을 기반으로 IP 주소를 알아내는 것)</li>
-</ol>
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
 
-<h1 id="2-world-wide-webwww">2. World Wide Web(www)</h1>
 
-<p>W3나 Web이라고도 불린다.
-www에는 다음 3가지 기술이 사용된다.</p>
 
-<ol>
-  <li>HTML : 
-  웹 페이지에서 문장 구조나 문자를 꾸미는 태그를 사용하여 작성하는 마크업 언어. 하이퍼링크를 사용할 수 있다. 이동한 사이트에 글과 그림이 있다면, 클라이언트는 글과 그림을 따로 요청하기 때문에 가끔 글이 먼저 보이고 그림이 나중에 보이는 경우가 발생한다.</li>
-  <li>URL :
-인터넷에서 파일 위치를 지정하기 위해 기술된 주소. 웹 사이트 주소를 지정하기 위해 사용된다.</li>
-  <li>HTTP : 
-  클라이언트는 웹 사이트를 보기 위해 웹 서버의 80번 포트를 통해 HTTP 통신을 한다. 클라이언트에서 index.html을 달라는 HTTP 요청을 보내면, 서버에서 HTTP 응답을 반환하고 index.html을 클라이언트에게 보낸다. 이전에는 요청이 있을 때마다 연결을 수립하고 해당 요청 처리 후 바로 연결을 끊었지만, HTTP/1.1 버전부터 keepalive 기능이 추가되어서 한번 연결을 수립하면 필요한 모든 요청을 처리 후 연결을 끊을 수 있게 되었기 때문에 효율이 상승했다.</li>
-</ol>
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/numerical-analysis/newton-raphson-method/" rel="permalink">뉴턴-랩슨 방법(Newton-Raphson method)
+</a>
+      
+    </h2>
+    
 
-<h1 id="3-domain-name">3. Domain name</h1>
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-01T00:00:00+09:00">July 1, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">뉴턴-랩슨 방법을 알아보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/network/network09/" rel="permalink">09.무선 랜
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">무선 랜에 대해 알아보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/network/network08/" rel="permalink">08.OSI 모델
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 전반적인 흐름에 대해 알아보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/network/network07/" rel="permalink">07.응용 계층
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 응용 계층에 대해 알아 보자.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
 
-<p>일반적으로 서버 컴퓨터에 접속하려면 서버 컴퓨터의 IP 주소를 알아야 하는데, 우리는 웹 브라우저 주소창에 www.google.com을 입력해도 구글 서버 컴퓨터로부터 정보를 받아올 수 있다.
-<code class="language-plaintext highlighter-rouge">DNS</code>는 이처럼 URL을 IP 주소로 변환(이름 해석)해주는 시스템이다.
-www.google.com을 컴퓨터나 네트워크를 식별하기 위해 붙여진 이름 즉 <code class="language-plaintext highlighter-rouge">도메인 이름</code>이라고 한다. 도메인 이름 앞에 있는 www는 <code class="language-plaintext highlighter-rouge">호스트 이름(서버 이름)</code>이다.
-컴퓨터에서 www.google.com에 접속하려고 하면 컴퓨터는 우선 DNS 서버에 가서 www.google.com의 IP 주소를 요청한다. 이후 DNS 서버에서 해당 IP 주소를 넘겨주면 컴퓨터는 해당 IP 주소로 접속한다.
-DNS 서버는 전 세계에 계층적으로 연결되어 있기 때문에 만약 컴퓨터가 요청한 첫번째 DNS 서버가 IP 주소를 모른다면, 첫번째 DNS 서버가 두번째 DNS 서버에게 IP 주소를 요청해서 이를 사용자 컴퓨터에게 전달한다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="HTTP" /><category term="DNS" /><category term="www" /><summary type="html"><![CDATA[OSI 모델의 응용 계층에 대해 알아 보자.]]></summary></entry><entry><title type="html">09.무선 랜</title><link href="http://localhost:4000/network/network09/" rel="alternate" type="text/html" title="09.무선 랜" /><published>2023-12-23T00:00:00+09:00</published><updated>2023-12-23T00:00:00+09:00</updated><id>http://localhost:4000/network/network09</id><content type="html" xml:base="http://localhost:4000/network/network09/"><![CDATA[<h1 id="1-무선-랜">1. 무선 랜</h1>
+    </div>
 
-<p>무선 랜은 <code class="language-plaintext highlighter-rouge">WAP(Wireless Access Point)</code>와 <code class="language-plaintext highlighter-rouge">무선 클라이언트(컴퓨터나 스마트폰 등)</code>로 구성된다.
-컴퓨터가 WAP(무선 공유기)와 통신하려면 무선 랜 칩(chip)과 무선 랜 어댑터(adapter)가 필요하다.
-무선 랜 어댑터는 USB 메모리 방식과 컴퓨터 카드 방식이 있다.</p>
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
-<h1 id="2-무선-랜-연결-방식">2. 무선 랜 연결 방식</h1>
+      </div>
+    
 
-<ol>
-  <li>infrastructure : WAP를 통해 통신하는 방식</li>
-  <li>Ad Hoc : 무선 클라이언트끼리 직접 통신하는 방식</li>
-</ol>
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
 
-<h1 id="3-ssid">3. SSID</h1>
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
 
-<p>무선 액세스 포인트와 무선 클라이언트를 연결하려면 혼선을 피하기 위해 <code class="language-plaintext highlighter-rouge">SSID</code>라는 액세스 포인트의 고유 이름을 사용해야 한다. 또한 무선 클라이언트가 자동으로 무선 액세스 포인트를 찾아 통신할 수 있기 위해 네트워크 이름, 인증, 암호화, 암호화 키를 설정해야 한다.
-무선 액세스 포인트는 <code class="language-plaintext highlighter-rouge">beacon</code>이라고 하는 자기를 알리는 신호를 네트워크에 있는 모든 기기에 주기적으로 전송한다. 무선 클라이언트는 이 신호를 받은 후 자신의 SSID와 같은지 WAP에 문의한다. 같은 SSID의 WAP이 응답을 하고 서로의 존재를 알게 되면, 인증 방식이 올바른지 확인하고 무선 클라이언트는 WAP에 연결을 요청한다. WAP으로 부터 승인을 받으면 연결하여 통신을 할 수 있게 된다.</p>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
 
-<h1 id="4-채널">4. 채널</h1>
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
 
-<p>WAP과 무선 클라이언트 사이의 거리가 멀수록 전파가 약해져 접속이 잘 안되거나 통신 속도가 느려진다. 이러한 이유로 WAP을 여러 대 설치해야한다. 무선 랜은 여러 기기를 동시에 연결할 수 있도록 주파수 대역을 분할하는데, 그 주파수 대역을 <code class="language-plaintext highlighter-rouge">채널</code>이라고 부른다. 공유기와 컴퓨터가 연결되려면 두 기기 모두 같은 채널을 설정해야 한다. 반면 공유기끼리는 다른 채널을 설정해야 한다. 다른 채널끼리는 주파수가 서로 다르기 때문에 전파가 겹치더라도 서로 간섭이 일어나지 않고 통신 속도도 떨어지지 않는다.
-전파가 겹치는 무선 공유기들이 같은 채널로 설정되어 있으면 주파수가 서로 겹치면서 <code class="language-plaintext highlighter-rouge">전파 간섭</code>이 생기고 통신 속도가 느려진다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="LAN" /><category term="Push_Swap" /><category term="SSID" /><category term="Channel" /><category term="beacon" /><summary type="html"><![CDATA[무선 랜에 대해 알아보자.]]></summary></entry><entry><title type="html">06.전송 계층</title><link href="http://localhost:4000/network/network06/" rel="alternate" type="text/html" title="06.전송 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network06</id><content type="html" xml:base="http://localhost:4000/network/network06/"><![CDATA[<h1 id="1-전송-계층의-역할">1. 전송 계층의 역할</h1>
+<div class="page__footer-copyright">&copy; 2024 Hyunsoon Im. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
-<ol>
-  <li>데이터가 신뢰할 수 있는 데이터인지 검사하고, 오류가 있으면 재전송을 요청한다.</li>
-  <li>받은 데이터를 필요로 하는 어플리케이션에 전달한다.</li>
-</ol>
+      </footer>
+    </div>
 
-<p>전송 계층의 통신 방식으로 2가지를 꼽을 수 있다.</p>
-<ol>
-  <li>연결형 통신 : 신뢰, 정확성을 우선으로 하여 통신 과정에서 여러 번 확인 절차를 거친다.</li>
-  <li>비연결형 통신 : 동영상 같이 빠른 전송이 필요한 경우에 상대편과 통신하지 않고 보낸다.</li>
-</ol>
+    
+  <script src="/assets/js/main.min.js"></script>
 
-<p>전송 계층의 연결형 통신 프로토콜에는 <code class="language-plaintext highlighter-rouge">TCP</code>가 사용되고, 비연결형 통신 프로토콜에는 <code class="language-plaintext highlighter-rouge">UDP</code>가 사용된다.</p>
 
-<h1 id="2-tcp">2. TCP</h1>
 
-<p>연결형 통신 프로토콜이다.
-전송 계층에서 네트워크 계층으로 데이터를 보낼 때 TCP 헤더를 붙이는데, 이 때 TCP 헤더가 붙은 데이터를 <code class="language-plaintext highlighter-rouge">segment</code>라고 한다.
-TCP에서 데이터를 전송하려면 먼저 <code class="language-plaintext highlighter-rouge">connection</code>이라는 가상의 독점 통신로를 확보해야 한다. 커넥션을 확보해야만 데이터를 전송할 수 있다. 데이터를 보내기 전에 연결(connection)을 확립하기 위해 패킷 요청을 세 번 교환하는 것을 <code class="language-plaintext highlighter-rouge">3-way handshake</code>라고 한다.</p>
 
-<p>송신 측에서 수신 측으로 세그먼트를 보낼 때, 하나를 보내고 한 번 확인하는 식으로 데이터를 전달하면 시간이 오래걸리고 효율이 낮아지게 된다. 이를 해결하기 위해 세그먼트 여러 개를 많이 보내 놓고, 확인 응답을 몰아서 받는 방식을 사용한다.
-세그먼트 여러 개를 많이 보내 놓을 수 있는 이유는 수신 측에서 버퍼에 데이터를 담아 놓기 때문이다. 3-way handshake를 할 때 양 측 컴퓨터는 상대방 컴퓨터의 버퍼 사이즈(window size)를 파악해 놓고 오버플로우가 나지 않게 데이터를 송수신한다. window size에 대한 정보는 TCP 헤더에 담긴다.</p>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
-<p>3-way handshake 이후 데이터를 전송할 때는 TCP 헤더의 일련번호와 확인 응답 번호가 사용된다.
-TCP에서 데이터를 보낼 때 각 데이터에 일련 번호를 부여해 TCP 패킷의 순서를 제어할 수 있다.</p>
 
-<h1 id="3-포트-번호">3. 포트 번호</h1>
 
-<p>TCP 헤더에는 <code class="language-plaintext highlighter-rouge">출발지 포트 번호</code>와 <code class="language-plaintext highlighter-rouge">목적지 포트 번호</code>가 들어 있다. 이를 확인하여 어떤 어플리케이션으로 이 데이터가 가야하는지를 알 수 있다.
-포트 번호는 0~65535번을 사용할 수 있다.</p>
 
-<p>0~1023번 : well-known ports라고 하며 주요 프로토콜이 사용하도록 예약되어 있다.
-1024번 : 예약되어 있지만 사용되지 않는 포트이다.
-1025번 이상 : 랜덤포트로, 클라이언트 측의 송신 포트로 사용된다.</p>
+    <script>
+  'use strict';
 
-<p>동작하는 어플리케이션들은 각각 포트 번호가 있어서 다른 어플리케이션과 구분된다. 데이터를 어플리케이션에 보낼 때, 이 포트 번호를 보고 구분하여 데이터를 전달한다.</p>
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
 
-<h1 id="4-udp">4. UDP</h1>
+    if (!commentContainer) {
+      return;
+    }
 
-<p>TCP가 신뢰할 수 있는 방식으로 안전하게 데이터를 상대방에가 전달하는 프로토콜이었다면, 비연결형 통신 프로토콜인 UDP는 효율성을 중요하게 여기는 프로토콜이다.
-UDP는 데이터를 전송할 때 일일이 확인 작업을 하지 않기 때문에 데이터를 효율적으로 빠르게 보내는 것이 장점이다.
-UDP 헤더가 붙은 데이터를 <code class="language-plaintext highlighter-rouge">UDP 데이터그램</code>이라고 한다. UDP 헤더는 신뢰성과 정확성이 필요하지 않아 TCP 헤더보다 훨씬 들어있는 정보가 적다.
-UDP를 이용하면 같은 랜에 있는 컴퓨터나 네트워크 장비에 데이터를 일괄로 보낼 수 있으며, 이것을 <code class="language-plaintext highlighter-rouge">broadcast</code>라고 한다.
-TCP는 3-way handshake와 같이 데이터를 전송할 때도 확인 응답을 하나씩 보내야 하기 때문에 브로드캐스트 같이 불특정 다수에게 보내는 통신에는 적합하지 않다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="TCP" /><category term="Port" /><category term="UDP" /><summary type="html"><![CDATA[OSI 모델의 4계층인 전송 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">05.네트워크 계층</title><link href="http://localhost:4000/network/network05/" rel="alternate" type="text/html" title="05.네트워크 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network05</id><content type="html" xml:base="http://localhost:4000/network/network05/"><![CDATA[<h1 id="1-다른-네트워크-간의-통신">1. 다른 네트워크 간의 통신</h1>
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'hyun-soon/hyun-soon.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOKeOOEA');
+    script.setAttribute('data-category', 'Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOKeOOEM4CaKQd');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('crossorigin', 'anonymous');
 
-<p><code class="language-plaintext highlighter-rouge">네트워크 계층</code>에서는 네트워크 간의 통신을 가능하게 한다. 같은 네트워크 상의 컴퓨터로 정보를 전달할 때는 Ethernet과 스위치를 통해 소통이 가능했지만, 다른 네트워크 상의 컴퓨터로 데이터를 보내려면 MAC주소 외에 네트워크 주소가 추가로 필요하다.
-네트워크를 식별하는 데 사용되는 주소를 <code class="language-plaintext highlighter-rouge">IP 주소</code>라고 한다. IP(Internet Protocol)는 네트워크 계층에서 사용되는 프로토콜이다. 네트워크 계층에서 다른 네트워크로 데이터를 전송하기 위해 <code class="language-plaintext highlighter-rouge">라우터(router)</code>라는 장비가 필요하다. 라우터는 데이터가 목적지까지 가는데 최적의 경로를 알려주는 역할을 한다. 이처럼 목적지 IP주소까지 어떤 경로로 데이터를 보낼지 결정하는 것을 <code class="language-plaintext highlighter-rouge">라우팅(routing)</code>이라고 한다. 라우터에는 <code class="language-plaintext highlighter-rouge">라우팅 테이블(routing table)</code>이 있어서 경로 정보를 등록하고 관리한다.
-네트워크 계층에서 데이터를 캡슐화할 때, 데이터 앞에 IP 헤더를 붙인다.</p>
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
 
-<p><code class="language-plaintext highlighter-rouge">라우터</code> : 서로 다른 네트워크를 연결해 주는 장치
-<code class="language-plaintext highlighter-rouge">라우팅 테이블</code> : 컴퓨터 네트워크에서 목적지 주소를 목적지에 도달하기 위한 네트워크 노선으로 변환시킬 목적으로 사용되는 정보.
-<code class="language-plaintext highlighter-rouge">라우팅</code> : 패킷을 목적지 컴퓨터까지 보낼 때 최적의 경로를 선택하여 전송하는 것
-<code class="language-plaintext highlighter-rouge">정적 라우팅</code> : 관리자가 미리 라우팅 테이블에 경로를 수동으로 추가하는 방법. 목적지까지의 경로를 고정하거나 목적지까지의 경로가 하나로 한정되는 경우에 사용한다.
-<code class="language-plaintext highlighter-rouge">동적 라우팅</code> : 네트워크 변경을 자동으로 감지하여 라우팅 테이블을 업데이트하거나 네트워크 장애가 발생했을 때 라우터끼리 정보를 교환하여 최적의 경로로 전환하는 방법이다. 관리자는 정적 라우팅처럼 라우팅 테이블에 경로를 수동으로 추가할 필요가 없다.</p>
 
-<h1 id="2-ip-주소">2. IP 주소</h1>
 
-<p>IP 주소는 ISP(인터넷 서비스 제공자)에게 받을 수 있다.</p>
 
-<p>IP는 2가지 버전이 있다.</p>
-<ul>
-  <li>IPv4 : 32비트</li>
-  <li>IPv6 : 128비트</li>
-</ul>
 
-<p>IPv4는 32비트이기 때문에 표현할 수 있는 주소에 한계가 있어서 IPv6가 등장하게 되었다.
-IPv4로 표현할 수 있는 주소가 현재 필요로 하는 IP 주소의 수보다 부족하기 때문에 현재는 <code class="language-plaintext highlighter-rouge">공인 IP 주소</code>와 <code class="language-plaintext highlighter-rouge">사설 IP 주소</code>를 사용하고 있다.
-참고로 공인 IP 주소는 ISP가 제공한다.</p>
 
-<ul>
-  <li>공인 IP 주소 : 인터넷에 직접 연결되는 컴퓨터나 라우터에 할당</li>
-  <li>사설 IP 주소 : 회사나 가정의 랜에 있는 컴퓨터에 할당</li>
-</ul>
-
-<p>비트로 인한 IP 주소 수의 한계를 극복하기 위해 공인 IP는 라우터에 할당하고, 각 컴퓨터에는 랜의 네트워크 관리자가 자유롭게 사설 IP 주소를 할당하거나 라우터의 DHCP 기능을 사용하여 주소를 자동으로 할당한다.
-이런 식으로 IP를 사용하면 공인 IP 주소를 절약할 수 있다. 사설 IP 주소는 한 네트워크 내에서 배정하는 주소기 때문에 서로 다른 네트워크 끼리는 중복이 될 수 있다.</p>
-
-<p>IP 주소를 표시할 때, 사람이 읽기 편하도록 8비트 단위로 나눠서 표시하는데, 이를 <code class="language-plaintext highlighter-rouge">옥텟(octet)</code>이라고 한다.</p>
-
-<p>ex. 11000100 11100100 000011000 00000010 -&gt; 4개의 옥텟
-이를 더 읽기 편하도록 10진수로 변환하여 표시하기도 한다.
-=&gt; 136.196.24.2</p>
-
-<p>IP 주소는 <code class="language-plaintext highlighter-rouge">네트워크 주소</code>와 <code class="language-plaintext highlighter-rouge">호스트 주소</code>로 구성되어 있다.
-네트워크 주소는 어떤 네트워크인지를 나타내며, 호스트 주소는 해당 네트워크의 어떤 컴퓨터인지를 나타낸다.</p>
-
-<p>IP 주소는 A~E 클래스로 구분하며 일반적으로는 A~C 클래스를 사용한다.
-A 클래스는 처음 1 옥텟을 네트워크 ID, 나머지 3 옥텟을 호스트 ID로 사용한다.
-B 클래스는 처음 2 옥텟을 네트워크 ID, 나머지 2 옥텟을 호스트 ID로 사용하며
-C 클래스는 처음 3 옥텟을 네트워크 ID, 나머지 1 옥텟을 호스트 ID로 사용한다.</p>
-
-<p>A 클래스에서 네트워크 ID의 범위는 00000001 ~ 01111111이며,
-B 클래스에서 네트워크 ID의 범위는 10000000 00000000 ~ 10111111 11111111,
-C 클래스에서 네트워크 ID의 범위는 11000000 00000000 00000000 ~ 11011111 11111111 11111111이다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">네트워크 주소</code>를 표현할 때, 호스트 주소에 해당하는 비트는 0으로 채워 놓는다.
-A 클래스 네트워크의 경우, 마지막 옥텟이 호스트 주소에 해당하므로 네트워크 주소가 192.168.1에 해당하는 경우를 예를 들면 다음과 같이 표현할 수 있다.
-ex. 192.168.1.0</p>
-
-<p><code class="language-plaintext highlighter-rouge">브로드캐스트 주소</code>는 해당 네트워크에 존재하는 모든 컴퓨터에 한번에 데이터를 전송할 때 사용하는 주소이다.
-브로드 캐스트 주소는 호스트 주소에 해당하는 비트를 전부 1로 채워 놓는다.
-192.168.1에 해당하는 네트워크의 경우, 다음과 같다.
-ex. 192.168.1.255</p>
-
-<h1 id="3-subnet">3. Subnet</h1>
-
-<p>분할된 네트워크를 말하며, 네트워크를 분할하는 것을 subneting이라고 한다. 서브넷팅을 할 때, 호스트 ID에 해당하는 비트를 서브넷 ID로 사용한다. 따라서 “네트워크 ID + 호스트 ID”였던 구성이 “네트워크 ID + 서브넷 ID + 호스트 ID”로 바뀐다. 이렇게 서브넷 ID까지 사용하면 네트워크 ID가 어디까지인지 구분하기 힘들어진다. 이 때 이를 구분하기 위해 <code class="language-plaintext highlighter-rouge">Subnet Mask</code>라는 것을 사용한다.</p>
-
-<p>서브넷 마스크는 네트워크 ID를 알아내기 위한 수단으로, A 클래스의 경우 처음 1옥텟이 네트워크 ID이므로 255.0.0.0, B 클래스의 경우 255.255.0.0, C 클래스의 경우 255.255.255.0이 된다. 이를 prefix 표기법으로도 표현할 수 있는데, 각각은 /8, /16, /24가 된다. 슬래쉬 이후에 몇 비트를 네트워크 ID로 표현하는 지를 나타낸다.</p>
-
-<p>자신의 IP 주소와 서브넷 마스크를 &amp;연산(비트 연산)하면 네트워크 ID를 구할 수 있다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="Network" /><category term="Subnet" /><category term="IP" /><summary type="html"><![CDATA[OSI 모델의 3계층인 네트워크 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">04.데이터 링크 계층</title><link href="http://localhost:4000/network/network04/" rel="alternate" type="text/html" title="04.데이터 링크 계층" /><published>2023-12-20T00:00:00+09:00</published><updated>2023-12-20T00:00:00+09:00</updated><id>http://localhost:4000/network/network04</id><content type="html" xml:base="http://localhost:4000/network/network04/"><![CDATA[<h1 id="1-ethernet">1. Ethernet</h1>
-
-<p>OSI 모델의 2계층인 데이터 링크 계층에서는 네트워크 장비 간에 신호를 주고 받는 규칙을 정한다. 이 때 가장 많이 사용되는 규칙이 <code class="language-plaintext highlighter-rouge">Ethernet</code>이다. 즉, LAN에서 데이터를 어떻게 주고받을 지에 대한 약속이다.
-허브에 3개의 컴퓨터가 연결되어 있다고 가정하자. 만약 컴퓨터 1에서 컴퓨터 3에 데이터를 보내기 위해 허브에 데이터를 전달하면, 허브는 컴퓨터 2와 3 모두에 데이터를 보낸다.
-이 때 데이터에는 목적지 주소가 포함되어 있어 목적지가 아닌 컴퓨터 2에서는 데이터를 받은 후 파기한다.</p>
-
-<p>만약 컴퓨터 여러 대에서 동시에 데이터를 보내게 되면 충돌이 일어날 수 있다. 이를 방지하기 위해 Ethernet은 CSMA/CD 방법을 사용한다.</p>
-
-<ul>
-  <li>CS : 데이터를 보내려는 컴퓨터의 케이블에 전류가 흐르고 있는지 확인</li>
-  <li>MA : 전류가 흐르고 있지 않다면 데이터를 송신</li>
-  <li>CD : 충돌이 일어나는 지 확인</li>
-</ul>
-
-<p>현재는 효율이 좋지 않아 CSMA/CD 방식을 잘 사용하지 않고, 대신 <code class="language-plaintext highlighter-rouge">switch</code> 네트워크 장비를 사용한다.</p>
-
-<h1 id="2-mac-주소">2. MAC 주소</h1>
-
-<p>비트를 전기 신호로 변환하는 LAN 카드는 각각 고유한 <code class="language-plaintext highlighter-rouge">MAC 주소</code>를 가지고 있다. MAC 주소는 6바이트로 이루어져 있으며 앞의 3바이트는 제조사 번호, 뒤의 3바이트는 제조사에서 붙인 일련번호를 의미한다.
-OSI 모델의 데이터 링크 계층, TCP/IP 모델의 네트워크 계층에서는 LAN 카드로 데이터를 전송하기 전에 <code class="language-plaintext highlighter-rouge">헤더</code>와 <code class="language-plaintext highlighter-rouge">트레일러</code>를 붙인다. 헤더는 총 14바이트로 목적지 MAC 주소(6바이트), 출발지 MAC주소(6바이트), Ethernet type(2바이트)로 이루어져 있다.
-여기서 Ethernet type은 Ethernet으로 전송되는 상위 계층 프로토콜의 종류를 나타낸다. 트레일러는 FCS(Frame Check Sequence)라고도 불리며, 데이터 전송 도중 오류 발생 여부를 확인하는 용도이다.</p>
-
-<p>헤더와 트레일러가 추가된 데이터를 <code class="language-plaintext highlighter-rouge">프레임(Frame)</code>이라고 한다. 즉, 네트워크를 통해 전송되는 것이 바로 프레임이다.</p>
-
-<p>수신 측의 컴퓨터에서는 이 프레임을 받아서 목적지 주소가 자신과 일치하면 역캡슐화를 통해 데이터를 얻는다.</p>
-
-<h1 id="3-switch">3. Switch</h1>
-
-<p>Switch는 데이터 링크 계층에서 작동하며 Layer 2 Switch, Switching hub라고도 불린다. 스위치 내부에는 Switch의 포트 번호와 해당 포트에 연결되어 있는 컴퓨터의 MAC 주소가 등록되어 있는 데이터베이스인 <code class="language-plaintext highlighter-rouge">MAC address table</code>가 존재한다.
-스위치가 처음 켜지면 Mac address table에는 아무런 정보가 없다. 이 때 컴퓨터 1에서 컴퓨터 5에 데이터를 전송하기 위해 프레임을 스위치로 보내면, MAC address table에 컴퓨터 1의 MAC 주소와 포트 번호 정보가 업데이트된다. 하지만 목적지인 컴퓨터 5에 대한 정보가 테이블에 없으므로 컴퓨터 1을 제외한 모든 포트에 프레임을 보낸다. 이를 <code class="language-plaintext highlighter-rouge">flooding</code>이라고 한다.
-만약 컴퓨터 5의 정보가 테이블에 있었다면, 스위치는 프레임을 컴퓨터 5에 해당하는 포트로만 전달하며 이를 <code class="language-plaintext highlighter-rouge">MAC 주소 필터링</code>이라고 한다.</p>
-
-<h1 id="4-통신-방식">4. 통신 방식</h1>
-
-<ul>
-  <li>전이중 통신 방식 : 각각 송신과 수신을 위한 회선이 존재해 데이터의 송수신이 동시에 가능한 방식</li>
-  <li>반이중 통신 방식 : 회선 하나로 송신과 수신을 번갈아 가며 통신하는 방식</li>
-</ul>
-
-<p>허브는 회선 하나를 사용하기 때문에 반이중 통신 방식을 사용하며 충돌 도메인(충돌이 발생했을 때 영향을 미치는 범위)의 범위가 허브에 연결되어 있는 모든 컴퓨터가 된다. 반면 스위치는 송신과 수신을 위한 회선이 따로 존재하기 때문에 충돌이 발생할 확률이 적고 충돌 도메인 또한 충돌이 발생한 컴퓨터 하나로 제한된다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="Ethernet" /><category term="MacAddress" /><category term="Switch" /><summary type="html"><![CDATA[OSI 모델의 2계층인 데이터 링크 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">03.물리 계층</title><link href="http://localhost:4000/network/network03/" rel="alternate" type="text/html" title="03.물리 계층" /><published>2023-12-19T00:00:00+09:00</published><updated>2023-12-19T00:00:00+09:00</updated><id>http://localhost:4000/network/network03</id><content type="html" xml:base="http://localhost:4000/network/network03/"><![CDATA[<h1 id="1-전기-신호">1. 전기 신호</h1>
-
-<p>전기 신호의 종류에는 2가지가 있다.</p>
-<ul>
-  <li>아날로그 신호 : 물결 모양의 전기 신호로, 라디오 방송 등에서 사용된다.</li>
-  <li>디지털 신호 : 사각형이 반복되는 모양으로, 0과 1로 이루어진 비트 집합을 전기 신호로 전송할 때 사용된다.</li>
-</ul>
-
-<h1 id="2-물리-계층과-lan-카드">2. 물리 계층과 LAN 카드</h1>
-
-<p>컴퓨터는 네트워크를 통해 데이터를 송수신할 수 있도록 <code class="language-plaintext highlighter-rouge">LAN 카드</code>(내장형 또는 외장)를 가지고 있다. 0과 1로 이루어진 비트 정보가 LAN 카드에 전달되면, LAN 카드는 비트를 전기 신호로 변환한다. 수신 측에서 이 전기 신호를 받으면 LAN 카드를 통해 전기 신호를 비트 정보로 변환한다.</p>
-
-<p>이 작업은 물리 계층에서 이루어진다. 즉, <code class="language-plaintext highlighter-rouge">물리 계층</code>은 컴퓨터와 네트워크 장비를 연결하고, 비트 정보를 전기 신호로 변환하는 계층이다.</p>
-
-<h1 id="3-케이블의-종류와-구조">3. 케이블의 종류와 구조</h1>
-
-<p>가장 많이 사용되는 twisted pair cable의 종류에는 2가지가 있다.</p>
-<ul>
-  <li>Unshielded Twist Pair 케이블(UTP)</li>
-  <li>Shielded Twist Pair 케이블(STP)</li>
-</ul>
-
-<p>두 케이블의 이름에서 알 수 있듯 차이점은 shield 여부이다. <code class="language-plaintext highlighter-rouge">UTP</code>의 경우 shield로 보호되지 않아 전류가 노이즈의 영향을 받기 쉽지만, 가격이 싸다. 반면 <code class="language-plaintext highlighter-rouge">STP</code>의 경우는 shiled로 보호되어 있어 전류가 노이즈의 영향을 덜 받으며 가격이 비싸다. 전류가 노이즈의 영향을 받으면 전기 신호의 형태가 왜곡될 수 있다.</p>
-
-<h1 id="4-다이렉트-케이블과-크로스-케이블">4. 다이렉트 케이블과 크로스 케이블</h1>
-
-<p>LAN 케이블의 종류에는 2가지가 있다.</p>
-<ul>
-  <li>다이렉트 케이블</li>
-  <li>크로스 케이블</li>
-</ul>
-
-<p>다이렉트 케이블과 크로스 케이블 모두 구리선 8개를 사용한다. 다이렉트 케이블은 한 쪽 1번 커넥터에 연결된 구리 선은 반대 쪽 1번 커넥터에 똑같이 연결되지만, 크로스 케이블은 한 쪽 1번 커넥터에 연결된 구리선이 반대쪽 3번 커넥터에, 2번 커넥터에 연결된 구리선이 반대쪽 6번 커넥터에 연결되는 식으로 구성되어 있다. 컴퓨터 간에 데이터를 보낼 때는 양쪽 컴퓨터 모두 1, 2번 선으로 데이터를 보낸다. 이 때, 양 컴퓨터에서 동시에 1, 2번 선으로 데이터를 송신하면 충돌이 일어날 수 있으므로 크로스 케이블을 사용한다.</p>
-
-<p>즉, 다이렉트 케이블은 컴퓨터와 스위치를 연결할 때 사용되고 크로스 케이블은 컴퓨터 간에 직접 랜 케이블로 연결할 때 사용된다.</p>
-
-<h1 id="5-리피터와-허브">5. 리피터와 허브</h1>
-
-<ul>
-  <li>리피터(repeater) : 노이즈에 의해 변형되고 약해진 전기 신호를 증폭 및 복원시켜 주는 장치. 최근엔 다른 네트워크 장비가 리피터 기능을 지원하기 때문에 잘 사용하지 않는다.</li>
-  <li>허브(hub) : 포트를 여러 개 가지고 있어 여러 컴퓨터와 통신할 수 있는 장비. 허브도 리피터와 마찬가지로 전기 신호를 복원하고 증폭하는 기능을 한다. 허브는 컴퓨터 여러 대를 연결할 수 있기 때문에 여러 컴퓨터가 데이터를 주고 받을 때 유용하지만, 한 포트로 부터 데이터를 받으면 받아야 할 포트 한 곳이 아닌, 송신 측을 제외한 모든 포트로 받은 데이터를 전송하는 특징이 있기 때문에 비효율적인 면이 있다. 이런 단점을 극복한 <code class="language-plaintext highlighter-rouge">스위치(switch)</code>라는 장비가 있다.</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><category term="cable" /><category term="LAN" /><category term="repeater" /><category term="hub" /><summary type="html"><![CDATA[OSI 모델의 1계층인 물리 계층에 대해 알아보자.]]></summary></entry><entry><title type="html">02.네트워크의 기본 규칙</title><link href="http://localhost:4000/network/network02/" rel="alternate" type="text/html" title="02.네트워크의 기본 규칙" /><published>2023-12-07T00:00:00+09:00</published><updated>2023-12-07T00:00:00+09:00</updated><id>http://localhost:4000/network/network02</id><content type="html" xml:base="http://localhost:4000/network/network02/"><![CDATA[<h1 id="1-protocol이란">1. Protocol이란?</h1>
-
-<p>한국인과 멕시코인이 있을 때, 사용 언어가 다르기 때문에 소통에 문제가 생긴다. 영어를 사용하자는 등 약속을 해야 소통이 가능해질 것이다. 이처럼 네트워크에서도 문제없이 통신하려면 규칙(약속)을 지켜야 한다. 이와 같은 규칙을 <code class="language-plaintext highlighter-rouge">Protocol(프로토콜)</code>이라고 한다.</p>
-
-<p><br /></p>
-<h1 id="2-osi-모델이란">2. OSI 모델이란?</h1>
-
-<p>OSI 모델은 네트워크 기술의 기본이 되는 모델(표준 규격)이다. 데이터의 송수신 과정 동안 컴퓨터 내부에서 여러 가지 일을 하는데, 이 때 일을 7개의 계층으로 나눠서 하게 된다. 계층 대신 레이어라는 용어를 사용하기도 하며, 7 계층은 다음과 같다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><strong>명칭</strong></th>
-      <th style="text-align: center"><strong>계층</strong></th>
-      <th style="text-align: center">역할</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">응용 계층</td>
-      <td style="text-align: center">7계층</td>
-      <td style="text-align: center">이메일과 파일 전송, 웹 사이트 조회 등 애플리케이션에 대한 서비스를 제공한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">표현 계층</td>
-      <td style="text-align: center">6계층</td>
-      <td style="text-align: center">문자 코드, 압축, 암호화 등의 데이터를 변환한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">세션 계층</td>
-      <td style="text-align: center">5계층</td>
-      <td style="text-align: center">세션 체결, 통신 방식을 결정한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">전송 계층</td>
-      <td style="text-align: center">4계층</td>
-      <td style="text-align: center">신뢰할 수 있는 통신을 구현한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">네트워크 계층</td>
-      <td style="text-align: center">3계층</td>
-      <td style="text-align: center">다른 네트워크와 통신하기 위한 경로 설정 및 논리 주소를 결정한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">데이터 링크 계층</td>
-      <td style="text-align: center">2계층</td>
-      <td style="text-align: center">네트워크 기기 간의 데이터 전송 및 물리 주소를 결정한다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">물리 계층</td>
-      <td style="text-align: center">1계층</td>
-      <td style="text-align: center">시스템 간의 물리적인 연결과 전기 신호를 변환 및 제어한다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>송신할 때 데이터는 맨 위의 응용 계층에서 아래 계층으로 전달되며, 수신 측에서는 아래 계층에서 위 계층으로 전달 받는다.</p>
-
-<h1 id="3-tcpip-모델이란">3. TCP/IP 모델이란?</h1>
-
-<p>OSI 모델 7계층의 네트워크에서 데이터를 전송하는 과정을 네 개 계층으로 단순화시켜 사용하는 모델이다. 인터넷 모델이라고도 한다. 구조는 다음과 같다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><strong>명칭</strong></th>
-      <th style="text-align: center"><strong>계층</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">응용 계층</td>
-      <td style="text-align: center">4계층</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">전송 계층</td>
-      <td style="text-align: center">3계층</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">인터넷 계층</td>
-      <td style="text-align: center">2계층</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">네트워크 접속 계층</td>
-      <td style="text-align: center">1계층</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>현대의 인터넷은 대부분 TCP/IP 프로토콜 스택을 기반으로 동작한다. TCP/IP는 인터넷에서 데이터 통신을 위한 주요 프로토콜을 제공하는 모델로, 이 모델은 표준화되어 있고 많은 네트워크 장비 및 응용 프로그램이 이를 지원하고 있다.</p>
-
-<p><br /></p>
-<h1 id="4-encapsulation캡슐화와-decapsulation역캡슐화">4. Encapsulation(캡슐화)와 Decapsulation(역캡슐화)</h1>
-
-<p>데이터를 보내려고 할 때, 데이터의 앞부분에 전송하는 데 필요한 정보를 붙여서 다음 계층으로 보낸다. 이 정보를 <code class="language-plaintext highlighter-rouge">헤더</code>라고 하는데 헤더에는 데이터를 전달받을 상대방에 대한 정보도 포함되어 있다.이처럼 헤더를 붙여 나가는 걸 <code class="language-plaintext highlighter-rouge">캡슐화</code>, 데이터를 받는 쪽에서 헤더를 하나씩 제거해가는 것을 <code class="language-plaintext highlighter-rouge">역캡슐화</code>라고 한다.</p>
-
-<p>송신 측 컴퓨터에서 웹 사이트에 접속하려고 하면 응용계층에서 접속 요청 데이터가 생성된다. 이 데이터는 전송 계층에 전달되는데, 전송 계층에서 신뢰할 수 있는 통신이 이루어 지도록 응용 계층에서 만들어진 데이터에 헤더를 붙인다. 데이터가 네트워크 계층으로 넘어가면 이 데이터가 다른 네트워크와 통신할 수 있게 만들기 위해 네트워크 계층에서도 헤더를 붙인다. 또한 데이터 링크 계층으로 넘어가면 물리적인 통신 채널을 연결하기 위해 또다시 앞에 헤더를 붙이고, 여기서는 트레일러까지 붙인다. 트레일러는 데이터를 전달할 때 데이터의 마지막에 추가하는 정보를 말한다. 즉, 데이터 링크 계층까지 도달한 데이터는 전송 계층 헤더, 네트워크 계층 헤더, 데이터 링크 계층 헤더와 트레일러가 추가 되어있고, 이 데이터는 최종적으로 전기 신호로 변환돼서 수신측에 도착한다. 이처럼 필요한 데이터를 추가해 나가는 것을 캡슐화라고 한다.</p>
-
-<p>수신 측에서는 송신 측에서의 캡슐화 과정을 반대로 진행하며 데이터를 수신한다.</p>
-
-<p><br /></p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Network" /><summary type="html"><![CDATA[네트워크 통신의 기본 규칙인 프로토콜에 대해 알아보자.]]></summary></entry></feed>
+  </body>
+</html>

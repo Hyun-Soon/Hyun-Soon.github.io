@@ -22,5 +22,7 @@ sidebar1:
       url: "Network"
     - title: "수치해석"
       url: "numerical-analysis"
+    - title: "C++"
+      url: "C++"
     - title: "Algorithm"
-      text: "More text here."
+      url: "Algoritm"

@@ -118,4 +118,10 @@ var store = [{
         "tags": ["Newton-Method","Newton-Raphson-Method"],
         "url": "/numerical-analysis/newton-raphson-method/",
         "teaser": null
+      },{
+        "title": "Effective C++ Chapter 01",
+        "excerpt":"Chapter 0. 0-1. explicit 암시적 타입 변환에 생성자가 사용될 여지를 남겨둘 뚜렷한 이유가 없는 한, 생성자에 explicit specifier 우선적으로 적용하자. 0-2. copy constructor 복사 생성자는 값에 의한 객체 전달을 정의해 준다. 아래 코드에서 매개변수 a는 check 함수에 값으로 넘겨지고 실제 호출에서 temp는 a로 복사된다. 이 때 수행되는 복사에 customClass의 복사...","categories": ["Cpp"],
+        "tags": ["C++","EffectiveC++"],
+        "url": "/cpp/EffectiveC++01/",
+        "teaser": null
       }]
