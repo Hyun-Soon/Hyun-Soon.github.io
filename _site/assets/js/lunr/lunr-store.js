@@ -119,9 +119,27 @@ var store = [{
         "url": "/numerical-analysis/newton-raphson-method/",
         "teaser": null
       },{
-        "title": "Effective C++ Chapter 01",
-        "excerpt":"Chapter 0. 0-1. explicit 암시적 타입 변환에 생성자가 사용될 여지를 남겨둘 뚜렷한 이유가 없는 한, 생성자에 explicit specifier 우선적으로 적용하자. 0-2. copy constructor 복사 생성자는 값에 의한 객체 전달을 정의해 준다. 아래 코드에서 매개변수 a는 check 함수에 값으로 넘겨지고 실제 호출에서 temp는 a로 복사된다. 이 때 수행되는 복사에 customClass의 복사...","categories": ["Cpp"],
-        "tags": ["C++","EffectiveC++"],
+        "title": "\\[Effective C++\\] C++를 언어들의 연합체로 바라보는 안목은 필수",
+        "excerpt":"1. C++를 언어들의 연합체로 바라보는 안목을 갖자 c++는 오늘날 다중패러다임 프로그래밍 언어(multiparadigm programming language)라고 불린다.절차적 프로그래밍을 기본으로 객체 지향, 함수식, 일반화, 메타 프로그래밍 개념까지 지원하고 있다. 이렇게 복잡한 c++를 제대로 이해하기 위해서는 시각을 바꿔 c++를 여러 언어들의 연합체로 바라봐야 한다. 즉, c++가 여러 개의 하위 언어를 제공한다는 점을 이해해야 한다....","categories": ["Cpp"],
+        "tags": ["C++","Cpp","EffectiveC++"],
         "url": "/cpp/EffectiveC++01/",
+        "teaser": null
+      },{
+        "title": "\\[Effective C++\\] \\#define을 쓰려거든 const, enum, inline을 떠올리자",
+        "excerpt":"1. #define을 쓰려거든 const, enum, inline을 떠올리자 다시 말하면 “가급적 선행 처리자보다 컴파일러를 더 가까이 하자”는 뜻이다. #define ASPECT_RATIO 1.653 ... 위와 같이 작성된 코드가 있다고 하자. 위 소스 코드는 컴파일러로 넘어가기 전에 선행 처리자가 ASPECT_RATIO라는 이름을 밀어버리고 숫자 상수(1.653)로 대체한다. 그 결과 ASPECT_RATIO는 컴파일러가 쓰는 기호 테이블에 들어가지 않고,...","categories": ["Cpp"],
+        "tags": ["C++","Cpp","EffectiveC++"],
+        "url": "/cpp/EffectiveC++02/",
+        "teaser": null
+      },{
+        "title": "\\[Effective C++\\] 낌새만 보이면 const를 들이대 보자!",
+        "excerpt":"1. const_iterator const int* ptr; //int 값이 const int const * ptr; //int 값이 const int* const ptr; //ptr이 const STL iterator는 포인터를 본뜬 것이기 때문에 기본 동작 원리가 T* 포인터와 매우 흡사하다. 변경이 불가능한 객체를 가리키는 iterator가 필요하다면, const_iterator를 사용하면 된다. const std::vector&lt;int&gt;::iterator iter; //iter가 const std::vector&lt;int&gt;::const_iterator cIter; //cIter가...","categories": ["Cpp"],
+        "tags": ["C++","Cpp","EffectiveC++"],
+        "url": "/cpp/EffectiveC++03/",
+        "teaser": null
+      },{
+        "title": "\\[Effective C++\\] 객체를 사용하기 전에 반드시 그 객체를 초기화하자",
+        "excerpt":"1. 객체를 사용하기 전에 반드시 그 객체를 초기화하자 초기화 리스트를 사용하면 멤버 데이터들의 복사 생성자를 사용하여, 멤버 데이터를 생성과 동시에 초기화할 수 있다. class PhoneBook { private: std::string name; std::string phoneNumber; public: ... PhoneBook(const std::string&amp; inputName, const std::string&amp; inputPhoneNumber) : name(inputName), phoneNumber(inputPhoneNumber) {} } 이떤 클래스의 멤버 데이터가 있다. 멤버...","categories": ["Cpp"],
+        "tags": ["C++","Cpp","EffectiveC++"],
+        "url": "/cpp/EffectiveC++04/",
         "teaser": null
       }]

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Effective C++ Chapter 01 - Hyuim’s blog</title>
-<meta name="description" content="Effective C++ Chapter 01 정리">
+<!-- begin _includes/seo.html --><title>[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수 - Hyuim’s blog</title>
+<meta name="description" content="Effective C++ 항목 01 정리">
 
 
   <meta name="author" content="Hyunsoon Im">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="Effective C++ Chapter 01">
+<meta property="og:title" content="[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수">
 <meta property="og:url" content="http://localhost:4000/cpp/EffectiveC++01/">
 
 
-  <meta property="og:description" content="Effective C++ Chapter 01 정리">
+  <meta property="og:description" content="Effective C++ 항목 01 정리">
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2024-07-06T00:00:00+09:00">
+  <meta property="article:published_time" content="2024-07-09T00:00:00+09:00">
 
 
 
@@ -325,7 +325,7 @@
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            <span class="all-posts" style="font-family:sans-serif;font-size: 16px;"><a href="/">📂 Posts (21)</a></style>
+            <span class="all-posts" style="font-family:sans-serif;font-size: 16px;"><a href="/">📂 Posts (24)</a></style>
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
@@ -402,7 +402,7 @@
                     
                 
                     
-                        <li><a style="font-size: 16px"; href="/C++" class="">C++ (1)</a></li>
+                        <li><a style="font-size: 16px"; href="/C++" class="">C++ (4)</a></li>
                     
                 
             </ul>
@@ -431,16 +431,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Effective C++ Chapter 01">
-    <meta itemprop="description" content="Effective C++ Chapter 01 정리">
-    <meta itemprop="datePublished" content="2024-07-06T00:00:00+09:00">
+    <meta itemprop="headline" content="[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수">
+    <meta itemprop="description" content="Effective C++ 항목 01 정리">
+    <meta itemprop="datePublished" content="2024-07-09T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/cpp/EffectiveC++01/" class="u-url" itemprop="url">Effective C++ Chapter 01
+            <a href="http://localhost:4000/cpp/EffectiveC++01/" class="u-url" itemprop="url">[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수
 </a>
           </h1>
           
@@ -451,7 +451,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2024-07-06T00:00:00+09:00">July 6, 2024</time>
+        <time datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time>
       </span>
     
 
@@ -469,100 +469,14 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#chapter-0">Chapter 0.</a><ul><li><a href="#0-1-explicit">0-1. explicit</a></li><li><a href="#0-2-copy-constructor">0-2. copy constructor</a></li><li><a href="#0-3-function-object">0-3. function object</a></li></ul></li><li><a href="#chapter-1-c에-왔으면-c의-법을-따릅시다">Chapter 1. C++에 왔으면 C++의 법을 따릅시다</a><ul><li><a href="#1-1-c를-언어들의-연합체로-바라보는-안목을-갖자">1-1. C++를 언어들의 연합체로 바라보는 안목을 갖자</a></li><li><a href="#1-2-define을-쓰려거든-const-enum-inline을-떠올리자">1-2. #define을 쓰려거든 const, enum, inline을 떠올리자</a></li><li><a href="#1-3-낌새만-보이면-const를-들이대-보자">1-3. 낌새만 보이면 const를 들이대 보자!</a><ul><li><a href="#상수-멤버-함수">상수 멤버 함수</a></li><li><a href="#상수-멤버-및-비상수-멤버-함수에서-코드-중복-현상을-피하는-방법">상수 멤버 및 비상수 멤버 함수에서 코드 중복 현상을 피하는 방법</a></li></ul></li><li><a href="#1-4-객체를-사용하기-전에-반드시-그-객체를-초기화하자">1-4. 객체를 사용하기 전에 반드시 그 객체를 초기화하자</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#1-c를-언어들의-연합체로-바라보는-안목을-갖자">1. C++를 언어들의 연합체로 바라보는 안목을 갖자</a></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="chapter-0">Chapter 0.</h1>
-
-<h2 id="0-1-explicit">0-1. explicit</h2>
-<p>암시적 타입 변환에 생성자가 사용될 여지를 남겨둘 뚜렷한 이유가 없는 한, 생성자에 explicit specifier 우선적으로 적용하자.</p>
-
-<h2 id="0-2-copy-constructor">0-2. copy constructor</h2>
-<p>복사 생성자는 값에 의한 객체 전달을 정의해 준다. 아래 코드에서 매개변수 <code class="language-plaintext highlighter-rouge">a</code>는 check 함수에 값으로 넘겨지고 실제 호출에서 <code class="language-plaintext highlighter-rouge">temp</code>는 <code class="language-plaintext highlighter-rouge">a</code>로 복사된다. 이 때 수행되는 복사에 customClass의 복사 생성자가 사용된다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">customClass</span> <span class="n">a</span><span class="p">);</span>
-
-<span class="p">...</span>
-
-<span class="n">customClass</span> <span class="n">temp</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
-	<span class="p">...</span>
-</code></pre></div></div>
-
-<h2 id="0-3-function-object">0-3. function object</h2>
-<p>함수처럼 동작하는 객체를 말하며, function call operator<code class="language-plaintext highlighter-rouge">()</code>가 오버로딩되어 있는 객체를 말한다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">BiggerThan</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">);</span>
-		<span class="p">}</span>
-<span class="p">};</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">BiggerThan</span> <span class="n">bt</span><span class="p">;</span>
-	
-	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">bt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">bt</span><span class="p">.</span><span class="k">operator</span><span class="p">()(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">BiggerThan</span><span class="p">()(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>왜 굳이 <code class="language-plaintext highlighter-rouge">()</code> 연산자를 오버로딩하여 객체를 함수처럼 사용할까?</p>
-
-<ol>
-  <li>함수 객체는 내부 상태를 가질 수 있다. 예를 들어, 함수 객체는 호출될 때마다 상태를 변경하거나 유지할 수 있다.
-    <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">Counter</span>
- <span class="p">{</span>
-     <span class="nl">public:</span>
-         <span class="n">Counter</span><span class="p">()</span> <span class="o">:</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
-         <span class="kt">int</span> <span class="nf">operator</span><span class="p">()()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">++</span><span class="n">count</span><span class="p">;}</span>
-     <span class="k">private</span><span class="o">:</span>
-         <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
- <span class="p">}</span>
-
- <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
- <span class="p">{</span>
-     <span class="n">Counter</span> <span class="n">counter</span><span class="p">;</span>
-
-     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 1 출력</span>
-     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 2 출력</span>
-     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
- <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>코드의 재사용성을 높이고 모듈화가 가능하다. 함수 객체는 특정 작업을 수행하는 독립된 모듈로 생각할 수 있다.</li>
-  <li>템플릿 인수로 전달이 가능하다. <code class="language-plaintext highlighter-rouge">std::sort</code>와 같은 표준 라이브러리 알고리즘에 커스터마이징된 동작을 지정할 수 있다.
-    <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">struct</span> <span class="nc">Greater</span>
- <span class="p">{</span>
-     <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="k">const</span>
-     <span class="p">{</span>
-         <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
-     <span class="p">}</span>
- <span class="p">}</span>
-
- <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
- <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">Greater</span><span class="p">());</span>
-</code></pre></div>    </div>
-  </li>
-  <li>함수 객체는 inline이 가능해 호출 오버헤드가 줄어든다. 따라서 함수 포인터를 사용하는 것보다 성능 면에서 유리할 수 있다.</li>
-</ol>
-
-<p><br />
-<br /></p>
-
-<h1 id="chapter-1-c에-왔으면-c의-법을-따릅시다">Chapter 1. C++에 왔으면 C++의 법을 따릅시다</h1>
-
-<h2 id="1-1-c를-언어들의-연합체로-바라보는-안목을-갖자">1-1. C++를 언어들의 연합체로 바라보는 안목을 갖자</h2>
+        <p><br /></p>
+<h1 id="1-c를-언어들의-연합체로-바라보는-안목을-갖자">1. C++를 언어들의 연합체로 바라보는 안목을 갖자</h1>
+<p><br /></p>
 
 <p>c++는 오늘날 <code class="language-plaintext highlighter-rouge">다중패러다임 프로그래밍 언어(multiparadigm programming language)</code>라고 불린다.절차적 프로그래밍을 기본으로 객체 지향, 함수식, 일반화, 메타 프로그래밍 개념까지 지원하고 있다. 이렇게 복잡한 c++를 제대로 이해하기 위해서는 시각을 바꿔 c++를 여러 언어들의 연합체로 바라봐야 한다. 즉, c++가 여러 개의 하위 언어를 제공한다는 점을 이해해야 한다.</p>
 <ol>
@@ -572,376 +486,17 @@
   <li>STL : 이름에서 알 수 있듯 템플릿 라이브러리이다. STL은 <code class="language-plaintext highlighter-rouge">container</code>, <code class="language-plaintext highlighter-rouge">iterator</code>, <code class="language-plaintext highlighter-rouge">algorithm</code>, <code class="language-plaintext highlighter-rouge">function object</code>들이 얽혀 돌아가는 것을 규약으로 삼고 있으나, 템플릿과 라이브러리는 얼마든지 다른 아이디어를 중심으로 만들어질 수 있다. 또한 나름대로 독특한 사용규약이 있어서, STL을 써서 프로그래밍하려면 그 규약을 따라야 한다.</li>
 </ol>
 
-<p>위 네 가지의 하위 언어들이 C++을 이루고 있다는 점을 명심하고, 한 언어에서 다른 언어로 옮겨 가면서 대응 전략을 바꾸어야 하는 상황에서 이를 잘 활용해야 한다. 예를 들어, C 스타일로만 쓰고 있으면 기본제공 타입에 대해서는 “값 전달이 참조 전달보다 대개 효율이 더 좋다”라는 규칙이 통하지만, C++의 C 부분만 쓰다가 객체 지향 C++로 옮겨 가면 사용자 정의 생성자/소멸자 개념이 생기면서 상수 객체 참조자에 의한 전달(pass-by-reference-to-const) 방식이 더 좋은 효율을 보인다. 이런 현상은 템플릿 C++를 쓸 때 특히 두드러지는데, 왜냐하면 템플릿 C++의 세계에서는 우리가 손에 들고 있는 객체의 타입조차 알 수 없기 때문이다. 그러나 STL 쪽으로 넘어오면 전세가 또 바뀌게 된다. STL을 배우다 보면 iterator와 function object가 C의 포인터를 본떠 만든 것이란 점을 알게 되고, 그렇기 때문에 STL의 iterator 및 function object에 대해서는 값 전달에 대한 규칙이 다시 제 힘을 발휘하게 된다.</p>
+<p>위 네 가지의 하위 언어들이 C++을 이루고 있다는 점을 명심하고, 한 언어에서 다른 언어로 옮겨 가면서 대응 전략을 바꾸어야 하는 상황에서 이를 잘 활용해야 한다.</p>
+
+<p>예를 들어, C 스타일로만 쓰고 있으면 기본제공 타입에 대해서는 “값 전달이 참조 전달보다 대개 효율이 더 좋다”라는 규칙이 통하지만, C++의 C 부분만 쓰다가 객체 지향 C++로 옮겨 가면 사용자 정의 생성자/소멸자 개념이 생기면서 상수 객체 참조자에 의한 전달(pass-by-reference-to-const) 방식이 더 좋은 효율을 보인다.</p>
+
+<p>이런 현상은 템플릿 C++를 쓸 때 특히 두드러지는데, 왜냐하면 템플릿 C++의 세계에서는 우리가 손에 들고 있는 객체의 타입조차 알 수 없기 때문이다.</p>
+
+<p>그러나 STL 쪽으로 넘어오면 전세가 또 바뀌게 된다. STL을 배우다 보면 iterator와 function object가 C의 포인터를 본떠 만든 것이란 점을 알게 되고, 그렇기 때문에 STL의 iterator 및 function object에 대해서는 값 전달에 대한 규칙이 다시 제 힘을 발휘하게 된다.</p>
 
 <p>C++는 한 가지 프로그래밍 규칙 아래 똘똘 뭉친 통합 언어(unified language)가 아니라 네 가지 하위 언어들의 연합체이다. 즉, 각각의 하위 언어가 자신만의 규칙을 갖고 있다. “하위 언어들로 구성되어 있다”라는 점을 꼭 새겨두도록 하자.</p>
 
 <p class="notice--primary">🔔 C++를 사용한 효과적인 프로그래밍 규칙은 경우에 따라 달라진다. 그 경우란, 바로 C++의 어떤 부분을 사용하느냐이다.</p>
-
-<h2 id="1-2-define을-쓰려거든-const-enum-inline을-떠올리자">1-2. #define을 쓰려거든 const, enum, inline을 떠올리자</h2>
-<p>다시 말하면 “가급적 선행 처리자보다 컴파일러를 더 가까이 하자”는 뜻이다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define ASPECT_RATIO 1.653
-</span>
-<span class="p">...</span>
-</code></pre></div></div>
-
-<p>위와 같이 작성된 코드가 있다고 하자. 위 소스 코드는 컴파일러로 넘어가기 전에 선행 처리자가 ASPECT_RATIO라는 이름을 밀어버리고 숫자 상수(1.653)로 대체한다. 그 결과 ASPECT_RATIO는 컴파일러가 쓰는 기호 테이블에 들어가지 않고, 이는 컴파일 에러를 해결할 때 어려움을 겪게 할 수 있다. 특히, 코드를 작성하지 않은 다른 사람이 이를 해결하려고 하면 더욱 난감할 것이다.</p>
-
-<p>이 문제의 해결법은 매크로 대신 상수를 쓰는 것이다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">double</span> <span class="n">AspectRatio</span> <span class="o">=</span> <span class="mf">1.653</span><span class="p">;</span>
-</code></pre></div></div>
-<p>위의 AspectRatio는 언어 차원에서 지원하는 상수 타입의 데이터이기 때문에 당연히 컴파일러의 눈에도 보이며 기호 테이블에 들어간다.</p>
-
-<p>또한 위의 예시처럼 작성할 경우, 컴파일을 거친 최종 코드의 크기가 <code class="language-plaintext highlighter-rouge">#define</code>을 썼을 때 보다 더 작을 수 있다. <code class="language-plaintext highlighter-rouge">#define</code>의 경우 선행 처리자가 코드 상의 ASPECT_RATIO를 1.653으로 바꾸는 만큼 1.653의 사본이 많이 생기는 반면, AspectRatio는 한 개의 변수만 존재하기 때문이다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>상수 정의는 대개 헤더 파일에 넣는 것이 관례이다.
-</code></pre></div></div>
-
-<p>만약 클래스 멤버로 상수를 정의하는 경우, 그 상수의 사본 개수가 한 개를 넘지 못하게 하고 싶다면 <code class="language-plaintext highlighter-rouge">static</code> 멤버로 만들어야 한다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">GamePlayer</span>
-<span class="p">{</span>
-	<span class="nl">private:</span>
-		<span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-		<span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
-		<span class="p">...</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>보통은 위와 같이 클래스 안에 선언하는 것이 문제가 되지 않지만, 클래스 상수의 주소를 구하거나 구식 컴파일러의 경우 정의를 구현 파일에서 제공해야 한다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">GamePlayer</span><span class="o">::</span><span class="n">c</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>웬만한 경우에는 이것으로 해결이 되지만, GamePlayer::scores와 같이 배열을 선언할 때 컴파일러가 컴파일 과정에서 이 배열의 크기를 알아야 한다며 문제를 일으킬 수 있다. 이 경우에는 <code class="language-plaintext highlighter-rouge">enum hack</code> 기법을 떠올리자.</p>
-
-<p><code class="language-plaintext highlighter-rouge">enum hack</code>은 enumerator 타입의 값은 int가 놓일 곳에도 쓰일 수 있다는 사실을 활용하는 것이다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">GamePlayer</span>
-<span class="p">{</span>
-	<span class="nl">private:</span>
-		<span class="k">enum</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">};</span>
-
-		<span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">enum hack</code>의 동작 방식은 <code class="language-plaintext highlighter-rouge">const</code>보다 <code class="language-plaintext highlighter-rouge">#define</code>에 더 가깝다. enum의 주소를 취하는 것은 불법이며 #define의 주소를 얻는 것 역시 마찬가지다. 따라서 선언한 정수 상수를 가지고 다른 사람이 주소를 얻거나 참조자를 쓰는 것이 싫다면 enum은 아주 좋은 자물쇠가 될 수 있다.</p>
-
-<p>#define을 오용하는 또다른 사례로 매크로 함수가 있다. 함수 호출 오버헤드를 일으키지 않는다는 점에서 매크로 함수를 사용하지만 문제가 있다. 아래는 매크로 인자들 중 큰 것을 사용해 어떤 함수 f를 호출하는 매크로이다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define CALL_WITH_MAX(a, b) f((a) &gt; (b) ? (a) : (b))
-</span></code></pre></div></div>
-
-<p>매크로를 작성할 때는 매크로 본문에 들어 있는 인자마다 반드시 괄호를 씌워줘야 한다. 하지만 이 부분을 제대로 처리했다고 해도 문제가 발생한다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="n">CALL_WITH_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>  <span class="c1">// a가 두 번 증가한다.</span>
-<span class="n">CALL_WITH_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// a가 한 번 증가한다.</span>
-</code></pre></div></div>
-
-<p>비교의 결과로 어떤 인자를 가져오느냐에 따라 결과가 달라지는 문제가 발생한다.
-함수 호출을 없애 주는 매크로의 효율을 그대로 유지하면서 정규 함수의 모든 동작방식 및 타입 안전성까지 완벽히 취할 수 있는 방법이 있다.
-바로 “인라인 함수 템플릿”이다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
-<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">callWithMax</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="n">f</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>이 함수는 템플릿이기 때문에 동일 계열 함수군(family of functions)을 만들어낸다. 또한 진짜 함수이기 때문에 유효범위 및 접근 규칙을 그대로 따라간다.</p>
-
-<p class="notice--primary">🔔 단순한 상수를 쓸 때는, #define보다 const 객체 혹은 enum을 우선 떠올리자.
-🔔 함수처럼 쓰이는 매크로를 만들려면, #define 매크로보다 인라인 함수를 우선 떠올리자.</p>
-
-<h2 id="1-3-낌새만-보이면-const를-들이대-보자">1-3. 낌새만 보이면 const를 들이대 보자!</h2>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span> <span class="c1">//int 값이 const</span>
-<span class="kt">int</span> <span class="k">const</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">;</span> <span class="c1">//int 값이 const</span>
-<span class="kt">int</span><span class="o">*</span> <span class="k">const</span> <span class="n">ptr</span><span class="p">;</span> <span class="c1">//ptr이 const</span>
-</code></pre></div></div>
-
-<p>STL iterator는 포인터를 본뜬 것이기 때문에 기본 동작 원리가 T* 포인터와 매우 흡사하다. 변경이 불가능한 객체를 가리키는 iterator가 필요하다면, <code class="language-plaintext highlighter-rouge">const_iterator</code>를 사용하면 된다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">iter</span><span class="p">;</span> <span class="c1">//iter가 const</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">const_iterator</span> <span class="n">cIter</span><span class="p">;</span> <span class="c1">//cIter가 가리키는 값이 const</span>
-<span class="c1">//</span>
-</code></pre></div></div>
-
-<h3 id="상수-멤버-함수">상수 멤버 함수</h3>
-<p>멤버 함수 끝에 붙는 const 키워드의 역할은 “해당 멤버 함수가 상수 객체에 대해 호출될 수 있는 함수이다”라는 사실을 알려주는 것이다. C++ 프로그램의 실행 성능을 높이는 핵심 기법 중 하나는 객체 전달을 ‘상수 객체에 대한 참조자(reference-to-const)’로 진행하는 것이다. 이 기법이 제대로 동작하려면 const 멤버 함수가 존재해야 한다. const 키워드가 있고 없고의 차이만 있는 멤버 함수들은 오버로딩이 가능하다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TextBloack</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-
-		<span class="c1">//상수 객체에 대한 operator[]</span>
-		<span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span><span class="p">)</span> <span class="k">const</span>
-		<span class="p">{</span>
-			<span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">position</span><span class="p">];</span>
-		<span class="p">}</span>
-
-		<span class="c1">//비상수 객체에 대한 operator[]</span>
-		<span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">position</span><span class="p">];</span>
-		<span class="p">}</span>
-
-	<span class="k">private</span><span class="o">:</span>
-		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">TextBlock</span> <span class="n">tb</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
-	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">tb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">//비상수 멤버 함수를 호출한다.</span>
-
-	<span class="k">const</span> <span class="n">TextBlock</span> <span class="n">ctb</span><span class="p">(</span><span class="s">"World"</span><span class="p">);</span>
-	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ctb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">//상수 멤버 함수를 호출한다.</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>멤버 함수가 상수 멤버라는 것은 두가지 개념을 내포한다.</p>
-<ol>
-  <li>bitwise constness(physical constness) 비트수준 상수성</li>
-  <li>logical constness 논리적 상수성</li>
-</ol>
-
-<p>비트수준 상수성은 어떤 멤버 함수가 그 객체의 어떤 데이터 멤버도 건드리지 않아야 그 멤버 함수가 ‘const’임을 인정하는 개념이다. 그런데, 애석하게도 ‘제대로 const’로 동작하지 않는데도 이 비트수준 상수성 검사를 통과하는 멤버 함수들이 존재한다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTextBlock</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-
-		<span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span> <span class="k">const</span>
-		<span class="p">{</span>
-			<span class="k">return</span> <span class="n">pText</span><span class="p">[</span><span class="n">position</span><span class="p">];</span>
-		<span class="p">}</span>
-
-	<span class="k">private</span><span class="o">:</span>
-		<span class="kt">char</span><span class="o">*</span> <span class="n">pText</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>operator[]의 내부 코드만 보면 pText를 건드리지 않으므로 컴파일러는 operator[] 코드를 생성할 때 불평할 이유가 없다. 하지만 reference를 반환하고 있으므로 다른 코드에서 operater[]를 이용해 pText의 값을 바꿀 위험이 있다. 상수 멤버 함수를 사용했지만 비트수준 상수성이 깨질 가능성이 있다는 말이다.</p>
-
-<p>논리적 상수성은 이런 황당한 상황을 보완하는 대체 개념으로 나오게 되었다.
-상수 멤버 함수라고 해서 객체의 한 비트도 수정할 수 없는 것이 아니라 일부 몇 비트 정도는 바꿀 수 있되, 그것을 사용자(이 책에서는 이 코드를 사용하는 다른 프로그래머도 사용자라고 칭한다) 측에서 알아채지 못하게만 하면 상수 멤버 자격이 있다는 것이다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTextBlock</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-
-		<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">length</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-
-	<span class="nl">private:</span>
-
-		<span class="kt">char</span><span class="o">*</span> <span class="n">pText</span><span class="p">;</span>
-		
-		<span class="c1">//mutable은 non-static 데이터 멤버를 비트 수준 상수성의 족쇄에서 해방시켜준다.</span>
-		<span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">textLength</span><span class="p">;</span>
-		<span class="k">mutable</span> <span class="kt">bool</span> <span class="n">lengthIsValid</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">CTextBlock</span><span class="o">::</span><span class="n">length</span><span class="p">()</span> <span class="k">const</span>
-<span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">lengthIsValid</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">textLength</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">strlen</span><span class="p">(</span><span class="n">pText</span><span class="p">);</span>
-		<span class="n">lengthIsValid</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">return</span> <span class="n">textLength</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="상수-멤버-및-비상수-멤버-함수에서-코드-중복-현상을-피하는-방법">상수 멤버 및 비상수 멤버 함수에서 코드 중복 현상을 피하는 방법</h3>
-<p>단순히 문자를 리턴하는 것이 아니라 operator[] 내부에서 경계 검사, 자료 무결성 검증 등 다양한 일을 한다고 생각해보자.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TextBlock</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-
-		<span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span><span class="p">)</span> <span class="k">const</span>
-		<span class="p">{</span>
-			<span class="p">...</span> <span class="c1">//경계 검사</span>
-			<span class="p">...</span> <span class="c1">//자료 무결성 검증</span>
-			<span class="p">...</span> <span class="c1">//등등</span>
-			<span class="p">...</span>
-			<span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">position</span><span class="p">];</span>
-		<span class="p">}</span>
-
-		<span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="p">...</span> <span class="c1">//경계 검사</span>
-			<span class="p">...</span> <span class="c1">//자료 무결성 검증</span>
-			<span class="p">...</span> <span class="c1">//등등</span>
-			<span class="p">...</span>
-			<span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">position</span><span class="p">];</span>
-		<span class="p">}</span>
-
-	<span class="k">private</span><span class="o">:</span>
-		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>같은 기능을 하지만 const 때문에 코드 중복이 발생한다. 이 때 코드 중복을 피할 수 있는 방법이 있는데, 주의할 점이 있다. const가 아닌 것에 const를 붙이는 것은 안전하지만, 이미 const인 것에서 const를 떼어내는 것은 위험하다는 점을 생각하자.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TextBlock</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-
-		<span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span><span class="p">)</span> <span class="k">const</span> <span class="c1">//이전과 동일</span>
-		<span class="p">{</span>
-			<span class="p">...</span>
-		<span class="p">}</span>
-
-		<span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">position</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">return</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&amp;&gt;</span><span class="p">(</span>
-						<span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">TextBlock</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)[</span><span class="n">position</span><span class="p">]</span>
-						<span class="p">);</span>
-		<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p class="notice--primary">🔔 const를 붙여 선언하면 컴파일러가 사용상의 에러를 잡아내는 데 도움을 준다. const는 어떤 유효범위에 있는 객체에도 붙을 수 있으며, 함수 매개변수 및 반환 타입에도 붙을 수 있고, 멤버 함수에도 붙을 수 있다.<br />
-🔔 컴파일러 쪽에서 보면 비트 수준 상수성을 지켜야 하지만, 프로그래머는 논리적 상수성을 사용해서 프로그래밍하는 방법도 있다는 것을 알아두자.<br />
-🔔 상수 멤버 및 비상수 멤버 함수가 기능적으로 서로 똑같게 구현되어 있을 경우에는 코드 중복을 피하는 것이 좋은데, 이때 비상수 버전이 상수 버전을 호출하도록 만들어라.</p>
-
-<h2 id="1-4-객체를-사용하기-전에-반드시-그-객체를-초기화하자">1-4. 객체를 사용하기 전에 반드시 그 객체를 초기화하자</h2>
-
-<p>초기화 리스트를 사용하면 멤버 데이터들의 복사 생성자를 사용하여, 멤버 데이터를 생성과 동시에 초기화할 수 있다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PhoneBook</span>
-<span class="p">{</span>
-	<span class="nl">private:</span>
-		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-		<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">phoneNumber</span><span class="p">;</span>
-
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-		<span class="n">PhoneBook</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">inputName</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">inputPhoneNumber</span><span class="p">)</span>
-		<span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">inputName</span><span class="p">),</span> <span class="n">phoneNumber</span><span class="p">(</span><span class="n">inputPhoneNumber</span><span class="p">)</span>
-		<span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>이떤 클래스의 멤버 데이터가 있다. 멤버 초기화 리스트에 들어있지 않더라도 그 데이터 타입이 사용자 정의 타입이면 컴파일러는 자동으로 그들 멤버에 대해 기본 생성자를 호출한다. 하지만 실수를 줄이기 위해 웬만하면 모든 데이터 멤버는 초기화 리스트에서 초기화 해주도록 하자.</p>
-
-<p>기본 생성자로 초기화하고 싶은 경우에도 초기화 리스트에 명시해주는 습관을 들이자.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PhoneBook</span><span class="p">()</span> <span class="o">:</span> <span class="n">name</span><span class="p">(),</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="p">{}</span>
-</code></pre></div></div>
-
-<p>c++의 기본 제공 타입(bool, char, …)은 생성과 동시에 초기화하나, 생성 후에 대입을 하나 걸리는 시간이 똑같지만 가독성을 위해 초기화 리스트에 넣어주자. 기본 제공 타입을 반드시 초기화 리스트에 넣어야 할 경우가 있는데, 바로 <code class="language-plaintext highlighter-rouge">const</code> 또는 <code class="language-plaintext highlighter-rouge">reference</code>일 경우이다. const와 reference는 생성과 동시에 초기화되어야 한다.</p>
-
-<p>C++에서 객체의 초기화 순서는 컴파일러를 막론하고 똑같다.</p>
-<ol>
-  <li>기본 클래스는 파생 클래스보다 먼저 초기화된다.</li>
-  <li>클래스 데이터 멤버는 그들이 선언된 순서대로 초기화된다.
-멤버 초기화 리스트에 넣는 순서도 선언된 순서대로 넣어주도록 하자.</li>
-</ol>
-
-<p>초기화 순서에 대한 하나의 문제가 남아있다.
-“비지역 정적 객체(non-local static object)의 초기화 순서는 개별 번역 단위(translation unit)에서 정해진다”는 것이다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">정적 객체(static object)</code>는 자신이 생성된 시점부터 프로그램이 끝날 때까지 살아 있는 객체를 일컫는다.
-정적 객체의 범주에 들어가는 것은 5가지가 있다.</p>
-<ol>
-  <li>전역 객체</li>
-  <li>네임스페이스 유효범위에서 정의된 객체</li>
-  <li>클래스 안에서 static으로 선언된 객체</li>
-  <li>함수 안에서 static으로 선언된 객체</li>
-  <li>파일 유효범위에서 static으로 정의된 객체</li>
-</ol>
-
-<p>이들 중 함수 안에 있는 정적 객체는 지역 정적 객체(local static object)라 하고(함수에 대해 지역성을 가지므로), 나머지는 비지역 정적 객체(non-local static object)라 한다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">번역 단위(translation unit)</code>는 컴파일을 통해 하나의 목적 파일(object file)을 만드는 바탕이 되는 소스 코드를 일컫는다. 여기서 번역은 소스의 언어를 기계어로 옮긴다는 의미다. 기본적으로는 소스 파일 하나가 되는데, 그 파일이 #include하는 파일들까지 합쳐서 하나의 번역 단위가 된다.</p>
-
-<p>즉 위에서 말한 문제는, 별도로 컴파일된 소스 파일이 두 개 이상 있으며 각 소스 파일에 비지역 정적 객체가 한 개 이상 들어 있는 경우에서, 한 쪽의 정적 객체가 초기화되지 않은 상황에 다른 쪽에서 이 객체를 사용할 때 발생하는 문제를 말한다.</p>
-
-<p>예를 들어, 파일 시스템에 관한 라이브러리가 있고 사용자가 이를 이용해 디렉토리 클래스를 만든다고 하자.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//파일 시스템 라이브러리</span>
-<span class="k">class</span> <span class="nc">FileSystem</span> <span class="c1">//라이브러리에 포함된 클래스</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="p">...</span>
-		<span class="n">std</span><span class="o">::</span><span class="n">stize_t</span> <span class="n">numDisks</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">//많고 많은 멤버 함수들 중 하나</span>
-		<span class="p">...</span>
-<span class="p">};</span>
-
-<span class="k">extern</span> <span class="n">FileSystem</span> <span class="n">tfs</span><span class="p">;</span> <span class="c1">//사용자가 쓰게 될 객체</span>
-</code></pre></div></div>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//사용자가 라이브러리를 이용해 만든 클래스</span>
-<span class="k">class</span> <span class="nc">Directory</span>
-<span class="p">{</span>
-	<span class="nl">public:</span>
-		<span class="n">Directory</span><span class="p">(</span> <span class="n">params</span> <span class="p">);</span>
-		<span class="p">...</span>
-<span class="p">};</span>
-
-<span class="n">Directory</span><span class="o">::</span><span class="n">Directory</span> <span class="p">(</span> <span class="n">params</span> <span class="p">)</span>
-<span class="p">{</span>
-	<span class="p">...</span>
-	<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">disks</span> <span class="o">=</span> <span class="n">tfs</span><span class="p">.</span><span class="n">numDisks</span><span class="p">();</span> <span class="c1">//tfs 객체를 여기서 사용함</span>
-	<span class="p">...</span>
-<span class="p">}</span>
-
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">Directory</span> <span class="n">tempDir</span><span class="p">(</span> <span class="n">params</span> <span class="p">);</span> <span class="c1">//임시 파일을 담는 디렉토리 //여기서 문제가 발생한다.</span>
-	<span class="p">...</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>정적 객체 tfs의 초기화 순서 때문에 이런 상황에서 문제가 발생한다. tfs가 tempDir보다 먼저 초기화되지 않으면, tempDir의 생성자는 tfs가 초기화되지 않았는데도 tfs를 사용하려고 시도한다.</p>
-
-<p>non-local static object의 초기화 순서가 정해져 있지 않은 상황에서 이 문제를 어떻게 해결할까?
-함수 안에 집어넣어 <code class="language-plaintext highlighter-rouge">Singleton pattern</code>을 활용하면 된다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">'''</span><span class="n">FileSystem</span><span class="err">'''</span>
-
-<span class="k">class</span> <span class="nc">FileSystem</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
-
-<span class="n">FileSystem</span><span class="o">&amp;</span> <span class="n">tfs</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">static</span> <span class="n">FileSystem</span> <span class="n">fs</span><span class="p">;</span>
-	<span class="k">return</span> <span class="n">fs</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-<span class="err">'''</span><span class="n">Directory</span><span class="err">'''</span>
-
-<span class="p">...</span>
-
-<span class="n">Directory</span><span class="o">&amp;</span> <span class="n">tempDir</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">static</span> <span class="n">Directory</span> <span class="n">td</span><span class="p">;</span>
-	<span class="k">return</span> <span class="n">td</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>이런 식으로 함수의 return을 받아 사용하게 되면 초기화 문제를 해결할 수 있다.</p>
-
-<p>정리하자면, 어떤 객체가 초기화되기 전에 그 객체를 사용하는 사용하는 일이 생기지 않도록 하려면 세가지를 기억하자.</p>
-<ol>
-  <li>멤버가 아닌 기본제공 타입 객체는 직접 초기화 해야 한다.</li>
-  <li>객체의 모든 부분에 대한 초기화에는 멤버 초기화 리스트를 사용한다.</li>
-  <li>별개의 번역 단위에 정의된 비지역 정적 객체에 영향을 끼치는 불확실한 초기화 순서를 염두에 두고 이러한 불확실성을 피해서 프로그램을 설계해야 한다.</li>
-</ol>
-
-<p class="notice--primary">🔔 기본제공 타입의 객체는 직접 손으로 초기화한다.<br />
-🔔 생성자에서는, 데이터 멤버에 대한 대입문을 생성자 본문 내부에 넣는 방법으로 멤버를 초기화하지 말고 멤버 초기화 리스트를 사용하자. 이 때, 각 데이터 멤버가 선언된 순서와 똑같이 나열해야 한다.<br />
-🔔 여러 번역 단위에 있는 비지역 정적 객체들의 초기화 순서 문제를 피해서 설계하자. 비지역 정적 객체를 지역 정적 객체로 바꾸면 된다.</p>
 
         
       </section>
@@ -959,6 +514,8 @@
     <span itemprop="keywords">
     
       <a href="/tags/#c" class="page__taxonomy-item p-category" rel="tag">C++</a><span class="sep">, </span>
+    
+      <a href="/tags/#cpp" class="page__taxonomy-item p-category" rel="tag">Cpp</a><span class="sep">, </span>
     
       <a href="/tags/#effectivec" class="page__taxonomy-item p-category" rel="tag">EffectiveC++</a>
     
@@ -985,7 +542,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-07-06T00:00:00+09:00">July 6, 2024</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time></p>
 
       </footer>
 
@@ -994,7 +551,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Effective+C%2B%2B+Chapter+01%20http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5C%5BEffective+C%2B%2B%5C%5D+C%2B%2B%EB%A5%BC+%EC%96%B8%EC%96%B4%EB%93%A4%EC%9D%98+%EC%97%B0%ED%95%A9%EC%B2%B4%EB%A1%9C+%EB%B0%94%EB%9D%BC%EB%B3%B4%EB%8A%94+%EC%95%88%EB%AA%A9%EC%9D%80+%ED%95%84%EC%88%98%20http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -1011,7 +568,8 @@
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/cpp/EffectiveC++02/" class="pagination--pager" title="[Effective C++] #define을 쓰려거든 const, enum, inline을 떠올리자
+">Next</a>
     
   </nav>
 
@@ -1024,6 +582,117 @@
     <div class="page__related">
       <h2 class="page__related-title">You may also enjoy</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cpp/EffectiveC++04/" rel="permalink">[Effective C++] 객체를 사용하기 전에 반드시 그 객체를 초기화하자
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Effective C++ 항목 04 정리
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cpp/EffectiveC++03/" rel="permalink">[Effective C++] 낌새만 보이면 const를 들이대 보자!
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Effective C++ 항목 03 정리
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cpp/EffectiveC++02/" rel="permalink">[Effective C++] #define을 쓰려거든 const, enum, inline을 떠올리자
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Effective C++ 항목 02 정리
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1057,117 +726,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">뉴턴-랩슨 방법을 알아보자.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/network/network09/" rel="permalink">09.무선 랜
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">무선 랜에 대해 알아보자.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/network/network08/" rel="permalink">08.OSI 모델
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 전반적인 흐름에 대해 알아보자.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/network/network07/" rel="permalink">07.응용 계층
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-12-23T00:00:00+09:00">December 23, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">OSI 모델의 응용 계층에 대해 알아 보자.
 </p>
   </article>
 </div>
