@@ -142,4 +142,10 @@ var store = [{
         "tags": ["C++","Cpp","EffectiveC++"],
         "url": "/cpp/EffectiveC++04/",
         "teaser": null
+      },{
+        "title": "\\[Effective C++\\] C++가 은근슬쩍 만들어 호출해 버리는 함수들에 촉각을 세우자",
+        "excerpt":"1. C++가 은근슬쩍 만들어 호출해 버리는 함수들에 촉각을 세우자 C++ 컴파일러는 빈 클래스를 훑고 지나갈 때 기본 생성자, 복사 생성자, 복사 대입 연산자, 소멸자를 생성한다. 이들은 모두 inline 함수이고, public이기 때문에 우리가 의도하지 않은 대로 동작할 수 있는 가능성이 생긴다. 예를 들어, class Empty{}; //위의 코드는 //아래의 코드와 같다. class...","categories": ["Cpp"],
+        "tags": ["Cpp","Cplusplus","EffectiveCplusplus"],
+        "url": "/cpp/EffectiveC++05/",
+        "teaser": null
       }]
