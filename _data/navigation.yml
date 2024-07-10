@@ -26,3 +26,5 @@ sidebar1:
       url: "C++"
     - title: "Algorithm"
       url: "Algoritm"
+    - title: "Graphics"
+      url: "Graphics"

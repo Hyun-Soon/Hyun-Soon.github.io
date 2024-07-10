@@ -148,4 +148,10 @@ var store = [{
         "tags": ["Cpp","Cplusplus","EffectiveCplusplus"],
         "url": "/cpp/EffectiveC++05/",
         "teaser": null
+      },{
+        "title": "Baycentric coordinate(무게 중심 좌표계)",
+        "excerpt":"1. Linear Interpolation(선형 보간법) 선형 보간법(Linear Interpolation)은 양 끝점의 위치가 주어졌을 때 그 사이의 한 위치를 계산하는 방법이다. 이미지 출처 2차원 공간 상의 점 \\(p1(x_1, y_1), p2(x_2, y_2)\\) 사이에 있는 p의 위치를 알고 싶다고 하자. p1과 p2 사이의 거리를 정규화하여 1로 놓으면, \\[d1 = α, d2 = 1 - α(0&lt;=α&lt;=1)\\]...","categories": ["Graphics"],
+        "tags": ["LinearInterpolation","BaycentricCoordinate","Graphics"],
+        "url": "/graphics/BaycentricCoordinate/",
+        "teaser": null
       }]

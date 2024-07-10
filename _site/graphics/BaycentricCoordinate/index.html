@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수 - Hyuim’s blog</title>
-<meta name="description" content="Effective C++ 항목 01 정리">
+<!-- begin _includes/seo.html --><title>Baycentric coordinate(무게 중심 좌표계) - Hyuim’s blog</title>
+<meta name="description" content="Interpolation, Baycentric coordinate에 대해 알아보자.">
 
 
   <meta name="author" content="Hyunsoon Im">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수">
-<meta property="og:url" content="http://localhost:4000/cpp/EffectiveC++01/">
+<meta property="og:title" content="Baycentric coordinate(무게 중심 좌표계)">
+<meta property="og:url" content="http://localhost:4000/graphics/BaycentricCoordinate/">
 
 
-  <meta property="og:description" content="Effective C++ 항목 01 정리">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2024-07-09T00:00:00+09:00">
+  <meta property="og:description" content="Interpolation, Baycentric coordinate에 대해 알아보자.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2024-07-10T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/cpp/EffectiveC++01/">
+
+<link rel="canonical" href="http://localhost:4000/graphics/BaycentricCoordinate/">
 
 
 
@@ -460,172 +460,19 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수">
-    <meta itemprop="description" content="Effective C++ 항목 01 정리">
-    <meta itemprop="datePublished" content="2024-07-09T00:00:00+09:00">
+    <meta itemprop="headline" content="Baycentric coordinate(무게 중심 좌표계)">
+    <meta itemprop="description" content="Interpolation, Baycentric coordinate에 대해 알아보자.">
+    <meta itemprop="datePublished" content="2024-07-10T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/cpp/EffectiveC++01/" class="u-url" itemprop="url">[Effective C++] C++를 언어들의 연합체로 바라보는 안목은 필수
+            <a href="http://localhost:4000/graphics/BaycentricCoordinate/" class="u-url" itemprop="url">Baycentric coordinate(무게 중심 좌표계)
 </a>
           </h1>
           
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-c를-언어들의-연합체로-바라보는-안목을-갖자">1. C++를 언어들의 연합체로 바라보는 안목을 갖자</a></li></ul>
-
-            </nav>
-          </aside>
-        
-        <p><br /></p>
-<h1 id="1-c를-언어들의-연합체로-바라보는-안목을-갖자">1. C++를 언어들의 연합체로 바라보는 안목을 갖자</h1>
-<p><br /></p>
-
-<p>c++는 오늘날 <code class="language-plaintext highlighter-rouge">다중패러다임 프로그래밍 언어(multiparadigm programming language)</code>라고 불린다.절차적 프로그래밍을 기본으로 객체 지향, 함수식, 일반화, 메타 프로그래밍 개념까지 지원하고 있다. 이렇게 복잡한 c++를 제대로 이해하기 위해서는 시각을 바꿔 c++를 여러 언어들의 연합체로 바라봐야 한다. 즉, c++가 여러 개의 하위 언어를 제공한다는 점을 이해해야 한다.</p>
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">C</code> : C++는 C를 기본으로 하고 있다. 블록, 문장, 선행 처리자 등 많은 것을 C에서 가져왔다.</li>
-  <li>객체 지향 개념의 C++ : 이 부분에 ‘클래스를 쓰는 C’에 관한 모든 것이 해당된다. 클래스, 캡슐화, 상속, 다형성, 가상 함수(동적 바인딩) 등..</li>
-  <li>템플릿 C++ : C++의 일반화 프로그래밍 부분이다. 오늘날 템플릿이 C++에 끼치는 영향은 매우 거대하며 이로 인해 <code class="language-plaintext highlighter-rouge">템플릿 메타프로그래밍(template metaprogramming: TMP</code>이라는 새로운 프로그래밍 패러다임이 파생되었다.</li>
-  <li>STL : 이름에서 알 수 있듯 템플릿 라이브러리이다. STL은 <code class="language-plaintext highlighter-rouge">container</code>, <code class="language-plaintext highlighter-rouge">iterator</code>, <code class="language-plaintext highlighter-rouge">algorithm</code>, <code class="language-plaintext highlighter-rouge">function object</code>들이 얽혀 돌아가는 것을 규약으로 삼고 있으나, 템플릿과 라이브러리는 얼마든지 다른 아이디어를 중심으로 만들어질 수 있다. 또한 나름대로 독특한 사용규약이 있어서, STL을 써서 프로그래밍하려면 그 규약을 따라야 한다.</li>
-</ol>
-
-<p>위 네 가지의 하위 언어들이 C++을 이루고 있다는 점을 명심하고, 한 언어에서 다른 언어로 옮겨 가면서 대응 전략을 바꾸어야 하는 상황에서 이를 잘 활용해야 한다.</p>
-
-<p>예를 들어, C 스타일로만 쓰고 있으면 기본제공 타입에 대해서는 “값 전달이 참조 전달보다 대개 효율이 더 좋다”라는 규칙이 통하지만, C++의 C 부분만 쓰다가 객체 지향 C++로 옮겨 가면 사용자 정의 생성자/소멸자 개념이 생기면서 상수 객체 참조자에 의한 전달(pass-by-reference-to-const) 방식이 더 좋은 효율을 보인다.</p>
-
-<p>이런 현상은 템플릿 C++를 쓸 때 특히 두드러지는데, 왜냐하면 템플릿 C++의 세계에서는 우리가 손에 들고 있는 객체의 타입조차 알 수 없기 때문이다.</p>
-
-<p>그러나 STL 쪽으로 넘어오면 전세가 또 바뀌게 된다. STL을 배우다 보면 iterator와 function object가 C의 포인터를 본떠 만든 것이란 점을 알게 되고, 그렇기 때문에 STL의 iterator 및 function object에 대해서는 값 전달에 대한 규칙이 다시 제 힘을 발휘하게 된다.</p>
-
-<p>C++는 한 가지 프로그래밍 규칙 아래 똘똘 뭉친 통합 언어(unified language)가 아니라 네 가지 하위 언어들의 연합체이다. 즉, 각각의 하위 언어가 자신만의 규칙을 갖고 있다. “하위 언어들로 구성되어 있다”라는 점을 꼭 새겨두도록 하자.</p>
-
-<p class="notice--primary">🔔 C++를 사용한 효과적인 프로그래밍 규칙은 경우에 따라 달라진다. 그 경우란, 바로 C++의 어떤 부분을 사용하느냐이다.</p>
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#c" class="page__taxonomy-item p-category" rel="tag">C++</a><span class="sep">, </span>
-    
-      <a href="/tags/#cpp" class="page__taxonomy-item p-category" rel="tag">Cpp</a><span class="sep">, </span>
-    
-      <a href="/tags/#effectivec" class="page__taxonomy-item p-category" rel="tag">EffectiveC++</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#cpp" class="page__taxonomy-item p-category" rel="tag">Cpp</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time></p>
-
-      </footer>
-
-      <!-- <section class="page__share">
-  
-    <h4 class="page__share-title">Share on</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=%5C%5BEffective+C%2B%2B%5C%5D+C%2B%2B%EB%A5%BC+%EC%96%B8%EC%96%B4%EB%93%A4%EC%9D%98+%EC%97%B0%ED%95%A9%EC%B2%B4%EB%A1%9C+%EB%B0%94%EB%9D%BC%EB%B3%B4%EB%8A%94+%EC%95%88%EB%AA%A9%EC%9D%80+%ED%95%84%EC%88%98%20http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcpp%2FEffectiveC%2B%2B01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
- -->
-      
-      
-
-      
-  <nav class="pagination">
-    
-      <a href="/numerical-analysis/newton-raphson-method/" class="pagination--pager" title="뉴턴-랩슨 방법(Newton-Raphson method)
-">Previous</a>
-    
-    
-      <a href="/cpp/EffectiveC++02/" class="pagination--pager" title="[Effective C++] #define을 쓰려거든 const, enum, inline을 떠올리자
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">You may also enjoy</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/graphics/BaycentricCoordinate/" rel="permalink">Baycentric coordinate(무게 중심 좌표계)
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -643,11 +490,141 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Interpolation, Baycentric coordinate에 대해 알아보자.
-</p>
-  </article>
-</div>
+        </header>
+      
 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-linear-interpolation선형-보간법">1. Linear Interpolation(선형 보간법)</a></li><li><a href="#2-baycentric-coordinate무게-중심-좌표계">2. Baycentric coordinate(무게 중심 좌표계)</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+<h1 id="1-linear-interpolation선형-보간법">1. Linear Interpolation(선형 보간법)</h1>
+<p><br />
+선형 보간법(Linear Interpolation)은 양 끝점의 위치가 주어졌을 때 그 사이의 한 위치를 계산하는 방법이다.</p>
+
+<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/04b8273d-0b22-499a-8e63-d23c18bc9aba" alt="line" /></p>
+
+<p><a href="https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%95_%EB%B3%B4%EA%B0%84%EB%B2%95">이미지 출처</a></p>
+
+<p>2차원 공간 상의 점 \(p1(x_1, y_1), p2(x_2, y_2)\) 사이에 있는 p의 위치를 알고 싶다고 하자.</p>
+
+<p>p1과 p2 사이의 거리를 정규화하여 1로 놓으면,</p>
+
+\[d1 = α, d2 = 1 - α(0&lt;=α&lt;=1)\]
+
+<p>라고 할 수 있다.</p>
+
+<p>d1의 길이가 커질수록 p는 p2에 가까워지고, d2의 길이가 커질수록 p는 p1에 가까워진다.
+α를 가중치로 생각해 보면 다음과 같이 나타낼 수 있다.</p>
+
+\[p = (1 - α)p1 + αp2\]
+
+<p><br /></p>
+<h1 id="2-baycentric-coordinate무게-중심-좌표계">2. Baycentric coordinate(무게 중심 좌표계)</h1>
+<p><br />
+이번엔 세 점으로 이루어진 삼각형 내의 점을 생각해 보자.</p>
+
+<p><img src="https://github.com/Hyun-Soon/Hyun-Soon.github.io/assets/66724166/69895098-25e6-4a65-9d4b-8cac09515b14" alt="area" /></p>
+
+<p><a href="https://blog.naver.com/gt7461/220583985623">이미지 출처</a></p>
+
+<p>1차원 직선에서 두 점 사이에 있는 점의 좌표를 직선간의 비율로 구했듯이, 2차원 평면에서 세 점 사이의 좌표를 넓이의 비율로 구할 수 있다.</p>
+
+<p>삼각형 전체의 넓이를 S(= s1 + s2 + s3)라고 하면 점 A, B, C로 이루어진 삼각형 내의 점 P의 좌표는 다음과 같다.</p>
+
+\[P = w_a*A + w_b * B + w_c * C\]
+
+\[(w_a = s_2 / S, w_b = s_3 / S, w_c = s_1 / S)\]
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#baycentriccoordinate" class="page__taxonomy-item p-category" rel="tag">BaycentricCoordinate</a><span class="sep">, </span>
+    
+      <a href="/tags/#graphics" class="page__taxonomy-item p-category" rel="tag">Graphics</a><span class="sep">, </span>
+    
+      <a href="/tags/#linearinterpolation" class="page__taxonomy-item p-category" rel="tag">LinearInterpolation</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#graphics" class="page__taxonomy-item p-category" rel="tag">Graphics</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-07-10T00:00:00+09:00">July 10, 2024</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Baycentric+coordinate%28%EB%AC%B4%EA%B2%8C+%EC%A4%91%EC%8B%AC+%EC%A2%8C%ED%91%9C%EA%B3%84%29%20http%3A%2F%2Flocalhost%3A4000%2Fgraphics%2FBaycentricCoordinate%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgraphics%2FBaycentricCoordinate%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgraphics%2FBaycentricCoordinate%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/cpp/EffectiveC++05/" class="pagination--pager" title="[Effective C++] C++가 은근슬쩍 만들어 호출해 버리는 함수들에 촉각을 세우자
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -755,6 +732,43 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">Effective C++ 항목 03 정리
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cpp/EffectiveC++02/" rel="permalink">[Effective C++] #define을 쓰려거든 const, enum, inline을 떠올리자
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-07-09T00:00:00+09:00">July 9, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Effective C++ 항목 02 정리
 </p>
   </article>
 </div>

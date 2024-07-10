@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "3f51ba86e4ea5754",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Baycentric coordinate(무게 중심 좌표계).md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -61,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#define할",
+                "query": "tag:Interpolation",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Effective 05.md",
+                "file": "Baycentric coordinate(무게 중심 좌표계).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Effective 05.md",
+                "file": "Baycentric coordinate(무게 중심 좌표계).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Effective 05.md"
+                "file": "Baycentric coordinate(무게 중심 좌표계).md"
               }
             }
           }
@@ -159,10 +171,13 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "99ae3b9eab0a564e",
+  "active": "3f51ba86e4ea5754",
   "lastOpenFiles": [
-    "Newton-Raphson method.md",
+    "Pasted image 20240710162100.png",
+    "Pasted image 20240710155622.png",
     "Effective 05.md",
+    "Baycentric coordinate(무게 중심 좌표계).md",
+    "Newton-Raphson method.md",
     "Effective C++ 01.md",
     "Effective C++ 항목1.md",
     "temp.pdf",
@@ -193,11 +208,8 @@
     "2023-12-23-network08.md",
     "2023-12-23-network07.md",
     "2023-12-20-network06.md",
-    "2023-12-19-network03.md",
-    "2023-12-20-network04.md",
     "Pasted image 20231130143847.png",
     "Pasted image 20231130140141.png",
-    "Pasted image 20231130134131.png",
-    "Pasted image 20231127002023.png"
+    "Pasted image 20231130134131.png"
   ]
 }
