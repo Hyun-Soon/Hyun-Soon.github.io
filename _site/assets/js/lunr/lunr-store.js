@@ -119,39 +119,15 @@ var store = [{
         "url": "/numerical-analysis/newton-raphson-method/",
         "teaser": null
       },{
-        "title": "\\[Effective C++\\] C++를 언어들의 연합체로 바라보는 안목은 필수",
-        "excerpt":"1. C++를 언어들의 연합체로 바라보는 안목을 갖자 c++는 오늘날 다중패러다임 프로그래밍 언어(multiparadigm programming language)라고 불린다.절차적 프로그래밍을 기본으로 객체 지향, 함수식, 일반화, 메타 프로그래밍 개념까지 지원하고 있다. 이렇게 복잡한 c++를 제대로 이해하기 위해서는 시각을 바꿔 c++를 여러 언어들의 연합체로 바라봐야 한다. 즉, c++가 여러 개의 하위 언어를 제공한다는 점을 이해해야 한다....","categories": ["Cpp"],
-        "tags": ["C++","Cpp","EffectiveC++"],
-        "url": "/cpp/EffectiveC++01/",
-        "teaser": null
-      },{
-        "title": "\\[Effective C++\\] \\#define을 쓰려거든 const, enum, inline을 떠올리자",
-        "excerpt":"1. #define을 쓰려거든 const, enum, inline을 떠올리자 다시 말하면 “가급적 선행 처리자보다 컴파일러를 더 가까이 하자”는 뜻이다. #define ASPECT_RATIO 1.653 ... 위와 같이 작성된 코드가 있다고 하자. 위 소스 코드는 컴파일러로 넘어가기 전에 선행 처리자가 ASPECT_RATIO라는 이름을 밀어버리고 숫자 상수(1.653)로 대체한다. 그 결과 ASPECT_RATIO는 컴파일러가 쓰는 기호 테이블에 들어가지 않고,...","categories": ["Cpp"],
-        "tags": ["C++","Cpp","EffectiveC++"],
-        "url": "/cpp/EffectiveC++02/",
-        "teaser": null
-      },{
-        "title": "\\[Effective C++\\] 낌새만 보이면 const를 들이대 보자!",
-        "excerpt":"1. const_iterator const int* ptr; //int 값이 const int const * ptr; //int 값이 const int* const ptr; //ptr이 const STL iterator는 포인터를 본뜬 것이기 때문에 기본 동작 원리가 T* 포인터와 매우 흡사하다. 변경이 불가능한 객체를 가리키는 iterator가 필요하다면, const_iterator를 사용하면 된다. const std::vector&lt;int&gt;::iterator iter; //iter가 const std::vector&lt;int&gt;::const_iterator cIter; //cIter가...","categories": ["Cpp"],
-        "tags": ["C++","Cpp","EffectiveC++"],
-        "url": "/cpp/EffectiveC++03/",
-        "teaser": null
-      },{
-        "title": "\\[Effective C++\\] 객체를 사용하기 전에 반드시 그 객체를 초기화하자",
-        "excerpt":"1. 객체를 사용하기 전에 반드시 그 객체를 초기화하자 초기화 리스트를 사용하면 멤버 데이터들의 복사 생성자를 사용하여, 멤버 데이터를 생성과 동시에 초기화할 수 있다. class PhoneBook { private: std::string name; std::string phoneNumber; public: ... PhoneBook(const std::string&amp; inputName, const std::string&amp; inputPhoneNumber) : name(inputName), phoneNumber(inputPhoneNumber) {} } 이떤 클래스의 멤버 데이터가 있다. 멤버...","categories": ["Cpp"],
-        "tags": ["C++","Cpp","EffectiveC++"],
-        "url": "/cpp/EffectiveC++04/",
-        "teaser": null
-      },{
-        "title": "\\[Effective C++\\] C++가 은근슬쩍 만들어 호출해 버리는 함수들에 촉각을 세우자",
-        "excerpt":"1. C++가 은근슬쩍 만들어 호출해 버리는 함수들에 촉각을 세우자 C++ 컴파일러는 빈 클래스를 훑고 지나갈 때 기본 생성자, 복사 생성자, 복사 대입 연산자, 소멸자를 생성한다. 이들은 모두 inline 함수이고, public이기 때문에 우리가 의도하지 않은 대로 동작할 수 있는 가능성이 생긴다. 예를 들어, class Empty{}; //위의 코드는 //아래의 코드와 같다. class...","categories": ["Cpp"],
-        "tags": ["Cpp","Cplusplus","EffectiveCplusplus"],
-        "url": "/cpp/EffectiveC++05/",
-        "teaser": null
-      },{
         "title": "Baycentric coordinate(무게 중심 좌표계)",
         "excerpt":"1. Linear Interpolation(선형 보간법) 선형 보간법(Linear Interpolation)은 양 끝점의 위치가 주어졌을 때 그 사이의 한 위치를 계산하는 방법이다. 이미지 출처 2차원 공간 상의 점 \\(p1(x_1, y_1), p2(x_2, y_2)\\) 사이에 있는 p의 위치를 알고 싶다고 하자. p1과 p2 사이의 거리를 정규화하여 1로 놓으면, \\[d1 = α, d2 = 1 - α(0&lt;=α&lt;=1)\\]...","categories": ["Graphics"],
         "tags": ["LinearInterpolation","BaycentricCoordinate","Graphics"],
         "url": "/graphics/BaycentricCoordinate/",
+        "teaser": null
+      },{
+        "title": "\\[C++\\] 클래스의 복사를 막는 방법",
+        "excerpt":"class TempClass {}; int main() { TempClass a; TempClass b(a); // copy constructor TempClass c = a; // copy assignment operator } copy constructor와 copy assignment operator가 선언되어있지 않은 클래스 TempClass가 있다. 하지만 main문에서 TempClass의 copy constructor와 copy assignment operator를 호출하고 있기 때문에, 컴파일러는 이를 알아서 정의해 버린다. 따라서 구현하지...","categories": ["Cpp"],
+        "tags": ["Cpp"],
+        "url": "/cpp/PreventCopyClass.md/",
         "teaser": null
       }]

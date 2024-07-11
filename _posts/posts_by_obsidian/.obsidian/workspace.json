@@ -42,9 +42,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "c5046880b1d10fc8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++ 클래스의 복사를 막는 방법.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -110,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Baycentric coordinate(무게 중심 좌표계).md",
+                "file": "C++ 클래스의 복사를 막는 방법.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Baycentric coordinate(무게 중심 좌표계).md",
+                "file": "C++ 클래스의 복사를 막는 방법.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Baycentric coordinate(무게 중심 좌표계).md"
+                "file": "C++ 클래스의 복사를 막는 방법.md"
               }
             }
           }
@@ -171,12 +183,13 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "3f51ba86e4ea5754",
+  "active": "c5046880b1d10fc8",
   "lastOpenFiles": [
+    "Baycentric coordinate(무게 중심 좌표계).md",
+    "C++ 클래스의 복사를 막는 방법.md",
     "Pasted image 20240710162100.png",
     "Pasted image 20240710155622.png",
     "Effective 05.md",
-    "Baycentric coordinate(무게 중심 좌표계).md",
     "Newton-Raphson method.md",
     "Effective C++ 01.md",
     "Effective C++ 항목1.md",
@@ -209,7 +222,6 @@
     "2023-12-23-network07.md",
     "2023-12-20-network06.md",
     "Pasted image 20231130143847.png",
-    "Pasted image 20231130140141.png",
-    "Pasted image 20231130134131.png"
+    "Pasted image 20231130140141.png"
   ]
 }
