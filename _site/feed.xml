@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-11T13:07:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">\[C++\] 클래스의 복사를 막는 방법</title><link href="http://localhost:4000/cpp/PreventCopyClass.md/" rel="alternate" type="text/html" title="\[C++\] 클래스의 복사를 막는 방법" /><published>2024-07-11T00:00:00+09:00</published><updated>2024-07-11T00:00:00+09:00</updated><id>http://localhost:4000/cpp/PreventCopyClass.md</id><content type="html" xml:base="http://localhost:4000/cpp/PreventCopyClass.md/"><![CDATA[<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TempClass</span> <span class="p">{};</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-11T13:58:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">\[C++\] 클래스의 복사를 막는 방법</title><link href="http://localhost:4000/cpp/PreventCopyingClass.md/" rel="alternate" type="text/html" title="\[C++\] 클래스의 복사를 막는 방법" /><published>2024-07-11T00:00:00+09:00</published><updated>2024-07-11T00:00:00+09:00</updated><id>http://localhost:4000/cpp/PreventCopyingClass.md</id><content type="html" xml:base="http://localhost:4000/cpp/PreventCopyingClass.md/"><![CDATA[<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TempClass</span> <span class="p">{};</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -20,9 +20,12 @@
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>copy constructor와 copy assignment operator가 선언이 되어 있기 때문에 컴파일러가 이들을 생성하지는 않지만, 구현부가 없기 때문에 링킹 과정에서 에러가 발생할 것이다.</p>
+<p>copy constructor와 copy assignment operator가 선언이 되어 있기 때문에 컴파일러가 이들을 생성하지는 않지만, 구현부가 없기 때문에 링크 과정에서 에러가 발생할 것이다.</p>
 
-<p>에러 시점을 링킹 타임이 아닌 컴파일 타임으로 옮기고 싶다면 부모 클래스를 활용해야 한다.</p>
+<p class="notice--primary">🔔 <strong>링크 과정에서 에러가 발생하는 이유</strong><br />
+컴파일러는 코드를 어셈블리어로 바꿔주는 역할을 한다. 이 때, 컴파일러가 굳이 다른 소스 파일의 구현까지 자세히 알 필요는 없기 때문에 컴파일 과정에서는 문제가 발생하지 않는다. 하지만 object file들을 연결하며 하나의 프로그램을 만드는 링크 과정에서는 실제의 동작을 알아야 하기 때문에 구현이 없는 경우 에러가 발생한다.</p>
+
+<p>에러 시점을 링크 과정이 아닌 컴파일 과정으로 앞당기고 싶다면 부모 클래스를 활용해야 한다.</p>
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Uncopyable</span>
 <span class="p">{</span>
 	<span class="nl">protected:</span>

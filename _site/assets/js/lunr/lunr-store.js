@@ -128,6 +128,6 @@ var store = [{
         "title": "\\[C++\\] 클래스의 복사를 막는 방법",
         "excerpt":"class TempClass {}; int main() { TempClass a; TempClass b(a); // copy constructor TempClass c = a; // copy assignment operator } copy constructor와 copy assignment operator가 선언되어있지 않은 클래스 TempClass가 있다. 하지만 main문에서 TempClass의 copy constructor와 copy assignment operator를 호출하고 있기 때문에, 컴파일러는 이를 알아서 정의해 버린다. 따라서 구현하지...","categories": ["Cpp"],
         "tags": ["Cpp"],
-        "url": "/cpp/PreventCopyClass.md/",
+        "url": "/cpp/PreventCopyingClass.md/",
         "teaser": null
       }]
