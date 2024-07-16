@@ -1,5 +1,5 @@
 ---
-title: Born2beroot
+title: \[42Seoul\] Born2beroot
 excerpt: 가상머신을 이용해 나만의 서버를 만들어 보자.
 categories:
   - 42Seoul

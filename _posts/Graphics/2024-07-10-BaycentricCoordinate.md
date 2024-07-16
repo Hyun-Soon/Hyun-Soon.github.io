@@ -1,5 +1,5 @@
 ---
-title: Baycentric coordinate(무게 중심 좌표계)
+title: \[Graphics\] Baycentric coordinate(무게 중심 좌표계)
 excerpt: Interpolation, Baycentric coordinate에 대해 알아보자.
 categories:
   - Graphics

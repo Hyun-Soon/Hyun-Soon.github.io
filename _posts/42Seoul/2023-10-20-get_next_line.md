@@ -1,5 +1,5 @@
 ---
-title: get_next_line
+title: \[42Seoul\] get_next_line
 excerpt: 파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.
 categories:
   - 42Seoul

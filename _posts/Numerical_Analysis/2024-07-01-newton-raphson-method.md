@@ -1,5 +1,5 @@
 ---
-title: 뉴턴-랩슨 방법(Newton-Raphson method)
+title: \[수치해석\] 뉴턴-랩슨 방법(Newton-Raphson method)
 excerpt: 뉴턴-랩슨 방법을 알아보자.
 categories:
   - numerical-analysis

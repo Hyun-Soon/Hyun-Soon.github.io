@@ -1,5 +1,5 @@
 ---
-title: Philosophers 가이드
+title: \[42Seoul\] Philosophers 가이드
 excerpt: Dining Philosopher 문제를 해결해보자.
 categories:
   - 42Seoul
