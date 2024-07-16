@@ -28,3 +28,5 @@ sidebar1:
       url: "Algoritm"
     - title: "Graphics"
       url: "Graphics"
+    - title: "Etc"
+      url: "Etc"

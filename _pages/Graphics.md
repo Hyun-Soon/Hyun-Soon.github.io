@@ -1,7 +1,7 @@
 ---
 title: "Graphics"
 layout: archive
-permalink: /graphics
+permalink: /Graphics
 ---
 
 {% assign posts = site.categories.Graphics %}
