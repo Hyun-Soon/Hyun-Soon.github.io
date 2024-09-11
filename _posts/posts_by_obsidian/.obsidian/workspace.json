@@ -49,14 +49,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++ 클래스의 복사를 막는 방법.md",
+                "file": "get_next_line.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "247310476b0c4bc7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Win32.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -122,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++ 클래스의 복사를 막는 방법.md",
+                "file": "Win32.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++ 클래스의 복사를 막는 방법.md",
+                "file": "Win32.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++ 클래스의 복사를 막는 방법.md"
+                "file": "Win32.md"
               }
             }
           }
@@ -183,11 +195,14 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "c5046880b1d10fc8",
+  "active": "247310476b0c4bc7",
   "lastOpenFiles": [
-    "Shader.md",
-    "C++ 클래스의 복사를 막는 방법.md",
+    "get_next_line.md",
+    "Win32.md",
+    "Born2beroot.md",
     "Baycentric coordinate(무게 중심 좌표계).md",
+    "C++ 클래스의 복사를 막는 방법.md",
+    "Shader.md",
     "Pasted image 20240710162100.png",
     "Pasted image 20240710155622.png",
     "Effective 05.md",
@@ -208,19 +223,16 @@
     "Pasted image 20240701164654.png",
     "Philosophers 가이드.md",
     "Markdown 사용법.md",
-    "Born2beroot.md",
     "09.무선 랜.md",
     "Smilegate Unseen 지원서 입력사항.md",
     "03.물리 계층2.md",
     "Graphics.md",
     "ft_printf.md",
-    "get_next_line.md",
     "Fract'ol.md",
     "01. 네트워크 기초.md",
     "02.네트워크의 기본 규칙.md",
     "2023-12-23-network09.md",
     "2023-12-23-network08.md",
-    "2023-12-23-network07.md",
     "Pasted image 20231130143847.png",
     "Pasted image 20231130140141.png"
   ]

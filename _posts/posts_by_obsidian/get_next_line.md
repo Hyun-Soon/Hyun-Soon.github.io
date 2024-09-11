@@ -8,7 +8,7 @@ tags:
   - get_next_line
   - fd
 ---
-# 0. 과제 설명
+w# 0. 과제 설명
 	파일에서 한 줄씩 읽어오는 함수 get_next_line을 구현한다.
 <br>
 <br>
