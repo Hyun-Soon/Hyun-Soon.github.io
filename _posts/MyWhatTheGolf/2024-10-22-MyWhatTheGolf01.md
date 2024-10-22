@@ -29,7 +29,6 @@ window 창 띄우기 성공
 
 ## 4. 문제점 및 해결 방법 (Challenges & Solutions)
 
-
 ---
 
 ## 5. 다음 단계 (Next Steps)
@@ -61,5 +60,6 @@ DirectX 초기화하기
 	- L : Liskov Subsitution Principle, 자식 클래스는 부모 클래스에서 정의한 기능을 모두 충족해야 하며, 부모 클래스로 대체가능해야 한다.
 	- I : Interface Segregation Principle, 클라이언트가 필요하지 않은 기능에 의존하지 않도록 인터페이스를 작고 구체적으로 나눠야 한다.
 	- D : Dependency Inversion Principle, 구체적인 클래스에 의존하는 것이 아니라, 인터페이스나 추상 클래스에 의존함으로써 유연성을 높여야 한다.
+
 ---
 
