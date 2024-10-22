@@ -1,5 +1,5 @@
 ---
-title: "What The Golf 모작 개발일지 #01"
+title: \[MWTG\]"What The Golf 모작 개발일지 #01"
 excerpt: What The Golf 모작 개발일지
 categories:
   - MyWhatTheGolf
