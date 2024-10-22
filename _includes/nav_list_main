@@ -25,6 +25,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "MyWhatTheGolf" %}
+                        <li><a style="font-size: 16px"; href="/MyWhatTheGolf" class="">MyWhatTheGolf ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Network" %}
                         <li><a style="font-size: 16px"; href="/Network" class="">Network ({{category[1].size}})</a></li>
                     {% endif %}

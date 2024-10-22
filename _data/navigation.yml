@@ -18,6 +18,8 @@ sidebar1:
     children:
     - title: "42Seoul"
       url: "42Seoul"
+    - title: "WhatTheGolf 모작 개발일지"
+      url: "MyWhatTheGolf"
     - title: "Network"
       url: "Network"
     - title: "수치해석"
