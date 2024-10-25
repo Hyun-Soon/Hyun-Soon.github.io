@@ -48,7 +48,7 @@ directx로 게임을 처음 만들어봐서 그림이 잘 안그려진다. 진�
 
 ## 7. 메모 (Notes)
 
-- Coding Standard : https://docs.popekim.com/ko/coding-standards/cpp
+- [Coding Standard](https://docs.popekim.com/ko/coding-standards/cpp)
 
 ---
 
