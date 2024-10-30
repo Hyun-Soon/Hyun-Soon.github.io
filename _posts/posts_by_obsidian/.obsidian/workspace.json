@@ -11,17 +11,14 @@
             "id": "c20c0adc7204a1a7",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "무제 파일.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
+                "file": "My What The Golf 개발일지 01.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "무제 파일"
+              "icon": "lucide-file",
+              "title": "My What The Golf 개발일지 01"
             }
           }
         ]
@@ -163,9 +160,10 @@
   },
   "active": "c20c0adc7204a1a7",
   "lastOpenFiles": [
-    "My What The Golf 개발일지 05.md",
-    "무제 파일.canvas",
+    "My What The Golf 개발일지 06.md",
     "My What The Golf 개발일지 01.md",
+    "무제 파일.canvas",
+    "My What The Golf 개발일지 05.md",
     "My What The Golf 개발일지 04.md",
     "My What The Golf 개발일지 03.md",
     "C++ 클래스의 복사를 막는 방법.md",
