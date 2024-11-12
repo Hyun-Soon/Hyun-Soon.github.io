@@ -38,7 +38,8 @@ tags:
 - vertex의 index 순서
 	- vertex의 index 순서를 보는 방향 기준 왼손으로 감는 방향(시계 방향)이 아닌, 오른손으로 감는 방향(반시계 방향)으로 설정해줘서 렌더링되지 않았다(`D3D11_RASTERIZER_DESC`의 `CullMode`가 `D3D11_CULL_BACK`인 상황).
 - View 행렬 함수
-	- `XMMatrixLookAtLH()`와 `XMMatrixLookToLH()`로 View 행렬을 구성했을 때는 렌더링이 잘 되는데, `CreateLookAt()`함수로 View 행렬을 구성했을 때는 렌더링이 되지 않는다. Graphics Debugger를 실행했을 때, XMMatrix 함수들은 View 행렬이 단위행렬인 반면, CreateLookAt() 함수는 아예 DrawIndexed()조차 실행되지 않았다. XM 함수들은 DirectX::XMMatrix를 반환하고, CreateLookAt 함수는 DirectX::SimpleMath::Matrix를 반환한다. 검색결과 상호간에 변환이 자유롭게 되는 것 같은데 무엇이 문제인지 더 찾아봐야겠다. 왜 DrawIndexed()조차 실행되지 않았는지 생각해보자.
+  - `XMMatrixLookAtLH()`와 `XMMatrixLookToLH()`로 View 행렬을 구성했을 때는 렌더링이 잘 되는데, `CreateLookAt()`함수로 View 행렬을 구성했을 때는 렌더링이 되지 않는다. Graphics Debugger를 실행했을 때, XMMatrix 함수들은 View 행렬이 단위행렬인 반면, CreateLookAt() 함수는 아예 DrawIndexed()조차 실행되지 않았다. XM 함수들은 DirectX::XMMatrix를 반환하고, CreateLookAt 함수는 DirectX::SimpleMath::Matrix를 반환한다. 검색결과 상호간에 변환이 자유롭게 되는 것 같은데 무엇이 문제인지 더 찾아봐야겠다. 왜 DrawIndexed()조차 실행되지 않았는지 생각해보자.
+
 ---
 
 ## 5. 다음 단계 (Next Steps)

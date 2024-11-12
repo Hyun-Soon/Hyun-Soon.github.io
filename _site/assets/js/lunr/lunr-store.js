@@ -112,4 +112,22 @@ var store = [{
         "tags": ["개발일지","directX","WinAPI"],
         "url": "/devlog/mywhatthegolf/MyWhatTheGolf05/",
         "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #06",
+        "excerpt":"1. 날짜 (Date) 2024/10/30 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) D3D11_INPUT_ELEMENT_DESC 생성 Vertex Shader 구현 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) Pixel Shader 구현 6. 회고 (Reflection) GPU 구조를 공부할 필요성을 느낀다. Shader 코드 짤 때, pipeline 흐름...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf06/",
+        "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #07",
+        "excerpt":"1. 날짜 (Date) 2024/11/11 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) 삼각형 렌더링 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) View 행렬을 단위 행렬로 설정 MVP에서 View Matrix를 DirectX::SimpleMath::Matrix() 기본 생성자로 넣어놨음. 단위행렬이라 변환에 영향이 없어서 잘 보일 줄 알았는데, 렌더링 되지 않음. CreateLookAt()...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf07/",
+        "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #08",
+        "excerpt":"1. 날짜 (Date) 2024/11/12 2. 작업 목표 (Daily Goals) Visual Studio Graphics Debugger 무한 로딩 원인 찾기 Viewport의 MinDepth, MaxDepth / XMMatrixPerspectiveFovLH의 nearZ, farZ 개념 정리하기 삼각형 렌더링 과정에서 겪었던 문제들 원인 찾기 3. 진행 사항 (Progress) 목표 해결 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Visual Studio Graphic...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf08/",
+        "teaser": null
       }]
