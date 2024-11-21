@@ -11,14 +11,10 @@
             "id": "c20c0adc7204a1a7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "My What The Golf 개발일지 01.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "My What The Golf 개발일지 01"
+              "title": "새 탭"
             }
           }
         ]
@@ -160,8 +156,9 @@
   },
   "active": "c20c0adc7204a1a7",
   "lastOpenFiles": [
-    "My What The Golf 개발일지 11.md",
+    "My What The Golf 개발일지 12.md",
     "My What The Golf 개발일지 01.md",
+    "My What The Golf 개발일지 11.md",
     "My What The Golf 개발일지 10.md",
     "My What The Golf 개발일지 09.md",
     "Screenshot 2024-11-13 at 9.03.17 PM.png",
@@ -197,7 +194,6 @@
     "Libft.md",
     "08.OSI 모델.md",
     "Pasted image 20240701164654.png",
-    "Philosophers 가이드.md",
     "Pasted image 20231130143847.png"
   ]
 }
