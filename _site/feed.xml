@@ -1,4 +1,288 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-12T22:57:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">[DevLog] What The Golf 모작 개발일지 #08</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf08/" rel="alternate" type="text/html" title="[DevLog] What The Golf 모작 개발일지 #08" /><published>2024-11-12T00:00:00+09:00</published><updated>2024-11-12T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf08</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf08/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-21T20:55:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">[DevLog] What The Golf 모작 개발일지 #12</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf12/" rel="alternate" type="text/html" title="[DevLog] What The Golf 모작 개발일지 #12" /><published>2024-11-21T00:00:00+09:00</published><updated>2024-11-21T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf12</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf12/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+
+<p>2024/11/21</p>
+
+<hr />
+
+<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
+
+<p>주요 클래스 구현</p>
+
+<hr />
+
+<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
+
+<p>Object 클래스 구현
+shader에서 사용하는 구조체 ShaderData.h에 분리
+DirectXManager::Render() 구현 중</p>
+
+<hr />
+
+<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
+
+<hr />
+
+<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
+
+<p>DirectXManager::Render()에서 VertexConstantBuffer 업데이트하기</p>
+
+<hr />
+
+<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
+
+<p>환절기 알레르기 미치겠다.</p>
+
+<p>DirectXManager의 device에서 리소스를 만들 때, Object 클래스의 많은 정보들을 getter로 받아서 사용하고 있다. getter가 너무 많은데, 좀 더 깔끔한 방법이 없을까?
+CreateBuffer의 경우, ComPtr::GetAddressOf()를 CreateBuffer 함수 인자 전달하는 곳에서 실행하면 잘 동작하는데, GetAddressOf를 다른 곳에서 실행 후 결과를 받아서 전달하면 호환이 안된다. 그래서 ComPtr&lt;ID3D11Buffer&gt;를 레퍼런스로 받아서 GetAddressOf를 실행하고 있는데, 이렇게 하면 getter에서 const를 붙일 수 없기 때문에 안전하지 않아 보인다.</p>
+
+<p>VertexConstantBuffer 생성을 최대한 안하고 싶어서 DirectXManager에 하나만 만들어놓고, 각 Object가 같은 형식의 ConstantData를 이 버퍼에 업데이트 후 사용하려고 했다. 그런데 물체들은 대부분 안움직이는 경우가 많으로, 각각의 Object가 VertexConstantBuffer를 가지고 있으면 GPU에 데이터를 업데이트할 필요 없이 그대로 사용하면 된다. 글을 쓰다 보니 이게 더 효율적인 것 같다. 오브젝트가 많은 게임도 아니니 이렇게 구현해야겠다.</p>
+
+<hr />
+
+<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D3D11_SUBRESOURCE_DATA</code>의 pSysMem에 ConstantBuffer에서 필요한 구조체 변수의 주소를 넘겨주고, <code class="language-plaintext highlighter-rouge">D3D11_BUFFER_DESC</code>에서 구조체의 크기를 넘겨줬는데, 왜 CreateBuffer() 실행 후 바로 Map/Unmap을 통해 데이터를 또 넘겨주는지 이해를 못했다.
+    <ul>
+      <li>Map/Unmap을 하지 않아도 처음 CreateBuffer()를 실행했을 때 구조체의 데이터가 GPU에 전달되어 있다. Map/Unmap은 버퍼 데이터를 업데이트할 때 사용하면 된다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">클래스 멤버 초기화</code> vs <code class="language-plaintext highlighter-rouge">생성자 초기화 리스트</code>
+    <ol>
+      <li>멤버 초기화 방식
+        <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">MyClass</span>
+ <span class="p">{</span>
+     <span class="n">DirectX</span><span class="o">::</span><span class="n">SimpleMath</span><span class="o">::</span><span class="n">Vector3</span> <span class="n">mPosWorld</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">};</span>
+ <span class="p">};</span>
+
+</code></pre></div>        </div>
+        <ul>
+          <li>멤버의 기본값이 모든 생성자에서 동일할 때</li>
+          <li>코드의 가독성을 높이고 싶을 때</li>
+        </ul>
+      </li>
+      <li>생성자 초기화 리스트
+        <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">MyClass</span>
+ <span class="p">{</span>
+ <span class="nl">public:</span>
+     <span class="n">MyClass</span><span class="p">()</span> <span class="o">:</span> <span class="n">mPosWorld</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{}</span>
+ <span class="p">};</span>
+
+</code></pre></div>        </div>
+        <ul>
+          <li>생성자마다 다른 기본값을 사용하고 싶을 때</li>
+          <li>멤버 변수에 <code class="language-plaintext highlighter-rouge">const</code> 또는 <code class="language-plaintext highlighter-rouge">reference</code>가 있을 때</li>
+          <li>복잡한 초기화 로직이 필요할 때</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">MACRO</code> vs <code class="language-plaintext highlighter-rouge">using</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">\#define</code>은 전처리기에 의해 단순히 텍스트 치환되므로 빠르고 간단하다. 하지만 컴파일러가 타입 체크를 수행하지 못하므로, 잘못된 타입 전달이 런타임 에러를 유발할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">using</code>은 실제 타입을 컴파일러가 이해하므로 타입 체크를 수행하여 안전하다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Blob</code> : DirectX에서 데이터를 저장하거나 관리하는 데 사용하는 인터페이스 객체이다. 주로 쉐이더 코드 컴파일 결과(바이트코드)를 저장하는 용도로 사용된다.</li>
+</ul>
+
+<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">[DevLog] What The Golf 모작 개발일지 #11</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf11.md/" rel="alternate" type="text/html" title="[DevLog] What The Golf 모작 개발일지 #11" /><published>2024-11-15T00:00:00+09:00</published><updated>2024-11-15T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf11.md</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf11.md/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+
+<p>2024/11/15</p>
+
+<hr />
+
+<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
+
+<p>코드 정리</p>
+
+<hr />
+
+<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
+
+<ul>
+  <li>Rigidbody를 컴포넌트로 구현하는 것을 고민 중</li>
+  <li>Object 클래스 구현 중</li>
+</ul>
+
+<hr />
+
+<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
+
+<p>없음</p>
+
+<hr />
+
+<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
+
+<p>코드 정리</p>
+
+<hr />
+
+<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
+
+<p>Object를 상속받아서 Cylinder, Cube 등의 클래스를 만든다고 할 때, 각 인스턴스의 특성을 어떻게 정해야할지 고민이다. Rigidbody 클래스를 Object의 컴포넌트로 만들면, 필요한 인스턴스에서만 사용할 수 있다. 하지만 현재 구상에서는 대부분의 물체가 강체이기 때문에 동적 할당으로 인해 런타임 성능이 떨어진다. 그렇다고 Object 클래스 자체에 Rigidbody를 넣어 놓자니 불필요한 메모리가 생기게 된다. 이후에 강체가 아닌 물체를 많이 추가할 지 모르기 때문에 웬만하면 불필요한 메모리 사용을 줄이고 싶다. 컴포넌트로 하는 경우, 스테이지를 로딩하는 화면을 만들어서 시간을 끌어도 된다. 아직 어떤 방향이 최선인지 잘 모르겠다.</p>
+
+<p>물리 엔진 클래스에서 Object와 Rigidbody 내부 값들을 다루는 방식도 고민이다. 엔진이 어디까지 접근할 수 있는게 좋을까. 객체지향이란 뭘까.</p>
+
+<hr />
+
+<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">std::vector::emplace_back</code>
+    <ul>
+      <li>객체를 벡터에 직접 생성하므로, 불필요한 복사를 방지한다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">static_assert</code>
+    <ul>
+      <li>컴파일 시간에 조건을 검사하여 컴파일 에러를 발생시킨다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">ID3D11DeviceContext::DrawIndexedInstanced</code>
+    <ul>
+      <li>동일한 메쉬를 사용하는 여러 오브젝트를 렌더링할 때, GPU의 효율성을 높이는 기술. 각 오브젝트는 같은 메쉬(버텍스와 인덱스 데이터)를 공유하지만, 각 인스턴스별로 다른 변환 데이터(mvp 등)를 적용한다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">텍스쳐가 포함된 FBX</code> vs <code class="language-plaintext highlighter-rouge">텍스쳐 파일이 따로 있는 FBX</code>
+    <ul>
+      <li>재활용성이나 로딩 시간 등 많은 부분에서 텍스쳐 파일이 따로 있는 것이 효율적이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">[DevLog] What The Golf 모작 개발일지 #10</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf10/" rel="alternate" type="text/html" title="[DevLog] What The Golf 모작 개발일지 #10" /><published>2024-11-14T00:00:00+09:00</published><updated>2024-11-14T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf10</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf10/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+
+<p>2024/11/14</p>
+
+<hr />
+
+<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
+
+<p>3D Asset Rendering</p>
+
+<hr />
+
+<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
+
+<p>3D Asset 단색으로 Rendering 성공</p>
+
+<hr />
+
+<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
+
+<ul>
+  <li>Assimp import 후, hlsl 파일만 수정하고 빌드 시 에러 발생
+    <ul>
+      <li>cpp 파일 아무거나 의미없는 수정 후 다시 빌드</li>
+      <li>Assimp와 같은 외부 라이브러리를 사용할 때, Visual Studio는 빌드할 때만 프로젝트 폴더에 필요한 DLL 파일을 복사해 놓는다. HLSL 파일은 셰이더 코드로서 빌드 과정에 직접적으로 포함되지 않으며, 컴파일 단계에서 DLL 파일을 참조할 필요가 없기 때문에 cpp 파일을 수정하지 않으면 프로젝트가 빌드 과정을 거치지 않는다. 이 때문에 HLSL 파일만 수정 후 빌드하면 DLL 복사가 트리거되지 않고, Assimp DLL을 찾을 수 없어 실행 오류가 발생한다.</li>
+    </ul>
+  </li>
+  <li>삼각형이 일부만 렌더링되고 일부는 렌더링되지 않는 현상 발생
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">DirectX::SimpleMath::Vector3</code>와 <code class="language-plaintext highlighter-rouge">DirectX::XMFLOAT3</code>를 혼용해서 사용하고 있던 것을 Vector3로 통일함.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
+
+<ul>
+  <li>화살표 에셋 찾기</li>
+  <li>물체의 단순한 움직임 구현하기</li>
+  <li>코드 정리</li>
+</ul>
+
+<hr />
+
+<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
+
+<p>어떻게 vertex의 수와 index의 수가 같을 수가 있나 고민했는데, 직접 찍어보니 하나의 vertex를 중복해서 넣어 둔 것이었다.</p>
+
+<p>vertex의 타입을 바꿔줄 때마다 여러 Desc의 설정을 바꿔줘야 하는데, 이를 효율적으로 작성할 수 있는 방법을 생각해 봐야겠다. 당장 떠오르는건 typeof인데, 더 좋은 방법이 있을 것 같다.</p>
+
+<p>정리하다가 문득 row-major column-major 변환할 필요 없이 곱 순서를 한쪽에서 바꿔주면 되지 않을까 생각해봤는데, 그냥 순서를 바꾸자니 행렬곱이 성립이 안되고, 행렬곱을 만드려고 다 transpose 해버리면 결국 row-major로 계산하고 마지막에 한번에 transpose 해주는게 효율적이라는 걸 깨달았다. 까비.</p>
+
+<hr />
+
+<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">SimpleMath</code> vs <code class="language-plaintext highlighter-rouge">DirectXMath(XM)</code>
+    <ul>
+      <li>SimpleMath는 내부적으로 XMVECTOR를 wrapping하지만, 최적화된 SIMD 명령어를 직접 활용하지 않으므로 XM보다 성능이 낮다. C++ 연산자 오버로딩을 사용하여 직관적이고, 코드를 간결하게 작성할 수 있다.</li>
+      <li>XMVECTOR는 SSE와 같은 SIMD 명령어를 직접 활용하여 성능 최적화가 뛰어나다. 또한 16바이트 정렬을 요구해 CPU의 캐시 활용을 극대화하며, 대규모 벡터 연산에서 메모리 사용이 효율적이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">[DevLog] What The Golf 모작 개발일지 #09</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf09/" rel="alternate" type="text/html" title="[DevLog] What The Golf 모작 개발일지 #09" /><published>2024-11-13T00:00:00+09:00</published><updated>2024-11-13T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf09</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf09/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+
+<p>2024/11/13</p>
+
+<hr />
+
+<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
+
+<p>3D Asset 렌더링</p>
+
+<hr />
+
+<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
+
+<p>프로그램은 실행되나, 제대로 렌더링 되지 않음
+Index 문제인 것으로 생각됨</p>
+
+<hr />
+
+<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
+
+<ul>
+  <li>Unity Asset Store에서 Import한 에셋들이 분홍색을 띄며 제대로 보이지 않음
+    <ul>
+      <li>Unity를 최신 버전으로 업데이트해서 해결</li>
+    </ul>
+  </li>
+  <li>Assimp::Importer로 fbx 파일을 읽었을 때, Microsoft C++ exception: std::length_error 발생
+    <ul>
+      <li>fbx 파일을 ASCII -&gt; binary로 변경, 우선 vertex와 index만 추출</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
+
+<p>3D Asset 렌더링</p>
+
+<hr />
+
+<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
+
+<p>fbx 파일에서 읽어온 vertex 수와 index의 수가 같다. fbx 파일을 blender에서 import 했을 때 잘 보이는 것으로 봐서는 파일 문제는 아닌 것 같다(색은 원본과 달리 단색으로만 보인다). 내가 삼각형을 렌더링할 때는 indices 버퍼에서 순서대로 3개씩 묶어서 하나의 삼각형을 만들었기 때문에 같은 index가 중복되어 들어있었다. index를 중복되지 않게 표현하는 방법이 있는지 찾아봐야겠다.</p>
+
+<p>index를 잘못읽어온 경우도 생각해보자(vertex와 수가 정확히 같은걸 봐서는 잘못 읽어온 건 아닌 것 같긴 하다. 내일 다른 에셋도 테스트 해보자.).</p>
+
+<hr />
+
+<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Assimp</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Importer</code> : 모델 데이터를 불러오는 역할을 하는 가장 기본적인 클래스. FBX 파일을 포함한 다양한 파일 형식을 읽어올 수 있다. <code class="language-plaintext highlighter-rouge">ReadFile()</code> 함수를 통해 파일을 로드하며, 반환되는 <code class="language-plaintext highlighter-rouge">aiScene</code>의 포인터를 통해 파일에 대한 정보를 얻을 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">aiScene</code> : 모델의 메인 데이터 구조로, mesh, camera, lighting, animation 등 모든 정보를 포함하고 있다. aiScene은 모든 메쉬 데이터를 포함하는 <code class="language-plaintext highlighter-rouge">mMeshes</code>, 전체 노드 구조를 나타내는 <code class="language-plaintext highlighter-rouge">mRootNode</code> 등의 멤버를 가진다.</li>
+      <li><code class="language-plaintext highlighter-rouge">aiMesh</code> : aiScene 내에 포함된 각 메쉬 데이터를 나타내는 클래스. 메쉬는 기본적으로 정점, 인덱스, 법선, UV 좌표 등의 데이터를 포함한다. 메쉬마다 다른 버텍스, 인덱스, 텍스처 좌표 등이 포함될 수 있으며, <code class="language-plaintext highlighter-rouge">mVertices</code>, <code class="language-plaintext highlighter-rouge">mFaces</code>, <code class="language-plaintext highlighter-rouge">mNormals</code>, <code class="language-plaintext highlighter-rouge">mTextureCoords</code> 등의 멤버로 각 정보를 접근할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">aiNode</code> : 장면을 계층적으로 구성하기 위해 사용되는 클래스. FBX 파일은 일반적으로 계층 구조를 가지기 때문에, 이 구조를 재현하는 데 중요한 역할을 한다. aiNode는 트리 구조로 구성되어 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">[DevLog] What The Golf 모작 개발일지 #08</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf08/" rel="alternate" type="text/html" title="[DevLog] What The Golf 모작 개발일지 #08" /><published>2024-11-12T00:00:00+09:00</published><updated>2024-11-12T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf08</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf08/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
 
 <p>2024/11/12</p>
 
@@ -345,238 +629,4 @@
   <li><code class="language-plaintext highlighter-rouge">WINAPI</code> : 매크로로 정의되어 있으며, 실제로는 <code class="language-plaintext highlighter-rouge">__stdcall</code>이라는 호출 규약을 의미한다. __stdcall은 매개변수를 오른쪽에서 왼쪽으로 스택에 push하고, 함수가 반환될 때 호출자가 아니라 함수가 스택을 정리하는 방식이다. 윈도우 API 함수들은 이 규약을 따르기 때문에, 윈도우 API 함수와의 일관성을 유지하기 위해 프로그래머가 작성하는 콜백 함수에도 <code class="language-plaintext highlighter-rouge">WINAPI</code>를 사용하는 경우가 많다.</li>
 </ul>
 
-<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">\[DevLog\] What The Golf 모작 개발일지 \#02</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf02/" rel="alternate" type="text/html" title="\[DevLog\] What The Golf 모작 개발일지 \#02" /><published>2024-10-23T00:00:00+09:00</published><updated>2024-10-23T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf02</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf02/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
-
-<p>2024/10/23</p>
-
-<hr />
-
-<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
-
-<p>DirectX 초기화</p>
-
-<hr />
-
-<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
-
-<ul>
-  <li>dirverType 설정</li>
-  <li>device, context, swapChain 생성</li>
-  <li>viewport, rasterizer description 설정</li>
-</ul>
-
-<hr />
-
-<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">LNK2019 unresolved external symbol D3D11CreateDevice</code> : 헤더 파일은 포함했지만 Direct3D 11 라이브러리가 링커에 제대로 연결되지 않았기 때문에 에러 발생. D3D11CreateDevice 함수는 d3d11.lib라는 라이브러리 파일에 정의되어 있다. 이를 링커에 추가해줘야 한다.
-    <ol>
-      <li>Project &gt; MyWhatTheGolf Properties &gt; Linker &gt; Input</li>
-      <li>Additional Dependencies에 <code class="language-plaintext highlighter-rouge">d3d11.lib</code> 추가</li>
-    </ol>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
-
-<ul>
-  <li>DirectX 초기화하기</li>
-  <li>화면에 삼각형 렌더링하기</li>
-</ul>
-
-<hr />
-
-<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
-
-<ul>
-  <li>강의를 열심히 들어놔서 초반은 무난하게 진행되고 있다.</li>
-</ul>
-
-<hr />
-
-<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">device</code> : GPU에 접근하고, DirectX 리소스(버퍼, 셰이더, 텍스처 등)를 생성하는 데 필요한 객체이다. 하드웨어와 관련된 작업을 설정하고, 이러한 리소스를 관리한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">deviceContext</code> : 그래픽 파이프라인의 상태를 설정하고, 렌더링 명령을 실행하는 데 사용된다. 즉, device가 생성한 리소스를 이용해 실제로 GPU에서 작업을 실행하는 역할을 한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">COM</code> : Component Object Model. 마이크로소프트가 개발한 소프트웨어 기술로, 다양한 언어와 플랫폼 간의 재사용 가능한 객체를 만든다. 주로 Windows 시스템에서 소프트웨어 모듈 간의 통신을 담당하며, DirectX, Windows의 많은 API에서 핵심적인 기술로 사용된다. COM이 사용된 객체는 접두어 I를 붙이는 것이 관례이다. 예로 ID3D11Device가 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">COM</code>의 주요 개념과 특징
-    <ol>
-      <li>객체 지향 프로그래밍 모델
-        <ul>
-          <li>객체 지향을 기반으로 하며, 객체 간의 캡슐화와 상호 운용성을 지원한다. 이를 통해 다양한 애플리케이션이나 라이브러리가 독립적으로 개발된 객체들을 사용할 수 있다. COM 객체는 인터페이스를 통해 서로 상호작용한다. 이는 COM이 객체와 상호작용하는 유일한 방법이다.</li>
-        </ul>
-      </li>
-      <li>언어와 플랫폼 간의 상호 운용성
-        <ul>
-          <li>COM은 여러 프로그래밍 언어(C, C++ 등)로 개발된 모듈들이 서로 호환될 수 있도록 설계되었다. 이를 위해 바이너리 수준에서 상호작용하며, 각기 다른 언어로 작성된 프로그램들이 함께 사용될 수 있다.</li>
-        </ul>
-      </li>
-      <li>인터페이스 기반 설계
-        <ul>
-          <li>COM은 인터페이스 기반 설계되었으며, 객체는 직접 사용되지 않고 인터페이스를 통해 사용된다.</li>
-          <li>인터페이스는 그 객체가 제공하는 기능의 집합을 나타내며, 구현에서 독립적이다. 즉, 클라이언트는 객체의 내부 구현을 알 필요 없이, 해당 인터페이스만 알면 객체를 사용할 수 있다.</li>
-          <li>모든 COM 객체는 기본적으로 IUnknown 인터페이스를 구현해야 하며, 이를 통해 참조 카운트 및 인터페이스 쿼리를 관리한다.</li>
-        </ul>
-      </li>
-      <li>참조 카운팅과 메모리 관리
-        <ul>
-          <li>COM은 참조 카운팅을 통해 메모리 관리를 자동화한다. 각 COM 객체는 자신을 참조하는 클라이언트의 수를 관리하며, 더 이상 참조하는 클라이언트가 없을 때 자동으로 메모리를 해제한다.</li>
-        </ul>
-      </li>
-    </ol>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">ComPtr</code> : DirectX와 같은 COM 기반 API에서 자주 사용되는 스마트 포인터로, Microsoft의 Windows Runtime C++ Template Library(WRL)에 포함되어 있다. ComPtr은 COM 객체의 참조 카운트 관리와 메모리 관리를 자동화하는 데 사용된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">ComPtr</code>의 주요 특징과 기능
-    <ol>
-      <li>참조 카운트 관리 자동화
-        <ul>
-          <li>COM 객체는 IUnknown::AddRef()와 IUnknown::Release()를 통해 참조 카운트를 관리한다. ComPtr을 사용하면 직접 AddRef나 Release를 호출할 필요 없이, 객체의 생명 주기를 자동으로 관리한다. 따라서 메모리 누수가 발생할 위험이 없다(스마트 포인터 기능).</li>
-        </ul>
-      </li>
-      <li>메서드 호출을 위한 포인터 자동 변환
-        <ul>
-          <li>ComPtr은 내부적으로 관리하는 실제 포인터를 제공하는 <code class="language-plaintext highlighter-rouge">operator-&gt;()</code>와 <code class="language-plaintext highlighter-rouge">opreator*()</code>를 오버로딩하여, 일반 포인터처럼 COM 객체의 메서드를 호출할 수 있게 해준다.</li>
-        </ul>
-      </li>
-    </ol>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">RenderTargetView</code> : RTV는 DirectX 11에서 렌더링할 때 화면에 출력할 수 있는 버퍼를 관리하는 중요한 개념이다. “GPU가 렌더링한 결과물을 출력할 대상”을 정의하는 인터페이스로, 주로 back buffer나 텍스처 같은 리소스에 그려진 데이터를 화면에 표시하거나 다른 후처리 단계에서 사용할 수 있게 해준다. DirectX에서 모든 렌더링은 특정 대상에 그려지며, 그 대상이 바로 render target이다. 일반적으로 render target은 swap chain의 back buffer이거나, 특정 texture2D일 수 있다. 즉 render target은 화면에 렌더링하거나 중간 결과물인 텍스처에 렌더링 하기 위해 사용될 수 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Depth-Stencil Buffer</code> : 3D 그래픽스에서 렌더 타겟과 함께 사용하는 것이 depth-stencil buffer이다. 이는 픽셀의 깊이 정보를 저장하여, 깊이에 따른 가려짐 효과를 구현한다. 일반적으로 렌더 타겟과 스텐실 버퍼는 함께 바인딩된다.</li>
-</ul>
-
-<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">\[DevLog\] What The Golf 모작 개발일지 \#01</title><link href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf01/" rel="alternate" type="text/html" title="\[DevLog\] What The Golf 모작 개발일지 \#01" /><published>2024-10-22T00:00:00+09:00</published><updated>2024-10-22T00:00:00+09:00</updated><id>http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf01</id><content type="html" xml:base="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf01/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
-
-<p>2024/10/22</p>
-
-<hr />
-
-<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
-
-<p>window 창 띄우기</p>
-
-<hr />
-
-<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
-
-<p>window 창 띄우기 성공</p>
-
-<hr />
-
-<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
-
-<hr />
-
-<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
-
-<p>DirectX 초기화하기</p>
-
-<hr />
-
-<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
-
-<ul>
-  <li>Windows 운영 체제의 동작 방식과 용어들이 생소하다. 틈틈이 보면서 익숙해져야겠다.</li>
-  <li>HINSTANCE가 처음엔 PID인줄 알았는데 약간 다른 것 같다.</li>
-</ul>
-
-<hr />
-
-<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">WNDPROC</code> : “Window Procedure”의 약자로, 윈도우 창과 관련된 이벤트 메시지(입력, 윈도우 크기 조정, 페인팅 등)를 처리하는 콜백 함수. 운영체제가 다양한 메시지를 해당 창의 프로시저로 보내면, 프로시저는 그 메시지를 해석하여 적절한 동작을 수행한다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">PID vs HINSTANCE</code>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">PID</code> : 각각의 실행 중인 프로세스에게 운영 체제가 배정하는 고유한 ID. 특정 프로세스를 관리하거나 추적하기 위해 사용된다(시그널, 종료, 모니터링 등).</li>
-      <li><code class="language-plaintext highlighter-rouge">HINSTANCE</code> : Handle to an Instance. 애플리케이션의 현재 인스턴스에 대한 핸들을 의미하며, 실행되고 있는 코드가 적재된 메모리 주소를 가리킨다. 애플리케이션이 실행되면 운영체제는 instance handle을 제공한다. 이 핸들을 통해 애플리케이션의 resource(아이콘, 창 등)들을 관리할 수 있다.</li>
-    </ul>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">Handle</code> : Windows에서 handle은 운영체제에 의해 관리되는 resource 또는 object에 대한 abstract reference이다. 고유한 식별자로서, system resource의 자세한 구현을 몰라도 프로그램이 다양한 system resource와 상호작용할 수 있게 해준다. HINSTANCE, HWND 등이 있다.</p>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">SOLID 원칙</code>
-    <ul>
-      <li>S : Single Responsibility Principle, 하나의 클래스는 하나의 책임만 가져야 한다.</li>
-      <li>O : Open/Closed Principle, 소프트웨어의 구성 요소는 확장에는 열려 있고, 수정에는 닫혀 있어야 한다.</li>
-      <li>L : Liskov Subsitution Principle, 자식 클래스는 부모 클래스에서 정의한 기능을 모두 충족해야 하며, 부모 클래스로 대체가능해야 한다.</li>
-      <li>I : Interface Segregation Principle, 클라이언트가 필요하지 않은 기능에 의존하지 않도록 인터페이스를 작고 구체적으로 나눠야 한다.</li>
-      <li>D : Dependency Inversion Principle, 구체적인 클래스에 의존하는 것이 아니라, 인터페이스나 추상 클래스에 의존함으로써 유연성을 높여야 한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry><entry><title type="html">\[Graphics\] Shader(셰이더)란?</title><link href="http://localhost:4000/graphics/Shader/" rel="alternate" type="text/html" title="\[Graphics\] Shader(셰이더)란?" /><published>2024-07-16T00:00:00+09:00</published><updated>2024-07-16T00:00:00+09:00</updated><id>http://localhost:4000/graphics/Shader</id><content type="html" xml:base="http://localhost:4000/graphics/Shader/"><![CDATA[<p><br /></p>
-<h1 id="0-shader란">0. Shader란?</h1>
-<p><br />
-컴퓨터 그래픽스 분야에서 <code class="language-plaintext highlighter-rouge">Shader</code>는 주로 GPU에서 렌더링 효과를 계산하는 데 사용되는 프로그램을 말한다.</p>
-
-<p>우리의 모니터에 어떤 3D 모델을 띄운다고 하자. 이 3D 모델은 여러개의 삼각형으로 구성되어 있다. 이 모델을 렌더링하기 위해 각 삼각형의 꼭짓점(vertex)들을 원하는 위치로 이동, 회전한 후 그 위치에서의 빛의 세기, 각도 등을 계산한다. 이런 과정등을 통해 화면에서 각 픽셀의 색을 결정한 후 우리 화면에 렌더링한다. 이러한 그래픽스 파이프라인에서 각각의 계산을 수행하는 프로그램들을 Shader라고 한다.</p>
-
-<p>아래는 Direct3D의 그래픽 파이프라인이다. Shader를 거치며 최종적인 픽셀의 색을 결정하는 과정을 확인할 수 있다. 가장 일반적으로 사용되는 Shader는 <code class="language-plaintext highlighter-rouge">Vertex Shader</code>와 <code class="language-plaintext highlighter-rouge">Pixel Shader</code>다.</p>
-
-<p><img src="https://github.com/user-attachments/assets/9ab9a459-a062-4d78-a9c0-2ef8b1fb37b9" alt="image" /></p>
-
-<p><a href="https://learn.microsoft.com/ko-kr/windows/uwp/graphics-concepts/graphics-pipeline">이미지 출처</a>
-<br /></p>
-<h1 id="1-vertex-shader">1. Vertex Shader</h1>
-<p><br />
-위에서는 vertex를 삼각형의 꼭짓점으로만 설명했지만, 실제로는 위치를 나타내는 x, y, z값 뿐만 아니라 색상(r, g, b), 텍스쳐, 조명 정보 등이 될 수도 있다.</p>
-
-<p>Vertex Shader는 3D 모델의 각 vertex를 처리한다. 모델의 정점 데이터를 입력받아 이동, 변환, 꼭짓점 별 조명 등의 작업을 수행한 후 출력한다. 단, 기존의 정점을 지우거나 새로운 정점을 추가하는 등의 작업은 할 수 없다.</p>
-
-<p><br /></p>
-<h1 id="2-pixel-shader">2. Pixel Shader</h1>
-<p><br />
-Pixel Shader는 렌더링 될 각 픽셀들의 색을 계산한다. 텍스쳐로부터 색을 읽어오거나, 빛을 적용하는 것, bump mapping, 그림자, 반사광, 투명처리 등의 기능을 수행한다.</p>
-
-<p>이 Shader는 각각의 픽셀들이 렌더링될 때마다 수행되기 때문에, 다른 픽셀들과 아무런 연관이 없다. 따라서 주변의 픽셀이나 그리는 도형에 대한 정보를 알 수 없기 때문에 스스로 매우 복잡한 효과를 만들어 낼 수는 없다.</p>
-
-<p>Z-Buffer(z축 깊이 정보를 담은 버퍼)를 사용하기도 한다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Graphics" /><category term="Shader" /><category term="Graphics" /><summary type="html"><![CDATA[Shader를 알아보자.]]></summary></entry><entry><title type="html">\[C++\] 클래스의 복사를 막는 방법</title><link href="http://localhost:4000/cpp/PreventCopyingClass.md/" rel="alternate" type="text/html" title="\[C++\] 클래스의 복사를 막는 방법" /><published>2024-07-11T00:00:00+09:00</published><updated>2024-07-11T00:00:00+09:00</updated><id>http://localhost:4000/cpp/PreventCopyingClass.md</id><content type="html" xml:base="http://localhost:4000/cpp/PreventCopyingClass.md/"><![CDATA[<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TempClass</span> <span class="p">{};</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">TempClass</span> <span class="n">a</span><span class="p">;</span>
-	<span class="n">TempClass</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// copy constructor</span>
-	<span class="n">TempClass</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// copy assignment operator</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">copy constructor</code>와 <code class="language-plaintext highlighter-rouge">copy assignment operator</code>가 선언되어있지 않은 클래스 <code class="language-plaintext highlighter-rouge">TempClass</code>가 있다. main문에서 TempClass의 copy constructor와 copy assignment operator를 호출하고 있기 때문에, 컴파일러는 이를 알아서 정의해 버린다. 따라서 구현하지 않는다고 해서 클래스의 복사를 막을 수는 없다. 그렇다면 어떻게 복사를 막을까?</p>
-
-<p>이들을 private으로 정의하는 방법을 먼저 떠올릴 수 있을 것이다. 클래스 밖에서 TempClass를 복사하려고 할 때 private으로 되어 있으면 호출이 불가능하다. 그러나 여전히 클래스의 멤버 함수나 friend 함수가 호출할 수 있는 위험이 있다. 이런 위험까지 방지하려면 private에 선언만 해놓으면 된다.</p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TempClass</span>
-<span class="p">{</span>
-	<span class="nl">private:</span>
-		<span class="n">TempClass</span><span class="p">(</span><span class="k">const</span> <span class="n">TempClass</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
-		<span class="n">TempClass</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">TempClass</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div></div>
-
-<p>copy constructor와 copy assignment operator가 선언이 되어 있기 때문에 컴파일러가 이들을 생성하지는 않지만, 구현부가 없기 때문에 링크 과정에서 에러가 발생할 것이다.</p>
-
-<p class="notice--primary">🔔 <strong>링크 과정에서 에러가 발생하는 이유</strong><br />
-컴파일러는 코드를 어셈블리어로 바꿔주는 역할을 한다. 이 때, 컴파일러가 굳이 다른 소스 파일의 구현까지 자세히 알 필요는 없기 때문에 컴파일 과정에서는 문제가 발생하지 않는다. 하지만 object file들을 연결하며 하나의 프로그램을 만드는 링크 과정에서는 실제의 동작을 알아야 하기 때문에 구현이 없는 경우 에러가 발생한다.</p>
-
-<p>에러 시점을 링크 과정이 아닌 컴파일 과정으로 앞당기고 싶다면 부모 클래스를 활용해야 한다.</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Uncopyable</span>
-<span class="p">{</span>
-	<span class="nl">protected:</span>
-		<span class="n">Uncopyable</span><span class="p">()</span> <span class="p">{}</span>
-		<span class="o">~</span><span class="n">Uncopyable</span><span class="p">()</span> <span class="p">{}</span>
-
-	<span class="k">private</span><span class="o">:</span>
-		<span class="n">Uncopyable</span><span class="p">(</span><span class="k">const</span> <span class="n">Uncopyable</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
-		<span class="n">Uncopyable</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Uncopyable</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="k">class</span> <span class="nc">TempClass</span> <span class="o">:</span> <span class="k">private</span> <span class="n">Uncopyable</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
-</code></pre></div></div>
-
-<p>위 코드에서 Uncopyable 클래스를 TempClass에서 상속 받는다. copy constructor, copy assignment operator가 없는 TempClass에 대해 컴파일러가 이들을 생성할 때, 부모 클래스의 것들과 호환이 되도록 생성하려고 할 것이다. 하지만 부모클래스에서 이들이 private으로 선언되어 있기 때문에 TempClass에서는 접근할 방법이 없고, 결국 컴파일러가 에러를 뱉게 된다.</p>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="Cpp" /><category term="Cpp" /><summary type="html"><![CDATA[컴파일러가 자동으로 생성하는 복사 생성자, 복사 할당 연산자를 제한하는 방법을 알아보자]]></summary></entry></feed>
+<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="MyWhatTheGolf" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[What The Golf 모작 개발일지]]></summary></entry></feed>

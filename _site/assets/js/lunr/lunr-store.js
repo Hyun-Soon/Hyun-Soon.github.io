@@ -130,4 +130,28 @@ var store = [{
         "tags": ["개발일지","directX","WinAPI"],
         "url": "/devlog/mywhatthegolf/MyWhatTheGolf08/",
         "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #09",
+        "excerpt":"1. 날짜 (Date) 2024/11/13 2. 작업 목표 (Daily Goals) 3D Asset 렌더링 3. 진행 사항 (Progress) 프로그램은 실행되나, 제대로 렌더링 되지 않음 Index 문제인 것으로 생각됨 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Unity Asset Store에서 Import한 에셋들이 분홍색을 띄며 제대로 보이지 않음 Unity를 최신 버전으로 업데이트해서 해결 Assimp::Importer로...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf09/",
+        "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #10",
+        "excerpt":"1. 날짜 (Date) 2024/11/14 2. 작업 목표 (Daily Goals) 3D Asset Rendering 3. 진행 사항 (Progress) 3D Asset 단색으로 Rendering 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Assimp import 후, hlsl 파일만 수정하고 빌드 시 에러 발생 cpp 파일 아무거나 의미없는 수정 후 다시 빌드 Assimp와 같은 외부...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf10/",
+        "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #11",
+        "excerpt":"1. 날짜 (Date) 2024/11/15 2. 작업 목표 (Daily Goals) 코드 정리 3. 진행 사항 (Progress) Rigidbody를 컴포넌트로 구현하는 것을 고민 중 Object 클래스 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 없음 5. 다음 단계 (Next Steps) 코드 정리 6. 회고 (Reflection) Object를 상속받아서 Cylinder, Cube 등의 클래스를...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf11.md/",
+        "teaser": null
+      },{
+        "title": "[DevLog] What The Golf 모작 개발일지 #12",
+        "excerpt":"1. 날짜 (Date) 2024/11/21 2. 작업 목표 (Daily Goals) 주요 클래스 구현 3. 진행 사항 (Progress) Object 클래스 구현 shader에서 사용하는 구조체 ShaderData.h에 분리 DirectXManager::Render() 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) DirectXManager::Render()에서 VertexConstantBuffer 업데이트하기 6. 회고 (Reflection) 환절기 알레르기 미치겠다. DirectXManager의...","categories": ["DevLog","MyWhatTheGolf"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/mywhatthegolf/MyWhatTheGolf12/",
+        "teaser": null
       }]

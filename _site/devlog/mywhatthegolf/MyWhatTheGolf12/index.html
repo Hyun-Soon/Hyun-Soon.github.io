@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Etc] Markdown 사용법 - Hyuim’s blog</title>
-<meta name="description" content="Markdown 사용법을 알아보자.">
+<!-- begin _includes/seo.html --><title>[DevLog] What The Golf 모작 개발일지 #12 - Hyuim’s blog</title>
+<meta name="description" content="What The Golf 모작 개발일지">
 
 
   <meta name="author" content="Hyunsoon Im">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hyuim's blog">
-<meta property="og:title" content="[Etc] Markdown 사용법">
-<meta property="og:url" content="http://localhost:4000/etc/Markdown/">
+<meta property="og:title" content="[DevLog] What The Golf 모작 개발일지 #12">
+<meta property="og:url" content="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf12/">
 
 
-  <meta property="og:description" content="Markdown 사용법을 알아보자.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2023-10-18T00:00:00+09:00">
+  <meta property="og:description" content="What The Golf 모작 개발일지">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2024-11-21T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/etc/Markdown/">
+
+<link rel="canonical" href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf12/">
 
 
 
@@ -491,476 +491,19 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Etc] Markdown 사용법">
-    <meta itemprop="description" content="Markdown 사용법을 알아보자.">
-    <meta itemprop="datePublished" content="2023-10-18T00:00:00+09:00">
+    <meta itemprop="headline" content="[DevLog] What The Golf 모작 개발일지 #12">
+    <meta itemprop="description" content="What The Golf 모작 개발일지">
+    <meta itemprop="datePublished" content="2024-11-21T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/etc/Markdown/" class="u-url" itemprop="url">[Etc] Markdown 사용법
+            <a href="http://localhost:4000/devlog/mywhatthegolf/MyWhatTheGolf12/" class="u-url" itemprop="url">[DevLog] What The Golf 모작 개발일지 #12
 </a>
           </h1>
           
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-10-18T00:00:00+09:00">October 18, 2023</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-        <h1 id="0-들어가며">0. 들어가며</h1>
-<hr />
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Github를 구경하다 보면 .md 파일을 자주 만나게 된다.  
-이런 파일들은 Markdown 문법으로 작성된 파일이다.  
-본 게시글도 Markdown으로 작성되었다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="1-markdown이란">1. Markdown이란?</h1>
-<hr />
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Markdown은 일반 텍스트 기반의 경량 마크업 언어이다.
-마크업 언어란 태그 등을 이용해 문서나 데이터의 구조 등을 명시하는 언어를 말한다.
-Markdown은 일반 텍스트로 서식이 있는 문서를 작성하는 데 사용되며,
-일반 마크업 언어에 비해 문법이 쉽고 간단한 것이 특징이다.
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<h1 id="2-markdown-문법">2. Markdown 문법</h1>
-<hr />
-
-<h2 id="2-1-제목header">2-1. 제목(Header)</h2>
-<hr />
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	# 제목 1
-	## 제목 2
-	### 제목 3
-	#### 제목 4
-	##### 제목 5
-	###### 제목 6
-</code></pre></div></div>
-<p><br /></p>
-
-<h1 id="제목-1">제목 1</h1>
-<h2 id="제목-2">제목 2</h2>
-<h3 id="제목-3">제목 3</h3>
-<h4 id="제목-4">제목 4</h4>
-<h5 id="제목-5">제목 5</h5>
-<h6 id="제목-6">제목 6</h6>
-
-<p><br /></p>
-<h2 id="2-2-강조emphasis">2-2. 강조(Emphasis)</h2>
-<hr />
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>이텔릭체는 <span class="ge">*별표(asterisks)*</span> 또는 _언더바(underscore)_를 사용한다.
-볼드체는 <span class="gs">**별표(asterisks)**</span> 또는 __언더바(underscore)__를 사용한다.
-이텔릭체와 볼드체는 혼용 가능하다. <span class="gs">**_예를 들면_**</span> 또는 __<span class="ge">*이렇게*__</span>
-취소선은 ~~물결표시(tilde)~~를 사용한다.
-밑줄은 <span class="nt">&lt;u&gt;</span>abc<span class="nt">&lt;/u&gt;</span>를 사용한다.
-</code></pre></div></div>
-<p><br /></p>
-
-<p>이텔릭체는 <em>별표(asterisks)</em> 또는 _언더바(underscore)_를 사용한다.<br />
-볼드체는 <strong>별표(asterisks)</strong> 또는 <strong>언더바(underscore)__를 사용한다.<br />
-이텔릭체와 볼드체는 혼용 가능하다. **<em>예를 들면</em>** 또는 __<em>이렇게</em></strong><br />
-취소선은 <del>물결표시(tilde)</del>를 사용한다.<br />
-밑줄은 <u>abc</u>를 사용한다.</p>
-
-<p><br /></p>
-<h2 id="2-3-목록lists">2-3. 목록(Lists)</h2>
-<hr />
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">	1.</span> first
-<span class="p">	2.</span> second
-<span class="p">		-</span> second.first
-<span class="p">		-</span> second.second
-<span class="p">	3.</span> third<span class="sb">
-
-	1. first
-		- dash
-		* asterisks
-		+ plus
-
-	- dash
-	* asterisks
-	+ plus
-</span></code></pre></div></div>
-
-<p><br /></p>
-
-<ol>
-  <li>first</li>
-  <li>second
-    <ul>
-      <li>second.first</li>
-      <li>second.second</li>
-    </ul>
-  </li>
-  <li>
-    <p>third</p>
-  </li>
-  <li>first
-    <ul>
-      <li>dash</li>
-      <li>asterisks</li>
-      <li>plus</li>
-    </ul>
-  </li>
-</ol>
-
-<ul>
-  <li>dash</li>
-  <li>asterisks</li>
-  <li>plus</li>
-</ul>
-
-<p><br /></p>
-<h2 id="2-4-링크links">2-4. 링크(Links)</h2>
-<hr />
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">GOOGLE</span><span class="p">](</span><span class="sx">https://google.com</span><span class="p">)</span>
-
-<span class="p">[</span><span class="nv">Naver</span><span class="p">](</span><span class="sx">https://naver.com</span> <span class="nn">"링크 설명"</span><span class="p">)</span>  
-
-<span class="p">[</span><span class="nv">상대적 참조</span><span class="p">](</span><span class="sx">../users/hyuim</span><span class="p">)</span>
-
-<span class="p">[</span><span class="nv">Hyuim's Blog</span><span class="p">][</span><span class="ss">My Blog Link</span><span class="p">]</span>
-
-문서 안에서 [참조 링크]를 사용할 수도 있다.
-
-아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.
-구글 홈페이지 : https://google.com
-네이버 홈페이지 : <span class="nv">&lt;https://naver.com&gt;</span>
-
-<span class="p">[</span><span class="ss">참조 링크</span><span class="p">]:</span> <span class="sx">https://google.com</span> <span class="nn">"구글로 이동하기"</span>
-<span class="p">[</span><span class="ss">Hyuim's Blog</span><span class="p">]:</span> <span class="sx">https://hyun-soon.github.io/</span>
-</code></pre></div></div>
-<p><br /></p>
-
-<p><a href="https://google.com">GOOGLE</a></p>
-
-<p><a href="https://naver.com" title="링크 설명">Naver</a></p>
-
-<p><a href="../users/hyuim">상대적 참조</a></p>
-
-<p>[Hyuim’s Blog][My Blog Link]</p>
-
-<p>문서 안에서 <a href="https://google.com" title="구글로 이동하기">참조 링크</a>를 사용할 수도 있다.</p>
-
-<p>아래와 같이 일반 URL이나 꺾쇠 안의 URL은 자동으로 링크로 인식한다.</p>
-
-<p>구글 홈페이지 : https://google.com</p>
-
-<p>네이버 홈페이지 : <a href="https://naver.com">https://naver.com</a></p>
-
-<p><br /></p>
-<h2 id="2-5-이미지images">2-5. 이미지(Images)</h2>
-<hr />
-<p>링크와 비슷하지만 <u>앞에 ! 가 붙는다</u>.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![image name](https://cdn.pixabay.com/photo/2019/12/22/17/13/french-bulldog-4713013_1280.jpg)
-</code></pre></div></div>
-<p><br /></p>
-
-<p><img src="https://cdn.pixabay.com/photo/2019/12/22/17/13/french-bulldog-4713013_1280.jpg" alt="image name" /></p>
-
-<p><br /></p>
-<h2 id="2-6-코드블록code-block">2-6. 코드블록(Code block)</h2>
-<hr />
-<p>코드를 <strong>```</strong>로 감싼다.<br />
-<strong>```</strong> 옆에 언어 종류를 적어주면 해당 언어의 문법에 따라 강조 효과를 줄 수 있다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	```c++
-		#include &lt;iostream&gt;
-	
-		using namespace std;
-	
-		int main()
-		{
-			cout &lt;&lt; "abc\n";
-			return (0);
-		}
-	```
-</code></pre></div></div>
-<p><br /></p>
-
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span>
-	<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-	<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"abc</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
-		<span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-	<span class="p">}</span>
-</code></pre></div></div>
-
-<p><br /></p>
-<h2 id="2-7-표table">2-7. 표(Table)</h2>
-<hr />
-<p>헤더 셀을 구분할 때 3개 이상의 <code class="language-plaintext highlighter-rouge">-</code> 가 필요하다.<br />
-헤더 셀을 구분하면서 <code class="language-plaintext highlighter-rouge">:</code> 으로 열을 나눌 수 있다.<br />
-가장 좌측과 우측에 있는 <code class="language-plaintext highlighter-rouge">|</code> 는 생략 가능하다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Col1 | Col2 | Col3 |
-| --- |: --- |: --- |
-| a | b | c |
-| d | e | f |
-| g | h | i |
-
-Col1 | Col2 | Col3
---- |: --- |: ---
-a | b | c
-d | e | f
-g | h | i
-</code></pre></div></div>
-<p><br /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Col1</th>
-      <th>Col2</th>
-      <th>Col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-    </tr>
-    <tr>
-      <td>d</td>
-      <td>e</td>
-      <td>f</td>
-    </tr>
-    <tr>
-      <td>g</td>
-      <td>h</td>
-      <td>i</td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>Col1</th>
-      <th>Col2</th>
-      <th>Col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-    </tr>
-    <tr>
-      <td>d</td>
-      <td>e</td>
-      <td>f</td>
-    </tr>
-    <tr>
-      <td>g</td>
-      <td>h</td>
-      <td>i</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br /></p>
-<h2 id="2-8-인용문block-quote">2-8. 인용문(Block Quote)</h2>
-<hr />
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인용문 예시
-&gt; 이렇게 인용문을 사용할 수 있습니다.
-
-중첩된 인용문
-&gt; 중첩된 인용문도
-&gt;&gt; 이렇게 하면
-&gt;&gt; 사용할 수
-&gt;&gt;&gt; 있습니다.
-&gt;&gt;&gt; example1
-&gt;&gt;&gt; example2
-&gt;&gt;&gt; example3
-</code></pre></div></div>
-<p><br /></p>
-
-<p>인용문 예시</p>
-
-<blockquote>
-  <p>이렇게 인용문을 사용할 수 있습니다.</p>
-</blockquote>
-
-<p>중첩된 인용문</p>
-
-<blockquote>
-  <p>중첩된 인용문도</p>
-  <blockquote>
-    <p>이렇게 하면
-사용할 수</p>
-    <blockquote>
-      <p>있습니다.<br />
-example1<br />
-example2<br />
-example3</p>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
-<p><br /></p>
-<h2 id="2-9-수평선horizontal-rule">2-9. 수평선(Horizontal Rule)</h2>
-<hr />
-<p>다음의 기호들을 3개씩 사용하면 수평선을 만들 수 있다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-(Hyphens)
-
-***
-(Asterisks)
-
-___
-(Underscores)
-</code></pre></div></div>
-<p><br /></p>
-
-<hr />
-<p>(Hyphens)</p>
-
-<hr />
-<p>(Asterisks)</p>
-
-<hr />
-<p>(Underscores)</p>
-
-<p><br /></p>
-<h2 id="2-10-줄바꿈line-breaks">2-10. 줄바꿈(Line Breaks)</h2>
-<hr />
-<p>일반 줄바꿈이 동작하지 않는다면, 2번의 띄어쓰기를 줄바꿈으로 사용할 수 있다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가나다라  &lt;!--2칸의 공백--&gt;
-마바사
-</code></pre></div></div>
-<p><br /></p>
-
-<p>가나다라  <!--2칸의 공백--><br />
-마바사</p>
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#etc" class="page__taxonomy-item p-category" rel="tag">Etc</a><span class="sep">, </span>
-    
-      <a href="/tags/#markdown" class="page__taxonomy-item p-category" rel="tag">Markdown</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#etc" class="page__taxonomy-item p-category" rel="tag">Etc</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-10-18T00:00:00+09:00">October 18, 2023</time></p>
-
-      </footer>
-
-      <!-- <section class="page__share">
-  
-    <h4 class="page__share-title">Share on</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=%5C%5BEtc%5C%5D+Markdown+%EC%82%AC%EC%9A%A9%EB%B2%95%20http%3A%2F%2Flocalhost%3A4000%2Fetc%2FMarkdown%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fetc%2FMarkdown%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fetc%2FMarkdown%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
- -->
-      
-      
-
-      
-  <nav class="pagination">
-    
-      <a href="#" class="pagination--pager disabled">Previous</a>
-    
-    
-      <a href="/42seoul/Libft/" class="pagination--pager" title="[42Seoul] Libft
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">You may also enjoy</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/devlog/mywhatthegolf/MyWhatTheGolf12/" rel="permalink">[DevLog] What The Golf 모작 개발일지 #12
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -978,11 +521,195 @@ ___
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">What The Golf 모작 개발일지
-</p>
-  </article>
-</div>
+        </header>
+      
 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-날짜-date">1. 날짜 (Date)</a></li><li><a href="#2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</a></li><li><a href="#3-진행-사항-progress">3. 진행 사항 (Progress)</a></li><li><a href="#4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</a></li><li><a href="#5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</a></li><li><a href="#6-회고-reflection">6. 회고 (Reflection)</a></li><li><a href="#7-메모-notes">7. 메모 (Notes)</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+
+<p>2024/11/21</p>
+
+<hr />
+
+<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
+
+<p>주요 클래스 구현</p>
+
+<hr />
+
+<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
+
+<p>Object 클래스 구현
+shader에서 사용하는 구조체 ShaderData.h에 분리
+DirectXManager::Render() 구현 중</p>
+
+<hr />
+
+<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
+
+<hr />
+
+<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
+
+<p>DirectXManager::Render()에서 VertexConstantBuffer 업데이트하기</p>
+
+<hr />
+
+<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
+
+<p>환절기 알레르기 미치겠다.</p>
+
+<p>DirectXManager의 device에서 리소스를 만들 때, Object 클래스의 많은 정보들을 getter로 받아서 사용하고 있다. getter가 너무 많은데, 좀 더 깔끔한 방법이 없을까?
+CreateBuffer의 경우, ComPtr::GetAddressOf()를 CreateBuffer 함수 인자 전달하는 곳에서 실행하면 잘 동작하는데, GetAddressOf를 다른 곳에서 실행 후 결과를 받아서 전달하면 호환이 안된다. 그래서 ComPtr&lt;ID3D11Buffer&gt;를 레퍼런스로 받아서 GetAddressOf를 실행하고 있는데, 이렇게 하면 getter에서 const를 붙일 수 없기 때문에 안전하지 않아 보인다.</p>
+
+<p>VertexConstantBuffer 생성을 최대한 안하고 싶어서 DirectXManager에 하나만 만들어놓고, 각 Object가 같은 형식의 ConstantData를 이 버퍼에 업데이트 후 사용하려고 했다. 그런데 물체들은 대부분 안움직이는 경우가 많으로, 각각의 Object가 VertexConstantBuffer를 가지고 있으면 GPU에 데이터를 업데이트할 필요 없이 그대로 사용하면 된다. 글을 쓰다 보니 이게 더 효율적인 것 같다. 오브젝트가 많은 게임도 아니니 이렇게 구현해야겠다.</p>
+
+<hr />
+
+<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">D3D11_SUBRESOURCE_DATA</code>의 pSysMem에 ConstantBuffer에서 필요한 구조체 변수의 주소를 넘겨주고, <code class="language-plaintext highlighter-rouge">D3D11_BUFFER_DESC</code>에서 구조체의 크기를 넘겨줬는데, 왜 CreateBuffer() 실행 후 바로 Map/Unmap을 통해 데이터를 또 넘겨주는지 이해를 못했다.
+    <ul>
+      <li>Map/Unmap을 하지 않아도 처음 CreateBuffer()를 실행했을 때 구조체의 데이터가 GPU에 전달되어 있다. Map/Unmap은 버퍼 데이터를 업데이트할 때 사용하면 된다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">클래스 멤버 초기화</code> vs <code class="language-plaintext highlighter-rouge">생성자 초기화 리스트</code>
+    <ol>
+      <li>멤버 초기화 방식
+        <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">MyClass</span>
+ <span class="p">{</span>
+     <span class="n">DirectX</span><span class="o">::</span><span class="n">SimpleMath</span><span class="o">::</span><span class="n">Vector3</span> <span class="n">mPosWorld</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">};</span>
+ <span class="p">};</span>
+
+</code></pre></div>        </div>
+        <ul>
+          <li>멤버의 기본값이 모든 생성자에서 동일할 때</li>
+          <li>코드의 가독성을 높이고 싶을 때</li>
+        </ul>
+      </li>
+      <li>생성자 초기화 리스트
+        <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">MyClass</span>
+ <span class="p">{</span>
+ <span class="nl">public:</span>
+     <span class="n">MyClass</span><span class="p">()</span> <span class="o">:</span> <span class="n">mPosWorld</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{}</span>
+ <span class="p">};</span>
+
+</code></pre></div>        </div>
+        <ul>
+          <li>생성자마다 다른 기본값을 사용하고 싶을 때</li>
+          <li>멤버 변수에 <code class="language-plaintext highlighter-rouge">const</code> 또는 <code class="language-plaintext highlighter-rouge">reference</code>가 있을 때</li>
+          <li>복잡한 초기화 로직이 필요할 때</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">MACRO</code> vs <code class="language-plaintext highlighter-rouge">using</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">\#define</code>은 전처리기에 의해 단순히 텍스트 치환되므로 빠르고 간단하다. 하지만 컴파일러가 타입 체크를 수행하지 못하므로, 잘못된 타입 전달이 런타임 에러를 유발할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">using</code>은 실제 타입을 컴파일러가 이해하므로 타입 체크를 수행하여 안전하다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Blob</code> : DirectX에서 데이터를 저장하거나 관리하는 데 사용하는 인터페이스 객체이다. 주로 쉐이더 코드 컴파일 결과(바이트코드)를 저장하는 용도로 사용된다.</li>
+</ul>
+
+<hr />
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#directx" class="page__taxonomy-item p-category" rel="tag">directX</a><span class="sep">, </span>
+    
+      <a href="/tags/#winapi" class="page__taxonomy-item p-category" rel="tag">WinAPI</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80" class="page__taxonomy-item p-category" rel="tag">개발일지</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#devlog" class="page__taxonomy-item p-category" rel="tag">DevLog</a><span class="sep">, </span>
+    
+      <a href="/categories/#mywhatthegolf" class="page__taxonomy-item p-category" rel="tag">MyWhatTheGolf</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-11-21T00:00:00+09:00">November 21, 2024</time></p>
+
+      </footer>
+
+      <!-- <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDevLog%5D+What+The+Golf+%EB%AA%A8%EC%9E%91+%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80+%2312%20http%3A%2F%2Flocalhost%3A4000%2Fdevlog%2Fmywhatthegolf%2FMyWhatTheGolf12%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevlog%2Fmywhatthegolf%2FMyWhatTheGolf12%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevlog%2Fmywhatthegolf%2FMyWhatTheGolf12%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ -->
+      
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/devlog/mywhatthegolf/MyWhatTheGolf11.md/" class="pagination--pager" title="[DevLog] What The Golf 모작 개발일지 #11
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -1080,6 +807,43 @@ ___
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
         <time datetime="2024-11-13T00:00:00+09:00">November 13, 2024</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">What The Golf 모작 개발일지
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/devlog/mywhatthegolf/MyWhatTheGolf08/" rel="permalink">[DevLog] What The Golf 모작 개발일지 #08
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-11-12T00:00:00+09:00">November 12, 2024</time>
       </span>
     
 

@@ -64,7 +64,7 @@ VertexConstantBuffer 생성을 최대한 안하고 싶어서 DirectXManager에 �
 		    DirectX::SimpleMath::Vector3 mPosWorld = { 0.0f, 0.0f, 0.0f };
 		};
 
-```
+		```
 		- 멤버의 기본값이 모든 생성자에서 동일할 때
 		- 코드의 가독성을 높이고 싶을 때
 
@@ -76,7 +76,7 @@ VertexConstantBuffer 생성을 최대한 안하고 싶어서 DirectXManager에 �
 		    MyClass() : mPosWorld(0.0f, 0.0f, 0.0f) {}
 		};
 
-```
+		```
 		- 생성자마다 다른 기본값을 사용하고 싶을 때
 		- 멤버 변수에 `const` 또는 `reference`가 있을 때
 		- 복잡한 초기화 로직이 필요할 때
