@@ -73,7 +73,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "7e54dccbf528ddbd",
@@ -156,6 +157,7 @@
   },
   "active": "c20c0adc7204a1a7",
   "lastOpenFiles": [
+    "My What The Golf 개발일지 13.md",
     "My What The Golf 개발일지 12.md",
     "My What The Golf 개발일지 01.md",
     "My What The Golf 개발일지 11.md",
@@ -192,7 +194,6 @@
     "Makefile.md",
     "Pasted image 20240701164052.png",
     "Libft.md",
-    "08.OSI 모델.md",
     "Pasted image 20240701164654.png",
     "Pasted image 20231130143847.png"
   ]
