@@ -1,6 +1,6 @@
 ---
-title: "[DevLog] What The Golf 모작 개발일지 #05"
-excerpt: What The Golf 모작 개발일지
+title: "[DevLog] Game Engine 개발일지 #05"
+excerpt: Game Engine 개발일지
 categories:
   - DevLog
   - MyWhatTheGolf
