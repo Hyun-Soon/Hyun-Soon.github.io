@@ -1,9 +1,10 @@
 ---
-title: "[DevLog] What The Golf 모작 개발일지 #01"
-excerpt: What The Golf 모작 개발일지
+title: "[DevLog] Game Engine 개발일지 #14"
+excerpt: Game Engine 개발일지
 categories:
   - DevLog
-  - MyWhatTheGolf
+  - GameEngine
+  - DirectX11
 tags:
   - 개발일지
   - directX
@@ -11,7 +12,7 @@ tags:
 ---
 ## 1. 날짜 (Date)
 
-2024/11/11
+2024/12/31
 
 ---
 
@@ -29,7 +30,8 @@ window 창 띄우기 성공
 
 ## 4. 문제점 및 해결 방법 (Challenges & Solutions)
 
-
+- `context->IASetVertexBuffers(0, 1, mesh->vertexBuffer.GetAddressOf(), &mesh->stride, 0);` : 마지막 인자가 pointer라서 의미가 없으면 nullptr을 넣으면 될 줄 알았는데, offset값이라 0이 들어있는 변수 포인터를 넣어줘야 한다.
+- vertex shader에서 view 행렬을 안곱해줬다..
 ---
 
 ## 5. 다음 단계 (Next Steps)
