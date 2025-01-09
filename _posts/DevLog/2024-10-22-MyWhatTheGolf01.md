@@ -3,7 +3,8 @@ title: \[DevLog\] Game Engine 개발일지 \#01
 excerpt: Game Engine 개발일지
 categories:
   - DevLog
-  - MyWhatTheGolf
+  - GameEngine
+  - DirectX11
 tags:
   - 개발일지
   - directX
