@@ -19,7 +19,7 @@ tags:
 
 ## 2. 작업 목표 (Daily Goals)
 
-LuckySevne 구현
+LuckySevne 구현
 
 ---
 
