@@ -11,14 +11,10 @@
             "id": "da6f472d9d9e841f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Maplestory 모작 개발일지 01.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Maplestory 모작 개발일지 01"
+              "title": "새 탭"
             }
           }
         ]
@@ -160,8 +156,8 @@
   },
   "active": "da6f472d9d9e841f",
   "lastOpenFiles": [
+    "Maplestory 모작 개발일지 05.md",
     "Maplestory 모작 개발일지 04.md",
-    "Maplestory 모작 개발일지 01.md",
     "Maplestory 모작 개발일지 03.md",
     "Maplestory 모작 개발일지 02.md",
     "Game Engine 개발일지 14.md",
