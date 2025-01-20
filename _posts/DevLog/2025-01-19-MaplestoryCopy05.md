@@ -1,6 +1,6 @@
 ---
-title: "[DevLog] Maplestory 개발일지 #05"
-excerpt: Maplestory 개발일지
+title: "[DevLog] Maplestory 모작 개발일지 #05"
+excerpt: Maplestory 모작 개발일지
 categories:
   - DevLog
   - GameEngine
