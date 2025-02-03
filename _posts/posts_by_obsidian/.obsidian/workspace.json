@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Maplestory 모작 개발일지 01.md",
+                "file": "ft_printf.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Maplestory 모작 개발일지 01"
+              "title": "ft_printf"
             }
           }
         ]
@@ -160,8 +160,11 @@
   },
   "active": "6fb4d9148acaa815",
   "lastOpenFiles": [
-    "Maplestory 모작 개발일지 11.md",
+    "유한 상태 머신(FSM, Finite State Machine).md",
+    "ft_printf.md",
+    "C++ 클래스의 복사를 막는 방법.md",
     "Maplestory 모작 개발일지 01.md",
+    "Maplestory 모작 개발일지 11.md",
     "Maplestory 모작 개발일지 10.md",
     "Maplestory 모작 개발일지 09.md",
     "Maplestory 모작 개발일지 08.md",
@@ -188,10 +191,7 @@
     "My What The Golf 개발일지 13.md",
     "My What The Golf 개발일지 12.md",
     "My What The Golf 개발일지 11.md",
-    "My What The Golf 개발일지 10.md",
-    "My What The Golf 개발일지 09.md",
     "Screenshot 2024-11-13 at 9.03.17 PM.png",
-    "My What The Golf 개발일지 08.md",
     "Pasted image 20240710162100.png",
     "Pasted image 20240710155622.png",
     "temp.pdf",

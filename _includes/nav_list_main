@@ -60,6 +60,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "GameProgrammingTechnique" %}
+                        <li><a style="font-size: 16px"; href="/GameProgrammingTechnique" class="">게임 프로그래밍 기법 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Graphics" %}
                         <li><a style="font-size: 16px"; href="/Graphics" class="">Graphics ({{category[1].size}})</a></li>
                     {% endif %}
