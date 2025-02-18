@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "cf1c08a650d06b5b",
+        "id": "87ef18bd7ffe2854",
         "type": "tabs",
         "children": [
           {
-            "id": "6fb4d9148acaa815",
+            "id": "0e57a0d864807ed1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ft_printf.md",
+                "file": "Maplestory 모작 개발일지 01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ft_printf"
+              "title": "Maplestory 모작 개발일지 01"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -150,29 +151,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
+      "switcher:빠른 전환기 열기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "6fb4d9148acaa815",
+  "active": "0e57a0d864807ed1",
   "lastOpenFiles": [
+    "Maplestory 모작 개발일지 13.md",
+    "Maplestory 모작 개발일지 01.md",
+    "Game Engine 개발일지 01.md",
+    "ft_printf.md",
     "Game Engine 개발일지 12.md",
     "teadsf.md",
-    "ft_printf.md",
     "유한 상태 머신(FSM, Finite State Machine).md",
     "C++ 클래스의 복사를 막는 방법.md",
-    "Maplestory 모작 개발일지 01.md",
     "Maplestory 모작 개발일지 11.md",
     "Maplestory 모작 개발일지 10.md",
     "Maplestory 모작 개발일지 09.md",
     "Maplestory 모작 개발일지 08.md",
     "Maplestory 모작 개발일지 07.md",
     "Maplestory 모작 개발일지 06.md",
-    "Game Engine 개발일지 01.md",
     "2025-01-19-MaplestoryCopy05.md",
     "Game Engine 개발일지 06.md",
     "무제 파일.md",
@@ -190,7 +192,6 @@
     "Push Swap 병합정렬 가이드.md",
     "무제 파일.canvas",
     "Win32.md",
-    "My What The Golf 개발일지 13.md",
     "Screenshot 2024-11-13 at 9.03.17 PM.png",
     "Pasted image 20240710162100.png",
     "Pasted image 20240710155622.png",
