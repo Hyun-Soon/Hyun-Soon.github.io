@@ -11,14 +11,12 @@
             "id": "0e57a0d864807ed1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Maplestory 모작 개발일지 01.md",
-                "mode": "source",
-                "source": false
+                "file": "Pasted image 20250220160628.png"
               },
-              "icon": "lucide-file",
-              "title": "Maplestory 모작 개발일지 01"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250220160628"
             }
           }
         ]
@@ -161,11 +159,13 @@
   },
   "active": "0e57a0d864807ed1",
   "lastOpenFiles": [
-    "Maplestory 모작 개발일지 14.md",
     "Pasted image 20250220160837.png",
     "Pasted image 20250220160701.png",
     "Pasted image 20250220160628.png",
+    "Pasted image 20250103162021.png",
+    "Pasted image 20240710155622.png",
     "Maplestory 모작 개발일지 01.md",
+    "Maplestory 모작 개발일지 14.md",
     "Maplestory 모작 개발일지 13.md",
     "Game Engine 개발일지 01.md",
     "ft_printf.md",
@@ -189,14 +189,12 @@
     "Game Engine 개발일지 14.md",
     "DirectX3D/Structured Buffer.md",
     "Animation assimp로 parsing하기.md",
-    "Pasted image 20250103162021.png",
     "Pasted image 20250103160353.png",
     "Pasted image 20250103155008.png",
     "DirectX3D",
     "무제 파일.canvas",
     "Screenshot 2024-11-13 at 9.03.17 PM.png",
     "Pasted image 20240710162100.png",
-    "Pasted image 20240710155622.png",
     "temp.pdf",
     "Effective C++ 01.pdf",
     "Newton-Raphson_Method3.png"

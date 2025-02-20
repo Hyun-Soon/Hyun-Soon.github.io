@@ -56,16 +56,16 @@ extern hs::Application app;
 
 각각의 경우에 대해, dumpbin으로 심볼을 확인해 봤다.
 - Case 1
-![[Pasted image 20250220160628.png]]
+<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/273c267a-250f-47d0-81cc-560e4c9d8677" />
 
 - Case 2
-![[Pasted image 20250220160701.png]]
+<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/7502a871-3b12-465d-ae90-8c0baf26f567" />
 
 - HyunsoonEngine의 심볼
-![[Pasted image 20250220160837.png]]
+<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/948ef195-49d4-41bf-81d6-28f8337245cf" />
 
 에러가 발생한 Case 1의 심볼을 보면, `?app@hs@@3VApplication@1@A`로 Case 2 및 HyunsoonEngine에서의 심볼과 다른 것을 확인할 수 있다. 이로 인해 링커 에러가 발생했다.
-다른 컴파일러에서도 hs::app처럼 변수명 앞에도 네임스페이스를 붙이나?
+다른 컴파일러에서도 Case1의 경우에, hs::app처럼 변수명 앞에도 네임스페이스를 붙이나?
 
 ---
 
