@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "87ef18bd7ffe2854",
+        "id": "c616bd1b5c3574ba",
         "type": "tabs",
         "children": [
           {
-            "id": "0e57a0d864807ed1",
+            "id": "d332ae8d32767153",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20250220160628.png"
+                "file": "Maplestory 모작 개발일지 01.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250220160628"
+              "icon": "lucide-file",
+              "title": "Maplestory 모작 개발일지 01"
             }
           }
         ]
@@ -157,17 +159,19 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "0e57a0d864807ed1",
+  "active": "d332ae8d32767153",
   "lastOpenFiles": [
-    "Pasted image 20250220160837.png",
-    "Pasted image 20250220160701.png",
-    "Pasted image 20250220160628.png",
-    "Pasted image 20250103162021.png",
-    "Pasted image 20240710155622.png",
+    "Maplestory 모작 개발일지 15.md",
     "Maplestory 모작 개발일지 01.md",
+    "Game Engine 개발일지 01.md",
+    "Game Engine 개발일지 01 1.md",
+    "Pasted image 20250103162021.png",
+    "Pasted image 20250220160701.png",
+    "Pasted image 20250220160837.png",
+    "Pasted image 20250220160628.png",
+    "Pasted image 20240710155622.png",
     "Maplestory 모작 개발일지 14.md",
     "Maplestory 모작 개발일지 13.md",
-    "Game Engine 개발일지 01.md",
     "ft_printf.md",
     "Game Engine 개발일지 12.md",
     "teadsf.md",
@@ -188,7 +192,6 @@
     "Maplestory 모작 개발일지 02.md",
     "Game Engine 개발일지 14.md",
     "DirectX3D/Structured Buffer.md",
-    "Animation assimp로 parsing하기.md",
     "Pasted image 20250103160353.png",
     "Pasted image 20250103155008.png",
     "DirectX3D",
