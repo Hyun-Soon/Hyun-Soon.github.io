@@ -84,80 +84,182 @@ var store = [{
         "teaser": null
       },{
         "title": "\\[DevLog\\] Game Engine 개발일지 \\#01",
-        "excerpt":"1. 날짜 (Date) 2024/10/22 2. 작업 목표 (Daily Goals) window 창 띄우기 3. 진행 사항 (Progress) window 창 띄우기 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) DirectX 초기화하기 6. 회고 (Reflection) Windows 운영 체제의 동작 방식과 용어들이 생소하다. 틈틈이 보면서 익숙해져야겠다. HINSTANCE가 처음엔...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/10/22 2. 작업 목표 (Daily Goals) window 창 띄우기 3. 진행 사항 (Progress) window 창 띄우기 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) DirectX 초기화하기 6. 회고 (Reflection) Windows 운영 체제의 동작 방식과 용어들이 생소하다. 틈틈이 보면서 익숙해져야겠다. HINSTANCE가 처음엔...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf01/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf01/",
         "teaser": null
       },{
         "title": "\\[DevLog\\] Game Engine 개발일지 \\#02",
-        "excerpt":"1. 날짜 (Date) 2024/10/23 2. 작업 목표 (Daily Goals) DirectX 초기화 3. 진행 사항 (Progress) dirverType 설정 device, context, swapChain 생성 viewport, rasterizer description 설정 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) LNK2019 unresolved external symbol D3D11CreateDevice : 헤더 파일은 포함했지만 Direct3D 11 라이브러리가 링커에 제대로 연결되지 않았기 때문에...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/10/23 2. 작업 목표 (Daily Goals) DirectX 초기화 3. 진행 사항 (Progress) dirverType 설정 device, context, swapChain 생성 viewport, rasterizer description 설정 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) LNK2019 unresolved external symbol D3D11CreateDevice : 헤더 파일은 포함했지만 Direct3D 11 라이브러리가 링커에 제대로 연결되지 않았기 때문에...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf02/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf02/",
         "teaser": null
       },{
         "title": "\\[DevLog\\] Game Engine 개발일지 \\#03",
-        "excerpt":"1. 날짜 (Date) 2024/10/24 2. 작업 목표 (Daily Goals) DirectX 초기화하기 Window, DirectX 초기화 코드 클래스로 분할하기 3. 진행 사항 (Progress) 코드 분할 진행 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Error LNK2019 unresolved external symbol _main referenced in function \"int __cdecl invoke_main(void)\" (?invoke_main@@YAHXZ) : main 함수를 wWinMain...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/10/24 2. 작업 목표 (Daily Goals) DirectX 초기화하기 Window, DirectX 초기화 코드 클래스로 분할하기 3. 진행 사항 (Progress) 코드 분할 진행 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Error LNK2019 unresolved external symbol _main referenced in function \"int __cdecl invoke_main(void)\" (?invoke_main@@YAHXZ) : main 함수를 wWinMain...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf03/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf03/",
         "teaser": null
       },{
         "title": "\\[DevLog\\] Game Engine 개발일지 \\#04",
-        "excerpt":"1. 날짜 (Date) 2024/10/25 2. 작업 목표 (Daily Goals) window, directx 클래스 분할 3. 진행 사항 (Progress) 임시로 클래스 분할 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) directx로 게임을 처음 만들어봐서 그림이 잘 안그려진다. 진행하면서 수시로 리팩토링 해야 할 듯 5. 다음 단계 (Next Steps) 삼각형 렌더링 6. 회고...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/10/25 2. 작업 목표 (Daily Goals) window, directx 클래스 분할 3. 진행 사항 (Progress) 임시로 클래스 분할 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) directx로 게임을 처음 만들어봐서 그림이 잘 안그려진다. 진행하면서 수시로 리팩토링 해야 할 듯 5. 다음 단계 (Next Steps) 삼각형 렌더링 6. 회고...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf04/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf04/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #05",
-        "excerpt":"1. 날짜 (Date) 2024/10/29 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) Vertex Buffer, Index Buffer, 생성 Vertex Constant Buffer, Pixel Constant Buffer 생성 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) D3D11_INPUT_ELEMENT_DESC 설정 vertex shader, pixel shader 6. 회고 (Reflection) 확실히...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/10/29 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) Vertex Buffer, Index Buffer, 생성 Vertex Constant Buffer, Pixel Constant Buffer 생성 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) D3D11_INPUT_ELEMENT_DESC 설정 vertex shader, pixel shader 6. 회고 (Reflection) 확실히...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf05/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf05/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #06",
-        "excerpt":"1. 날짜 (Date) 2024/10/30 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) D3D11_INPUT_ELEMENT_DESC 생성 Vertex Shader 구현 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) Pixel Shader 구현 6. 회고 (Reflection) GPU 구조를 공부할 필요성을 느낀다. Shader 코드 짤 때, pipeline 흐름...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/10/30 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) D3D11_INPUT_ELEMENT_DESC 생성 Vertex Shader 구현 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) Pixel Shader 구현 6. 회고 (Reflection) GPU 구조를 공부할 필요성을 느낀다. Shader 코드 짤 때, pipeline 흐름...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf06/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf06/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #07",
-        "excerpt":"1. 날짜 (Date) 2024/11/11 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) 삼각형 렌더링 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) View 행렬을 단위 행렬로 설정 MVP에서 View Matrix를 DirectX::SimpleMath::Matrix() 기본 생성자로 넣어놨음. 단위행렬이라 변환에 영향이 없어서 잘 보일 줄 알았는데, 렌더링 되지 않음. CreateLookAt()...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/11 2. 작업 목표 (Daily Goals) 삼각형 렌더링 3. 진행 사항 (Progress) 삼각형 렌더링 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) View 행렬을 단위 행렬로 설정 MVP에서 View Matrix를 DirectX::SimpleMath::Matrix() 기본 생성자로 넣어놨음. 단위행렬이라 변환에 영향이 없어서 잘 보일 줄 알았는데, 렌더링 되지 않음. CreateLookAt()...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf07/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf07/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #08",
-        "excerpt":"1. 날짜 (Date) 2024/11/12 2. 작업 목표 (Daily Goals) Visual Studio Graphics Debugger 무한 로딩 원인 찾기 Viewport의 MinDepth, MaxDepth / XMMatrixPerspectiveFovLH의 nearZ, farZ 개념 정리하기 삼각형 렌더링 과정에서 겪었던 문제들 원인 찾기 3. 진행 사항 (Progress) 목표 해결 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Visual Studio Graphic...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/12 2. 작업 목표 (Daily Goals) Visual Studio Graphics Debugger 무한 로딩 원인 찾기 Viewport의 MinDepth, MaxDepth / XMMatrixPerspectiveFovLH의 nearZ, farZ 개념 정리하기 삼각형 렌더링 과정에서 겪었던 문제들 원인 찾기 3. 진행 사항 (Progress) 목표 해결 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Visual Studio Graphic...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf08/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf08/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #09",
-        "excerpt":"1. 날짜 (Date) 2024/11/13 2. 작업 목표 (Daily Goals) 3D Asset 렌더링 3. 진행 사항 (Progress) 프로그램은 실행되나, 제대로 렌더링 되지 않음 Index 문제인 것으로 생각됨 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Unity Asset Store에서 Import한 에셋들이 분홍색을 띄며 제대로 보이지 않음 Unity를 최신 버전으로 업데이트해서 해결 Assimp::Importer로...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/13 2. 작업 목표 (Daily Goals) 3D Asset 렌더링 3. 진행 사항 (Progress) 프로그램은 실행되나, 제대로 렌더링 되지 않음 Index 문제인 것으로 생각됨 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Unity Asset Store에서 Import한 에셋들이 분홍색을 띄며 제대로 보이지 않음 Unity를 최신 버전으로 업데이트해서 해결 Assimp::Importer로...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf09/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf09/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #10",
-        "excerpt":"1. 날짜 (Date) 2024/11/14 2. 작업 목표 (Daily Goals) 3D Asset Rendering 3. 진행 사항 (Progress) 3D Asset 단색으로 Rendering 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Assimp import 후, hlsl 파일만 수정하고 빌드 시 에러 발생 cpp 파일 아무거나 의미없는 수정 후 다시 빌드 Assimp와 같은 외부...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/14 2. 작업 목표 (Daily Goals) 3D Asset Rendering 3. 진행 사항 (Progress) 3D Asset 단색으로 Rendering 성공 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Assimp import 후, hlsl 파일만 수정하고 빌드 시 에러 발생 cpp 파일 아무거나 의미없는 수정 후 다시 빌드 Assimp와 같은 외부...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf10/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf10/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #11",
-        "excerpt":"1. 날짜 (Date) 2024/11/15 2. 작업 목표 (Daily Goals) 코드 정리 3. 진행 사항 (Progress) Rigidbody를 컴포넌트로 구현하는 것을 고민 중 Object 클래스 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 없음 5. 다음 단계 (Next Steps) 코드 정리 6. 회고 (Reflection) Object를 상속받아서 Cylinder, Cube 등의 클래스를...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/15 2. 작업 목표 (Daily Goals) 코드 정리 3. 진행 사항 (Progress) Rigidbody를 컴포넌트로 구현하는 것을 고민 중 Object 클래스 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 없음 5. 다음 단계 (Next Steps) 코드 정리 6. 회고 (Reflection) Object를 상속받아서 Cylinder, Cube 등의 클래스를...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf11.md/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf11/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #12",
-        "excerpt":"1. 날짜 (Date) 2024/11/21 2. 작업 목표 (Daily Goals) 주요 클래스 구현 3. 진행 사항 (Progress) Object 클래스 구현 shader에서 사용하는 구조체 ShaderData.h에 분리 DirectXManager::Render() 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) DirectXManager::Render()에서 VertexConstantBuffer 업데이트하기 6. 회고 (Reflection) 환절기 알레르기 미치겠다. DirectXManager의...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/21 2. 작업 목표 (Daily Goals) 주요 클래스 구현 3. 진행 사항 (Progress) Object 클래스 구현 shader에서 사용하는 구조체 ShaderData.h에 분리 DirectXManager::Render() 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) DirectXManager::Render()에서 VertexConstantBuffer 업데이트하기 6. 회고 (Reflection) 환절기 알레르기 미치겠다. DirectXManager의...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf12/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf12/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #13",
-        "excerpt":"1. 날짜 (Date) 2024/11/26 2. 작업 목표 (Daily Goals) 3D Object texture 입히기 3. 진행 사항 (Progress) 정확한 색이 입혀지지 않음 DirectXManager 내부 함수 분리 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) AMD 소프트웨어 에러 감지 VertexBuffer, IndexBuffer, VertexShader, PixelShader를 만들지 않고 swapChain-&gt;Present를 실행해서 발생 vcpkg install stb 했는데...","categories": ["DevLog","MyWhatTheGolf"],
+        "excerpt":"1. 날짜 (Date) 2024/11/26 2. 작업 목표 (Daily Goals) 3D Object texture 입히기 3. 진행 사항 (Progress) 정확한 색이 입혀지지 않음 DirectXManager 내부 함수 분리 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) AMD 소프트웨어 에러 감지 VertexBuffer, IndexBuffer, VertexShader, PixelShader를 만들지 않고 swapChain-&gt;Present를 실행해서 발생 vcpkg install stb 했는데...","categories": ["DevLog","GameEngine","DirectX11"],
         "tags": ["개발일지","directX","WinAPI"],
-        "url": "/devlog/mywhatthegolf/MyWhatTheGolf13/",
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf13/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Game Engine 개발일지 #14",
+        "excerpt":"1. 날짜 (Date) 2024/12/31 2. 작업 목표 (Daily Goals) 애니메이션 구현 3. 진행 사항 (Progress) 물체가 괴상하게 움직임 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) context-&gt;IASetVertexBuffers(0, 1, mesh-&gt;vertexBuffer.GetAddressOf(), &amp;mesh-&gt;stride, 0); : 마지막 인자가 pointer라서 의미가 없으면 nullptr을 넣으면 될 줄 알았는데, offset값이라 0이 들어있는 변수 포인터를 넣어줘야 한다. vertex...","categories": ["DevLog","GameEngine","DirectX11"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/gameengine/directx11/MyWhatTheGolf14/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #01",
+        "excerpt":"1. 날짜 (Date) 2025/01/09 2. 작업 목표 (Daily Goals) 플레이어 점프, 더블 점프 구현 3. 진행 사항 (Progress) Player, Monster, Npc 클래스 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 땅의 위치에 왔을 때, 검사하는 로직이 작동하지 않음. 부동 소수점 오차 때문에 발생. Pos.y == 600.0f 가 아닌,...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #02",
+        "excerpt":"1. 날짜 (Date) 2025/01/15 2. 작업 목표 (Daily Goals) Item, Skill 구현 3. 진행 사항 (Progress) LuckySeven 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 스킬 럭키세븐을 사용하려면 아이템 표창의 수를 확인해야 한다. 하지만 럭키세븐의 Cast() 함수 인자로 아이템을 넣어버리면 아이템을 받지 않는 스킬과 다형성 사용에서 문제가 생긴다....","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy02/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #03",
+        "excerpt":"1. 날짜 (Date) 2025/01/16 2. 작업 목표 (Daily Goals) LuckySevne 구현 3. 진행 사항 (Progress) 투사체 구현 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) 투사체 이어서 구현하기 6. 회고 (Reflection) LuckySeven에서 Monster-&gt;TakeDamage()를 실행해버리면 표창은 날라가고 있는데 몬스터가 데미지를 입는 상황이 발생한다. 추후 구현할...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy03/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #04",
+        "excerpt":"1. 날짜 (Date) 2025/01/17 2. 작업 목표 (Daily Goals) LuckySeven 구현 3. 진행 사항 (Progress) LuckySeven 구현 완료 Player가 스킬 호출하는 방법 고민 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) SkillManager 구현 6. 회고 (Reflection) Skill을 담은 vector를 플레이어에 멤버 변수로 놓고, 키...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy04/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #05",
+        "excerpt":"1. 날짜 (Date) 2025/01/19 2. 작업 목표 (Daily Goals) Component 구현 3. 진행 사항 (Progress) GameObject들이 Component를 사용하는 식으로 구조 변경 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) Transform 구현 6. 회고 (Reflection) 플레이어의 전직, 전직에 따른 스킬 등을 변경하는 과정에서 확장성을 생각했을...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy05/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #06",
+        "excerpt":"1. 날짜 (Date) 2025/01/20 2. 작업 목표 (Daily Goals) GameObject 및 자식 클래스를 Component 시스템으로 변경 3. 진행 사항 (Progress) Player 리팩토링 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 헤더 &lt;dinput.h&gt; 에서 사용하는 몇몇 타입에 대해서 identifier is undefined 에러가 발생했다. #include &lt;mmsystem.h&gt; #include &lt;dinput.h&gt; #pragma comment(lib, \"Msimg32.lib\")...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy06/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #07",
+        "excerpt":"1. 날짜 (Date) 2025/01/22 2. 작업 목표 (Daily Goals) Physics 구현 3. 진행 사항 (Progress) Player의 동작을 컴포넌트로 나누는 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) PlayerBehaviour가 Transform 컴포넌트 사용하게 바꾸기 6. 회고 (Reflection) 컴포넌트가 늘어날수록, Transform이나 Physics 같이 의존성이 복잡해지는 컴포넌트들이 생길...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy07/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #08",
+        "excerpt":"1. 날짜 (Date) 2025/01/27 2. 작업 목표 (Daily Goals) ObjectUtils, 디렉토리 정리 Gdiplus 오류 원인 찾기 3. 진행 사항 (Progress) 작업 목표 완료 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Gdi plus 라이브러리를 사용하여 이미지를 불러오는데, Gdiplus::Image::FromFile 함수가 자꾸 null을 리턴했다 -&gt; gdiplus 초기화 함수를 app.initialize() 이후에 실행해서 문제가...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy08/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #09",
+        "excerpt":"1. 날짜 (Date) 2025/01/28 2. 작업 목표 (Daily Goals) object::Instantiate()로 객체 생성하도록 리팩토링 3. 진행 사항 (Progress) 목표 완료 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Player를 static으로 선언해놔서, 생성자에서 initialize() 호출할 때 gdiplus가 초기화되어있지 않음. -&gt; 순서를 직접 조정하기 위해 static으로 구현했던 Player 싱글톤 패턴을 동적 할당으로 변경...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy09/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #10",
+        "excerpt":"1. 날짜 (Date) 2025/01/31 2. 작업 목표 (Daily Goals) Resource, Resources 클래스 구현 Texture 클래스 구현 3. 진행 사항 (Progress) 작업 목표 구현 완료 구조 리팩토링(엔진 코드와 게임 코드의 결합도 제거) 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) 리팩토링(엔진 코드와 게임 코드의 결합도...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy10/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #11",
+        "excerpt":"1. 날짜 (Date) 2025/02/02 2. 작업 목표 (Daily Goals) 구조 리팩토링(엔진 코드와 게임 코드의 결합도 제거) 3. 진행 사항 (Progress) 작업 목표 완료 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) AddGameObject 함수에서 접근하는 mActiveScene 포인터가 nullptr이었다. -&gt; SceneManager::CreateScene()에서 만든 씬을 바로 activeScene으로 설정하는 코드를 주석처리해서 문제 발생. 현재 AddGameObject()...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy11/",
+        "teaser": null
+      },{
+        "title": "유한 상태 머신(FSM, Finite State Machine)",
+        "excerpt":"1. 유한 상태 머신(FSM) 유한 상태 머신은 유한개의 상태를 정의하고, 조건에 따라 각 상태로 전이하며 객체의 상태 및 행동을 정의하는 프로그래밍 패턴이다. 2. 예시 대표적인 예시로 게임에서의 몬스터가 있다. 2-1. 상태(State) 정의 몬스터가 가질 수 있는 상태를 정의하면 다음과 같다: Idle (대기): 플레이어를 찾지 못한 상태 Patrol (순찰): 일정 경로를...","categories": ["FSM","Automata","DesignPattern"],
+        "tags": ["FSM","Automata","DesignPattern"],
+        "url": "/fsm/automata/designpattern/FSM/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Game Engine 개발일지 #12",
+        "excerpt":"1. 날짜 (Date) 2024/02/11 2. 작업 목표 (Daily Goals) Animation 클래스 구현하기 Camera 컴포넌트 구현하기 png, bmp 파일 투명하게 렌더링하기 필요한 리소스 정리 및 제작 3. 진행 사항 (Progress) Animation 클래스 구현 완료 Camera 컴포넌트 구현 완료 png, bmp 파일 투명하게 렌더링 완료 필요한 리소스 정리 및 제작 진행 중...","categories": ["DevLog","GameEngine","DirectX11"],
+        "tags": ["개발일지","directX","WinAPI"],
+        "url": "/devlog/gameengine/directx11/MaplestoryCopy12/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #13",
+        "excerpt":"1. 날짜 (Date) 2025/02/18 2. 작업 목표 (Daily Goals) Player 상태 및 애니메이션 구현 3. 진행 사항 (Progress) GameObject들이 Component를 사용하는 식으로 구조 변경 중 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) 5. 다음 단계 (Next Steps) Player 상태 및 애니메이션 구현 6. 회고 (Reflection) 방향키를 누를 때 마다...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy13/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #14",
+        "excerpt":"1. 날짜 (Date) 2025/02/19 2. 작업 목표 (Daily Goals) Player 상태 및 애니메이션 구현 Rigidbody 구현 3. 진행 사항 (Progress) 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) unresolved external symbol \"class hs::Application hs::app\" (?app@hs@@3VApplication@1@A) 링커 오류 발생 HyunsoonEngine.cpp에 아래와 같이 app을 선언했다. hs::Application app; 이후 다른 cpp 파일에서 app을...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy14/",
+        "teaser": null
+      },{
+        "title": "[DevLog] Maplestory 모작 개발일지 #15",
+        "excerpt":"1. 날짜 (Date) 2025/02/27 2. 작업 목표 (Daily Goals) 캐릭터 움직임 속도를 이용하도록 리팩토링 3. 진행 사항 (Progress) 캐릭터의 좌, 우 이동 속도가 다른 문제 해결 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Rigidbody::Velocity를 조작하여 캐릭터를 움직였을 때, 왼쪽으로는 빠르게, 오른쪽으로는 느리게 이동함 캐릭터를 화면 안으로 조정해주는 과정에서 std::clamp&lt;int&gt;를...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
+        "tags": ["개발일지","WinAPI","Maplestory"],
+        "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy15/",
         "teaser": null
       }]
