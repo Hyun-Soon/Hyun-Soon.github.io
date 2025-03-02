@@ -1,4 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-28T16:50:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">[DevLog] Maplestory 모작 개발일지 #15</title><link href="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy15/" rel="alternate" type="text/html" title="[DevLog] Maplestory 모작 개발일지 #15" /><published>2025-02-27T00:00:00+09:00</published><updated>2025-02-27T00:00:00+09:00</updated><id>http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy15</id><content type="html" xml:base="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy15/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-02T18:39:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyuim’s blog</title><subtitle>Hyuim&apos;s personal blog.</subtitle><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><entry><title type="html">\[OS\] 프로세스의 메모리 구조</title><link href="http://localhost:4000/os/MemoryStructure/" rel="alternate" type="text/html" title="\[OS\] 프로세스의 메모리 구조" /><published>2025-03-02T00:00:00+09:00</published><updated>2025-03-02T00:00:00+09:00</updated><id>http://localhost:4000/os/MemoryStructure</id><content type="html" xml:base="http://localhost:4000/os/MemoryStructure/"><![CDATA[<h2 id="1-메모리-구조">1. 메모리 구조</h2>
+
+<p>메모리는 아래의 4가지 구조로 구분된다.</p>
+<ol>
+  <li>코드 영역(Text Section) : 실행 코드 저장(읽기 전용)</li>
+  <li>데이터 영역(Data Section)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.data</code> : 초기화 된 전역 변수, 정적 변수 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">.bss</code> : 초기화되지 않은 전역 변수 저장</li>
+    </ul>
+  </li>
+  <li>힙 영역(Heap) : malloc, new 등을 통해 동적 할당</li>
+  <li>스택 영역(Stack) : 지역 변수, 함수 호출 프레임 저장</li>
+</ol>
+
+<p></p>
+<h2 id="2-stack과-heap">2. Stack과 Heap</h2>
+
+<p>일반적으로 프로세스가 사용할 수 있는 메모리 공간이 정해져 있고, 이 안에서 코드, 데이터, 힙, 스택 영역이 배치된다. x86_64 아키텍쳐 기준으로, 힙 영역은 낮은 주소에서 높은 주소로, 스택 영역은 높은 주소에서 낮은 주소로 성장하며 유동적으로 크기가 변한다.</p>
+
+<h3 id="2-1-stack">2-1. Stack</h3>
+
+<p>스택은 고정된 최대 크기를 가진다. 이를 초과 시, Stack Overflow가 발생한다.
+ 사용자가 설정하여 이 최대 크기를 바꿀 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Stack Frame</code> : 함수 단위로 관리되는 메모리 블록. 함수가 호출되면 아래의 방식으로 프레임이 생성된다.</li>
+  <li>스택 관련 레지스터
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ESP</code> : Extended Stack Pointer. 현재 스택의 최상단 주소를 가리키는 포인터. push, pop 연산이 수행될 때 자동으로 변환됨.</li>
+      <li><code class="language-plaintext highlighter-rouge">EBP</code> : Extended Base Pointer. 함수의 스택 프레임 시작 주소를 저장하는 포인터. 함수가 호출되면 현재 EBP 값을 저장하고, 새로운 스택 프레임을 설정.</li>
+    </ul>
+  </li>
+  <li>함수 호출 시 어셈블리 및 스택 프레임 변화
+    <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <pre><code class="language-assembly">push ebp        ; 이전 EBP 저장
+mov ebp, esp    ; 현재 ESP를 EBP로 설정 (새로운 스택 프레임 시작)
+sub esp, 8      ; 지역 변수 공간 할당 (8바이트)
+mov eax, [ebp+8]; 첫 번째 인자 값 로드
+mov ebx, [ebp+12]; 두 번째 인자 값 로드
+add eax, ebx    ; 두 값을 더함
+mov [ebp-4], eax; 결과를 지역 변수에 저장
+mov esp, ebp    ; 스택 포인터 복구
+pop ebp         ; 이전 EBP 복원
+ret             ; 리턴
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="2-2-heap">2-2. Heap</h3>
+
+<p>힙의 최대 크기는 OS 설정과 메모리 상황에 따라 달라진다.
+힙 할당 방식은 대표적으로 2가지가 있다.</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sbrk()</code> 방식 (전통적인 방식)
+ BSS(Data)영역 바로 위에서 성장하기 시작함. sbrk()를 사용하여 힙 영역을 늘릴 수 있지만, 스택과 충돌할 위험이 있다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">mmap()</code> 방식 (현대적인 방식)
+ 현대적인 OS에서는 mmap()을 활용하여 힙을 가변적으로 관리한다. 힙을 더 크게 할당해야 할 경우, 새로운 가상 메모리 페이지를 만들어 확장한다. 따라서 힙 크기는 이론상 물리적 메모리(RAM)과 가상 메모리 한도 내에서 커질 수 있다.</p>
+
+    <p>mmap()을 사용하면 힙을 유연하게 확장할 수 있지만, 다음과 같은 제한이 있다.</p>
+    <ol>
+      <li>프로세스의 가상 메모리 크기 제한</li>
+      <li>물리 메모리(RAM) 및 스왑 공간 크기</li>
+      <li>프로세스 당 열 수 있는 최대 메모리 매핑 개수</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="3-buffer-overflow메모리-주소를-활용한-해킹-기법">3. Buffer Overflow(메모리 주소를 활용한 해킹 기법)</h2>
+
+<p>메모리 주소를 활용하는 대표적인 방법으로 <code class="language-plaintext highlighter-rouge">Buffer Overflow</code>가 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">개념</code> : 프로그램이 버퍼(배열 등)에 데이터를 저장할 때, 크기를 초과하는 입력이 들어오면 인접한 메모리 영역을 덮어쓸 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">공격 방식</code> : 함수의 리턴 주소를 덮어써서 악성 코드가 실행되도록 유도, 또는 기존 변수 값을 변조하여 권한 상승 등의 공격 수행.</li>
+  <li><code class="language-plaintext highlighter-rouge">코드 예제</code></li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">vulnerableFunction</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">userInput</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>  <span class="c1">// 64바이트 크기의 버퍼</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">userInput</span><span class="p">);</span>  <span class="c1">// 크기 검사 없이 복사 (취약점)</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">userInput</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Enter input: "</span><span class="p">);</span>
+    <span class="n">gets</span><span class="p">(</span><span class="n">userInput</span><span class="p">);</span>  <span class="c1">// gets()는 길이 검사를 안 함 (보안 취약)</span>
+    <span class="n">vulnerableFunction</span><span class="p">(</span><span class="n">userInput</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">userInput</code>이 <strong>64바이트를 초과하면</strong> <code class="language-plaintext highlighter-rouge">buffer</code>의 경계를 넘어 <strong>리턴 주소를 덮어쓸 가능성이 있음</strong>.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">리턴 주소를 덮어쓰는 과정</code></li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 일반적인 스택 상태
+| [ 함수 매개변수 ] |
+| [ 리턴 주소 ]    |  &lt;-- 함수가 끝난 후 점프할 주소 (예: 0x08048456)
+| [ 저장된 EBP ]   |
+| [ 지역 변수 ]    |  &lt;-- 버퍼 (buffer[64])
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 악의적인 입력으로 리턴 주소 조작
+| [ 악성 페이로드 (NOP + 쉘코드) ] |
+| [ 새로운 리턴 주소 (0x08048500) ] |  &lt;-- 공격자가 설정한 주소
+| [ 저장된 EBP ]                  |
+| [ buffer[] ]                  |
+
+</code></pre></div></div>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="OS" /><category term="Memory" /><category term="OperatingSystem" /><category term="SystemProgramming" /><category term="OS" /><summary type="html"><![CDATA[프로세스의 메모리 구조에 대해 알아보자]]></summary></entry><entry><title type="html">[DevLog] Maplestory 모작 개발일지 #15</title><link href="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy15/" rel="alternate" type="text/html" title="[DevLog] Maplestory 모작 개발일지 #15" /><published>2025-02-27T00:00:00+09:00</published><updated>2025-02-27T00:00:00+09:00</updated><id>http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy15</id><content type="html" xml:base="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy15/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
 
 <p>2025/02/27</p>
 
@@ -208,7 +330,7 @@ FSM 구현하기</p>
 
 <h2 id="7-메모-notes">7. 메모 (Notes)</h2>
 
-<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="GameEngine" /><category term="DirectX11" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[Game Engine 개발일지]]></summary></entry><entry><title type="html">유한 상태 머신(FSM, Finite State Machine)</title><link href="http://localhost:4000/fsm/automata/designpattern/FSM/" rel="alternate" type="text/html" title="유한 상태 머신(FSM, Finite State Machine)" /><published>2025-02-03T00:00:00+09:00</published><updated>2025-02-03T00:00:00+09:00</updated><id>http://localhost:4000/fsm/automata/designpattern/FSM</id><content type="html" xml:base="http://localhost:4000/fsm/automata/designpattern/FSM/"><![CDATA[<h1 id="1-유한-상태-머신fsm">1. 유한 상태 머신(FSM)</h1>
+<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="GameEngine" /><category term="DirectX11" /><category term="개발일지" /><category term="directX" /><category term="WinAPI" /><summary type="html"><![CDATA[Game Engine 개발일지]]></summary></entry><entry><title type="html">\[Design Pattern\] 유한 상태 머신(FSM, Finite State Machine)</title><link href="http://localhost:4000/designpattern/FSM/" rel="alternate" type="text/html" title="\[Design Pattern\] 유한 상태 머신(FSM, Finite State Machine)" /><published>2025-02-03T00:00:00+09:00</published><updated>2025-02-03T00:00:00+09:00</updated><id>http://localhost:4000/designpattern/FSM</id><content type="html" xml:base="http://localhost:4000/designpattern/FSM/"><![CDATA[<h1 id="1-유한-상태-머신fsm">1. 유한 상태 머신(FSM)</h1>
 
 <p>유한 상태 머신은 유한개의 상태를 정의하고, 조건에 따라 각 상태로 전이하며 객체의 상태 및 행동을 정의하는 프로그래밍 패턴이다.</p>
 
@@ -285,9 +407,9 @@ FSM 구현하기</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
-
 </code></pre></div></div>
 
+<p><br /></p>
 <h1 id="3-장단점">3. 장단점</h1>
 
 <h4 id="3-1-장점">3-1. 장점</h4>
@@ -300,7 +422,7 @@ FSM 구현하기</p>
 <h4 id="3-2-단점">3-2. 단점</h4>
 <ul>
   <li>상태가 많아지면 분기가 많아지면서 코드가 복잡해질 수 있다.</li>
-</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="FSM" /><category term="Automata" /><category term="DesignPattern" /><category term="FSM" /><category term="Automata" /><category term="DesignPattern" /><summary type="html"><![CDATA[AI, UI, Animation 등에 사용되는 FSM을 알아보자.]]></summary></entry><entry><title type="html">[DevLog] Maplestory 모작 개발일지 #11</title><link href="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy11/" rel="alternate" type="text/html" title="[DevLog] Maplestory 모작 개발일지 #11" /><published>2025-02-02T00:00:00+09:00</published><updated>2025-02-02T00:00:00+09:00</updated><id>http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy11</id><content type="html" xml:base="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy11/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
+</ul>]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DesignPattern" /><category term="FSM" /><category term="Automata" /><category term="DesignPattern" /><summary type="html"><![CDATA[AI, UI, Animation 등에 사용되는 FSM을 알아보자.]]></summary></entry><entry><title type="html">[DevLog] Maplestory 모작 개발일지 #11</title><link href="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy11/" rel="alternate" type="text/html" title="[DevLog] Maplestory 모작 개발일지 #11" /><published>2025-02-02T00:00:00+09:00</published><updated>2025-02-02T00:00:00+09:00</updated><id>http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy11</id><content type="html" xml:base="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy11/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
 
 <p>2025/02/02</p>
 
@@ -553,41 +675,5 @@ Gdiplus 오류 원인 찾기</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">template&lt;typename T, typename std::enable_if&lt;std::is_base_of&lt;Component, T&gt;::value, int&gt;::type = 0&gt;</code> : 이를 이용해 컴파일 타임에 <code class="language-plaintext highlighter-rouge">T</code>가 <code class="language-plaintext highlighter-rouge">Component</code>를 상속받은 타입인지 확인할 수 있다. 이 조건이 만족되지 않으면 컴파일 에러가 발생한다.</li>
 </ul>
-
-<hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="GameEngine" /><category term="WinAPI" /><category term="Maplestory" /><category term="개발일지" /><category term="WinAPI" /><category term="Maplestory" /><summary type="html"><![CDATA[Maplestory 모작 개발일지]]></summary></entry><entry><title type="html">[DevLog] Maplestory 모작 개발일지 #07</title><link href="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy07/" rel="alternate" type="text/html" title="[DevLog] Maplestory 모작 개발일지 #07" /><published>2025-01-22T00:00:00+09:00</published><updated>2025-01-22T00:00:00+09:00</updated><id>http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy07</id><content type="html" xml:base="http://localhost:4000/devlog/gameengine/winapi/maplestory/MaplestoryCopy07/"><![CDATA[<h2 id="1-날짜-date">1. 날짜 (Date)</h2>
-
-<p>2025/01/22</p>
-
-<hr />
-
-<h2 id="2-작업-목표-daily-goals">2. 작업 목표 (Daily Goals)</h2>
-
-<p>Physics 구현</p>
-
-<hr />
-
-<h2 id="3-진행-사항-progress">3. 진행 사항 (Progress)</h2>
-
-<p>Player의 동작을 컴포넌트로 나누는 중</p>
-
-<hr />
-
-<h2 id="4-문제점-및-해결-방법-challenges--solutions">4. 문제점 및 해결 방법 (Challenges &amp; Solutions)</h2>
-
-<hr />
-
-<h2 id="5-다음-단계-next-steps">5. 다음 단계 (Next Steps)</h2>
-
-<p>PlayerBehaviour가 Transform 컴포넌트 사용하게 바꾸기</p>
-
-<hr />
-
-<h2 id="6-회고-reflection">6. 회고 (Reflection)</h2>
-
-<p>컴포넌트가 늘어날수록, Transform이나 Physics 같이 의존성이 복잡해지는 컴포넌트들이 생길 것이다. 컴포넌트의 업데이트 순서도 중요해질텐데 어떻게 순서를 강제할 수 있을까?</p>
-
-<hr />
-
-<h2 id="7-메모-notes">7. 메모 (Notes)</h2>
 
 <hr />]]></content><author><name>Hyunsoon Im</name><email>s7514036@naver.com</email></author><category term="DevLog" /><category term="GameEngine" /><category term="WinAPI" /><category term="Maplestory" /><category term="개발일지" /><category term="WinAPI" /><category term="Maplestory" /><summary type="html"><![CDATA[Maplestory 모작 개발일지]]></summary></entry></feed>

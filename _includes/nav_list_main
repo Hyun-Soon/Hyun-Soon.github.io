@@ -46,6 +46,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "OS" %}
+                        <li><a style="font-size: 16px"; href="/OS" class="">OS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "numerical-analysis" %}
                         <li><a style="font-size: 16px"; href="/numerical-analysis" class="">수치해석 ({{category[1].size}})</a></li>
                     {% endif %}
@@ -60,8 +67,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "GameProgrammingTechnique" %}
-                        <li><a style="font-size: 16px"; href="/GameProgrammingTechnique" class="">게임 프로그래밍 기법 ({{category[1].size}})</a></li>
+                    {% if category[0] == "DesignPattern" %}
+                        <li><a style="font-size: 16px"; href="/DesignPattern" class="">DesignPattern ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

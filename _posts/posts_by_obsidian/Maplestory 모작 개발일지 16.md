@@ -40,7 +40,6 @@ tags:
 ## 5. 다음 단계 (Next Steps)
 
 
-
 ---
 
 ## 6. 회고 (Reflection)

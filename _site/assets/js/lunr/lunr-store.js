@@ -233,10 +233,10 @@ var store = [{
         "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy11/",
         "teaser": null
       },{
-        "title": "유한 상태 머신(FSM, Finite State Machine)",
-        "excerpt":"1. 유한 상태 머신(FSM) 유한 상태 머신은 유한개의 상태를 정의하고, 조건에 따라 각 상태로 전이하며 객체의 상태 및 행동을 정의하는 프로그래밍 패턴이다. 2. 예시 대표적인 예시로 게임에서의 몬스터가 있다. 2-1. 상태(State) 정의 몬스터가 가질 수 있는 상태를 정의하면 다음과 같다: Idle (대기): 플레이어를 찾지 못한 상태 Patrol (순찰): 일정 경로를...","categories": ["FSM","Automata","DesignPattern"],
+        "title": "\\[Design Pattern\\] 유한 상태 머신(FSM, Finite State Machine)",
+        "excerpt":"1. 유한 상태 머신(FSM) 유한 상태 머신은 유한개의 상태를 정의하고, 조건에 따라 각 상태로 전이하며 객체의 상태 및 행동을 정의하는 프로그래밍 패턴이다. 2. 예시 대표적인 예시로 게임에서의 몬스터가 있다. 2-1. 상태(State) 정의 몬스터가 가질 수 있는 상태를 정의하면 다음과 같다: Idle (대기): 플레이어를 찾지 못한 상태 Patrol (순찰): 일정 경로를...","categories": ["DesignPattern"],
         "tags": ["FSM","Automata","DesignPattern"],
-        "url": "/fsm/automata/designpattern/FSM/",
+        "url": "/designpattern/FSM/",
         "teaser": null
       },{
         "title": "[DevLog] Game Engine 개발일지 #12",
@@ -261,5 +261,11 @@ var store = [{
         "excerpt":"1. 날짜 (Date) 2025/02/27 2. 작업 목표 (Daily Goals) 캐릭터 움직임 속도를 이용하도록 리팩토링 3. 진행 사항 (Progress) 캐릭터의 좌, 우 이동 속도가 다른 문제 해결 4. 문제점 및 해결 방법 (Challenges &amp; Solutions) Rigidbody::Velocity를 조작하여 캐릭터를 움직였을 때, 왼쪽으로는 빠르게, 오른쪽으로는 느리게 이동함 캐릭터를 화면 안으로 조정해주는 과정에서 std::clamp&lt;int&gt;를...","categories": ["DevLog","GameEngine","WinAPI","Maplestory"],
         "tags": ["개발일지","WinAPI","Maplestory"],
         "url": "/devlog/gameengine/winapi/maplestory/MaplestoryCopy15/",
+        "teaser": null
+      },{
+        "title": "\\[OS\\] 프로세스의 메모리 구조",
+        "excerpt":"1. 메모리 구조 메모리는 아래의 4가지 구조로 구분된다. 코드 영역(Text Section) : 실행 코드 저장(읽기 전용) 데이터 영역(Data Section) .data : 초기화 된 전역 변수, 정적 변수 저장 .bss : 초기화되지 않은 전역 변수 저장 힙 영역(Heap) : malloc, new 등을 통해 동적 할당 스택 영역(Stack) : 지역 변수, 함수...","categories": ["OS"],
+        "tags": ["Memory","OperatingSystem","SystemProgramming","OS"],
+        "url": "/os/MemoryStructure/",
         "teaser": null
       }]
