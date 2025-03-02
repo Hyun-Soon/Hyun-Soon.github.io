@@ -1,5 +1,5 @@
 ---
-title: "DesignPattern"
+title: "Design Pattern"
 layout: archive
 permalink: /DesignPattern
 ---
