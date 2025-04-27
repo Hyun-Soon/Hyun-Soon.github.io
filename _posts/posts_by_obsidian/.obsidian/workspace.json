@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Maplestory 모작 개발일지 01.md",
+                "file": "Maplestory 모작 개발일지 20.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Maplestory 모작 개발일지 01"
+              "title": "Maplestory 모작 개발일지 20"
             }
           }
         ],
@@ -59,7 +59,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "파일 탐색기"
             }
           },
           {
@@ -166,16 +166,19 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:빠른 전환기 열기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
     }
   },
   "active": "25005150ff288a1d",
   "lastOpenFiles": [
+    "2025-04-24-Float.md",
+    "Maplestory 모작 개발일지 01.md",
+    "Maplestory 모작 개발일지 20.md",
     "Maplestory 모작 개발일지 19.md",
     "Maplestory 모작 개발일지 18.md",
     "Maplestory 모작 개발일지 17.md",
@@ -205,8 +208,6 @@
     "Maplestory 모작 개발일지 09.md",
     "Maplestory 모작 개발일지 08.md",
     "Maplestory 모작 개발일지 07.md",
-    "Maplestory 모작 개발일지 06.md",
-    "2025-01-19-MaplestoryCopy05.md",
     "Pasted image 20250103160353.png",
     "Pasted image 20250103155008.png",
     "DirectX3D",
