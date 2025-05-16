@@ -41,7 +41,7 @@ tags:
 
 ## 5. 다음 단계 (Next Steps)
 
-Transform 구현
+
 
 ---
 
