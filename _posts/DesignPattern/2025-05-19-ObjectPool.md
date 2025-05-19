@@ -3,7 +3,6 @@ title: \[Design Pattern\] Object Pool
 excerpt: 메모리 단편화와 동적 할당 오버헤드를 줄일 수 있는 오브젝트 풀에 대해 알아보자.
 categories:
   - DesignPattern
-  - Cpp
 tags:
   - ObjectPool
   - Cpp
