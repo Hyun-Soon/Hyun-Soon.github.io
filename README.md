@@ -14,6 +14,9 @@
 3. design 관리
    1. _config.yml -> minimal_mistakes_skin    : 설정
 
+3-1. skin 관리
+	1. /_sass/minimal-mistakes/skins
+
 4. 이미지 첨부
    1. _posts/asset/카테고리 해당하는 폴더에 이미지 넣고 푸쉬
    2. chrome으로 github 블로그 레포 들어가서 해당 이미지까지 들어가기(ex. https://github.com/Hyun-Soon/Hyun-Soon.github.io/blob/main/_posts/asset/C%2B%2B/RTTI_debug.png)
