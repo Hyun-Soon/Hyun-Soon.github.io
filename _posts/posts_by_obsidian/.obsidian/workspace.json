@@ -11,14 +11,10 @@
             "id": "e04a6e5e2202e65f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "블로그 글 템플릿.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "블로그 글 템플릿"
+              "title": "New tab"
             }
           }
         ]
@@ -78,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "7e54dccbf528ddbd",
@@ -161,9 +158,10 @@
   },
   "active": "e04a6e5e2202e65f",
   "lastOpenFiles": [
-    "오브젝트 풀.md",
-    "블로그 글 템플릿.md",
+    "virtual memory.md",
     "Maplestory 모작 개발일지 21.md",
+    "블로그 글 템플릿.md",
+    "오브젝트 풀.md",
     "RTTI(RunTime Type Information).md",
     "nullptr에 ->(멤버 접근 연산자)를 사용하면 무조건 segmentation fault가 발생할까?.md",
     "2025-05-10-thisPointer.md",
@@ -192,7 +190,6 @@
     "Pasted image 20240710155622.png",
     "Maplestory 모작 개발일지 14.md",
     "Maplestory 모작 개발일지 13.md",
-    "ft_printf.md",
     "Pasted image 20250103160353.png",
     "Pasted image 20250103155008.png",
     "DirectX3D",

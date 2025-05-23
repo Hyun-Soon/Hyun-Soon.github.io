@@ -51,6 +51,8 @@ BuffInfo.h 헤더 파일에 BuffInfo 구조체를 담는 unordered_map을 선언
 
 자쿰 본체에서 자식 오브젝트가 다 사라졌는지 확인하고 BoxCollider를 추가하는 것 보다, 자식 오브젝트가 죽을 때 남은 다른 자식 오브젝트가 없으면, 부모 오브젝트에 BoxCollider를 추가하도록 했다. 본체에서 계속 자식을 확인하는 것 보다, 자식이 죽을 때만 확인하는 게 나을 것 같다.
 
+CPU frequency를 기반으로 deltatime을 계산해 최대한 균일한 이동 속도를 보장하려 했다. 하지만 이 방식에도 문제가 있었다. CPU 사양이 안좋거나 렉이 발생해 deltatime이 지나치게 커진 경우, 가속도 계산에서 v += a × dt가 과도하게 커지게 되고, 그 결과 `x = x₀ + vt + ½at²` 공식으로 계산한 위치는 실제보다 훨씬 멀리 이동하게 된다. 즉, 속도가 점차 증가하는 연속적인 물리 현상을 시뮬레이션해야 하는데, 마치 큰 속도로 한 번에 이동한 것처럼 계산되어 움직임이 부자연스러워진다. 해결 방법에는 `fixed deltaTime + physics step accumulation`, `substepping`, `velocity verlet` 등이 있다고 한다.
+
 ---
 
 ## 7. 메모 (Notes)
