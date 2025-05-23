@@ -82,7 +82,7 @@ tags:
 메모리를 페이지와 같은 크기의 프레임 단위로 미리 나누어 두고, 빈 프레임에 하나의 페이지를 할당한다.
 CPU가 사용하는 논리 주소를 페이지 번호(p)와 페이지 오프셋(d)로 나누어 주소 변환에 사용한다. 이 페이지 번호는 페이지 테이블의 index로 사용되고, 해당 인덱스의 entry에는 그 페이지의 물리적 메모리의 기준 주소, 즉 시작 위치가 저장되어 있다. 따라서 이 시작 위치에 페이지 오프셋을 더해주면 요청한 논리 주소에 매핑된 물리 주소를 얻을 수 있다.
 
-![BasicPaging][https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/BasicPaging.png]
+![BasicPaging](https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/BasicPaging.png)
 
 예시를 보자(32bit 시스템, 페이지 크기 = 4KB).
 두 개의 프로세스 A, B가 동일한 논리 주소 `0x00001000`에 접근하려고 한다.
@@ -108,7 +108,7 @@ $$\frac{4GB}{4KB}\ = \frac{2^{32}}{2^{12}}\ = 2^{20} = 1,048,576 \approx 1M페�
 
 실행되는 프로그램이 많아질수록 메모리 공간 낭비가 심해지는데, 심지어 전체 프로그램 주소 공간 중 극히 일부분만 사용되는 경우를 생각하면, 전체 페이지 테이블이 메모리 공간에 올라가는 것은 심각한 메모리 낭비이다. 이를 해결하기 위해 사용되는 것이 `Hierarchical Page Table(계층적 페이지 테이블)`이다. 
 
-![HierarchicalPageTable][https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/HierarchicalPageTable.png]
+![HierarchicalPageTable](https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/HierarchicalPageTable.png)
 
 `2 level paging`기법을 예시로 살펴 보자.
 주소 변환을 위해 `외부 페이지 테이블`과 `내부 페이지 테이블` 두 단계를 거친다.
@@ -199,11 +199,11 @@ MMU는 세그먼트 테이블을 참고해, 세그먼트의 `base` 주소와 `li
 
 ### 2-3-3. Paging vs Segmentation 정리표
 
-| 항목     | Paging    | Segmentation     |
-| ------ | --------- | ---------------- |
-| 나누는 기준 | 고정 크기 페이지 | 의미 단위(코드, 데이터 등) |
-| 단편화 유형 | 내부 단편화 가능 | 외부 단편화 가능        |
-| 보호 단위  | 페이지 단위    | 세그먼트 단위          |
+|항목|Paging|Segmentation|
+|:------:|:---------:|:----------------:|
+|나누는 기준|고정 크기 페이지|의미 단위(코드, 데이터 등)|
+|단편화 유형|내부 단편화 가능|외부 단편화 가능|
+|보호 단위|페이지 단위|세그먼트 단위|
 
 # 3. 메모리 매핑 및 주소 변환
 
@@ -224,7 +224,7 @@ MMU는 세그먼트 테이블을 참고해, 세그먼트의 `base` 주소와 `li
 
 당연히 메모리에 두 번 접근하는 것보다 성능이 좋아야 하므로, 작고 빠르며 비싸다. MMU 내부에 위치한다.
 
-![TLB][https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/TLB.png]
+![TLB](https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/TLB.png)
 
 ## 3-3. Page Fault와 처리 과정
 
@@ -245,7 +245,7 @@ Page Fault가 발생하면 운영 체제는 해당 페이지를 메모리로 가
 
 ### 3-3-2. Page Fault 처리 과정
 
-![PageFault][https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/PageFault.png]
+![PageFault](https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/PageFault.png)
 
 1. page table을 확인한다.
 2. 필요한 page가 없다면 운영체제에 page fault trap을 전달한다.
@@ -291,7 +291,7 @@ Swap이 일어날 때 사용되는 알고리즘에는 무엇이 있을까?
 2. 만약 페이지의 Reference Bit가 1이면 0으로 바꾸고 다시 queue에 넣는다. 
 3. 만약 페이지의 Reference Bit가 0이면 해당 페이지를 Swap한다.
 
-![ClockAlgo][https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/ClockAlgorithm.png]
+![ClockAlgo](https://raw.githubusercontent.com/Hyun-Soon/Hyun-Soon.github.io/refs/heads/main/_posts/asset/OS/ClockAlgorithm.png)
 
 
 # 5. Virtual Memory의 장점과 단점
@@ -313,9 +313,9 @@ Swap이 일어날 때 사용되는 알고리즘에는 무엇이 있을까?
 
 # 6. 실제 사례로 보는 가상 메모리
 
-## 6-1. C/C++에서의 메모리 영역 구분
+## 6-1. 메모리 영역 구분
 
-https://hyun-soon.github.io/os/MemoryStructure/
+[메모리 영역 정리 글](https://hyun-soon.github.io/os/MemoryStructure/)
 
 ## 6-2. malloc의 동작 과정
 
