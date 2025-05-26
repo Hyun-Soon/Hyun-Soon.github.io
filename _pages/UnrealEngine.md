@@ -1,7 +1,7 @@
 ---
 title: "UnrealEngine"
 layout: archive
-permalink: /UE
+permalink: /UnrealEngine
 ---
 
 {% assign posts = site.categories.UnrealEngine %}
