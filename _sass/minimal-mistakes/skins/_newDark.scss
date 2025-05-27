@@ -28,3 +28,8 @@ $navicon-link-color-hover: #9AE66D; //mix(#1ED5FF, $link-color, 80%) !default; /
 .ais-search-box .ais-search-box--input {
   background-color: $form-background-color;
 }
+
+/* 모든 코드 블록의 탭 간격을 4칸으로 설정 */
+pre, code {
+    tab-size: 4;
+}
