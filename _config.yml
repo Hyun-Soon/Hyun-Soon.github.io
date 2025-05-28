@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Hyunsoon Im"
   avatar           : "/assets/images/hyunsoon_drum-modified.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "42Seoul Student interested in **Graphics** and **Game Engine**."
+  bio              : "42Seoul student interested in **graphics** and **game client development**. I'm currently studying **Unreal Engine**."
   location         : "Seoul, South Korea"
   email            : "s7514036@naver.com"
   links:
