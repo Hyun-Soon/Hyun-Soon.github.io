@@ -1,5 +1,5 @@
 ---
-title: "[DevLog] QuantumVerge 개발일지 #01"
+title: "[DevLog] QuantumVerge 개발일지 #02"
 excerpt: QuantumVerge 개발일지
 categories:
   - DevLog
