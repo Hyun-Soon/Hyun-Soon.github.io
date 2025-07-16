@@ -1,4 +1,4 @@
----
+﻿---
 title: "[DevLog] Game Engine 개발일지 #8"
 excerpt: Game Engine 개발일지
 categories:
@@ -81,8 +81,7 @@ T* GiveEnemyAbility()
 			}, 0.01f, false);
 ```
 
-- if-else 구문 \{\}로 안묶으면 컴파일 에러 발생
-- TeleportIndicatorDecal이 표시된 상황에서, Ability 소유한 객체가 죽었을 때 여전히 TeleportIndicatorDecal가 표시되고 있는 문제 발생
+- if-else 구문 \{\}로 안묶으면 컴파일 에러 발생 
 
 ---
 
@@ -119,7 +118,10 @@ T* GiveEnemyAbility()
 	- 단점
 		- Ability Instance를 찾는 오버헤드 발생
 
+
 - 만약 Enemy 객체 생성 -> TryActivateAbility() 호출했지만 Ability Instance 생성되지 않은 상황 -> Enemy가 한방에 죽어서 Release가 호출된다면?
+
+- TeleportIndicatorDecal이 표시된 상황에서, Ability 소유한 객체가 죽었을 때 여전히 TeleportIndicatorDecal가 표시되고 있는 문제 발생 -> Timer 2개를 사용해서 ShowTeleportIndicator() 함수와 ExecuteTeleport() 함수를 각각의 타이머에 등록했다. ShowTeleportIndicator() 함수를 등록하고 5초 후에 ExecuteTeleport() 함수를 등록했는데, 각 타이머의 interval도 5초였기 때문에 이런 문제가 발생했다. ExecuteTeleport() 함수가 호출되는 타이밍을 약간 더 앞으로 당겨도, 렉이 걸려서 Timer의 업데이트가 밀리게 되면 비슷한 상황이 발생할 수 있다. Timer에 함수 하나만 등록하고, 그 안에서 분기 처리하자.
 
 ---
 
@@ -129,7 +131,10 @@ T* GiveEnemyAbility()
 	로컬 디스크 -> 사용자 -> (내 계정) -> AppData -> Local -> Temp
 	이 곳에 있는 내용 정리했더니 200GB 공간 확보함
 
+
+**전달 받은 기획**
 - 메인 UI에서 플레이어 테스트 레벨로 가는 기능 구현
 - 보스 등장 타이머, ex. 30초 -> 0초 점점 줄어들게, 초 줄어들 때마다 심장박동처럼 커졌다 줄어들었다, 시간 점점 다가올 때마다 폰트 크게,
 ---
+
 
