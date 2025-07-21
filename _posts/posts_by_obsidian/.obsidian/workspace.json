@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QuantumVerge 개발일지 10.md",
+                "file": "QuantumVerge 개발일지 12.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "QuantumVerge 개발일지 10"
+              "title": "QuantumVerge 개발일지 12"
             }
           }
         ]
@@ -161,8 +161,11 @@
   },
   "active": "a9621ae8ab360a63",
   "lastOpenFiles": [
-    "QuantumVerge 개발일지.md",
+    "QuantumVerge 개발일지 11.md",
+    "QuantumVerge 개발일지 12.md",
     "QuantumVerge 개발일지 10.md",
+    "QuantumVerge 개발일지.md",
+    "Pasted image 20250721112628.png",
     "QuantumVerge 개발일지 9.md",
     "QuantumVerge 개발일지 8.md",
     "Game Engine 개발일지 01.md",
@@ -184,9 +187,6 @@
     "DirectX3D/Structured Buffer.md",
     "ToBePosted/Temp2025-07-03-UEPractice01.md",
     "언리얼 시행착오.md",
-    "Unreal Engine 빌드 구조와 CDO.md",
-    "Unreal UI.md",
-    "언리얼 충돌 채널 사용하기.md",
     "Pasted image 20250302144135.png",
     "Pasted image 20250103162021.png",
     "Pasted image 20250220160701.png",
@@ -198,7 +198,6 @@
     "DirectX3D",
     "무제 파일.canvas",
     "Screenshot 2024-11-13 at 9.03.17 PM.png",
-    "Pasted image 20240710162100.png",
     "temp.pdf",
     "Effective C++ 01.pdf"
   ]
