@@ -107,7 +107,9 @@ DataName 대신, Tag 방식으로 변경했더니 성공했다.
 
 ## 5. 다음 단계 (Next Steps)
 
-
+- 보스(`Entropic Singularities`)
+- 충돌 시 오버랩 2번 발생하는 버그 확인 및 해결
+- 넉백
 
 ---
 
@@ -120,7 +122,7 @@ DataName 대신, Tag 방식으로 변경했더니 성공했다.
 
 ## 7. 메모 (Notes)
 
-- 플레이어 SlowAure 디버그 코드
+- 플레이어 SlowAura 디버그 코드
 ```c++
 //debug
 {

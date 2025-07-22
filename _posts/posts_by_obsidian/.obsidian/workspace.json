@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "3afa3805a371abe9",
+        "id": "3f10c46f82e565f8",
         "type": "tabs",
         "children": [
           {
-            "id": "a9621ae8ab360a63",
+            "id": "477a4c92830ef9bb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "QuantumVerge 개발일지 12.md",
-                "mode": "source",
-                "source": false
+                "file": "Pasted image 20250722213756.png"
               },
-              "icon": "lucide-file",
-              "title": "QuantumVerge 개발일지 12"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250722213756"
             }
           }
         ]
@@ -159,12 +157,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a9621ae8ab360a63",
+  "active": "477a4c92830ef9bb",
   "lastOpenFiles": [
+    "QuantumVerge 개발일지 13.md",
+    "Pasted image 20250722213756.png",
+    "QuantumVerge 개발일지.md",
     "QuantumVerge 개발일지 11.md",
     "QuantumVerge 개발일지 12.md",
     "QuantumVerge 개발일지 10.md",
-    "QuantumVerge 개발일지.md",
     "Pasted image 20250721112628.png",
     "QuantumVerge 개발일지 9.md",
     "QuantumVerge 개발일지 8.md",
@@ -186,7 +186,6 @@
     "블로그 글 템플릿.md",
     "DirectX3D/Structured Buffer.md",
     "ToBePosted/Temp2025-07-03-UEPractice01.md",
-    "언리얼 시행착오.md",
     "Pasted image 20250302144135.png",
     "Pasted image 20250103162021.png",
     "Pasted image 20250220160701.png",
@@ -197,7 +196,6 @@
     "Pasted image 20250103155008.png",
     "DirectX3D",
     "무제 파일.canvas",
-    "Screenshot 2024-11-13 at 9.03.17 PM.png",
     "temp.pdf",
     "Effective C++ 01.pdf"
   ]
