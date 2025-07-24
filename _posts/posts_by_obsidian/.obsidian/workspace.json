@@ -11,10 +11,14 @@
             "id": "477a4c92830ef9bb",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "QuantumVerge 개발일지 14.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "QuantumVerge 개발일지 14"
             }
           }
         ]
@@ -157,8 +161,11 @@
   },
   "active": "477a4c92830ef9bb",
   "lastOpenFiles": [
-    "QuantumVerge 개발일지 14.md",
     "QuantumVerge 개발일지.md",
+    "QuantumVerge 개발일지 14.md",
+    "Game Engine 개발일지 01.md",
+    "Game Engine 개발일지 01 1.md",
+    "QuantumVerge 개발일지 14.md",
     "Maplestory 모작 개발일지 21.md",
     "블로그 글 템플릿.md",
     "Pasted image 20250722213756.png",
@@ -169,7 +176,6 @@
     "Pasted image 20250721112628.png",
     "QuantumVerge 개발일지 9.md",
     "QuantumVerge 개발일지 8.md",
-    "Game Engine 개발일지 01.md",
     "QuantumVerge 개발일지 05.md",
     "QuantumVerge 개발일지 07.md",
     "QuantumVerge 개발일지 06.md",
@@ -183,8 +189,6 @@
     "Maplestory 모작 개발일지 01.md",
     "Baycentric coordinate(무게 중심 좌표계).md",
     "Animation assimp로 parsing하기.md",
-    "DirectX3D/Structured Buffer.md",
-    "ToBePosted/Temp2025-07-03-UEPractice01.md",
     "Pasted image 20250302144135.png",
     "Pasted image 20250103162021.png",
     "Pasted image 20250220160701.png",

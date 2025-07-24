@@ -1,6 +1,6 @@
----
-title: "[DevLog] Game Engine 개발일지 #11"
-excerpt: Game Engine 개발일지
+﻿---
+title: "[DevLog] QuantumVerge 개발일지 #11"
+excerpt: QuantumVerge 개발일지
 categories:
   - DevLog
 tags:
