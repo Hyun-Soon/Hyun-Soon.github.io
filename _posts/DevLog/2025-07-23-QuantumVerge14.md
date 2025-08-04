@@ -52,7 +52,6 @@ Enemy가 스킬로 Overlap 검사를 할 때, 플레이어만 Overlap하는 채�
 ## 5. 다음 단계 (Next Steps)
 
 - VFX/SFX 옵션 및 UI 구현
-- InstantSlowAuraAbility `State.Slow.Instant` 적용 안되는 문제 해결
 - 보스용 공간왜곡 매터리얼 생성
 
 ---
