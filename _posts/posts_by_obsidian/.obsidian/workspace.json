@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Unity Coroutine.md",
+                "file": "블로그 글 템플릿.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Unity Coroutine"
+              "title": "블로그 글 템플릿"
             }
           }
         ],
@@ -178,8 +178,8 @@
   },
   "active": "87e256178757e2e1",
   "lastOpenFiles": [
-    "블로그 글 템플릿.md",
     "Unity Coroutine.md",
+    "블로그 글 템플릿.md",
     "Pasted image 20250903110037.png",
     "Pasted image 20250912162008.png",
     "ECMiner 피드백.md",

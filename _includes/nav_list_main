@@ -65,10 +65,24 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+             <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "C#" %}
+                        <li><a style="font-size: 16px"; href="/C#" class="">C\# ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "UnrealEngine" %}
                         <li><a style="font-size: 16px"; href="/UnrealEngine" class="">UnrealEngine ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Unity" %}
+                        <li><a style="font-size: 16px"; href="/Unity" class="">Unity ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -83,6 +97,13 @@
                 {% for category in site.categories %}
                     {% if category[0] == "DesignPattern" %}
                         <li><a style="font-size: 16px"; href="/DesignPattern" class="">Design Pattern ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "MFC" %}
+                        <li><a style="font-size: 16px"; href="/MFC" class="">MFC ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
